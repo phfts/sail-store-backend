@@ -6,6 +6,15 @@ class AuthController < ApplicationController
     
     if user&.authenticate(params[:password])
       token = generate_jwt_token(user)
+      
+      # Registrar log de login
+      LoginLog.create!(
+        user: user,
+        login_at: Time.current,
+        ip_address: request.remote_ip,
+        user_agent: request.user_agent
+      )
+      
       render json: {
         message: 'Login realizado com sucesso',
         token: token,
