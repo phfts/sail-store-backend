@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_01_193820) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_01_194554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -25,12 +25,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_01_193820) do
   end
 
   create_table "sellers", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.string "whatsapp"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "store_id", null: false
+    t.string "name"
+    t.index ["name", "user_id"], name: "index_sellers_on_name_and_user_id", unique: true, where: "((name IS NOT NULL) AND (user_id IS NOT NULL))"
     t.index ["store_id"], name: "index_sellers_on_store_id"
     t.index ["user_id"], name: "index_sellers_on_user_id"
   end

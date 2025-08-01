@@ -46,7 +46,7 @@ class SellersController < ApplicationController
   end
 
   def seller_params
-    params.require(:seller).permit(:user_id, :store_id, :whatsapp, :email)
+    params.require(:seller).permit(:user_id, :store_id, :name, :whatsapp, :email)
   end
 
   def seller_response(seller)
@@ -54,12 +54,13 @@ class SellersController < ApplicationController
       id: seller.id,
       user_id: seller.user_id,
       store_id: seller.store_id,
-      user: {
+      name: seller.name,
+      user: seller.user ? {
         id: seller.user.id,
         name: seller.user.name,
         email: seller.user.email,
         admin: seller.user.admin?
-      },
+      } : nil,
       store: {
         id: seller.store.id,
         name: seller.store.name,
@@ -68,6 +69,7 @@ class SellersController < ApplicationController
       whatsapp: seller.whatsapp,
       email: seller.email,
       formatted_whatsapp: seller.formatted_whatsapp,
+      display_name: seller.display_name,
       created_at: seller.created_at,
       updated_at: seller.updated_at
     }

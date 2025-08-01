@@ -1,14 +1,20 @@
 class Seller < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :store
   
-  validates :user_id, presence: true
   validates :store_id, presence: true
   validates :whatsapp, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   
+  # Validação para garantir que pelo menos name ou user_id esteja presente
+  validates :name, presence: true, unless: :user_id?
+  validates :user_id, presence: true, unless: :name?
+  
   # Validação de unicidade do user_id por store (um usuário só pode ser seller em uma loja)
-  validates :user_id, uniqueness: { scope: :store_id, message: "já é vendedor nesta loja" }
+  validates :user_id, uniqueness: { scope: :store_id, message: "já é vendedor nesta loja" }, if: :user_id?
+  
+  # Validação de unicidade do name por store
+  validates :name, uniqueness: { scope: :store_id, message: "já existe um vendedor com este nome nesta loja" }, if: :name?
   
   # Validação de formato do WhatsApp (aceita números, espaços, parênteses, hífens)
   validates :whatsapp, format: { 
@@ -29,5 +35,10 @@ class Seller < ApplicationRecord
     end
     
     numbers_only
+  end
+  
+  # Método para obter o nome do vendedor
+  def display_name
+    name.presence || user&.name
   end
 end
