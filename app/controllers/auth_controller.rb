@@ -20,9 +20,9 @@ class AuthController < ApplicationController
         token: token,
         user: {
           id: user.id,
-          name: user.name,
           email: user.email,
-          admin: user.admin?
+          admin: user.admin?,
+          store_slug: user.store_slug
         }
       }, status: :ok
     else
@@ -39,11 +39,6 @@ class AuthController < ApplicationController
   def register
     user = User.new(user_params)
     
-    # Gerar nome automaticamente baseado no email se não fornecido
-    if user.name.blank?
-      user.name = user.email.split('@').first
-    end
-    
     if user.save
       token = generate_jwt_token(user)
       
@@ -52,9 +47,9 @@ class AuthController < ApplicationController
         token: token,
         user: {
           id: user.id,
-          name: user.name,
           email: user.email,
-          admin: user.admin?
+          admin: user.admin?,
+          store_slug: user.store_slug
         }
       }, status: :created
     else
@@ -67,9 +62,9 @@ class AuthController < ApplicationController
       render json: {
         user: {
           id: current_user.id,
-          username: current_user.username,
           email: current_user.email,
-          admin: current_user.admin?
+          admin: current_user.admin?,
+          store_slug: current_user.store_slug
         }
       }, status: :ok
     else
@@ -80,6 +75,6 @@ class AuthController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

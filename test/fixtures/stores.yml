@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  cnpj: MyString
-  address: MyString
+  name: Loja Teste 1
+  cnpj: 12.345.678/0001-90
+  address: Rua Teste, 123
+  slug: loja-teste-1
 
 two:
-  name: MyString
-  cnpj: MyString
-  address: MyString
+  name: Loja Teste 2
+  cnpj: 98.765.432/0001-10
+  address: Av. Teste, 456
+  slug: loja-teste-2

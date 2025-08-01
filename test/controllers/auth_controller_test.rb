@@ -12,7 +12,7 @@ class AuthControllerTest < ActionDispatch::IntegrationTest
     
     response_data = JSON.parse(response.body)
     assert_equal 'Login realizado com sucesso', response_data['message']
-    assert_equal @admin.username, response_data['user']['username']
+    assert_equal @admin.email, response_data['user']['email']
     assert response_data['user']['admin']
     assert response_data['token'] # Verificar se o token foi retornado
   end
@@ -29,7 +29,6 @@ class AuthControllerTest < ActionDispatch::IntegrationTest
     assert_difference("User.count") do
       post auth_register_url, params: { 
         user: { 
-          username: 'newuser', 
           email: 'newuser@example.com', 
           password: 'password123', 
           password_confirmation: 'password123' 
@@ -41,7 +40,7 @@ class AuthControllerTest < ActionDispatch::IntegrationTest
     
     response_data = JSON.parse(response.body)
     assert_equal 'Usuário registrado com sucesso', response_data['message']
-    assert_equal 'newuser', response_data['user']['username']
+    assert_equal 'newuser@example.com', response_data['user']['email']
     assert_not response_data['user']['admin'] # Usuários registrados não são admin por padrão
     assert response_data['token'] # Verificar se o token foi retornado
   end
@@ -50,7 +49,6 @@ class AuthControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference("User.count") do
       post auth_register_url, params: { 
         user: { 
-          username: '', 
           email: 'invalid_email', 
           password: '123', 
           password_confirmation: '123' 
@@ -74,7 +72,6 @@ class AuthControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     
     response_data = JSON.parse(response.body)
-    assert_equal @admin.username, response_data['user']['username']
     assert_equal @admin.email, response_data['user']['email']
     assert response_data['user']['admin']
   end
@@ -84,7 +81,7 @@ class AuthControllerTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
     
     response_data = JSON.parse(response.body)
-    assert_equal 'Acesso não autorizado', response_data['error']
+    assert_equal 'Token inválido ou expirado', response_data['error']
   end
 
   test "should not get current user info with invalid token" do
@@ -92,6 +89,6 @@ class AuthControllerTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
     
     response_data = JSON.parse(response.body)
-    assert_equal 'Acesso não autorizado', response_data['error']
+    assert_equal 'Token inválido ou expirado', response_data['error']
   end
 end

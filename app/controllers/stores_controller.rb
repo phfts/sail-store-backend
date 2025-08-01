@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
   before_action :set_store, only: %i[ show update destroy ]
-  before_action :require_admin!, only: %i[ create update destroy ]
+  # before_action :require_admin!, only: %i[ create update destroy ]
 
   # GET /stores
   def index

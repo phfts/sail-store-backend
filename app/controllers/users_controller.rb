@@ -57,13 +57,12 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin)
+    params.require(:user).permit(:email, :password, :password_confirmation, :admin)
   end
 
   def user_response(user)
     {
       id: user.id,
-      name: user.name,
       email: user.email,
       admin: user.admin?,
       created_at: user.created_at,

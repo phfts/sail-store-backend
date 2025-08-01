@@ -5,7 +5,7 @@ Este projeto requer algumas variáveis de ambiente para funcionar corretamente, 
 ## Variáveis Obrigatórias
 
 ### Para o usuário admin:
-- `ADMIN_USERNAME`: Nome de usuário do admin (ex: admin)
+- `ADMIN_NAME`: Nome de usuário do admin (ex: admin)
 - `ADMIN_PASSWORD`: Senha do admin (ex: admin123)
 - `ADMIN_EMAIL`: Email do admin (ex: admin@example.com)
 
@@ -18,7 +18,7 @@ Este projeto requer algumas variáveis de ambiente para funcionar corretamente, 
 Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
 
 ```
-ADMIN_USERNAME=admin
+ADMIN_NAME=admin
 ADMIN_PASSWORD=admin123
 ADMIN_EMAIL=admin@example.com
 JWT_SECRET_KEY=sua-chave-secreta-muito-segura
@@ -28,7 +28,7 @@ JWT_SECRET_KEY=sua-chave-secreta-muito-segura
 Configure as variáveis de ambiente no seu sistema:
 
 ```bash
-export ADMIN_USERNAME=admin
+export ADMIN_NAME=admin
 export ADMIN_PASSWORD=admin123
 export ADMIN_EMAIL=admin@example.com
 export JWT_SECRET_KEY=sua-chave-secreta-muito-segura

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :sellers
+  get '/stores/:slug/sellers', to: 'sellers#by_store_slug'
+  
   # Rotas de autenticação
   post '/auth/login', to: 'auth#login'
   post '/auth/register', to: 'auth#register'

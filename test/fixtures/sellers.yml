@@ -2,10 +2,14 @@
 
 one:
   user: one
-  whatsapp: MyString
-  email: MyString
+  store: one
+  name: Vendedor Teste 1
+  whatsapp: 11987654321
+  email: vendedor1@teste.com
 
 two:
   user: two
-  whatsapp: MyString
-  email: MyString
+  store: two
+  name: Vendedor Teste 2
+  whatsapp: 11987654322
+  email: vendedor2@teste.com
