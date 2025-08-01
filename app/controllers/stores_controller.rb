@@ -14,6 +14,12 @@ class StoresController < ApplicationController
     render json: @store
   end
 
+  # GET /stores/by-slug/:slug
+  def show_by_slug
+    @store = Store.find_by!(slug: params[:slug])
+    render json: @store
+  end
+
   # POST /stores
   def create
     @store = Store.new(store_params)

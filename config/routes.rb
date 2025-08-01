@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   
   # Rotas de stores (protegidas por autenticação)
   resources :stores
+  get '/stores/by-slug/:slug', to: 'stores#show_by_slug'
   
   # Rotas de usuários (apenas para admins)
   resources :users do
