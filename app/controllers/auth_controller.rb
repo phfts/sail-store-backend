@@ -39,6 +39,11 @@ class AuthController < ApplicationController
   def register
     user = User.new(user_params)
     
+    # Gerar nome automaticamente baseado no email se não fornecido
+    if user.name.blank?
+      user.name = user.email.split('@').first
+    end
+    
     if user.save
       token = generate_jwt_token(user)
       

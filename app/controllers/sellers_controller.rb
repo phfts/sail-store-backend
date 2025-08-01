@@ -15,7 +15,42 @@ class SellersController < ApplicationController
 
   # POST /sellers
   def create
-    @seller = Seller.new(seller_params)
+    # Validar email se fornecido
+    if params[:seller][:email].present?
+      unless params[:seller][:email] =~ URI::MailTo::EMAIL_REGEXP
+        render json: { errors: ['Email inválido'] }, status: :unprocessable_entity
+        return
+      end
+    end
+
+    # Se email fornecido, verificar se usuário existe
+    if params[:seller][:email].present?
+      user = User.find_by(email: params[:seller][:email])
+      
+      if user
+        # Usuário existe, verificar se já é vendedor nesta loja
+        existing_seller = Seller.find_by(user: user, store_id: params[:seller][:store_id])
+        if existing_seller
+          render json: { errors: ['Já existe um vendedor com este email nesta loja'] }, status: :unprocessable_entity
+          return
+        end
+        
+        # Criar vendedor associado ao usuário existente
+        @seller = Seller.new(seller_params.merge(user: user))
+      else
+        # Usuário não existe, criar novo usuário e vendedor
+        user = User.create!(
+          name: params[:seller][:name],
+          email: params[:seller][:email],
+          password: SecureRandom.hex(8) # Senha aleatória
+        )
+        
+        @seller = Seller.new(seller_params.merge(user: user))
+      end
+    else
+      # Sem email, criar apenas vendedor com nome
+      @seller = Seller.new(seller_params)
+    end
 
     if @seller.save
       render json: seller_response(@seller), status: :created
