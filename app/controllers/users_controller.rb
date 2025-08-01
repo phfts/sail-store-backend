@@ -8,6 +8,13 @@ class UsersController < ApplicationController
     render json: @users.map { |user| user_response(user) }
   end
 
+  # GET /users/available
+  def available
+    # Buscar usuários que não são sellers
+    @users = User.left_joins(:seller).where(sellers: { id: nil })
+    render json: @users.map { |user| user_response(user) }
+  end
+
   # GET /users/1
   def show
     render json: user_response(@user)

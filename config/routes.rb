@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   resources :stores
   
   # Rotas de usuários (apenas para admins)
-  resources :users
+  resources :users do
+    collection do
+      get :available
+    end
+  end
   
   # Rotas de métricas (apenas para admins)
   get '/metrics', to: 'metrics#index'
