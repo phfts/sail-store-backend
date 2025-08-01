@@ -56,7 +56,7 @@ class SellersController < ApplicationController
       store_id: seller.store_id,
       user: {
         id: seller.user.id,
-        username: seller.user.username,
+        name: seller.user.name,
         email: seller.user.email,
         admin: seller.user.admin?
       },

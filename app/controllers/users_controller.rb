@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   def user_response(user)
     {
       id: user.id,
-      username: user.username,
+      name: user.name,
       email: user.email,
       admin: user.admin?,
       created_at: user.created_at,

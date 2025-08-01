@@ -20,7 +20,7 @@ class AuthController < ApplicationController
         token: token,
         user: {
           id: user.id,
-          username: user.username,
+          name: user.name,
           email: user.email,
           admin: user.admin?
         }
@@ -38,16 +38,16 @@ class AuthController < ApplicationController
   
   def register
     user = User.new(user_params)
-    user.admin = false # Usuários registrados não são admin por padrão
     
     if user.save
       token = generate_jwt_token(user)
+      
       render json: {
         message: 'Usuário registrado com sucesso',
         token: token,
         user: {
           id: user.id,
-          username: user.username,
+          name: user.name,
           email: user.email,
           admin: user.admin?
         }
@@ -75,6 +75,6 @@ class AuthController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

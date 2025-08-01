@@ -26,7 +26,7 @@ rails db:migrate
 Crie um arquivo `.env` na raiz do projeto:
 
 ```
-ADMIN_USERNAME=admin
+ADMIN_NAME=admin
 ADMIN_PASSWORD=admin123
 ADMIN_EMAIL=admin@example.com
 ```
