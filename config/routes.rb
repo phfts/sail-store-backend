@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sellers
   # Rotas de autenticação
   post '/auth/login', to: 'auth#login'
   post '/auth/register', to: 'auth#register'

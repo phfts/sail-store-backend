@@ -16,4 +16,12 @@ class User < ApplicationRecord
   def regular_user?
     !admin?
   end
+  
+  def seller?
+    Seller.exists?(user_id: id)
+  end
+  
+  def seller
+    Seller.find_by(user_id: id)
+  end
 end
