@@ -1,6 +1,6 @@
 class Store < ApplicationRecord
   validates :name, presence: true
-  validates :slug, presence: true, uniqueness: true
+  validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z0-9-]+\z/, message: "deve conter apenas letras minúsculas, números e hífens" }
   
   before_validation :generate_slug, on: :create
   
