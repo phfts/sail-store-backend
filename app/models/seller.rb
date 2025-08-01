@@ -1,12 +1,14 @@
 class Seller < ApplicationRecord
   belongs_to :user
+  belongs_to :store
   
   validates :user_id, presence: true
+  validates :store_id, presence: true
   validates :whatsapp, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   
-  # Validação de unicidade do user_id (um usuário só pode ter um seller)
-  validates :user_id, uniqueness: true
+  # Validação de unicidade do user_id por store (um usuário só pode ser seller em uma loja)
+  validates :user_id, uniqueness: { scope: :store_id, message: "já é vendedor nesta loja" }
   
   # Validação de formato do WhatsApp (aceita números, espaços, parênteses, hífens)
   validates :whatsapp, format: { 

@@ -1,4 +1,6 @@
 class Store < ApplicationRecord
+  has_many :sellers, dependent: :destroy
+  
   validates :name, presence: true
   validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z0-9-]+\z/, message: "deve conter apenas letras minúsculas, números e hífens" }
   

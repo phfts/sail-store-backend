@@ -46,18 +46,24 @@ class SellersController < ApplicationController
   end
 
   def seller_params
-    params.require(:seller).permit(:user_id, :whatsapp, :email)
+    params.require(:seller).permit(:user_id, :store_id, :whatsapp, :email)
   end
 
   def seller_response(seller)
     {
       id: seller.id,
       user_id: seller.user_id,
+      store_id: seller.store_id,
       user: {
         id: seller.user.id,
         username: seller.user.username,
         email: seller.user.email,
         admin: seller.user.admin?
+      },
+      store: {
+        id: seller.store.id,
+        name: seller.store.name,
+        slug: seller.store.slug
       },
       whatsapp: seller.whatsapp,
       email: seller.email,
