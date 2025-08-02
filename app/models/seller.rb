@@ -2,6 +2,10 @@ class Seller < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :store
   
+  has_many :schedules, dependent: :destroy
+  has_many :shifts, through: :schedules
+  has_many :vacations, dependent: :destroy
+  
   validates :store_id, presence: true
   validates :whatsapp, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true

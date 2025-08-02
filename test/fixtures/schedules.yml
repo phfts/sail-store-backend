@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seller: one
+  shift: one
+  store: one
+  day_of_week: 1
+  week_number: 1
+  year: 1
+
+two:
+  seller: two
+  shift: two
+  store: two
+  day_of_week: 1
+  week_number: 1
+  year: 1
