@@ -52,6 +52,10 @@ class VacationsController < ApplicationController
   end
 
   def ensure_store_access
+    # Admins têm acesso a todas as lojas
+    return if current_user.admin?
+    
+    # Usuários regulares precisam ter acesso à loja
     unless current_user.store
       render json: { error: "Acesso negado" }, status: :forbidden
     end

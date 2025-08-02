@@ -6,27 +6,23 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# Criar usuário admin inicial se as variáveis de ambiente estiverem definidas
-admin_password = ENV['ADMIN_PASSWORD']
-admin_email = ENV['ADMIN_EMAIL']
+# Criar usuário admin inicial
+admin_email = 'admin@sail.com'
+admin_password = 'admin123'
 
-if admin_password && admin_email
-  # Verificar se o admin já existe
-  admin = User.find_by(email: admin_email)
-  
-  unless admin
-    admin = User.create!(
-      email: admin_email,
-      password: admin_password,
-      admin: true
-    )
-    puts "Usuário admin criado: #{admin.email}"
-  else
-    puts "Usuário admin já existe: #{admin.email}"
-  end
+# Verificar se o admin já existe
+admin = User.find_by(email: admin_email)
+
+unless admin
+  admin = User.create!(
+    email: admin_email,
+    password: admin_password,
+    admin: true
+  )
+  puts "✅ Usuário admin criado: #{admin.email}"
+  puts "🔑 Senha: #{admin_password}"
 else
-  puts "Variáveis de ambiente ADMIN_NAME, ADMIN_PASSWORD e ADMIN_EMAIL não estão definidas."
-  puts "Para criar um usuário admin, defina essas variáveis de ambiente."
+  puts "✅ Usuário admin já existe: #{admin.email}"
 end
 
 # Criar turnos de exemplo se não existirem
