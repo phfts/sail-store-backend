@@ -49,20 +49,45 @@ class DashboardController < ApplicationController
     vacations = store.vacations
     active_vacations = vacations.where('start_date <= ? AND end_date >= ?', Date.current, Date.current)
 
-    # Buscar metas (mock por enquanto)
-    current_target = 15000
-    current_sales = 8750
-    progress = ((current_sales.to_f / current_target) * 100).round(2)
+    # Buscar vendas reais
+    sales = store.sales.includes(:seller)
+    current_month_sales = sales.where('sold_at >= ? AND sold_at <= ?', 
+      Date.current.beginning_of_month, Date.current.end_of_month)
+    
+    # Calcular vendas totais do mês atual
+    current_sales = current_month_sales.sum(:value)
+    
+    # Buscar vendas da semana atual
+    current_week_sales = sales.where('sold_at >= ? AND sold_at <= ?', 
+      Date.current.beginning_of_week, Date.current.end_of_week)
+    current_week_total = current_week_sales.sum(:value)
+    
+    # Buscar vendas de hoje
+    today_sales = sales.where('sold_at >= ? AND sold_at <= ?', 
+      Date.current.beginning_of_day, Date.current.end_of_day)
+    today_total = today_sales.sum(:value)
+    
+    # Buscar metas ativas
+    current_goals = store.goals.where('end_date >= ?', Date.current)
+    current_target = current_goals.sum(:target_value)
+    
+    # Calcular progresso baseado nas vendas reais
+    progress = current_target > 0 ? ((current_sales.to_f / current_target) * 100).round(2) : 0
 
-    # Top vendedores (mock por enquanto)
-    top_sellers = active_sellers.first(3).map do |seller|
+    # Top vendedores baseado em vendas reais
+    top_sellers = active_sellers.map do |seller|
+      seller_sales = sales.where(seller: seller)
+        .where('sold_at >= ? AND sold_at <= ?', 
+          Date.current.beginning_of_month, Date.current.end_of_month)
+        .sum(:value)
+      
       {
         id: seller.id,
         name: seller.name,
-        sales: rand(2000..5000), # Mock data
+        sales: seller_sales,
         avatar: nil
       }
-    end
+    end.sort_by { |seller| -seller[:sales] }.first(3)
 
     render json: {
       store: {
@@ -93,12 +118,19 @@ class DashboardController < ApplicationController
         total: vacations.count,
         active: active_vacations.count
       },
+      sales: {
+        total: sales.count,
+        currentMonth: current_sales,
+        currentWeek: current_week_total,
+        today: today_total,
+        averagePerDay: current_month_sales.count > 0 ? (current_sales / Date.current.day).round(2) : 0
+      },
       targets: {
         current: current_sales,
         target: current_target,
         progress: progress,
-        period: "semanal",
-        endDate: "15/04/2025"
+        period: "mensal",
+        endDate: Date.current.end_of_month.strftime("%d/%m/%Y")
       },
       topSellers: top_sellers
     }

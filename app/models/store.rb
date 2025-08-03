@@ -3,6 +3,8 @@ class Store < ApplicationRecord
   has_many :shifts, dependent: :destroy
   has_many :schedules, dependent: :destroy
   has_many :vacations, through: :sellers
+  has_many :sales, through: :sellers
+  has_many :goals, through: :sellers
   
   validates :name, presence: true
   validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z0-9-]+\z/, message: "deve conter apenas letras minúsculas, números e hífens" }
