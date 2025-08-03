@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_03_202736) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_03_220115) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -35,6 +35,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_03_202736) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_login_logs_on_user_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.bigint "seller_id", null: false
+    t.decimal "value", precision: 10, scale: 2, null: false
+    t.datetime "sold_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seller_id"], name: "index_sales_on_seller_id"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -106,6 +115,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_03_202736) do
 
   add_foreign_key "goals", "sellers"
   add_foreign_key "login_logs", "users"
+  add_foreign_key "sales", "sellers"
   add_foreign_key "schedules", "sellers"
   add_foreign_key "schedules", "shifts"
   add_foreign_key "schedules", "stores"

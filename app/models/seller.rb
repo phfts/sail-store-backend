@@ -6,6 +6,7 @@ class Seller < ApplicationRecord
   has_many :shifts, through: :schedules
   has_many :vacations, dependent: :destroy
   has_many :goals, dependent: :destroy
+  has_many :sales, dependent: :destroy
   
   validates :store_id, presence: true
   validates :whatsapp, presence: true
