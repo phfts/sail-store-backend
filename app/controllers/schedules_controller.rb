@@ -7,10 +7,19 @@ class SchedulesController < ApplicationController
     week_number = params[:week_number]&.to_i || Date.current.cweek
     year = params[:year]&.to_i || Date.current.year
     
-    @schedules = current_user.store.schedules
+    if current_user.admin?
+      # Admins podem ver todas as escalas
+      @schedules = Schedule.joins(:store)
+                          .includes(:seller, :shift)
+                          .for_week(week_number, year)
+                          .order(:day_of_week)
+    else
+      # Usuários regulares veem apenas as escalas da sua loja
+      @schedules = current_user.store.schedules
                               .includes(:seller, :shift)
                               .for_week(week_number, year)
                               .order(:day_of_week)
+    end
     
     render json: @schedules.as_json(include: { seller: { only: [:id, :name, :code] }, 
                                                shift: { only: [:id, :name, :start_time, :end_time] } })
@@ -22,7 +31,17 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = current_user.store.schedules.build(schedule_params)
+    if current_user.admin?
+      # Para admins, precisamos especificar a loja
+      store_id = params[:store_id] || Store.first&.id
+      unless store_id
+        render json: { error: "Nenhuma loja encontrada" }, status: :unprocessable_entity
+        return
+      end
+      @schedule = Store.find(store_id).schedules.build(schedule_params)
+    else
+      @schedule = current_user.store.schedules.build(schedule_params)
+    end
     
     if @schedule.save
       render json: @schedule.as_json(include: { seller: { only: [:id, :name, :code] }, 
@@ -50,7 +69,11 @@ class SchedulesController < ApplicationController
   private
 
   def set_schedule
-    @schedule = current_user.store.schedules.find(params[:id])
+    if current_user.admin?
+      @schedule = Schedule.find(params[:id])
+    else
+      @schedule = current_user.store.schedules.find(params[:id])
+    end
   rescue ActiveRecord::RecordNotFound
     render json: { error: "Escala não encontrada" }, status: :not_found
   end

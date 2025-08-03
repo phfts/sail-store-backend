@@ -4,7 +4,13 @@ class ShiftsController < ApplicationController
   before_action :ensure_store_access
 
   def index
-    @shifts = current_user.store.shifts.order(:name)
+    if current_user.admin?
+      # Admins podem ver todos os turnos de todas as lojas
+      @shifts = Shift.joins(:store).order(:name)
+    else
+      # Usuários regulares veem apenas os turnos da sua loja
+      @shifts = current_user.store.shifts.order(:name)
+    end
     render json: @shifts
   end
 
@@ -13,7 +19,17 @@ class ShiftsController < ApplicationController
   end
 
   def create
-    @shift = current_user.store.shifts.build(shift_params)
+    if current_user.admin?
+      # Para admins, precisamos especificar a loja
+      store_id = params[:store_id] || Store.first&.id
+      unless store_id
+        render json: { error: "Nenhuma loja encontrada" }, status: :unprocessable_entity
+        return
+      end
+      @shift = Store.find(store_id).shifts.build(shift_params)
+    else
+      @shift = current_user.store.shifts.build(shift_params)
+    end
     
     if @shift.save
       render json: @shift, status: :created
@@ -42,7 +58,11 @@ class ShiftsController < ApplicationController
   private
 
   def set_shift
-    @shift = current_user.store.shifts.find(params[:id])
+    if current_user.admin?
+      @shift = Shift.find(params[:id])
+    else
+      @shift = current_user.store.shifts.find(params[:id])
+    end
   rescue ActiveRecord::RecordNotFound
     render json: { error: "Turno não encontrado" }, status: :not_found
   end

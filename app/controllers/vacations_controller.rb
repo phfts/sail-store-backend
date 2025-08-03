@@ -4,9 +4,17 @@ class VacationsController < ApplicationController
   before_action :ensure_store_access
 
   def index
-    @vacations = current_user.store.vacations
+    if current_user.admin?
+      # Admins podem ver todas as férias
+      @vacations = Vacation.joins(:seller => :store)
+                          .includes(:seller)
+                          .order(start_date: :desc)
+    else
+      # Usuários regulares veem apenas as férias da sua loja
+      @vacations = current_user.store.vacations
                               .includes(:seller)
                               .order(start_date: :desc)
+    end
     
     render json: @vacations.as_json(include: { seller: { only: [:id, :name, :code] } })
   end
@@ -16,7 +24,17 @@ class VacationsController < ApplicationController
   end
 
   def create
-    @vacation = current_user.store.vacations.build(vacation_params)
+    if current_user.admin?
+      # Para admins, precisamos especificar a loja através do seller
+      seller_id = params[:seller_id] || Seller.first&.id
+      unless seller_id
+        render json: { error: "Nenhum vendedor encontrado" }, status: :unprocessable_entity
+        return
+      end
+      @vacation = Seller.find(seller_id).vacations.build(vacation_params)
+    else
+      @vacation = current_user.store.vacations.build(vacation_params)
+    end
     
     if @vacation.save
       render json: @vacation.as_json(include: { seller: { only: [:id, :name, :code] } }), 
@@ -42,7 +60,11 @@ class VacationsController < ApplicationController
   private
 
   def set_vacation
-    @vacation = current_user.store.vacations.find(params[:id])
+    if current_user.admin?
+      @vacation = Vacation.find(params[:id])
+    else
+      @vacation = current_user.store.vacations.find(params[:id])
+    end
   rescue ActiveRecord::RecordNotFound
     render json: { error: "Férias não encontradas" }, status: :not_found
   end

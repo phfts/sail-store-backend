@@ -8,6 +8,7 @@ class Store < ApplicationRecord
   validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z0-9-]+\z/, message: "deve conter apenas letras minúsculas, números e hífens" }
   
   before_validation :generate_slug, on: :create
+  after_create :create_default_shifts
   
   private
   
@@ -24,5 +25,19 @@ class Store < ApplicationRecord
     end
     
     self.slug = new_slug
+  end
+  
+  def create_default_shifts
+    default_shifts = [
+      { name: 'Manhã', start_time: '08:00', end_time: '14:00' },
+      { name: 'Tarde', start_time: '14:00', end_time: '20:00' },
+      { name: 'Noite', start_time: '20:00', end_time: '02:00' }
+    ]
+    
+    default_shifts.each do |shift_attrs|
+      shifts.create!(shift_attrs)
+    end
+    
+    puts "✅ Turnos padrão criados para #{name}: #{shifts.pluck(:name).join(', ')}"
   end
 end

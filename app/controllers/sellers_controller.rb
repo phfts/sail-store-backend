@@ -1,14 +1,17 @@
 class SellersController < ApplicationController
   before_action :set_seller, only: %i[ show update destroy ]
   before_action :require_admin!, only: %i[ create update destroy ]
+  before_action :ensure_store_access, only: %i[ index by_store_slug show ]
 
   # GET /sellers
   def index
-    @sellers = Seller.includes(:user, :store).all
-    
-    # Filtrar por store_id se fornecido
-    if params[:store_id].present?
-      @sellers = @sellers.where(store_id: params[:store_id])
+    if current_user.admin?
+      # Admins podem ver todos os vendedores ou filtrar por loja
+      @sellers = Seller.includes(:user, :store).all
+      @sellers = @sellers.where(store_id: params[:store_id]) if params[:store_id].present?
+    else
+      # Usuários regulares veem apenas os vendedores da sua loja
+      @sellers = current_user.store.sellers.includes(:user, :store)
     end
     
     render json: @sellers.map { |seller| seller_response(seller) }
@@ -16,15 +19,35 @@ class SellersController < ApplicationController
 
   # GET /stores/:slug/sellers
   def by_store_slug
-    store = Store.find_by!(slug: params[:slug])
-    @sellers = Seller.includes(:user, :store).where(store: store)
+    if current_user.admin?
+      # Admins podem acessar qualquer loja
+      store = Store.find_by!(slug: params[:slug])
+    else
+      # Usuários regulares só podem acessar sua própria loja
+      store = current_user.store
+      unless store&.slug == params[:slug]
+        render json: { error: "Acesso negado" }, status: :forbidden
+        return
+      end
+    end
     
+    @sellers = store.sellers.includes(:user, :store)
     render json: @sellers.map { |seller| seller_response(seller) }
   end
 
   # GET /sellers/1
   def show
-    render json: seller_response(@seller)
+    if current_user.admin?
+      # Admins podem ver qualquer vendedor
+      render json: seller_response(@seller)
+    else
+      # Usuários regulares só podem ver vendedores da sua loja
+      if @seller.store_id == current_user.store_id
+        render json: seller_response(@seller)
+      else
+        render json: { error: "Acesso negado" }, status: :forbidden
+      end
+    end
   end
 
   # POST /sellers
@@ -132,7 +155,13 @@ class SellersController < ApplicationController
   private
 
   def set_seller
-    @seller = Seller.find(params[:id])
+    if current_user.admin?
+      @seller = Seller.find(params[:id])
+    else
+      @seller = current_user.store.sellers.find(params[:id])
+    end
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: "Vendedor não encontrado" }, status: :not_found
   end
 
   def seller_params
@@ -141,6 +170,16 @@ class SellersController < ApplicationController
 
   def user_password
     params[:seller][:password]
+  end
+
+  def ensure_store_access
+    # Admins têm acesso a todas as lojas
+    return if current_user.admin?
+    
+    # Usuários regulares precisam ter acesso à loja
+    unless current_user.store
+      render json: { error: "Acesso negado" }, status: :forbidden
+    end
   end
 
   def seller_response(seller)
