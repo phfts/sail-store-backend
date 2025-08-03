@@ -41,9 +41,31 @@ class DashboardController < ApplicationController
     schedules = store.schedules
     current_week = Date.current.cweek
     current_year = Date.current.year
-    next_schedule = schedules.where('week_number >= ? AND year >= ?', current_week, current_year)
-      .order(:week_number, :year)
-      .first
+    current_day_of_week = Date.current.wday
+    
+    # Buscar próxima escala (próximo dia com vendedores escalados)
+    next_scheduled_day = nil
+    next_scheduled_sellers_count = 0
+    
+    # Verificar próximos 7 dias
+    (0..6).each do |day_offset|
+      check_date = Date.current + day_offset.days
+      day_of_week = check_date.wday
+      week_number = check_date.cweek
+      year = check_date.year
+      
+      scheduled_sellers = schedules.where(
+        day_of_week: day_of_week,
+        week_number: week_number,
+        year: year
+      ).count
+      
+      if scheduled_sellers > 0
+        next_scheduled_day = check_date
+        next_scheduled_sellers_count = scheduled_sellers
+        break
+      end
+    end
 
     # Buscar férias
     vacations = store.vacations
@@ -108,10 +130,10 @@ class DashboardController < ApplicationController
       },
       schedules: {
         total: schedules.count,
-        nextSchedule: next_schedule ? {
-          startDate: "Semana #{next_schedule.week_number}",
-          endDate: "#{next_schedule.year}",
-          sellersCount: schedules.where(week_number: next_schedule.week_number, year: next_schedule.year).count
+        nextSchedule: next_scheduled_day ? {
+          date: next_scheduled_day.strftime("%d/%m/%Y"),
+          dayName: next_scheduled_day.strftime("%A"),
+          sellersCount: next_scheduled_sellers_count
         } : nil
       },
       vacations: {
