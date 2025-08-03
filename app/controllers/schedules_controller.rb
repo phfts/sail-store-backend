@@ -4,21 +4,21 @@ class SchedulesController < ApplicationController
   before_action :ensure_store_access
 
   def index
-    week_number = params[:week_number]&.to_i || Date.current.cweek
-    year = params[:year]&.to_i || Date.current.year
+    start_date = params[:start_date]&.to_date || Date.current.beginning_of_week
+    end_date = params[:end_date]&.to_date || Date.current.end_of_week
     
     if current_user.admin?
       # Admins podem ver todas as escalas
       @schedules = Schedule.joins(:store)
                           .includes(:seller, :shift)
-                          .for_week(week_number, year)
-                          .order(:day_of_week)
+                          .for_date_range(start_date, end_date)
+                          .order(:date)
     else
       # Usuários regulares veem apenas as escalas da sua loja
       @schedules = current_user.store.schedules
                               .includes(:seller, :shift)
-                              .for_week(week_number, year)
-                              .order(:day_of_week)
+                              .for_date_range(start_date, end_date)
+                              .order(:date)
     end
     
     render json: @schedules.as_json(include: { seller: { only: [:id, :name, :code] }, 
@@ -79,7 +79,7 @@ class SchedulesController < ApplicationController
   end
 
   def schedule_params
-    params.require(:schedule).permit(:seller_id, :shift_id, :day_of_week, :week_number, :year, :store_id)
+    params.require(:schedule).permit(:seller_id, :shift_id, :date, :store_id)
   end
 
   def ensure_store_access

@@ -40,9 +40,6 @@ class DashboardController < ApplicationController
     # Buscar escalas
     schedules = store.schedules
     current_date = Date.current
-    current_week = current_date.cweek
-    current_year = current_date.year
-    current_day_of_week = current_date.wday
     
     # Buscar próxima escala (próximo dia com vendedores escalados)
     next_scheduled_day = nil
@@ -51,15 +48,8 @@ class DashboardController < ApplicationController
     # Verificar próximos 14 dias a partir de amanhã para garantir que encontramos a próxima escala
     (1..14).each do |day_offset|
       check_date = current_date + day_offset.days
-      day_of_week = check_date.wday
-      week_number = check_date.cweek
-      year = check_date.year
       
-      scheduled_sellers = schedules.where(
-        day_of_week: day_of_week,
-        week_number: week_number,
-        year: year
-      ).count
+      scheduled_sellers = schedules.where(date: check_date).count
       
       if scheduled_sellers > 0
         next_scheduled_day = check_date
