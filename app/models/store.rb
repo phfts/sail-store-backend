@@ -2,6 +2,7 @@ class Store < ApplicationRecord
   has_many :sellers, dependent: :destroy
   has_many :shifts, dependent: :destroy
   has_many :schedules, dependent: :destroy
+  has_many :commission_levels, dependent: :destroy
   has_many :vacations, through: :sellers
   has_many :sales, through: :sellers
   has_many :goals, through: :sellers

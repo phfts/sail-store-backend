@@ -17,12 +17,19 @@ Rails.application.routes.draw do
   resources :stores
   get '/stores/by-slug/:slug', to: 'stores#show_by_slug'
   
-  # Rotas de turnos, escalas, férias, metas e vendas (protegidas por autenticação)
+  # Rotas de turnos, escalas, férias, metas, vendas e comissionamento (protegidas por autenticação)
   resources :shifts, except: [:new, :edit]
   resources :schedules, except: [:new, :edit]
   resources :vacations, except: [:new, :edit]
   resources :goals, except: [:new, :edit]
   resources :sales, except: [:new, :edit]
+  
+  # Rotas de comissionamento por loja
+  get '/stores/:store_slug/commission_levels', to: 'commission_levels#index'
+  post '/stores/:store_slug/commission_levels', to: 'commission_levels#create'
+  get '/stores/:store_slug/commission_levels/:id', to: 'commission_levels#show'
+  put '/stores/:store_slug/commission_levels/:id', to: 'commission_levels#update'
+  delete '/stores/:store_slug/commission_levels/:id', to: 'commission_levels#destroy'
   
   # Rotas de usuários (apenas para admins)
   resources :users do

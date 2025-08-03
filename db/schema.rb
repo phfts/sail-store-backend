@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_03_223803) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_03_234333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "commission_levels", force: :cascade do |t|
+    t.bigint "store_id", null: false
+    t.string "name", null: false
+    t.decimal "achievement_percentage", precision: 5, scale: 2, null: false
+    t.decimal "commission_percentage", precision: 5, scale: 2, null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["store_id", "achievement_percentage"], name: "index_commission_levels_on_store_id_and_achievement_percentage", unique: true
+    t.index ["store_id"], name: "index_commission_levels_on_store_id"
+  end
 
   create_table "goals", force: :cascade do |t|
     t.bigint "seller_id", null: false
@@ -111,6 +123,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_03_223803) do
     t.index ["seller_id"], name: "index_vacations_on_seller_id"
   end
 
+  add_foreign_key "commission_levels", "stores"
   add_foreign_key "goals", "sellers"
   add_foreign_key "login_logs", "users"
   add_foreign_key "sales", "sellers"
