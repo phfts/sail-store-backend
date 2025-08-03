@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seller: one
+  goal_type: 1
+  start_date: 2025-08-03
+  end_date: 2025-08-03
+  target_value: 9.99
+  current_value: 9.99
+  description: MyText
+
+two:
+  seller: two
+  goal_type: 1
+  start_date: 2025-08-03
+  end_date: 2025-08-03
+  target_value: 9.99
+  current_value: 9.99
+  description: MyText

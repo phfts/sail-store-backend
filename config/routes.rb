@@ -17,10 +17,11 @@ Rails.application.routes.draw do
   resources :stores
   get '/stores/by-slug/:slug', to: 'stores#show_by_slug'
   
-  # Rotas de turnos, escalas e férias (protegidas por autenticação)
+  # Rotas de turnos, escalas, férias e metas (protegidas por autenticação)
   resources :shifts, except: [:new, :edit]
   resources :schedules, except: [:new, :edit]
   resources :vacations, except: [:new, :edit]
+  resources :goals, except: [:new, :edit]
   
   # Rotas de usuários (apenas para admins)
   resources :users do

@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_03_190451) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_03_202736) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "goals", force: :cascade do |t|
+    t.bigint "seller_id", null: false
+    t.integer "goal_type"
+    t.date "start_date"
+    t.date "end_date"
+    t.decimal "target_value"
+    t.decimal "current_value"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seller_id"], name: "index_goals_on_seller_id"
+  end
 
   create_table "login_logs", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -91,6 +104,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_03_190451) do
     t.index ["seller_id"], name: "index_vacations_on_seller_id"
   end
 
+  add_foreign_key "goals", "sellers"
   add_foreign_key "login_logs", "users"
   add_foreign_key "schedules", "sellers"
   add_foreign_key "schedules", "shifts"
