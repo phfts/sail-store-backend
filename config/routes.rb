@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :sellers
+  resources :sellers do
+    member do
+      patch :activate
+      patch :deactivate
+    end
+  end
   get '/stores/:slug/sellers', to: 'sellers#by_store_slug'
   
   # Rotas de autenticação
@@ -26,6 +31,10 @@ Rails.application.routes.draw do
   
   # Rotas de métricas (apenas para admins)
   get '/metrics', to: 'metrics#index'
+  
+  # Rotas de dashboard
+  get '/dashboard', to: 'dashboard#admin_dashboard'
+  get '/stores/:slug/dashboard', to: 'dashboard#store_dashboard'
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_02_123721) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_03_190451) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -47,6 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_02_123721) do
     t.bigint "store_id", null: false
     t.string "name"
     t.boolean "store_admin"
+    t.datetime "active_until"
     t.index ["name", "user_id"], name: "index_sellers_on_name_and_user_id", unique: true, where: "((name IS NOT NULL) AND (user_id IS NOT NULL))"
     t.index ["store_id"], name: "index_sellers_on_store_id"
     t.index ["user_id"], name: "index_sellers_on_user_id"

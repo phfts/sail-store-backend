@@ -16,6 +16,11 @@ class VacationsController < ApplicationController
                               .order(start_date: :desc)
     end
     
+    # Filtrar por seller_id se especificado
+    if params[:seller_id].present?
+      @vacations = @vacations.where(seller_id: params[:seller_id])
+    end
+    
     render json: @vacations.as_json(include: { seller: { only: [:id, :name, :code] } })
   end
 

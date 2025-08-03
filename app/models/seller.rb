@@ -46,18 +46,31 @@ class Seller < ApplicationRecord
     # Garante que tenha pelo menos 10 dígitos
     return whatsapp if numbers_only.length < 10
     
-    # Formata para exibição: (11) 93747-0101
-    if numbers_only.length == 11
+    # Formata para exibição baseada no código do país
+    if numbers_only.length == 11 && !numbers_only.start_with?('1')
+      # Número brasileiro sem código do país: (11) 93747-0101
       "(#{numbers_only[0..1]}) #{numbers_only[2..6]}-#{numbers_only[7..10]}"
     elsif numbers_only.length == 12 && numbers_only.start_with?('55')
-      # Remove código do país para formatação
+      # Número brasileiro com código do país: +55 (11) 93747-0101
       local_number = numbers_only[2..-1]
-      "(#{local_number[0..1]}) #{local_number[2..6]}-#{local_number[7..10]}"
+      "+55 (#{local_number[0..1]}) #{local_number[2..6]}-#{local_number[7..10]}"
     elsif numbers_only.length == 13 && numbers_only.start_with?('55')
-      # Remove código do país para formatação (caso tenha 13 dígitos)
+      # Número brasileiro com código do país (13 dígitos): +55 (11) 93747-0101
       local_number = numbers_only[2..-1]
-      "(#{local_number[0..1]}) #{local_number[2..6]}-#{local_number[7..10]}"
+      "+55 (#{local_number[0..1]}) #{local_number[2..6]}-#{local_number[7..10]}"
+    elsif numbers_only.length == 11 && numbers_only.start_with?('1')
+      # Número americano: (555) 123-4567
+      "(#{numbers_only[1..3]}) #{numbers_only[4..6]}-#{numbers_only[7..10]}"
+    elsif numbers_only.length == 12 && numbers_only.start_with?('1')
+      # Número americano com código do país: +1 (555) 123-4567
+      local_number = numbers_only[1..-1]
+      "+1 (#{local_number[0..2]}) #{local_number[3..5]}-#{local_number[6..9]}"
+    elsif numbers_only.length == 13 && numbers_only.start_with?('1')
+      # Número americano com código do país (13 dígitos): +1 (555) 123-4567
+      local_number = numbers_only[1..-1]
+      "+1 (#{local_number[0..2]}) #{local_number[3..5]}-#{local_number[6..9]}"
     else
+      # Para outros países, retorna o número como está
       whatsapp
     end
   end
@@ -73,6 +86,21 @@ class Seller < ApplicationRecord
     name.presence || user&.email
   end
   
+  # Método para verificar se o vendedor está ativo
+  def active?
+    active_until.nil? || active_until > Time.current
+  end
+  
+  # Método para inativar o vendedor
+  def deactivate!(deactivation_date = Time.current)
+    update!(active_until: deactivation_date)
+  end
+  
+  # Método para ativar o vendedor
+  def activate!
+    update!(active_until: nil)
+  end
+  
   private
   
   def whatsapp_length_validation
@@ -80,11 +108,11 @@ class Seller < ApplicationRecord
     
     numbers_only = whatsapp.gsub(/[^\d]/, '')
     
-    # Com código do país, o número pode ter de 10 a 15 dígitos
+    # Com código do país, o número pode ter de 10 a 13 dígitos
     if numbers_only.length < 10
       errors.add(:whatsapp, "deve ter pelo menos 10 dígitos")
-    elsif numbers_only.length > 15
-      errors.add(:whatsapp, "deve ter no máximo 15 dígitos")
+    elsif numbers_only.length > 13
+      errors.add(:whatsapp, "deve ter no máximo 13 dígitos")
     end
   end
   
@@ -95,7 +123,7 @@ class Seller < ApplicationRecord
     numbers_only = whatsapp.gsub(/[^\d]/, '')
     
     # Se já tem código do país (1-3 dígitos no início), mantém como está
-    if numbers_only.length >= 10 && numbers_only.length <= 15
+    if numbers_only.length >= 10 && numbers_only.length <= 13
       # Verifica se já tem código do país
       country_codes = ['33', '44', '49', '34', '39', '31', '351', '54', '55', '56', '57', '58', '593', '51', '591', '595', '598']
       has_country_code = country_codes.any? { |code| numbers_only.start_with?(code) }

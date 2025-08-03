@@ -24,7 +24,17 @@ class SellersController < ApplicationController
         end
       end
       
-      @sellers = store.sellers.includes(:user, :store)
+      # Filtrar por status de ativação se especificado
+      sellers = store.sellers.includes(:user, :store)
+      
+      if params[:include_inactive] == 'true'
+        # Incluir todos os vendedores (ativos e inativos)
+        @sellers = sellers
+      else
+        # Apenas vendedores ativos
+        @sellers = sellers.select(&:active?)
+      end
+      
       render json: @sellers.map { |seller| seller_response(seller) }
     rescue ActiveRecord::RecordNotFound
       render json: { error: "Loja não encontrada" }, status: :not_found
@@ -135,11 +145,38 @@ class SellersController < ApplicationController
 
   # PATCH/PUT /sellers/1
   def update
-    if @seller.update(seller_params)
+    # Se a flag deactivate estiver presente, definir active_until como agora
+    if params[:seller][:deactivate] == 'true'
+      params[:seller][:active_until] = Time.current
+    end
+    
+    # Remover a flag deactivate dos parâmetros antes de salvar
+    update_params = seller_params.except(:deactivate)
+    
+    if @seller.update(update_params)
       render json: seller_response(@seller)
     else
       render json: { errors: @seller.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+  
+  # PATCH /sellers/1/deactivate
+  def deactivate
+    begin
+      deactivation_date = params[:deactivation_date] ? Time.parse(params[:deactivation_date]) : Time.current
+      @seller.deactivate!(deactivation_date)
+      render json: { message: 'Vendedor inativado com sucesso', seller: seller_response(@seller) }
+    rescue ArgumentError
+      render json: { error: 'Data de inativação inválida' }, status: :unprocessable_entity
+    rescue => e
+      render json: { error: 'Erro ao inativar vendedor' }, status: :unprocessable_entity
+    end
+  end
+  
+  # PATCH /sellers/1/activate
+  def activate
+    @seller.activate!
+    render json: { message: 'Vendedor ativado com sucesso', seller: seller_response(@seller) }
   end
 
   # DELETE /sellers/1
@@ -161,7 +198,7 @@ class SellersController < ApplicationController
   end
 
   def seller_params
-    params.require(:seller).permit(:user_id, :store_id, :name, :whatsapp, :email, :store_admin)
+    params.require(:seller).permit(:user_id, :store_id, :name, :whatsapp, :email, :store_admin, :active_until, :deactivate)
   end
 
   def user_password
@@ -185,6 +222,8 @@ class SellersController < ApplicationController
       store_id: seller.store_id,
       name: seller.name,
       store_admin: seller.store_admin?,
+      active: seller.active?,
+      active_until: seller.active_until,
       user: seller.user ? {
         id: seller.user.id,
         email: seller.user.email,
