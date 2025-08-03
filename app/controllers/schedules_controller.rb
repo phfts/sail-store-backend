@@ -79,7 +79,7 @@ class SchedulesController < ApplicationController
   end
 
   def schedule_params
-    params.require(:schedule).permit(:seller_id, :shift_id, :day_of_week, :week_number, :year)
+    params.require(:schedule).permit(:seller_id, :shift_id, :day_of_week, :week_number, :year, :store_id)
   end
 
   def ensure_store_access
