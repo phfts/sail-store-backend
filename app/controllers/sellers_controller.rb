@@ -5,34 +5,30 @@ class SellersController < ApplicationController
 
   # GET /sellers
   def index
-    if current_user.admin?
-      # Admins podem ver todos os vendedores ou filtrar por loja
-      @sellers = Seller.includes(:user, :store).all
-      @sellers = @sellers.where(store_id: params[:store_id]) if params[:store_id].present?
-    else
-      # Usuários regulares veem apenas os vendedores da sua loja
-      @sellers = current_user.store.sellers.includes(:user, :store)
-    end
-    
-    render json: @sellers.map { |seller| seller_response(seller) }
+    # Forçar acesso através do slug da loja
+    render json: { error: "Acesso negado. Use /stores/:slug/sellers para acessar vendedores de uma loja específica." }, status: :forbidden
   end
 
   # GET /stores/:slug/sellers
   def by_store_slug
-    if current_user.admin?
-      # Admins podem acessar qualquer loja
-      store = Store.find_by!(slug: params[:slug])
-    else
-      # Usuários regulares só podem acessar sua própria loja
-      store = current_user.store
-      unless store&.slug == params[:slug]
-        render json: { error: "Acesso negado" }, status: :forbidden
-        return
+    begin
+      if current_user.admin?
+        # Admins podem acessar qualquer loja
+        store = Store.find_by!(slug: params[:slug])
+      else
+        # Usuários regulares só podem acessar sua própria loja
+        store = current_user.store
+        unless store&.slug == params[:slug]
+          render json: { error: "Acesso negado" }, status: :forbidden
+          return
+        end
       end
+      
+      @sellers = store.sellers.includes(:user, :store)
+      render json: @sellers.map { |seller| seller_response(seller) }
+    rescue ActiveRecord::RecordNotFound
+      render json: { error: "Loja não encontrada" }, status: :not_found
     end
-    
-    @sellers = store.sellers.includes(:user, :store)
-    render json: @sellers.map { |seller| seller_response(seller) }
   end
 
   # GET /sellers/1
