@@ -5,7 +5,13 @@ class Sale < ApplicationRecord
   validates :sold_at, presence: true
 
   scope :by_date_range, ->(start_date, end_date) { 
-    where(sold_at: start_date.beginning_of_day..end_date.end_of_day) 
+    start_date_obj = Date.parse(start_date) if start_date.is_a?(String)
+    end_date_obj = Date.parse(end_date) if end_date.is_a?(String)
+    
+    start_date_obj ||= start_date
+    end_date_obj ||= end_date
+    
+    where(sold_at: start_date_obj.beginning_of_day..end_date_obj.end_of_day) 
   }
   
   scope :by_seller, ->(seller_id) { where(seller_id: seller_id) }
