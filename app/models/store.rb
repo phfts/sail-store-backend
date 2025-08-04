@@ -3,7 +3,8 @@ class Store < ApplicationRecord
   has_many :shifts, dependent: :destroy
   has_many :schedules, dependent: :destroy
   has_many :commission_levels, dependent: :destroy
-  has_many :vacations, through: :sellers
+  has_many :absences, through: :sellers
+  has_many :vacations, through: :sellers # Manter por compatibilidade
   has_many :sales, through: :sellers
   has_many :goals, through: :sellers
   

@@ -4,7 +4,8 @@ class Seller < ApplicationRecord
   
   has_many :schedules, dependent: :destroy
   has_many :shifts, through: :schedules
-  has_many :vacations, dependent: :destroy
+  has_many :absences, dependent: :destroy
+  has_many :vacations, dependent: :destroy # Manter por compatibilidade
   has_many :goals, dependent: :destroy
   has_many :sales, dependent: :destroy
   
@@ -101,6 +102,16 @@ class Seller < ApplicationRecord
   # Método para ativar o vendedor
   def activate!
     update!(active_until: nil)
+  end
+
+  # Método para verificar ausência atual
+  def current_absence
+    absences.current.first
+  end
+
+  # Método para verificar se está ausente
+  def absent?
+    current_absence.present?
   end
   
   private

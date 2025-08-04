@@ -17,10 +17,12 @@ Rails.application.routes.draw do
   resources :stores
   get '/stores/by-slug/:slug', to: 'stores#show_by_slug'
   
-  # Rotas de turnos, escalas, férias, metas, vendas e comissionamento (protegidas por autenticação)
+  # Rotas de turnos, escalas, ausências, metas, vendas e comissionamento (protegidas por autenticação)
   resources :shifts, except: [:new, :edit]
   resources :schedules, except: [:new, :edit]
-  resources :vacations, except: [:new, :edit]
+  resources :absences, except: [:new, :edit]
+  get 'absences/current', to: 'absences#current'
+  resources :vacations, except: [:new, :edit] # Manter por compatibilidade
   resources :goals, except: [:new, :edit]
   resources :sales, except: [:new, :edit]
   

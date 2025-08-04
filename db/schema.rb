@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_03_234333) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_04_193426) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "absences", force: :cascade do |t|
+    t.bigint "seller_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.text "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "absence_type", default: "vacation"
+    t.text "description"
+    t.index ["absence_type"], name: "index_absences_on_absence_type"
+    t.index ["seller_id"], name: "index_absences_on_seller_id"
+  end
 
   create_table "commission_levels", force: :cascade do |t|
     t.bigint "store_id", null: false
@@ -24,6 +37,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_03_234333) do
     t.datetime "updated_at", null: false
     t.index ["store_id", "achievement_percentage"], name: "index_commission_levels_on_store_id_and_achievement_percentage", unique: true
     t.index ["store_id"], name: "index_commission_levels_on_store_id"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "cnpj"
+    t.text "address"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "goals", force: :cascade do |t|
@@ -113,16 +135,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_03_234333) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "vacations", force: :cascade do |t|
-    t.bigint "seller_id", null: false
-    t.date "start_date"
-    t.date "end_date"
-    t.text "reason"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["seller_id"], name: "index_vacations_on_seller_id"
-  end
-
+  add_foreign_key "absences", "sellers"
   add_foreign_key "commission_levels", "stores"
   add_foreign_key "goals", "sellers"
   add_foreign_key "login_logs", "users"
@@ -133,5 +146,4 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_03_234333) do
   add_foreign_key "sellers", "stores"
   add_foreign_key "sellers", "users"
   add_foreign_key "shifts", "stores"
-  add_foreign_key "vacations", "sellers"
 end
