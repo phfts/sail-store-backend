@@ -8,6 +8,7 @@ class Seller < ApplicationRecord
   has_many :vacations, dependent: :destroy # Manter por compatibilidade
   has_many :goals, dependent: :destroy
   has_many :sales, dependent: :destroy
+  has_many :orders, dependent: :destroy
   
   validates :store_id, presence: true
   validates :whatsapp, presence: true

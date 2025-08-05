@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_04_193426) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_05_164533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -25,6 +25,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_04_193426) do
     t.text "description"
     t.index ["absence_type"], name: "index_absences_on_absence_type"
     t.index ["seller_id"], name: "index_absences_on_seller_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "external_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "commission_levels", force: :cascade do |t|
@@ -71,6 +78,34 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_04_193426) do
     t.index ["user_id"], name: "index_login_logs_on_user_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity"
+    t.decimal "unit_price", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "external_id"
+    t.bigint "seller_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seller_id"], name: "index_orders_on_seller_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "external_id"
+    t.string "name"
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+  end
+
   create_table "sales", force: :cascade do |t|
     t.bigint "seller_id", null: false
     t.decimal "value", precision: 10, scale: 2, null: false
@@ -102,6 +137,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_04_193426) do
     t.string "name"
     t.boolean "store_admin"
     t.datetime "active_until"
+    t.string "external_id"
     t.index ["name", "user_id"], name: "index_sellers_on_name_and_user_id", unique: true, where: "((name IS NOT NULL) AND (user_id IS NOT NULL))"
     t.index ["store_id"], name: "index_sellers_on_store_id"
     t.index ["user_id"], name: "index_sellers_on_user_id"
@@ -139,6 +175,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_04_193426) do
   add_foreign_key "commission_levels", "stores"
   add_foreign_key "goals", "sellers"
   add_foreign_key "login_logs", "users"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "sellers"
+  add_foreign_key "products", "categories"
   add_foreign_key "sales", "sellers"
   add_foreign_key "schedules", "sellers"
   add_foreign_key "schedules", "shifts"
