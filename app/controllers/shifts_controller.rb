@@ -47,12 +47,9 @@ class ShiftsController < ApplicationController
   end
 
   def destroy
-    if @shift.schedules.exists?
-      render json: { error: "Não é possível excluir um turno que possui escalas associadas" }, status: :unprocessable_entity
-    else
-      @shift.destroy
-      render json: { message: "Turno excluído com sucesso" }
-    end
+    # Permitir exclusão com cascade delete das schedules associadas
+    @shift.destroy
+    render json: { message: "Turno e todas as escalas associadas foram excluídos com sucesso" }
   end
 
   private
