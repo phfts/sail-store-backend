@@ -71,6 +71,44 @@ class AuthController < ApplicationController
       render json: { error: 'Usuário não autenticado' }, status: :unauthorized
     end
   end
+
+  def generate_api_token
+    # Apenas admins podem gerar tokens de API
+    require_admin!
+    
+    # Parâmetros opcionais para personalizar o token
+    email = params[:email] || "api_#{SecureRandom.hex(8)}@system.com"
+    admin = params[:admin] == 'true'
+    expires_in = params[:expires_in] || 1.year.to_i
+    
+    # Criar usuário para o token
+    user = User.find_or_create_by(email: email) do |u|
+      u.password = SecureRandom.hex(16)
+      u.password_confirmation = u.password
+      u.admin = admin
+    end
+    
+    # Gerar token JWT
+    payload = {
+      user_id: user.id,
+      email: user.email,
+      admin: user.admin?,
+      exp: Time.current.to_i + expires_in
+    }
+    
+    token = generate_jwt_token(user)
+    
+    render json: {
+      message: 'Token de API gerado com sucesso',
+      token: token,
+      user: {
+        id: user.id,
+        email: user.email,
+        admin: user.admin?,
+        expires_at: Time.at(payload[:exp])
+      }
+    }, status: :ok
+  end
   
   private
   

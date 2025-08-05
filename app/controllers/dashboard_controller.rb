@@ -62,37 +62,40 @@ class DashboardController < ApplicationController
     absences = store.absences
     active_absences = absences.where('start_date <= ? AND end_date >= ?', Date.current, Date.current)
 
-    # Buscar vendas reais
-    sales = store.sales.includes(:seller)
-    current_month_sales = sales.where('sold_at >= ? AND sold_at <= ?', 
+    # Calcular vendas a partir dos order items
+    orders = store.orders.includes(:seller, :order_items)
+    
+    # Vendas do mês atual
+    current_month_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
       Date.current.beginning_of_month, Date.current.end_of_month)
+    current_month_sales = calculate_sales_from_orders(current_month_orders)
     
-    # Calcular vendas totais do mês atual
-    current_sales = current_month_sales.sum(:value)
-    
-    # Buscar vendas da semana atual
-    current_week_sales = sales.where('sold_at >= ? AND sold_at <= ?', 
+    # Vendas da semana atual
+    current_week_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
       Date.current.beginning_of_week, Date.current.end_of_week)
-    current_week_total = current_week_sales.sum(:value)
+    current_week_sales = calculate_sales_from_orders(current_week_orders)
     
-    # Buscar vendas de hoje
-    today_sales = sales.where('sold_at >= ? AND sold_at <= ?', 
+    # Vendas de hoje
+    today_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
       Date.current.beginning_of_day, Date.current.end_of_day)
-    today_total = today_sales.sum(:value)
+    today_sales = calculate_sales_from_orders(today_orders)
+    
+    # Total de vendas (todos os pedidos)
+    total_sales = calculate_sales_from_orders(orders)
     
     # Buscar metas ativas
     current_goals = store.goals.where('end_date >= ?', Date.current)
     current_target = current_goals.sum(:target_value)
     
     # Calcular progresso baseado nas vendas reais
-    progress = current_target > 0 ? ((current_sales.to_f / current_target) * 100).round(2) : 0
+    progress = current_target > 0 ? ((current_month_sales.to_f / current_target) * 100).round(2) : 0
 
     # Top vendedores baseado em vendas reais
     top_sellers = active_sellers.map do |seller|
-      seller_sales = sales.where(seller: seller)
-        .where('sold_at >= ? AND sold_at <= ?', 
+      seller_orders = orders.where(seller: seller)
+        .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
           Date.current.beginning_of_month, Date.current.end_of_month)
-        .sum(:value)
+      seller_sales = calculate_sales_from_orders(seller_orders)
       
       {
         id: seller.id,
@@ -132,14 +135,14 @@ class DashboardController < ApplicationController
         active: active_absences.count
       },
       sales: {
-        total: sales.count,
-        currentMonth: current_sales,
-        currentWeek: current_week_total,
-        today: today_total,
-        averagePerDay: current_month_sales.count > 0 ? (current_sales / Date.current.day).round(2) : 0
+        total: orders.count,
+        currentMonth: current_month_sales,
+        currentWeek: current_week_sales,
+        today: today_sales,
+        averagePerDay: current_month_orders.count > 0 ? (current_month_sales / Date.current.day).round(2) : 0
       },
       targets: {
-        current: current_sales,
+        current: current_month_sales,
         target: current_target,
         progress: progress,
         period: "mensal",
@@ -150,6 +153,16 @@ class DashboardController < ApplicationController
   end
 
   private
+
+  def calculate_sales_from_orders(orders)
+    total = 0
+    orders.each do |order|
+      order.order_items.each do |item|
+        total += item.quantity * item.unit_price
+      end
+    end
+    total
+  end
 
   def ensure_store_access
     # Admins têm acesso a todas as lojas

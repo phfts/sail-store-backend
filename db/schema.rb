@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_05_164533) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_05_190156) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -94,6 +94,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_05_164533) do
     t.bigint "seller_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "sold_at"
     t.index ["seller_id"], name: "index_orders_on_seller_id"
   end
 
@@ -171,19 +172,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_05_164533) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "absences", "sellers"
-  add_foreign_key "commission_levels", "stores"
-  add_foreign_key "goals", "sellers"
-  add_foreign_key "login_logs", "users"
-  add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "products"
-  add_foreign_key "orders", "sellers"
-  add_foreign_key "products", "categories"
-  add_foreign_key "sales", "sellers"
-  add_foreign_key "schedules", "sellers"
-  add_foreign_key "schedules", "shifts"
-  add_foreign_key "schedules", "stores"
-  add_foreign_key "sellers", "stores"
-  add_foreign_key "sellers", "users"
-  add_foreign_key "shifts", "stores"
+  add_foreign_key "absences", "sellers", on_delete: :cascade
+  add_foreign_key "commission_levels", "stores", on_delete: :cascade
+  add_foreign_key "goals", "sellers", on_delete: :cascade
+  add_foreign_key "login_logs", "users", on_delete: :cascade
+  add_foreign_key "order_items", "orders", on_delete: :cascade
+  add_foreign_key "order_items", "products", on_delete: :cascade
+  add_foreign_key "orders", "sellers", on_delete: :cascade
+  add_foreign_key "products", "categories", on_delete: :cascade
+  add_foreign_key "sales", "sellers", on_delete: :cascade
+  add_foreign_key "schedules", "sellers", on_delete: :cascade
+  add_foreign_key "schedules", "shifts", on_delete: :cascade
+  add_foreign_key "schedules", "stores", on_delete: :cascade
+  add_foreign_key "sellers", "stores", on_delete: :cascade
+  add_foreign_key "sellers", "users", on_delete: :cascade
+  add_foreign_key "shifts", "stores", on_delete: :cascade
 end

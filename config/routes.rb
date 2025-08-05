@@ -19,6 +19,9 @@ Rails.application.routes.draw do
       patch :activate
       patch :deactivate
     end
+    collection do
+      get 'by_external_id/:external_id', to: 'sellers#by_external_id'
+    end
   end
   get '/stores/:slug/sellers', to: 'sellers#by_store_slug'
   
@@ -27,19 +30,19 @@ Rails.application.routes.draw do
   post '/auth/register', to: 'auth#register'
   post '/auth/logout', to: 'auth#logout'
   get '/auth/me', to: 'auth#me'
+  post '/auth/generate_api_token', to: 'auth#generate_api_token'
   
   # Rotas de stores (protegidas por autenticação)
   resources :stores
   get '/stores/by-slug/:slug', to: 'stores#show_by_slug'
   
-  # Rotas de turnos, escalas, ausências, metas, vendas e comissionamento (protegidas por autenticação)
+  # Rotas de turnos, escalas, ausências, metas e comissionamento (protegidas por autenticação)
   resources :shifts, except: [:new, :edit]
   resources :schedules, except: [:new, :edit]
   resources :absences, except: [:new, :edit]
   get 'absences/current', to: 'absences#current'
   resources :vacations, except: [:new, :edit] # Manter por compatibilidade
   resources :goals, except: [:new, :edit]
-  resources :sales, except: [:new, :edit]
   resources :categories, except: [:new, :edit]
   resources :products, except: [:new, :edit]
   resources :orders, except: [:new, :edit]

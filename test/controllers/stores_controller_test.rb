@@ -8,7 +8,7 @@ class StoresControllerTest < ActionDispatch::IntegrationTest
   end
 
   def login_and_get_token(user, password)
-    post auth_login_url, params: { username: user.username, password: password }, as: :json
+    post auth_login_url, params: { email: user.email, password: password }, as: :json
     assert_response :success
     response_data = JSON.parse(response.body)
     response_data['token']

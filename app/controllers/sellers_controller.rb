@@ -56,6 +56,25 @@ class SellersController < ApplicationController
     end
   end
 
+  # GET /sellers/by_external_id/:external_id
+  def by_external_id
+    external_id = params[:external_id]
+    
+    begin
+      if current_user.admin?
+        # Admins podem buscar qualquer vendedor
+        seller = Seller.find_by!(external_id: external_id)
+      else
+        # Usuários regulares só podem buscar vendedores da sua loja
+        seller = current_user.store.sellers.find_by!(external_id: external_id)
+      end
+      
+      render json: seller_response(seller)
+    rescue ActiveRecord::RecordNotFound
+      render json: { error: "Vendedor não encontrado" }, status: :not_found
+    end
+  end
+
   # POST /sellers
   def create
     # Validar email se fornecido
@@ -198,7 +217,7 @@ class SellersController < ApplicationController
   end
 
   def seller_params
-    params.require(:seller).permit(:user_id, :store_id, :name, :whatsapp, :email, :store_admin, :active_until, :deactivate)
+    params.require(:seller).permit(:user_id, :store_id, :name, :whatsapp, :email, :store_admin, :active_until, :deactivate, :external_id)
   end
 
   def user_password
@@ -224,6 +243,7 @@ class SellersController < ApplicationController
       store_admin: seller.store_admin?,
       active: seller.active?,
       active_until: seller.active_until,
+      external_id: seller.external_id,
       user: seller.user ? {
         id: seller.user.id,
         email: seller.user.email,

@@ -5,9 +5,7 @@ class Seller < ApplicationRecord
   has_many :schedules, dependent: :destroy
   has_many :shifts, through: :schedules
   has_many :absences, dependent: :destroy
-  has_many :vacations, dependent: :destroy # Manter por compatibilidade
   has_many :goals, dependent: :destroy
-  has_many :sales, dependent: :destroy
   has_many :orders, dependent: :destroy
   
   validates :store_id, presence: true

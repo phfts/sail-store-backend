@@ -4,14 +4,10 @@ one:
   seller: one
   shift: one
   store: one
-  day_of_week: 1
-  week_number: 1
-  year: 1
+  date: 2025-01-01
 
 two:
   seller: two
   shift: two
   store: two
-  day_of_week: 1
-  week_number: 1
-  year: 1
+  date: 2025-01-02
