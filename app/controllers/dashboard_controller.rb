@@ -29,8 +29,8 @@ class DashboardController < ApplicationController
     active_sellers = sellers.select(&:active?)
     
     # Buscar vendedores em férias
-    sellers_on_vacation = sellers.joins(:vacations)
-      .where('vacations.start_date <= ? AND vacations.end_date >= ?', Date.current, Date.current)
+    sellers_on_vacation = sellers.joins(:absences)
+      .where('absences.start_date <= ? AND absences.end_date >= ?', Date.current, Date.current)
       .distinct
 
     # Buscar turnos
@@ -58,9 +58,9 @@ class DashboardController < ApplicationController
       end
     end
 
-    # Buscar férias
-    vacations = store.vacations
-    active_vacations = vacations.where('start_date <= ? AND end_date >= ?', Date.current, Date.current)
+    # Buscar ausências
+    absences = store.absences
+    active_absences = absences.where('start_date <= ? AND end_date >= ?', Date.current, Date.current)
 
     # Buscar vendas reais
     sales = store.sales.includes(:seller)
@@ -127,9 +127,9 @@ class DashboardController < ApplicationController
           sellersCount: next_scheduled_sellers_count
         } : nil
       },
-      vacations: {
-        total: vacations.count,
-        active: active_vacations.count
+      absences: {
+        total: absences.count,
+        active: active_absences.count
       },
       sales: {
         total: sales.count,
