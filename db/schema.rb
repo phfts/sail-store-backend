@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_05_190156) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_05_205518) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -85,8 +85,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_05_190156) do
     t.decimal "unit_price", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "store_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
+    t.index ["store_id"], name: "index_order_items_on_store_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -105,15 +107,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_05_190156) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
-  end
-
-  create_table "sales", force: :cascade do |t|
-    t.bigint "seller_id", null: false
-    t.decimal "value", precision: 10, scale: 2, null: false
-    t.datetime "sold_at", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["seller_id"], name: "index_sales_on_seller_id"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -161,6 +154,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_05_190156) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.string "external_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -178,9 +172,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_05_190156) do
   add_foreign_key "login_logs", "users", on_delete: :cascade
   add_foreign_key "order_items", "orders", on_delete: :cascade
   add_foreign_key "order_items", "products", on_delete: :cascade
+  add_foreign_key "order_items", "stores"
   add_foreign_key "orders", "sellers", on_delete: :cascade
   add_foreign_key "products", "categories", on_delete: :cascade
-  add_foreign_key "sales", "sellers", on_delete: :cascade
   add_foreign_key "schedules", "sellers", on_delete: :cascade
   add_foreign_key "schedules", "shifts", on_delete: :cascade
   add_foreign_key "schedules", "stores", on_delete: :cascade
