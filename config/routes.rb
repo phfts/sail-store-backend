@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  get "order_items/index"
+  get "order_items/show"
+  get "order_items/create"
+  get "order_items/update"
+  get "order_items/destroy"
+  get "orders/index"
+  get "orders/show"
+  get "orders/create"
+  get "orders/update"
+  get "orders/destroy"
+  get "products/index"
+  get "products/show"
+  get "products/create"
+  get "products/update"
+  get "products/destroy"
   resources :sellers do
     member do
       patch :activate
@@ -25,6 +40,10 @@ Rails.application.routes.draw do
   resources :vacations, except: [:new, :edit] # Manter por compatibilidade
   resources :goals, except: [:new, :edit]
   resources :sales, except: [:new, :edit]
+  resources :categories, except: [:new, :edit]
+  resources :products, except: [:new, :edit]
+  resources :orders, except: [:new, :edit]
+  resources :order_items, except: [:new, :edit]
   
   # Rotas de comissionamento por loja
   get '/stores/:store_slug/commission_levels', to: 'commission_levels#index'
