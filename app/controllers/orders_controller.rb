@@ -20,7 +20,8 @@ class OrdersController < ApplicationController
           include: { product: { only: [:id, :name, :external_id] } }
         }
       },
-      methods: [:total]
+      methods: [:total],
+      except: [:created_at, :updated_at]
     )
   end
 
@@ -32,7 +33,8 @@ class OrdersController < ApplicationController
           include: { product: { only: [:id, :name, :external_id] } }
         }
       },
-      methods: [:total]
+      methods: [:total],
+      except: [:created_at, :updated_at]
     )
   end
 
@@ -42,7 +44,8 @@ class OrdersController < ApplicationController
     if @order.save
       render json: @order.as_json(
         include: { seller: { only: [:id, :name, :external_id] } },
-        methods: [:total]
+        methods: [:total],
+        except: [:created_at, :updated_at]
       ), status: :created
     else
       render json: { errors: @order.errors.full_messages }, status: :unprocessable_entity
@@ -53,7 +56,8 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       render json: @order.as_json(
         include: { seller: { only: [:id, :name, :external_id] } },
-        methods: [:total]
+        methods: [:total],
+        except: [:created_at, :updated_at]
       )
     else
       render json: { errors: @order.errors.full_messages }, status: :unprocessable_entity
