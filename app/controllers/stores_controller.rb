@@ -4,7 +4,11 @@ class StoresController < ApplicationController
 
   # GET /stores
   def index
-    @stores = Store.all
+    if params[:company_id]
+      @stores = Store.where(company_id: params[:company_id])
+    else
+      @stores = Store.all
+    end
 
     render json: @stores
   end

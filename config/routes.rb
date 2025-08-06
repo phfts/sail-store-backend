@@ -33,7 +33,9 @@ Rails.application.routes.draw do
   post '/auth/generate_api_token', to: 'auth#generate_api_token'
   
   # Rotas de companies (protegidas por autenticação)
-  resources :companies, except: [:new, :edit]
+  resources :companies, except: [:new, :edit] do
+    resources :stores, only: [:index]
+  end
   
   # Rotas de stores (protegidas por autenticação)
   resources :stores
