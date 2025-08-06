@@ -9,6 +9,10 @@ class OrdersController < ApplicationController
       @orders = @orders.where(seller_id: params[:seller_id])
     end
     
+    if params[:store_id]
+      @orders = @orders.joins(:seller).where(sellers: { store_id: params[:store_id] })
+    end
+    
     render json: @orders.as_json(
       include: { 
         seller: { only: [:id, :name, :external_id] },
