@@ -1,6 +1,7 @@
 class Seller < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :store
+  belongs_to :company
   
   has_many :schedules, dependent: :destroy
   has_many :shifts, through: :schedules
@@ -9,6 +10,7 @@ class Seller < ApplicationRecord
   has_many :orders, dependent: :destroy
   
   validates :store_id, presence: true
+  validates :company_id, presence: true
   validates :whatsapp, presence: true, allow_blank: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   
@@ -20,11 +22,14 @@ class Seller < ApplicationRecord
   validates :name, presence: true, unless: :user_id?
   validates :user_id, presence: true, unless: :name?
   
-  # Validação de unicidade do user_id por store (um usuário só pode ser seller em uma loja)
-  validates :user_id, uniqueness: { scope: :store_id, message: "já é vendedor nesta loja" }, if: :user_id?
+  # Validação de unicidade do user_id por company (um usuário só pode ser seller em uma empresa)
+  validates :user_id, uniqueness: { scope: :company_id, message: "já é vendedor nesta empresa" }, if: :user_id?
   
-  # Validação de unicidade do name por store
-  validates :name, uniqueness: { scope: :store_id, message: "já existe um vendedor com este nome nesta loja" }, if: :name?
+  # Validação de unicidade do name por company
+  validates :name, uniqueness: { scope: :company_id, message: "já existe um vendedor com este nome nesta empresa" }, if: :name?
+  
+  # Validação de unicidade do external_id por company
+  validates :external_id, uniqueness: { scope: :company_id, message: "já existe um vendedor com este external_id nesta empresa" }, if: :external_id?
   
   # Validação de formato do WhatsApp (aceita números, espaços, parênteses, hífens)
   validates :whatsapp, format: { 

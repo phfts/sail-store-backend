@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   get '/auth/me', to: 'auth#me'
   post '/auth/generate_api_token', to: 'auth#generate_api_token'
   
+  # Rotas de companies (protegidas por autenticação)
+  resources :companies, except: [:new, :edit]
+  
   # Rotas de stores (protegidas por autenticação)
   resources :stores
   get '/stores/by-slug/:slug', to: 'stores#show_by_slug'
@@ -89,6 +92,9 @@ Rails.application.routes.draw do
 
   match '*path', to: proc { [204, {}, ['']] }, via: [:options]
 
+  # Test route
+  get '/test', to: 'test#index'
+  
   # Defines the root path route ("/")
   # root "posts#index"
 end

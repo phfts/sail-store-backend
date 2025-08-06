@@ -25,7 +25,7 @@ class SellersController < ApplicationController
       end
       
       # Filtrar por status de ativação se especificado
-      sellers = store.sellers.includes(:user, :store)
+      sellers = store.company.sellers.includes(:user, :store)
       
       if params[:include_inactive] == 'true'
         # Incluir todos os vendedores (ativos e inativos)
@@ -65,8 +65,8 @@ class SellersController < ApplicationController
         # Admins podem buscar qualquer vendedor
         seller = Seller.find_by!(external_id: external_id)
       else
-        # Usuários regulares só podem buscar vendedores da sua loja
-        seller = current_user.store.sellers.find_by!(external_id: external_id)
+        # Usuários regulares só podem buscar vendedores da sua empresa
+        seller = current_user.store.company.sellers.find_by!(external_id: external_id)
       end
       
       render json: seller_response(seller)
@@ -217,7 +217,7 @@ class SellersController < ApplicationController
   end
 
   def seller_params
-    params.require(:seller).permit(:user_id, :store_id, :name, :whatsapp, :email, :store_admin, :active_until, :deactivate, :external_id)
+    params.require(:seller).permit(:user_id, :store_id, :company_id, :name, :whatsapp, :email, :store_admin, :active_until, :deactivate, :external_id)
   end
 
   def user_password

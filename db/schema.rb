@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_06_144358) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_06_185648) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -33,6 +33,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_144358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "products_count", default: 0, null: false
+    t.bigint "company_id", null: false
+    t.index ["company_id", "external_id"], name: "index_categories_on_company_id_and_external_id", unique: true, where: "(company_id IS NOT NULL)"
+    t.index ["company_id"], name: "index_categories_on_company_id"
   end
 
   create_table "commission_levels", force: :cascade do |t|
@@ -54,6 +57,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_144358) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.text "description"
+    t.index ["slug"], name: "index_companies_on_slug", unique: true
   end
 
   create_table "goals", force: :cascade do |t|
@@ -134,6 +140,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_144358) do
     t.boolean "store_admin"
     t.datetime "active_until"
     t.string "external_id"
+    t.bigint "company_id", null: false
+    t.index ["company_id", "external_id"], name: "index_sellers_on_company_id_and_external_id", unique: true, where: "(company_id IS NOT NULL)"
+    t.index ["company_id"], name: "index_sellers_on_company_id"
     t.index ["name", "user_id"], name: "index_sellers_on_name_and_user_id", unique: true, where: "((name IS NOT NULL) AND (user_id IS NOT NULL))"
     t.index ["store_id"], name: "index_sellers_on_store_id"
     t.index ["user_id"], name: "index_sellers_on_user_id"
@@ -157,6 +166,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_144358) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.string "external_id"
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_stores_on_company_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -169,6 +180,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_144358) do
   end
 
   add_foreign_key "absences", "sellers", on_delete: :cascade
+  add_foreign_key "categories", "companies"
   add_foreign_key "commission_levels", "stores", on_delete: :cascade
   add_foreign_key "goals", "sellers", on_delete: :cascade
   add_foreign_key "login_logs", "users", on_delete: :cascade
@@ -180,7 +192,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_144358) do
   add_foreign_key "schedules", "sellers", on_delete: :cascade
   add_foreign_key "schedules", "shifts", on_delete: :cascade
   add_foreign_key "schedules", "stores", on_delete: :cascade
+  add_foreign_key "sellers", "companies"
   add_foreign_key "sellers", "stores", on_delete: :cascade
   add_foreign_key "sellers", "users", on_delete: :cascade
   add_foreign_key "shifts", "stores", on_delete: :cascade
+  add_foreign_key "stores", "companies"
 end

@@ -3,7 +3,14 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :update, :destroy]
 
   def index
-    @categories = Category.all.map do |category|
+    # Filtrar categorias da empresa do usuário atual
+    if current_user.admin?
+      @categories = Category.all
+    else
+      @categories = current_user.store.company.categories
+    end
+    
+    @categories = @categories.map do |category|
       category.as_json.merge(
         products_count: category.products_count
       )
@@ -41,12 +48,16 @@ class CategoriesController < ApplicationController
   private
 
   def set_category
-    @category = Category.find(params[:id])
+    if current_user.admin?
+      @category = Category.find(params[:id])
+    else
+      @category = current_user.store.company.categories.find(params[:id])
+    end
   rescue ActiveRecord::RecordNotFound
     render json: { error: "Categoria não encontrada" }, status: :not_found
   end
 
   def category_params
-    params.require(:category).permit(:external_id, :name)
+    params.require(:category).permit(:external_id, :name, :company_id)
   end
 end
