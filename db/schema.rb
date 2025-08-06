@@ -104,7 +104,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_211153) do
     t.bigint "seller_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "sold_at"
+    t.date "sold_at"
     t.index ["seller_id"], name: "index_orders_on_seller_id"
   end
 
