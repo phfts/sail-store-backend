@@ -3,7 +3,11 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :update, :destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.all.map do |category|
+      category.as_json.merge(
+        products_count: category.products_count
+      )
+    end
     render json: @categories
   end
 

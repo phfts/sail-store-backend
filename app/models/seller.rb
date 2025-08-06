@@ -9,7 +9,7 @@ class Seller < ApplicationRecord
   has_many :orders, dependent: :destroy
   
   validates :store_id, presence: true
-  validates :whatsapp, presence: true
+  validates :whatsapp, presence: true, allow_blank: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   
   # Validação para admin da loja
@@ -28,8 +28,9 @@ class Seller < ApplicationRecord
   
   # Validação de formato do WhatsApp (aceita números, espaços, parênteses, hífens)
   validates :whatsapp, format: { 
-    with: /\A[\d\s\(\)\-\+]+/, 
-    message: "deve conter apenas números, espaços, parênteses, hífens e +" 
+    with: /\A[\d\s\(\)\-\+]+\z/, 
+    message: "deve conter apenas números, espaços, parênteses, hífens e +",
+    allow_blank: true
   }
   
   # Validação de comprimento mínimo do WhatsApp (apenas números)
