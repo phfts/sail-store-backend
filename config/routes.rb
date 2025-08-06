@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   # Rotas de stores (protegidas por autenticação)
   resources :stores
   get '/stores/by-slug/:slug', to: 'stores#show_by_slug'
+  get '/stores/by-external-id/:external_id', to: 'stores#show_by_external_id'
   
   # Rotas de turnos, escalas, ausências, metas e comissionamento (protegidas por autenticação)
   resources :shifts, except: [:new, :edit]
@@ -45,8 +46,19 @@ Rails.application.routes.draw do
   resources :goals, except: [:new, :edit]
   resources :categories, except: [:new, :edit]
   resources :products, except: [:new, :edit]
-  resources :orders, except: [:new, :edit]
-  resources :order_items, except: [:new, :edit]
+  resources :orders, except: [:new, :edit] do
+    collection do
+      post :load_orders
+      post :bulk_load_orders
+      post :bulk_load_orders_with_items
+    end
+  end
+  resources :order_items, except: [:new, :edit] do
+    collection do
+      post :load_order_items
+      post :bulk_load_order_items
+    end
+  end
   
   # Rotas de comissionamento por loja
   get '/stores/:store_slug/commission_levels', to: 'commission_levels#index'

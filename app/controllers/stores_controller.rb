@@ -20,6 +20,12 @@ class StoresController < ApplicationController
     render json: @store
   end
 
+  # GET /stores/by-external-id/:external_id
+  def show_by_external_id
+    @store = Store.find_by!(external_id: params[:external_id])
+    render json: @store
+  end
+
   # POST /stores
   def create
     @store = Store.new(store_params)
