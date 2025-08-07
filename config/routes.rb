@@ -44,6 +44,13 @@ Rails.application.routes.draw do
   
   # Rotas de turnos, escalas, ausências, metas e comissionamento (protegidas por autenticação)
   resources :shifts, except: [:new, :edit]
+  
+  # Rotas específicas para turnos de loja
+  get '/stores/:store_slug/shifts', to: 'shifts#index'
+  post '/stores/:store_slug/shifts', to: 'shifts#create'
+  get '/stores/:store_slug/shifts/:id', to: 'shifts#show'
+  put '/stores/:store_slug/shifts/:id', to: 'shifts#update'
+  delete '/stores/:store_slug/shifts/:id', to: 'shifts#destroy'
   resources :schedules, except: [:new, :edit]
   resources :absences, except: [:new, :edit]
   get 'absences/current', to: 'absences#current'

@@ -1,16 +1,12 @@
 class ShiftsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_store
   before_action :set_shift, only: [:show, :update, :destroy]
   before_action :ensure_store_access
 
   def index
-    if current_user.admin?
-      # Admins podem ver todos os turnos de todas as lojas
-      @shifts = Shift.joins(:store).order(:name)
-    else
-      # Usuários regulares veem apenas os turnos da sua loja
-      @shifts = current_user.store.shifts.order(:name)
-    end
+    # Sempre mostrar apenas os turnos da loja específica
+    @shifts = @store.shifts.order(:name)
     render json: @shifts
   end
 
@@ -19,17 +15,7 @@ class ShiftsController < ApplicationController
   end
 
   def create
-    if current_user.admin?
-      # Para admins, precisamos especificar a loja
-      store_id = params[:store_id] || Store.first&.id
-      unless store_id
-        render json: { error: "Nenhuma loja encontrada" }, status: :unprocessable_entity
-        return
-      end
-      @shift = Store.find(store_id).shifts.build(shift_params)
-    else
-      @shift = current_user.store.shifts.build(shift_params)
-    end
+    @shift = @store.shifts.build(shift_params)
     
     if @shift.save
       render json: @shift, status: :created
@@ -54,12 +40,45 @@ class ShiftsController < ApplicationController
 
   private
 
-  def set_shift
-    if current_user.admin?
-      @shift = Shift.find(params[:id])
+  def set_store
+    if params[:store_slug]
+      # Se temos um slug da loja, usar ele
+      @store = Store.find_by!(slug: params[:store_slug])
+      
+      # Verificar acesso à loja específica
+      unless current_user.admin? || (current_user.store&.id == @store.id)
+        render json: { error: "Acesso negado a esta loja" }, status: :forbidden
+        return
+      end
+    elsif params[:store_id]
+      # Se temos um ID da loja, usar ele (para compatibilidade)
+      @store = Store.find(params[:store_id])
+      
+      # Verificar acesso à loja específica
+      unless current_user.admin? || (current_user.store&.id == @store.id)
+        render json: { error: "Acesso negado a esta loja" }, status: :forbidden
+        return
+      end
+    elsif current_user.admin?
+      # Para admins sem loja específica, usar a primeira loja ou erro
+      if params[:id] && (shift = Shift.find_by(id: params[:id]))
+        @store = shift.store
+      else
+        render json: { error: "store_slug ou store_id é obrigatório" }, status: :bad_request
+        return
+      end
     else
-      @shift = current_user.store.shifts.find(params[:id])
+      # Para usuários regulares, usar a loja do usuário
+      @store = current_user.store
+      unless @store
+        render json: { error: "Usuário não tem loja associada" }, status: :forbidden
+        return
+      end
     end
+  end
+
+  def set_shift
+    @shift = @store.shifts.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render json: { error: "Turno não encontrado" }, status: :not_found
   end
@@ -69,12 +88,6 @@ class ShiftsController < ApplicationController
   end
 
   def ensure_store_access
-    # Admins têm acesso a todas as lojas
-    return if current_user.admin?
-    
-    # Usuários regulares precisam ter acesso à loja
-    unless current_user.store
-      render json: { error: "Acesso negado" }, status: :forbidden
-    end
+    # Verificação já feita em set_store
   end
 end
