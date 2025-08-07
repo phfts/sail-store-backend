@@ -135,7 +135,7 @@ class DashboardController < ApplicationController
         active: active_absences.count
       },
       sales: {
-        total: orders.count,
+        total: total_sales,
         currentMonth: current_month_sales,
         currentWeek: current_week_sales,
         today: today_sales,
