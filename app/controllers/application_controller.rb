@@ -37,4 +37,35 @@ class ApplicationController < ActionController::API
   def jwt_secret_key
     ENV['JWT_SECRET_KEY'] || 'default-secret-key-change-in-production'
   end
+
+  def render_validation_errors(record)
+    errors = record.errors.full_messages
+    render json: { 
+      error: 'Erro de validação',
+      message: 'Os dados fornecidos não são válidos',
+      details: errors,
+      errors: errors
+    }, status: :unprocessable_entity
+  end
+
+  def render_not_found_error(message = 'Recurso não encontrado')
+    render json: { 
+      error: 'Não encontrado',
+      message: message
+    }, status: :not_found
+  end
+
+  def render_forbidden_error(message = 'Acesso negado')
+    render json: { 
+      error: 'Acesso negado',
+      message: message
+    }, status: :forbidden
+  end
+
+  def render_unauthorized_error(message = 'Não autorizado')
+    render json: { 
+      error: 'Não autorizado',
+      message: message
+    }, status: :unauthorized
+  end
 end

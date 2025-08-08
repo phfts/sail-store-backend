@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
     if @category.save
       render json: @category, status: :created
     else
-      render json: { errors: @category.errors.full_messages }, status: :unprocessable_entity
+      render_validation_errors(@category)
     end
   end
 
@@ -36,7 +36,7 @@ class CategoriesController < ApplicationController
     if @category.update(category_params)
       render json: @category
     else
-      render json: { errors: @category.errors.full_messages }, status: :unprocessable_entity
+      render_validation_errors(@category)
     end
   end
 
@@ -54,7 +54,7 @@ class CategoriesController < ApplicationController
       @category = current_user.store.company.categories.find(params[:id])
     end
   rescue ActiveRecord::RecordNotFound
-    render json: { error: "Categoria não encontrada" }, status: :not_found
+    render_not_found_error("Categoria não encontrada")
   end
 
   def category_params

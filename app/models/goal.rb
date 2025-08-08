@@ -1,19 +1,26 @@
 class Goal < ApplicationRecord
-  belongs_to :seller
+  belongs_to :seller, optional: true
 
   enum :goal_type, {
     sales: 0        # Volume de vendas (padrão)
   }, default: :sales
 
+  enum :goal_scope, {
+    individual: 0,   # Meta individual por vendedor
+    store_wide: 1    # Meta por loja
+  }, default: :individual
+
+  before_create :set_initial_current_value
+
   validates :goal_type, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :target_value, presence: true, numericality: { greater_than: 0 }
-  validates :current_value, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :description, presence: true, length: { maximum: 500 }
+  validates :current_value, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+  validates :description, length: { maximum: 500 }, allow_blank: true
   
   validate :end_date_after_start_date
-  validate :target_value_greater_than_current_value
+
 
   scope :active, -> { where('end_date >= ?', Date.current) }
   scope :completed, -> { where('current_value >= target_value') }
@@ -39,6 +46,10 @@ class Goal < ApplicationRecord
 
   private
 
+  def set_initial_current_value
+    self.current_value = 0 if current_value.nil?
+  end
+
   def end_date_after_start_date
     return if start_date.blank? || end_date.blank?
     
@@ -47,11 +58,5 @@ class Goal < ApplicationRecord
     end
   end
 
-  def target_value_greater_than_current_value
-    return if target_value.blank? || current_value.blank?
-    
-    if target_value < current_value
-      errors.add(:target_value, "deve ser maior ou igual ao valor atual")
-    end
-  end
+
 end

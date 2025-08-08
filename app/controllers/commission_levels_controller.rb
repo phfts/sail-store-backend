@@ -18,7 +18,7 @@ class CommissionLevelsController < ApplicationController
     if @commission_level.save
       render json: @commission_level, status: :created
     else
-      render json: { errors: @commission_level.errors.full_messages }, status: :unprocessable_entity
+      render_validation_errors(@commission_level)
     end
   end
 
@@ -26,7 +26,7 @@ class CommissionLevelsController < ApplicationController
     if @commission_level.update(commission_level_params)
       render json: @commission_level
     else
-      render json: { errors: @commission_level.errors.full_messages }, status: :unprocessable_entity
+      render_validation_errors(@commission_level)
     end
   end
 

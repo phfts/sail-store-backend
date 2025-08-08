@@ -158,7 +158,7 @@ class SellersController < ApplicationController
     if @seller.save
       render json: seller_response(@seller), status: :created
     else
-      render json: { errors: @seller.errors.full_messages }, status: :unprocessable_entity
+      render_validation_errors(@seller)
     end
   end
 
@@ -175,7 +175,7 @@ class SellersController < ApplicationController
     if @seller.update(update_params)
       render json: seller_response(@seller)
     else
-      render json: { errors: @seller.errors.full_messages }, status: :unprocessable_entity
+      render_validation_errors(@seller)
     end
   end
   

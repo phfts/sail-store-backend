@@ -5,8 +5,7 @@ class GoalsController < ApplicationController
   def index
     if current_user.admin?
       # Admins podem ver todas as metas
-      @goals = Goal.joins(:seller => :store)
-                   .includes(:seller)
+      @goals = Goal.includes(:seller)
                    .order(created_at: :desc)
     else
       # Usuários regulares veem apenas as metas da sua loja
@@ -65,12 +64,14 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
     
-    # Verificar se o seller pertence à loja do usuário (se não for admin)
+    # Verificar se o seller pertence à loja do usuário (se não for admin e se for meta individual)
     unless current_user.admin?
-      seller = current_user.store.sellers.find_by(id: @goal.seller_id)
-      unless seller
-        render json: { error: 'Vendedor não encontrado ou não pertence à sua loja' }, status: :not_found
-        return
+      if @goal.goal_scope == 'individual' && @goal.seller_id.present?
+        seller = current_user.store.sellers.find_by(id: @goal.seller_id)
+        unless seller
+          render json: { error: 'Vendedor não encontrado ou não pertence à sua loja' }, status: :not_found
+          return
+        end
       end
     end
 
@@ -85,7 +86,7 @@ class GoalsController < ApplicationController
         methods: [:progress_percentage, :is_completed?, :is_overdue?, :days_remaining]
       ), status: :created
     else
-      render json: { errors: @goal.errors.full_messages }, status: :unprocessable_entity
+      render_validation_errors(@goal)
     end
   end
 
@@ -109,7 +110,7 @@ class GoalsController < ApplicationController
         methods: [:progress_percentage, :is_completed?, :is_overdue?, :days_remaining]
       )
     else
-      render json: { errors: @goal.errors.full_messages }, status: :unprocessable_entity
+      render_validation_errors(@goal)
     end
   end
 
@@ -136,11 +137,17 @@ class GoalsController < ApplicationController
     params.require(:goal).permit(
       :seller_id, 
       :goal_type, 
+      :goal_scope,
       :start_date, 
       :end_date, 
       :target_value, 
       :current_value, 
       :description
-    )
+    ).tap do |permitted_params|
+      # Se for meta por loja, remover seller_id
+      if permitted_params[:goal_scope] == 'store_wide'
+        permitted_params[:seller_id] = nil
+      end
+    end
   end
 end

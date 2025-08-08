@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
         except: [:created_at, :updated_at]
       ), status: :created
     else
-      render json: { errors: @order.errors.full_messages }, status: :unprocessable_entity
+      render_validation_errors(@order)
     end
   end
 
@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
         except: [:created_at, :updated_at]
       )
     else
-      render json: { errors: @order.errors.full_messages }, status: :unprocessable_entity
+      render_validation_errors(@order)
     end
   end
 
@@ -74,7 +74,7 @@ class OrdersController < ApplicationController
   def set_order
     @order = Order.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    render json: { error: "Pedido não encontrado" }, status: :not_found
+    render_not_found_error("Pedido não encontrado")
   end
 
   def order_params

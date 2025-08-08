@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_06_211153) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_08_201721) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -63,7 +63,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_211153) do
   end
 
   create_table "goals", force: :cascade do |t|
-    t.bigint "seller_id", null: false
+    t.bigint "seller_id"
     t.integer "goal_type"
     t.date "start_date"
     t.date "end_date"
@@ -72,6 +72,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_211153) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "goal_scope"
     t.index ["seller_id"], name: "index_goals_on_seller_id"
   end
 

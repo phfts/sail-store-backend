@@ -2,7 +2,7 @@ class CommissionLevel < ApplicationRecord
   belongs_to :store
   
   validates :name, presence: true
-  validates :achievement_percentage, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
+  validates :achievement_percentage, presence: true, numericality: { greater_than: 0 }
   validates :commission_percentage, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
   validates :achievement_percentage, uniqueness: { scope: :store_id }
   
