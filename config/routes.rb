@@ -109,6 +109,13 @@ Rails.application.routes.draw do
     end
   end
   
+  # Rotas de ajustes financeiros
+  get '/stores/:slug/adjustments', to: 'adjustments#index'
+  post '/stores/:slug/adjustments', to: 'adjustments#create'
+  get '/stores/:slug/adjustments/stats', to: 'adjustments#stats'
+  
+  resources :adjustments, only: [:show, :update, :destroy]
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

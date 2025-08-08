@@ -9,6 +9,7 @@ class Seller < ApplicationRecord
   has_many :goals, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :queue_items, dependent: :destroy
+  has_many :adjustments, dependent: :destroy
   
   validates :store_id, presence: true
   validates :company_id, presence: true

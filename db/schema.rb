@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_08_212822) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_08_223700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -25,6 +25,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_08_212822) do
     t.text "description"
     t.index ["absence_type"], name: "index_absences_on_absence_type"
     t.index ["seller_id"], name: "index_absences_on_seller_id"
+  end
+
+  create_table "adjustments", force: :cascade do |t|
+    t.bigint "seller_id", null: false
+    t.bigint "store_id", null: false
+    t.bigint "company_id", null: false
+    t.decimal "amount", precision: 10, scale: 2, null: false
+    t.text "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date", default: -> { "CURRENT_DATE" }
+    t.index ["company_id"], name: "index_adjustments_on_company_id"
+    t.index ["created_at"], name: "index_adjustments_on_created_at"
+    t.index ["seller_id", "created_at"], name: "index_adjustments_on_seller_id_and_created_at"
+    t.index ["seller_id"], name: "index_adjustments_on_seller_id"
+    t.index ["store_id", "created_at"], name: "index_adjustments_on_store_id_and_created_at"
+    t.index ["store_id"], name: "index_adjustments_on_store_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -202,6 +219,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_08_212822) do
   end
 
   add_foreign_key "absences", "sellers", on_delete: :cascade
+  add_foreign_key "adjustments", "companies"
+  add_foreign_key "adjustments", "sellers"
+  add_foreign_key "adjustments", "stores"
   add_foreign_key "categories", "companies"
   add_foreign_key "commission_levels", "stores", on_delete: :cascade
   add_foreign_key "goals", "sellers", on_delete: :cascade
