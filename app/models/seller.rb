@@ -8,6 +8,7 @@ class Seller < ApplicationRecord
   has_many :absences, dependent: :destroy
   has_many :goals, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :queue_items, dependent: :destroy
   
   validates :store_id, presence: true
   validates :company_id, presence: true
@@ -117,6 +118,26 @@ class Seller < ApplicationRecord
   # Método para verificar se está ausente
   def absent?
     current_absence.present?
+  end
+
+  # Método para verificar se está ocupado (manual ou atendendo)
+  def busy?
+    is_busy == true
+  end
+
+  # Método para marcar como ocupado
+  def mark_as_busy!
+    update!(is_busy: true)
+  end
+
+  # Método para marcar como disponível
+  def mark_as_available!
+    update!(is_busy: false)
+  end
+
+  # Método para alternar status de ocupado
+  def toggle_busy_status!
+    update!(is_busy: !is_busy)
   end
   
   private

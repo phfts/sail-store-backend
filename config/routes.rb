@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     member do
       patch :activate
       patch :deactivate
+      put :busy_status
     end
     collection do
       get 'by_external_id/:external_id', to: 'sellers#by_external_id'
@@ -92,6 +93,21 @@ Rails.application.routes.draw do
   # Rotas de dashboard
   get '/dashboard', to: 'dashboard#admin_dashboard'
   get '/stores/:slug/dashboard', to: 'dashboard#store_dashboard'
+  
+  # Rotas de fila de atendimento
+  get '/stores/:slug/queue', to: 'queue#index'
+  post '/stores/:slug/queue', to: 'queue#create'
+  get '/stores/:slug/queue/stats', to: 'queue#stats'
+  get '/stores/:slug/queue/next', to: 'queue#next_customer'
+  post '/stores/:slug/queue/auto_assign', to: 'queue#auto_assign'
+  
+  resources :queue, only: [:show, :update, :destroy], controller: 'queue' do
+    member do
+      put :assign
+      put :complete
+      put :cancel
+    end
+  end
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

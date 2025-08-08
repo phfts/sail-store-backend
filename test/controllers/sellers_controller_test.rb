@@ -111,6 +111,61 @@ class SellersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should update seller busy status to true" do
+    put busy_status_seller_url(@seller), 
+      params: { is_busy: true }, 
+      headers: { 'Authorization' => "Bearer #{@token}" },
+      as: :json
+    
+    assert_response :success
+    
+    response_data = JSON.parse(@response.body)
+    assert_equal "Vendedor marcado como ocupado com sucesso", response_data['message']
+    assert_equal true, response_data['seller']['is_busy']
+    
+    @seller.reload
+    assert_equal true, @seller.is_busy
+  end
+
+  test "should update seller busy status to false" do
+    @seller.update!(is_busy: true)
+    
+    put busy_status_seller_url(@seller), 
+      params: { is_busy: false }, 
+      headers: { 'Authorization' => "Bearer #{@token}" },
+      as: :json
+    
+    assert_response :success
+    
+    response_data = JSON.parse(@response.body)
+    assert_equal "Vendedor marcado como disponível com sucesso", response_data['message']
+    assert_equal false, response_data['seller']['is_busy']
+    
+    @seller.reload
+    assert_equal false, @seller.is_busy
+  end
+
+  test "should return error when is_busy parameter is missing" do
+    put busy_status_seller_url(@seller), 
+      headers: { 'Authorization' => "Bearer #{@token}" },
+      as: :json
+    
+    assert_response :unprocessable_entity
+    
+    response_data = JSON.parse(@response.body)
+    assert_equal "Parâmetro is_busy é obrigatório", response_data['error']
+  end
+
+  test "should include is_busy field in seller response" do
+    @seller.update!(is_busy: true)
+    
+    get seller_url(@seller), headers: { 'Authorization' => "Bearer #{@token}" }, as: :json
+    assert_response :success
+    
+    response_data = JSON.parse(@response.body)
+    assert_equal true, response_data['is_busy']
+  end
+
   test "should deny access without authentication" do
     get sellers_url, as: :json
     assert_response :unauthorized

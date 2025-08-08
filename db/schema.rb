@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_08_201721) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_08_212822) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -119,6 +119,25 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_08_201721) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
+  create_table "queue_items", force: :cascade do |t|
+    t.bigint "seller_id"
+    t.bigint "store_id", null: false
+    t.bigint "company_id", null: false
+    t.string "status", default: "waiting", null: false
+    t.integer "priority", default: 1, null: false
+    t.text "notes"
+    t.datetime "started_at"
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_queue_items_on_company_id"
+    t.index ["created_at"], name: "index_queue_items_on_created_at"
+    t.index ["seller_id", "status"], name: "index_queue_items_on_seller_id_and_status"
+    t.index ["seller_id"], name: "index_queue_items_on_seller_id"
+    t.index ["store_id", "status"], name: "index_queue_items_on_store_id_and_status"
+    t.index ["store_id"], name: "index_queue_items_on_store_id"
+  end
+
   create_table "schedules", force: :cascade do |t|
     t.bigint "seller_id", null: false
     t.bigint "shift_id", null: false
@@ -143,6 +162,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_08_201721) do
     t.datetime "active_until"
     t.string "external_id"
     t.bigint "company_id", null: false
+    t.boolean "is_busy", default: false
     t.index ["company_id", "external_id"], name: "index_sellers_on_company_id_and_external_id", unique: true, where: "(company_id IS NOT NULL)"
     t.index ["company_id"], name: "index_sellers_on_company_id"
     t.index ["name", "user_id"], name: "index_sellers_on_name_and_user_id", unique: true, where: "((name IS NOT NULL) AND (user_id IS NOT NULL))"
@@ -191,6 +211,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_08_201721) do
   add_foreign_key "order_items", "stores"
   add_foreign_key "orders", "sellers", on_delete: :cascade
   add_foreign_key "products", "categories", on_delete: :cascade
+  add_foreign_key "queue_items", "companies"
+  add_foreign_key "queue_items", "sellers"
+  add_foreign_key "queue_items", "stores"
   add_foreign_key "schedules", "sellers", on_delete: :cascade
   add_foreign_key "schedules", "shifts", on_delete: :cascade
   add_foreign_key "schedules", "stores", on_delete: :cascade

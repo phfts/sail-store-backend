@@ -1,5 +1,5 @@
 class SellersController < ApplicationController
-  before_action :set_seller, only: %i[ show update destroy ]
+  before_action :set_seller, only: %i[ show update destroy activate deactivate busy_status ]
   before_action :require_admin!, only: %i[ create update destroy ]
   before_action :ensure_store_access, only: %i[ index by_store_slug show ]
 
@@ -198,6 +198,31 @@ class SellersController < ApplicationController
     render json: { message: 'Vendedor ativado com sucesso', seller: seller_response(@seller) }
   end
 
+  # PUT /sellers/1/busy_status
+  def busy_status
+    is_busy = params[:is_busy]
+    
+    # Validar parâmetro is_busy
+    if is_busy.nil?
+      render json: { error: 'Parâmetro is_busy é obrigatório' }, status: :unprocessable_entity
+      return
+    end
+    
+    # Converter para boolean
+    busy_value = ActiveModel::Type::Boolean.new.cast(is_busy)
+    
+    begin
+      @seller.update!(is_busy: busy_value)
+      status_text = busy_value ? 'ocupado' : 'disponível'
+      render json: { 
+        message: "Vendedor marcado como #{status_text} com sucesso", 
+        seller: seller_response(@seller) 
+      }
+    rescue => e
+      render json: { error: 'Erro ao atualizar status do vendedor' }, status: :unprocessable_entity
+    end
+  end
+
   # DELETE /sellers/1
   def destroy
     @seller.destroy
@@ -243,6 +268,16 @@ class SellersController < ApplicationController
       store_admin: seller.store_admin?,
       active: seller.active?,
       active_until: seller.active_until,
+      is_busy: seller.is_busy,
+      is_absent: seller.absent?,
+      current_absence: seller.current_absence ? {
+        id: seller.current_absence.id,
+        absence_type: seller.current_absence.absence_type,
+        start_date: seller.current_absence.start_date,
+        end_date: seller.current_absence.end_date,
+        reason: seller.current_absence.reason,
+        description: seller.current_absence.description
+      } : nil,
       external_id: seller.external_id,
       user: seller.user ? {
         id: seller.user.id,
