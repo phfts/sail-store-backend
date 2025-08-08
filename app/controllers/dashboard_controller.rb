@@ -96,20 +96,65 @@ class DashboardController < ApplicationController
     # Calcular progresso baseado nas vendas reais
     progress = current_target > 0 ? ((current_month_sales.to_f / current_target) * 100).round(2) : 0
 
-    # Top vendedores baseado em vendas reais
-    top_sellers = active_sellers.map do |seller|
+    # Calcular a melhor média de vendas por dia da loja para usar no potencial individual
+    best_average_per_day = 0
+    active_sellers.each do |seller|
       seller_orders = orders.where(seller: seller)
         .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
-          Date.current.beginning_of_month, Date.current.end_of_month)
+          1.year.ago.beginning_of_day, Date.current.end_of_day)
+      
+      daily_sales = {}
+      seller_orders.each do |order|
+        date_key = order.sold_at.to_date.to_s
+        daily_sales[date_key] ||= 0
+        daily_sales[date_key] += calculate_sales_from_orders([order])
+      end
+      
+      days_worked = daily_sales.keys.count
+      average_per_day = days_worked > 0 ? (calculate_sales_from_orders(seller_orders).to_f / days_worked) : 0
+      
+      if average_per_day > best_average_per_day
+        best_average_per_day = average_per_day
+      end
+    end
+
+    # Dados anuais de todos os vendedores ativos
+    sellers_annual_data = active_sellers.map do |seller|
+      seller_orders = orders.where(seller: seller)
+        .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+          1.year.ago.beginning_of_day, Date.current.end_of_day)
+      
       seller_sales = calculate_sales_from_orders(seller_orders)
+      seller_metrics = calculate_metrics(seller_orders)
+      
+      # Calcular potencial individual (melhor média de vendas por dia × dias trabalhados)
+      daily_sales = {}
+      seller_orders.each do |order|
+        date_key = order.sold_at.to_date.to_s
+        daily_sales[date_key] ||= 0
+        daily_sales[date_key] += calculate_sales_from_orders([order])
+      end
+      
+      days_worked = daily_sales.keys.count
+      average_per_day = days_worked > 0 ? (seller_sales.to_f / days_worked) : 0
+      individual_potential = best_average_per_day * days_worked
       
       {
         id: seller.id,
         name: seller.name,
         sales: seller_sales,
+        potential: individual_potential.round(2),
+        ticket_medio: seller_metrics[:ticket_medio],
+        produtos_por_atendimento: seller_metrics[:produtos_por_atendimento],
+        days_worked: days_worked,
+        average_per_day: average_per_day.round(2),
+        average_orders_per_day: days_worked > 0 ? (seller_orders.count.to_f / days_worked).round(2) : 0,
         avatar: nil
       }
-    end.sort_by { |seller| -seller[:sales] }.first(3)
+    end.sort_by { |seller| -seller[:sales] }
+
+    # Top vendedores (primeiros 3)
+    top_sellers = sellers_annual_data.first(3)
 
     # Calcular Potencial de Vendas
     potencial_vendas = calculate_sales_potential(store, orders, active_sellers)
@@ -177,7 +222,8 @@ class DashboardController < ApplicationController
         totalWorkDays: potencial_vendas[:total_work_days],
         bestSeller: potencial_vendas[:best_seller]
       },
-      topSellers: top_sellers
+      topSellers: top_sellers,
+      sellersAnnualData: sellers_annual_data
     }
   end
 
@@ -256,11 +302,11 @@ class DashboardController < ApplicationController
         average_per_day: average_per_day,
         total_sales: total_sales,
         days_worked: days_worked,
-        work_dates: daily_sales.keys # Guardar as datas únicas de trabalho
+        work_dates: daily_sales.keys
       }
     end
 
-    # Encontrar o vendedor com melhor média
+    # Encontrar o vendedor com melhor média de vendas por dia
     best_seller_data = seller_averages.max_by { |data| data[:average_per_day] }
     
     return {
@@ -270,23 +316,21 @@ class DashboardController < ApplicationController
       best_seller: nil
     } if best_seller_data.nil? || best_seller_data[:average_per_day] == 0
 
-    # Calcular total de dias-vendedor (soma de vendedores por dia)
-    daily_sellers_count = {}
-    seller_averages.each do |data|
-      data[:work_dates].each do |date|
-        daily_sellers_count[date] ||= 0
-        daily_sellers_count[date] += 1
-      end
-    end
-    total_work_days = daily_sellers_count.values.sum
+    # A melhor média de vendas por dia da loja é a do melhor vendedor
+    best_average_per_day = best_seller_data[:average_per_day]
     
-    # Potencial = Melhor média de vendas por dia × Total de dias-vendedor
-    potential = (best_seller_data[:average_per_day] * total_work_days).round(2)
+    # Calcular potencial: melhor média de vendas por dia × dias trabalhados de cada vendedor
+    total_potential = 0
+    seller_averages.each do |data|
+      # Potencial deste vendedor = melhor média de vendas por dia × dias trabalhados do vendedor
+      seller_potential = best_average_per_day * data[:days_worked]
+      total_potential += seller_potential
+    end
     
     {
-      potential: potential,
+      potential: total_potential.round(2),
       best_seller_average: best_seller_data[:average_per_day].round(2),
-      total_work_days: total_work_days,
+      total_work_days: seller_averages.sum { |data| data[:days_worked] },
       best_seller: {
         id: best_seller_data[:seller].id,
         name: best_seller_data[:seller].name,
