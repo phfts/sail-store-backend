@@ -255,7 +255,8 @@ class DashboardController < ApplicationController
         seller: seller,
         average_per_day: average_per_day,
         total_sales: total_sales,
-        days_worked: days_worked
+        days_worked: days_worked,
+        work_dates: daily_sales.keys # Guardar as datas únicas de trabalho
       }
     end
 
@@ -269,10 +270,17 @@ class DashboardController < ApplicationController
       best_seller: nil
     } if best_seller_data.nil? || best_seller_data[:average_per_day] == 0
 
-    # Calcular total de dias trabalhados por todos os vendedores
-    total_work_days = seller_averages.sum { |data| data[:days_worked] }
+    # Calcular total de dias-vendedor (soma de vendedores por dia)
+    daily_sellers_count = {}
+    seller_averages.each do |data|
+      data[:work_dates].each do |date|
+        daily_sellers_count[date] ||= 0
+        daily_sellers_count[date] += 1
+      end
+    end
+    total_work_days = daily_sellers_count.values.sum
     
-    # Potencial = Melhor média de vendas por dia × Total de dias trabalhados
+    # Potencial = Melhor média de vendas por dia × Total de dias-vendedor
     potential = (best_seller_data[:average_per_day] * total_work_days).round(2)
     
     {
