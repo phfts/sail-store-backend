@@ -83,6 +83,12 @@ class DashboardController < ApplicationController
     # Total de vendas (todos os pedidos)
     total_sales = calculate_sales_from_orders(orders)
     
+    # Calcular Ticket Médio e PA (Produto por Atendimento)
+    current_month_metrics = calculate_metrics(current_month_orders)
+    current_week_metrics = calculate_metrics(current_week_orders)
+    today_metrics = calculate_metrics(today_orders)
+    total_metrics = calculate_metrics(orders)
+    
     # Buscar metas ativas
     current_goals = store.goals.where('end_date >= ?', Date.current)
     current_target = current_goals.sum(:target_value)
@@ -141,6 +147,20 @@ class DashboardController < ApplicationController
         today: today_sales,
         averagePerDay: current_month_orders.count > 0 ? (current_month_sales / Date.current.day).round(2) : 0
       },
+      metrics: {
+        ticketMedio: {
+          total: total_metrics[:ticket_medio],
+          currentMonth: current_month_metrics[:ticket_medio],
+          currentWeek: current_week_metrics[:ticket_medio],
+          today: today_metrics[:ticket_medio]
+        },
+        produtosPorAtendimento: {
+          total: total_metrics[:produtos_por_atendimento],
+          currentMonth: current_month_metrics[:produtos_por_atendimento],
+          currentWeek: current_week_metrics[:produtos_por_atendimento],
+          today: today_metrics[:produtos_por_atendimento]
+        }
+      },
       targets: {
         current: current_month_sales,
         target: current_target,
@@ -162,6 +182,39 @@ class DashboardController < ApplicationController
       end
     end
     total
+  end
+
+  def calculate_metrics(orders)
+    order_count = orders.count
+    
+    if order_count == 0
+      return {
+        ticket_medio: 0.0,
+        produtos_por_atendimento: 0.0
+      }
+    end
+    
+    # Calcular valor total vendido
+    total_sales = calculate_sales_from_orders(orders)
+    
+    # Calcular quantidade total de itens
+    total_items = 0
+    orders.each do |order|
+      order.order_items.each do |item|
+        total_items += item.quantity
+      end
+    end
+    
+    # Ticket Médio = Valor total vendido / Número de pedidos
+    ticket_medio = (total_sales.to_f / order_count).round(2)
+    
+    # PA (Produto por Atendimento) = Quantidade total de itens / Número de pedidos
+    produtos_por_atendimento = (total_items.to_f / order_count).round(2)
+    
+    {
+      ticket_medio: ticket_medio,
+      produtos_por_atendimento: produtos_por_atendimento
+    }
   end
 
   def ensure_store_access
