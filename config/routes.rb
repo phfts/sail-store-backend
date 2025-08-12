@@ -56,7 +56,11 @@ Rails.application.routes.draw do
   resources :absences, except: [:new, :edit]
   get 'absences/current', to: 'absences#current'
   resources :vacations, except: [:new, :edit] # Manter por compatibilidade
-  resources :goals, except: [:new, :edit]
+  resources :goals, except: [:new, :edit] do
+    member do
+      post :recalculate_progress
+    end
+  end
   resources :categories, except: [:new, :edit]
   resources :products, except: [:new, :edit]
   resources :orders, except: [:new, :edit] do

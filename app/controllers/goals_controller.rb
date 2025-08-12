@@ -127,6 +127,50 @@ class GoalsController < ApplicationController
     render json: { message: 'Meta excluída com sucesso' }
   end
 
+  # POST /goals/:id/recalculate_progress
+  def recalculate_progress
+    @goal = Goal.find(params[:id])
+    
+    # Verificar se o goal pertence à loja do usuário (se não for admin)
+    unless current_user.admin?
+      unless current_user.store.goals.exists?(@goal.id)
+        render json: { error: 'Meta não encontrada ou não pertence à sua loja' }, status: :not_found
+        return
+      end
+    end
+    
+    # Calcular o valor atual das vendas para esta meta
+    if @goal.goal_scope == 'individual' && @goal.seller_id.present?
+      # Meta individual: somar vendas do vendedor no período da meta
+      current_sales = Order.joins(:order_items)
+                          .where(seller_id: @goal.seller_id)
+                          .where('orders.created_at >= ? AND orders.created_at <= ?', 
+                                 @goal.start_date.beginning_of_day, @goal.end_date.end_of_day)
+                          .sum('order_items.quantity * order_items.unit_price')
+    else
+      # Meta da loja: somar vendas da loja no período da meta
+      store_id = current_user.admin? ? @goal.seller&.store_id : current_user.store_id
+      current_sales = Order.joins(:order_items, :seller)
+                          .where(sellers: { store_id: store_id })
+                          .where('orders.created_at >= ? AND orders.created_at <= ?', 
+                                 @goal.start_date.beginning_of_day, @goal.end_date.end_of_day)
+                          .sum('order_items.quantity * order_items.unit_price')
+    end
+    
+    # Atualizar o current_value da meta
+    @goal.update(current_value: current_sales)
+    
+    render json: @goal.as_json(
+      include: { 
+        seller: { 
+          only: [:id, :name, :code],
+          methods: [:display_name]
+        } 
+      },
+      methods: [:progress_percentage, :is_completed?, :is_overdue?, :days_remaining]
+    )
+  end
+
   private
 
   def set_goal
