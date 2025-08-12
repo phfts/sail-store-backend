@@ -3,7 +3,7 @@ class OrderItemsController < ApplicationController
   before_action :set_order_item, only: [:show, :update, :destroy]
 
   def index
-    @order_items = OrderItem.includes(:order, :product)
+    @order_items = OrderItem.includes(:order, :product, order: :seller)
     
     if params[:order_id]
       @order_items = @order_items.where(order_id: params[:order_id])
@@ -11,7 +11,10 @@ class OrderItemsController < ApplicationController
     
     render json: @order_items.as_json(
       include: { 
-        order: { only: [:id, :external_id] },
+        order: { 
+          only: [:id, :external_id],
+          include: { seller: { only: [:id, :name, :display_name] } }
+        },
         product: { only: [:id, :name, :external_id] }
       },
       methods: [:subtotal]
@@ -42,8 +45,11 @@ class OrderItemsController < ApplicationController
     render json: {
       existing_order_items: existing_items.as_json(
         include: { 
-          order: { only: [:id, :external_id] },
-          product: { only: [:id, :name, :external_id] } 
+          order: { 
+            only: [:id, :external_id],
+            include: { seller: { only: [:id, :name, :display_name] } }
+          },
+          product: { only: [:id, :name, :external_id] }
         },
         methods: [:subtotal]
       ),
@@ -75,7 +81,10 @@ class OrderItemsController < ApplicationController
   def show
     render json: @order_item.as_json(
       include: { 
-        order: { only: [:id, :external_id] },
+        order: { 
+          only: [:id, :external_id],
+          include: { seller: { only: [:id, :name, :display_name] } }
+        },
         product: { only: [:id, :name, :external_id] }
       },
       methods: [:subtotal]
@@ -87,7 +96,13 @@ class OrderItemsController < ApplicationController
     
     if @order_item.save
       render json: @order_item.as_json(
-        include: { product: { only: [:id, :name, :external_id] } },
+        include: { 
+          product: { only: [:id, :name, :external_id] },
+          order: { 
+            only: [:id, :external_id],
+            include: { seller: { only: [:id, :name, :display_name] } }
+          }
+        },
         methods: [:subtotal]
       ), status: :created
     else
@@ -98,7 +113,13 @@ class OrderItemsController < ApplicationController
   def update
     if @order_item.update(order_item_params)
       render json: @order_item.as_json(
-        include: { product: { only: [:id, :name, :external_id] } },
+        include: { 
+          product: { only: [:id, :name, :external_id] },
+          order: { 
+            only: [:id, :external_id],
+            include: { seller: { only: [:id, :name, :display_name] } }
+          }
+        },
         methods: [:subtotal]
       )
     else
