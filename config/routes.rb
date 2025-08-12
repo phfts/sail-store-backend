@@ -90,6 +90,10 @@ Rails.application.routes.draw do
   # Rotas de métricas (apenas para admins)
   get '/metrics', to: 'metrics#index'
   
+  # Rota de documentação da API
+  get '/api/docs', to: 'api_docs#index'
+  get '/api/docs/html', to: 'api_docs#html'
+  
   # Rotas de dashboard
   get '/dashboard', to: 'dashboard#admin_dashboard'
   get '/stores/:slug/dashboard', to: 'dashboard#store_dashboard'
