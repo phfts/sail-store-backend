@@ -93,7 +93,7 @@ class ApiDocsController < ApplicationController
       },
       endpoints: {
         users: {
-          description: "Gerenciamento de usuários do sistema (apenas administradores)",
+          description: "Gerenciamento de usuários do sistema",
           base_path: "/users",
           endpoints: [
             {
@@ -101,13 +101,11 @@ class ApiDocsController < ApplicationController
               path: "/users",
               description: "Listar todos os usuários",
               auth_required: true,
-              admin_required: true,
               response: {
                 users: [
                   {
                     id: 1,
-                    email: "admin@example.com",
-                    admin: true,
+                    email: "user@example.com",
                     created_at: "2024-01-01T00:00:00Z"
                   }
                 ]
@@ -118,20 +116,17 @@ class ApiDocsController < ApplicationController
               path: "/users",
               description: "Criar novo usuário",
               auth_required: true,
-              admin_required: true,
               request_body: {
                 user: {
                   email: "newuser@example.com",
                   password: "password123",
-                  password_confirmation: "password123",
-                  admin: false
+                  password_confirmation: "password123"
                 }
               },
               response: {
                 user: {
                   id: 3,
                   email: "newuser@example.com",
-                  admin: false,
                   created_at: "2024-01-03T00:00:00Z"
                 }
               }
@@ -141,18 +136,15 @@ class ApiDocsController < ApplicationController
               path: "/users/:id",
               description: "Atualizar usuário existente",
               auth_required: true,
-              admin_required: true,
               request_body: {
                 user: {
-                  email: "updated@example.com",
-                  admin: true
+                  email: "updated@example.com"
                 }
               },
               response: {
                 user: {
                   id: 1,
                   email: "updated@example.com",
-                  admin: true,
                   updated_at: "2024-01-03T00:00:00Z"
                 }
               }
@@ -162,7 +154,6 @@ class ApiDocsController < ApplicationController
               path: "/users/:id",
               description: "Deletar usuário",
               auth_required: true,
-              admin_required: true,
               response: {
                 message: "Usuário deletado com sucesso"
               }
@@ -178,7 +169,6 @@ class ApiDocsController < ApplicationController
               path: "/companies",
               description: "Listar todas as empresas",
               auth_required: true,
-              admin_required: true,
               response: {
                 companies: [
                   {
@@ -194,7 +184,6 @@ class ApiDocsController < ApplicationController
               path: "/companies",
               description: "Criar nova empresa",
               auth_required: true,
-              admin_required: true,
               request_body: {
                 company: {
                   name: "Nova Empresa"
@@ -236,7 +225,6 @@ class ApiDocsController < ApplicationController
               path: "/stores",
               description: "Criar nova loja",
               auth_required: true,
-              admin_required: true,
               request_body: {
                 store: {
                   name: "Nova Loja",
@@ -610,7 +598,6 @@ class ApiDocsController < ApplicationController
               path: "/metrics",
               description: "Obter métricas gerais do sistema",
               auth_required: true,
-              admin_required: true,
               response: {
                 total_stores: 10,
                 total_users: 50,
@@ -831,27 +818,25 @@ class ApiDocsController < ApplicationController
                    
                    <div id="users" class="section">
                        <h2>👥 Usuários</h2>
-                       <p>Gerenciamento de usuários do sistema (apenas administradores)</p>
+                       <p>Gerenciamento de usuários do sistema</p>
                        
-                       <div class="endpoint">
-                           <div class="endpoint-header">
-                               <span class="method get">GET</span>
-                               <span class="path">/users</span>
-                               <span class="auth-badge">Auth</span>
-                               <span class="admin-badge">Admin</span>
-                           </div>
-                           <div class="description">Listar todos os usuários</div>
-                       </div>
-                       
-                       <div class="endpoint">
-                           <div class="endpoint-header">
-                               <span class="method post">POST</span>
-                               <span class="path">/users</span>
-                               <span class="auth-badge">Auth</span>
-                               <span class="admin-badge">Admin</span>
-                           </div>
-                           <div class="description">Criar novo usuário</div>
-                       </div>
+                                                <div class="endpoint">
+                             <div class="endpoint-header">
+                                 <span class="method get">GET</span>
+                                 <span class="path">/users</span>
+                                 <span class="auth-badge">Auth</span>
+                             </div>
+                             <div class="description">Listar todos os usuários</div>
+                         </div>
+                         
+                         <div class="endpoint">
+                             <div class="endpoint-header">
+                                 <span class="method post">POST</span>
+                                 <span class="path">/users</span>
+                                 <span class="auth-badge">Auth</span>
+                             </div>
+                             <div class="description">Criar novo usuário</div>
+                         </div>
                    </div>
                    
                    <div id="stores" class="section">
@@ -1019,15 +1004,14 @@ class ApiDocsController < ApplicationController
                        <h2>📊 Métricas</h2>
                        <p>Métricas e relatórios do sistema</p>
                        
-                       <div class="endpoint">
-                           <div class="endpoint-header">
-                               <span class="method get">GET</span>
-                               <span class="path">/metrics</span>
-                               <span class="auth-badge">Auth</span>
-                               <span class="admin-badge">Admin</span>
-                           </div>
-                           <div class="description">Obter métricas gerais do sistema</div>
-                       </div>
+                                                <div class="endpoint">
+                             <div class="endpoint-header">
+                                 <span class="method get">GET</span>
+                                 <span class="path">/metrics</span>
+                                 <span class="auth-badge">Auth</span>
+                             </div>
+                             <div class="description">Obter métricas gerais do sistema</div>
+                         </div>
                        
                        <div class="endpoint">
                            <div class="endpoint-header">
