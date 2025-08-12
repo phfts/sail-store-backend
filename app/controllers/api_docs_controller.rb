@@ -17,8 +17,8 @@ class ApiDocsController < ApplicationController
         name: "Sail Store Performance API",
         version: "1.0.0",
         description: "API REST para sistema de gestão de vendas e performance de lojas",
-        base_url: "#{request.base_url}",
-        documentation_url: "#{request.base_url}/api/docs",
+        base_url: "https://sail-store-backend-3018fcb425c5.herokuapp.com",
+        documentation_url: "https://sail-store-backend-3018fcb425c5.herokuapp.com/api/docs",
         contact: {
           email: "suporte@sail.com.br"
         }
@@ -642,11 +642,11 @@ class ApiDocsController < ApplicationController
           per_page: "Itens por página (padrão: 20, máximo: 100)"
         }
       },
-      examples: {
-        curl_example: "curl -X GET http://localhost:3000/stores/loja-centro/sellers \\\n  -H 'Authorization: Bearer YOUR_TOKEN'",
-        javascript_example: "fetch('http://localhost:3000/stores/loja-centro/sellers', {\n  headers: {\n    'Authorization': 'Bearer YOUR_TOKEN'\n  }\n})",
-        python_example: "import requests\n\nresponse = requests.get(\n  'http://localhost:3000/stores/loja-centro/sellers',\n  headers={'Authorization': 'Bearer YOUR_TOKEN'}\n)"
-             }
+            examples: {
+        curl_example: "curl -X GET https://sail-store-backend-3018fcb425c5.herokuapp.com/stores/loja-centro/sellers \\\n  -H 'Authorization: Bearer YOUR_TOKEN'",
+        javascript_example: "fetch('https://sail-store-backend-3018fcb425c5.herokuapp.com/stores/loja-centro/sellers', {\n  headers: {\n    'Authorization': 'Bearer YOUR_TOKEN'\n  }\n})",
+        python_example: "import requests\n\nresponse = requests.get(\n  'https://sail-store-backend-3018fcb425c5.herokuapp.com/stores/loja-centro/sellers',\n  headers={'Authorization': 'Bearer YOUR_TOKEN'}\n)"
+      }
      }
    end
    
@@ -795,6 +795,15 @@ class ApiDocsController < ApplicationController
     "password_confirmation": "password123"
   }
 }</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+  "user": {
+    "id": 2,
+    "email": "new@example.com",
+    "created_at": "2024-01-03T00:00:00Z"
+  }
+}</div>
                        </div>
                        
                        <div class="endpoint">
@@ -804,6 +813,10 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Realizar logout do sistema</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "message": "Logout realizado com sucesso"
+}</div>
                        </div>
                        
                        <div class="endpoint">
@@ -813,6 +826,15 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Verificar token e obter dados do usuário atual</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "user": {
+    "id": 1,
+    "email": "user@example.com",
+    "store_slug": "loja-exemplo",
+    "created_at": "2024-01-01T00:00:00Z"
+  }
+}</div>
                        </div>
                    </div>
                    
@@ -827,6 +849,22 @@ class ApiDocsController < ApplicationController
                                  <span class="auth-badge">Auth</span>
                              </div>
                              <div class="description">Listar todos os usuários</div>
+                             <h4>Response:</h4>
+                             <div class="code-block">{
+  "users": [
+    {
+      "id": 1,
+      "email": "user@example.com",
+      "store_slug": "loja-exemplo",
+      "created_at": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "email": "admin@example.com",
+      "created_at": "2024-01-02T00:00:00Z"
+    }
+  ]
+}</div>
                          </div>
                          
                          <div class="endpoint">
@@ -836,6 +874,22 @@ class ApiDocsController < ApplicationController
                                  <span class="auth-badge">Auth</span>
                              </div>
                              <div class="description">Criar novo usuário</div>
+                             <h4>Request Body:</h4>
+                             <div class="code-block">{
+  "user": {
+    "email": "newuser@example.com",
+    "password": "password123",
+    "password_confirmation": "password123"
+  }
+}</div>
+                             <h4>Response:</h4>
+                             <div class="code-block">{
+  "user": {
+    "id": 3,
+    "email": "newuser@example.com",
+    "created_at": "2024-01-03T00:00:00Z"
+  }
+}</div>
                          </div>
                    </div>
                    
@@ -850,6 +904,25 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Listar todas as lojas</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "stores": [
+    {
+      "id": 1,
+      "name": "Loja Centro",
+      "slug": "loja-centro",
+      "company_id": 1,
+      "created_at": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Loja Norte",
+      "slug": "loja-norte",
+      "company_id": 1,
+      "created_at": "2024-01-02T00:00:00Z"
+    }
+  ]
+}</div>
                        </div>
                        
                        <div class="endpoint">
@@ -859,6 +932,30 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Obter dados de uma loja específica</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "store": {
+    "id": 1,
+    "name": "Loja Centro",
+    "slug": "loja-centro",
+    "company_id": 1,
+    "sellers": [
+      {
+        "id": 1,
+        "name": "João Silva",
+        "email": "joao@example.com"
+      }
+    ],
+    "targets": [
+      {
+        "id": 1,
+        "month": "2024-01",
+        "target_amount": 50000.00
+      }
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  }
+}</div>
                        </div>
                    </div>
                    
@@ -873,6 +970,27 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Listar vendedores de uma loja</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "sellers": [
+    {
+      "id": 1,
+      "name": "João Silva",
+      "email": "joao@example.com",
+      "store_id": 1,
+      "active": true,
+      "created_at": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Maria Santos",
+      "email": "maria@example.com",
+      "store_id": 1,
+      "active": true,
+      "created_at": "2024-01-02T00:00:00Z"
+    }
+  ]
+}</div>
                        </div>
                        
                        <div class="endpoint">
@@ -882,6 +1000,24 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Criar novo vendedor</div>
+                           <h4>Request Body:</h4>
+                           <div class="code-block">{
+  "seller": {
+    "name": "Pedro Costa",
+    "email": "pedro@example.com"
+  }
+}</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "seller": {
+    "id": 3,
+    "name": "Pedro Costa",
+    "email": "pedro@example.com",
+    "store_id": 1,
+    "active": true,
+    "created_at": "2024-01-03T00:00:00Z"
+  }
+}</div>
                        </div>
                    </div>
                    
@@ -896,6 +1032,27 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Listar metas de uma loja</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "targets": [
+    {
+      "id": 1,
+      "store_id": 1,
+      "month": "2024-01",
+      "target_amount": 50000.00,
+      "current_amount": 35000.00,
+      "created_at": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "store_id": 1,
+      "month": "2024-02",
+      "target_amount": 60000.00,
+      "current_amount": 0.00,
+      "created_at": "2024-01-02T00:00:00Z"
+    }
+  ]
+}</div>
                        </div>
                        
                        <div class="endpoint">
@@ -905,6 +1062,24 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Criar nova meta</div>
+                           <h4>Request Body:</h4>
+                           <div class="code-block">{
+  "target": {
+    "month": "2024-03",
+    "target_amount": 70000.00
+  }
+}</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "target": {
+    "id": 3,
+    "store_id": 1,
+    "month": "2024-03",
+    "target_amount": 70000.00,
+    "current_amount": 0.00,
+    "created_at": "2024-01-03T00:00:00Z"
+  }
+}</div>
                        </div>
                    </div>
                    
@@ -919,6 +1094,29 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Listar escalas de uma loja</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "schedules": [
+    {
+      "id": 1,
+      "seller_id": 1,
+      "store_id": 1,
+      "date": "2024-01-15",
+      "start_time": "08:00",
+      "end_time": "17:00",
+      "created_at": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "seller_id": 2,
+      "store_id": 1,
+      "date": "2024-01-16",
+      "start_time": "09:00",
+      "end_time": "18:00",
+      "created_at": "2024-01-02T00:00:00Z"
+    }
+  ]
+}</div>
                        </div>
                        
                        <div class="endpoint">
@@ -928,6 +1126,27 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Criar nova escala</div>
+                           <h4>Request Body:</h4>
+                           <div class="code-block">{
+  "schedule": {
+    "seller_id": 1,
+    "date": "2024-01-17",
+    "start_time": "10:00",
+    "end_time": "19:00"
+  }
+}</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "schedule": {
+    "id": 3,
+    "seller_id": 1,
+    "store_id": 1,
+    "date": "2024-01-17",
+    "start_time": "10:00",
+    "end_time": "19:00",
+    "created_at": "2024-01-03T00:00:00Z"
+  }
+}</div>
                        </div>
                    </div>
                    
@@ -942,6 +1161,27 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Listar pedidos de uma loja</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "orders": [
+    {
+      "id": 1,
+      "store_id": 1,
+      "seller_id": 1,
+      "total_amount": 1500.00,
+      "sold_at": "2024-01-15",
+      "created_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "store_id": 1,
+      "seller_id": 2,
+      "total_amount": 2300.00,
+      "sold_at": "2024-01-16",
+      "created_at": "2024-01-16T14:30:00Z"
+    }
+  ]
+}</div>
                        </div>
                        
                        <div class="endpoint">
@@ -951,6 +1191,25 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Criar novo pedido</div>
+                           <h4>Request Body:</h4>
+                           <div class="code-block">{
+  "order": {
+    "seller_id": 1,
+    "total_amount": 2800.00,
+    "sold_at": "2024-01-17"
+  }
+}</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "order": {
+    "id": 3,
+    "store_id": 1,
+    "seller_id": 1,
+    "total_amount": 2800.00,
+    "sold_at": "2024-01-17",
+    "created_at": "2024-01-17T11:45:00Z"
+  }
+}</div>
                        </div>
                    </div>
                    
@@ -965,6 +1224,23 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Listar categorias de uma loja</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Eletrônicos",
+      "store_id": 1,
+      "created_at": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Roupas",
+      "store_id": 1,
+      "created_at": "2024-01-02T00:00:00Z"
+    }
+  ]
+}</div>
                        </div>
                        
                        <div class="endpoint">
@@ -974,6 +1250,21 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Criar nova categoria</div>
+                           <h4>Request Body:</h4>
+                           <div class="code-block">{
+  "category": {
+    "name": "Acessórios"
+  }
+}</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "category": {
+    "id": 3,
+    "name": "Acessórios",
+    "store_id": 1,
+    "created_at": "2024-01-03T00:00:00Z"
+  }
+}</div>
                        </div>
                    </div>
                    
@@ -988,6 +1279,27 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Listar produtos de uma loja</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "products": [
+    {
+      "id": 1,
+      "name": "Smartphone XYZ",
+      "category_id": 1,
+      "store_id": 1,
+      "price": 1500.00,
+      "created_at": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Notebook ABC",
+      "category_id": 1,
+      "store_id": 1,
+      "price": 3000.00,
+      "created_at": "2024-01-02T00:00:00Z"
+    }
+  ]
+}</div>
                        </div>
                        
                        <div class="endpoint">
@@ -997,6 +1309,25 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Criar novo produto</div>
+                           <h4>Request Body:</h4>
+                           <div class="code-block">{
+  "product": {
+    "name": "Tablet DEF",
+    "category_id": 1,
+    "price": 1200.00
+  }
+}</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "product": {
+    "id": 3,
+    "name": "Tablet DEF",
+    "category_id": 1,
+    "store_id": 1,
+    "price": 1200.00,
+    "created_at": "2024-01-03T00:00:00Z"
+  }
+}</div>
                        </div>
                    </div>
                    
@@ -1011,6 +1342,18 @@ class ApiDocsController < ApplicationController
                                  <span class="auth-badge">Auth</span>
                              </div>
                              <div class="description">Obter métricas gerais do sistema</div>
+                             <h4>Response:</h4>
+                             <div class="code-block">{
+  "metrics": {
+    "total_stores": 5,
+    "total_users": 25,
+    "total_orders": 150,
+    "total_revenue": 75000.00,
+    "mau": 20,
+    "wau": 15,
+    "dau": 8
+  }
+}</div>
                          </div>
                        
                        <div class="endpoint">
@@ -1020,6 +1363,30 @@ class ApiDocsController < ApplicationController
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Obter métricas de uma loja específica</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "dashboard": {
+    "store": {
+      "id": 1,
+      "name": "Loja Centro",
+      "slug": "loja-centro"
+    },
+    "current_goal": {
+      "month": "2024-01",
+      "target_amount": 50000.00,
+      "current_amount": 35000.00,
+      "percentage": 70.0
+    },
+    "sales_made": 15000.00,
+    "active_sellers": 3,
+    "next_schedule": {
+      "date": "2024-01-18",
+      "seller": "João Silva",
+      "start_time": "08:00",
+      "end_time": "17:00"
+    }
+  }
+}</div>
                        </div>
                    </div>
                    
@@ -1053,13 +1420,13 @@ class ApiDocsController < ApplicationController
                        <div class="info-grid">
                            <div class="info-card">
                                <h3>cURL</h3>
-                               <div class="code-block">curl -X GET #{request.base_url}/stores/loja-centro/sellers \\
+                               <div class="code-block">curl -X GET https://sail-store-backend-3018fcb425c5.herokuapp.com/stores/loja-centro/sellers \\
   -H 'Authorization: Bearer YOUR_TOKEN'</div>
                            </div>
                            
                            <div class="info-card">
                                <h3>JavaScript</h3>
-                               <div class="code-block">fetch('#{request.base_url}/stores/loja-centro/sellers', {
+                               <div class="code-block">fetch('https://sail-store-backend-3018fcb425c5.herokuapp.com/stores/loja-centro/sellers', {
   headers: {
     'Authorization': 'Bearer YOUR_TOKEN'
   }
@@ -1071,7 +1438,7 @@ class ApiDocsController < ApplicationController
                                <div class="code-block">import requests
 
 response = requests.get(
-  '#{request.base_url}/stores/loja-centro/sellers',
+  'https://sail-store-backend-3018fcb425c5.herokuapp.com/stores/loja-centro/sellers',
   headers={'Authorization': 'Bearer YOUR_TOKEN'}
 )</div>
                            </div>
