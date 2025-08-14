@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_14_140639) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_14_201956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -76,6 +76,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_14_140639) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.text "description"
+    t.boolean "simplified_frontend", default: false, null: false
     t.index ["slug"], name: "index_companies_on_slug", unique: true
   end
 
@@ -206,6 +207,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_14_140639) do
     t.string "slug"
     t.string "external_id"
     t.bigint "company_id", null: false
+    t.boolean "hide_ranking", default: false, null: false
     t.index ["company_id"], name: "index_stores_on_company_id"
   end
 

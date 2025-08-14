@@ -42,7 +42,7 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:name, :slug, :description, :active)
+    params.require(:company).permit(:name, :slug, :description, :active, :simplified_frontend)
   end
 
   def ensure_admin!

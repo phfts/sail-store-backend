@@ -8,6 +8,11 @@ class Company < ApplicationRecord
   validates :name, presence: true
   validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z0-9-]+\z/, message: "deve conter apenas letras minúsculas, números e hífens" }
   
+  # Método para verificar se o frontend simplificado está ativado
+  def simplified_frontend?
+    simplified_frontend == true
+  end
+  
   before_validation :generate_slug, on: :create
   
   private

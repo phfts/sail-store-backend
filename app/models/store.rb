@@ -16,6 +16,11 @@ class Store < ApplicationRecord
   validates :name, presence: true
   validates :slug, presence: true, uniqueness: { scope: :company_id }, format: { with: /\A[a-z0-9-]+\z/, message: "deve conter apenas letras minúsculas, números e hífens" }
   
+  # Método para verificar se o ranking deve ser exibido
+  def show_ranking?
+    !hide_ranking
+  end
+  
   before_validation :generate_slug, on: :create
   after_create :create_default_shifts
   
