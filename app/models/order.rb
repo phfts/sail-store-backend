@@ -44,21 +44,21 @@ class Order < ApplicationRecord
         # Meta individual: somar vendas do vendedor no período da meta
         current_sales = Order.joins(:order_items)
                             .where(seller_id: goal.seller_id)
-                            .where('orders.created_at >= ? AND orders.created_at <= ?', 
-                                   goal.start_date.beginning_of_day, goal.end_date.end_of_day)
+                            .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                   goal.start_date, goal.end_date)
                             .sum('order_items.quantity * order_items.unit_price')
       elsif goal.seller_id.present?
         # Meta da loja: somar vendas da loja no período da meta
         current_sales = Order.joins(:order_items, :seller)
                             .where(sellers: { store_id: goal.seller.store_id })
-                            .where('orders.created_at >= ? AND orders.created_at <= ?', 
-                                   goal.start_date.beginning_of_day, goal.end_date.end_of_day)
+                            .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                   goal.start_date, goal.end_date)
                             .sum('order_items.quantity * order_items.unit_price')
       else
         # Meta global: somar todas as vendas no período da meta
         current_sales = Order.joins(:order_items)
-                            .where('orders.created_at >= ? AND orders.created_at <= ?', 
-                                   goal.start_date.beginning_of_day, goal.end_date.end_of_day)
+                            .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                   goal.start_date, goal.end_date)
                             .sum('order_items.quantity * order_items.unit_price')
       end
       
