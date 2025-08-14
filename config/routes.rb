@@ -24,7 +24,8 @@ Rails.application.routes.draw do
       get 'by_external_id/:external_id', to: 'sellers#by_external_id'
     end
   end
-  get '/stores/:slug/sellers', to: 'sellers#by_store_slug'
+        get '/stores/:slug/sellers', to: 'sellers#by_store_slug'
+      get '/stores/:slug/sellers/ranking', to: 'sellers#ranking'
   
   # Rotas de autenticação
   post '/auth/login', to: 'auth#login'

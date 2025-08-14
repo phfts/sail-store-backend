@@ -18,6 +18,10 @@ class User < ApplicationRecord
     !admin?
   end
   
+  def store_admin?
+    store_admin == true
+  end
+  
   def seller?
     Seller.exists?(user_id: id)
   end

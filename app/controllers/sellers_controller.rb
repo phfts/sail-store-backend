@@ -9,6 +9,125 @@ class SellersController < ApplicationController
     render json: { error: "Acesso negado. Use /stores/:slug/sellers para acessar vendedores de uma loja específica." }, status: :forbidden
   end
 
+  # GET /stores/:slug/sellers/ranking
+  def ranking
+    begin
+      if current_user.admin?
+        # Admins podem acessar qualquer loja
+        store = Store.find_by!(slug: params[:slug])
+      else
+        # Usuários regulares só podem acessar sua própria loja
+        store = current_user.store
+        unless store&.slug == params[:slug]
+          render json: { error: "Acesso negado" }, status: :forbidden
+          return
+        end
+      end
+      
+      # Parâmetros de filtro
+      start_date = params[:start_date] ? Date.parse(params[:start_date]) : nil
+      end_date = params[:end_date] ? Date.parse(params[:end_date]) : nil
+      period = params[:period] || (start_date && end_date ? 'custom' : 'week')
+      
+      # Definir período baseado no parâmetro
+      case period
+      when 'week'
+        period_start = Date.current.beginning_of_week
+        period_end = Date.current.end_of_week
+        previous_period_start = 1.week.ago.beginning_of_week
+        previous_period_end = 1.week.ago.end_of_week
+      when 'month'
+        period_start = Date.current.beginning_of_month
+        period_end = Date.current.end_of_month
+        previous_period_start = 1.month.ago.beginning_of_month
+        previous_period_end = 1.month.ago.end_of_month
+      when 'quarter'
+        period_start = Date.current.beginning_of_quarter
+        period_end = Date.current.end_of_quarter
+        previous_period_start = 3.months.ago.beginning_of_quarter
+        previous_period_end = 3.months.ago.end_of_quarter
+      when 'year'
+        period_start = Date.current.beginning_of_year
+        period_end = Date.current.end_of_year
+        previous_period_start = 1.year.ago.beginning_of_year
+        previous_period_end = 1.year.ago.end_of_year
+      else
+        # Período personalizado
+        if start_date && end_date
+          period_start = start_date
+          period_end = end_date
+          # Para período personalizado, vamos usar o mesmo período anterior
+          period_duration = (end_date - start_date).to_i
+          previous_period_start = start_date - period_duration.days
+          previous_period_end = start_date - 1.day
+        else
+          period_start = Date.current.beginning_of_week
+          period_end = Date.current.end_of_week
+          previous_period_start = 1.week.ago.beginning_of_week
+          previous_period_end = 1.week.ago.end_of_week
+        end
+      end
+      
+      # Buscar vendedores ativos da loja
+      sellers = store.sellers.includes(:user, :goals, :orders => :order_items)
+      active_sellers = sellers.select(&:active?)
+      
+      # Calcular ranking para o período atual
+      current_ranking = calculate_seller_ranking(active_sellers, period_start, period_end)
+      
+      # Calcular ranking para o período anterior
+      previous_ranking = calculate_seller_ranking(active_sellers, previous_period_start, previous_period_end)
+      
+      # Combinar dados e calcular evolução
+      final_ranking = current_ranking.map.with_index do |current_seller, index|
+        previous_position = previous_ranking.find_index { |s| s[:seller_id] == current_seller[:seller_id] }
+        position_change = previous_position ? previous_position - index : 0
+        
+        # Buscar dados do vendedor
+        seller = active_sellers.find { |s| s.id == current_seller[:seller_id] }
+        
+        # Calcular comissão baseada no nível de comissão da loja
+        commission_data = calculate_commission(seller, store, current_seller[:sales], current_seller[:goal_percentage])
+        
+        {
+          position: index + 1,
+          seller: {
+            id: seller.id.to_s,
+            name: seller.name,
+            avatar: nil
+          },
+          sales: {
+            current: current_seller[:sales],
+            previous: previous_ranking.find { |s| s[:seller_id] == current_seller[:seller_id] }&.dig(:sales) || 0,
+            evolution: calculate_evolution_percentage(
+              current_seller[:sales],
+              previous_ranking.find { |s| s[:seller_id] == current_seller[:seller_id] }&.dig(:sales) || 0
+            )
+          },
+          goal: {
+            target: current_seller[:goal_target],
+            current: current_seller[:sales],
+            percentage: current_seller[:goal_percentage]
+          },
+          commission: {
+            percentage: commission_data[:percentage],
+            amount: commission_data[:amount]
+          },
+          evolution: {
+            position: previous_position ? previous_position + 1 : nil,
+            change: position_change
+          }
+        }
+      end
+      
+      render json: final_ranking
+    rescue ActiveRecord::RecordNotFound
+      render json: { error: "Loja não encontrada" }, status: :not_found
+    rescue Date::Error
+      render json: { error: "Data inválida" }, status: :bad_request
+    end
+  end
+
   # GET /stores/:slug/sellers
   def by_store_slug
     begin
@@ -229,7 +348,60 @@ class SellersController < ApplicationController
     render json: { message: 'Vendedor excluído com sucesso' }
   end
 
+
+
   private
+
+  def calculate_seller_ranking(sellers, start_date, end_date)
+    sellers.map do |seller|
+      # Calcular vendas do vendedor no período
+      seller_orders = seller.orders.includes(:order_items)
+                           .where('orders.sold_at >= ? AND orders.sold_at <= ?', start_date.to_date, end_date.to_date)
+      
+      sales = seller_orders.sum do |order|
+        order.order_items.sum { |item| item.quantity * item.unit_price }
+      end
+      
+      # Buscar meta do vendedor para o período
+      goal = seller.goals.where('start_date <= ? AND end_date >= ?', end_date, start_date).first
+      goal_target = goal&.target_value || 0
+      goal_percentage = goal_target > 0 ? ((sales.to_f / goal_target) * 100).round(2) : 0
+      
+      {
+        seller_id: seller.id,
+        sales: sales,
+        goal_target: goal_target,
+        goal_percentage: goal_percentage
+      }
+    end.sort_by { |seller_data| -seller_data[:sales] }
+  end
+
+  def calculate_commission(seller, store, sales, goal_percentage)
+    # Buscar níveis de comissão da loja
+    commission_levels = store.commission_levels.active.ordered_by_achievement
+    
+    # Determinar o nível de comissão baseado no percentual de meta atingido
+    commission_level = commission_levels.reverse.find { |level| goal_percentage >= level.achievement_percentage }
+    
+    if commission_level
+      commission_percentage = commission_level.commission_percentage
+      commission_amount = (sales * commission_percentage / 100.0).round(2)
+    else
+      # Sem comissão se não atingir nenhum nível
+      commission_percentage = 0.0
+      commission_amount = 0.0
+    end
+    
+    {
+      percentage: commission_percentage,
+      amount: commission_amount
+    }
+  end
+
+  def calculate_evolution_percentage(current, previous)
+    return 0 if previous == 0
+    ((current - previous) / previous.to_f * 100).round(2)
+  end
 
   def set_seller
     if current_user.admin?

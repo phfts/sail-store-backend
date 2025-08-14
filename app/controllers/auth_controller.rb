@@ -22,6 +22,7 @@ class AuthController < ApplicationController
           id: user.id,
           email: user.email,
           admin: user.admin?,
+          store_admin: user.store_admin?,
           store_slug: user.store_slug
         }
       }, status: :ok
@@ -49,6 +50,7 @@ class AuthController < ApplicationController
           id: user.id,
           email: user.email,
           admin: user.admin?,
+          store_admin: user.store_admin?,
           store_slug: user.store_slug
         }
       }, status: :created
@@ -64,6 +66,7 @@ class AuthController < ApplicationController
           id: current_user.id,
           email: current_user.email,
           admin: current_user.admin?,
+          store_admin: current_user.store_admin?,
           store_slug: current_user.store_slug
         }
       }, status: :ok
