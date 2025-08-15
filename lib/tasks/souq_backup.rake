@@ -170,8 +170,7 @@ namespace :souq do
     restore_sellers_data(production_dir)
     restore_products_data(production_dir)
     restore_orders_data(production_dir)
-    restore_exchanges_data(production_dir)
-    restore_returns_data(production_dir)
+    # TODO: Implementar restore_exchanges_data e restore_returns_data quando necessário
     
     puts "\n🎉 DADOS DE PRODUÇÃO RESTAURADOS!"
     puts "\n📊 Estado final:"
@@ -399,7 +398,7 @@ namespace :souq do
   def export_exchanges_data(company, backup_dir)
     puts "\n📤 Exportando trocas..."
     
-    exchanges = Exchange.limit(100)
+    exchanges = Exchange.all
                        .map do |exchange|
       {
         id: exchange.id,
@@ -417,13 +416,13 @@ namespace :souq do
       JSON.pretty_generate(exchanges)
     )
     
-    puts "✅ #{exchanges.count} trocas exportadas (limitado a 100 para teste)"
+    puts "✅ #{exchanges.count} trocas exportadas (todas as trocas)"
   end
   
   def export_returns_data(company, backup_dir)
     puts "\n📤 Exportando devoluções..."
     
-    returns = Return.limit(100)
+    returns = Return.all
                     .map do |return_record|
       {
         id: return_record.id,
@@ -442,7 +441,7 @@ namespace :souq do
       JSON.pretty_generate(returns)
     )
     
-    puts "✅ #{returns.count} devoluções exportadas (limitado a 100 para teste)"
+    puts "✅ #{returns.count} devoluções exportadas (todas as devoluções)"
   end
   
   def export_company_data(company, backup_dir)
@@ -530,32 +529,8 @@ namespace :souq do
   def export_products_data(category, backup_dir)
     puts "\n📤 Exportando produtos..."
     
-    # Primeiro, obter todos os product_external_ids necessários dos pedidos
-    company = category.company
-    order_product_ids = Set.new
-    
-    Order.joins(:seller)
-         .where(seller: { company_id: company.id })
-         .includes(:order_items)
-         .each do |order|
-      order.order_items.each do |item|
-        order_product_ids.add(item.product.external_id)
-      end
-    end
-    
-    puts "🔍 Produtos necessários para pedidos: #{order_product_ids.size}"
-    
-    # Exportar TODOS os produtos necessários + alguns extras
-    products_to_export = category.products.where(external_id: order_product_ids.to_a)
-    
-    # Se ainda temos espaço, adicionar mais produtos da categoria
-    if products_to_export.count < 1000
-      additional_products = category.products.where.not(external_id: order_product_ids.to_a)
-                                            .limit(1000 - products_to_export.count)
-      products_to_export = products_to_export.or(additional_products)
-    end
-    
-    products = products_to_export.map do |product|
+    # Exportar TODOS os produtos da categoria SOUQ
+    products = category.products.map do |product|
       {
         id: product.id,
         category_id: product.category_id,
@@ -570,7 +545,7 @@ namespace :souq do
       JSON.pretty_generate(products)
     )
     
-    puts "✅ #{products.count} produtos exportados (incluindo todos os necessários para pedidos)"
+    puts "✅ #{products.count} produtos exportados (todos os produtos da categoria)"
   end
   
   def export_orders_data(company, backup_dir)
@@ -579,7 +554,6 @@ namespace :souq do
     orders = Order.joins(:seller)
                   .where(seller: { company_id: company.id })
                   .includes(:order_items)
-                  .limit(100)
                   .map do |order|
       {
         id: order.id,
@@ -605,7 +579,7 @@ namespace :souq do
       JSON.pretty_generate(orders)
     )
     
-    puts "✅ #{orders.count} vendas exportadas (limitado a 100 para teste)"
+    puts "✅ #{orders.count} vendas exportadas (todas as vendas)"
   end
   
   def restore_company_data(backup_dir)

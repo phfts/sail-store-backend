@@ -898,5 +898,4928 @@
     "processed_at": "1974-09-11 07:35:15 UTC",
     "voucher_number": "8113",
     "voucher_value": "656.0"
+  },
+  {
+    "id": 2042,
+    "seller_id": null,
+    "external_id": "e579dd34-7eb4-41f0-b1f5-06489161244b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-11 12:14:01 UTC",
+    "voucher_number": "8139",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2043,
+    "seller_id": null,
+    "external_id": "d5f63d24-7e36-45e7-8e7a-4a14752e9b0b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-11 12:44:20 UTC",
+    "voucher_number": "8099",
+    "voucher_value": "316.0"
+  },
+  {
+    "id": 2044,
+    "seller_id": null,
+    "external_id": "84454172-10e1-4836-8f2a-667b68ec9042",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-11 14:57:06 UTC",
+    "voucher_number": "8142",
+    "voucher_value": "238.0"
+  },
+  {
+    "id": 2045,
+    "seller_id": null,
+    "external_id": "e38e125c-fbdf-4d2f-aeeb-b356f5a64bd7",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-12 22:26:33 UTC",
+    "voucher_number": "8165",
+    "voucher_value": "858.0"
+  },
+  {
+    "id": 2046,
+    "seller_id": null,
+    "external_id": "1282eb84-d4d4-48d9-9ccf-eefa89b20724",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-12 22:29:10 UTC",
+    "voucher_number": "8166",
+    "voucher_value": "704.0"
+  },
+  {
+    "id": 2047,
+    "seller_id": null,
+    "external_id": "cb7055fb-19e6-4355-b119-6b76f81890c0",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-13 09:32:20 UTC",
+    "voucher_number": "8183",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2048,
+    "seller_id": null,
+    "external_id": "ec9f996d-0400-4cec-9bc4-42a3de8b37de",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-13 09:40:48 UTC",
+    "voucher_number": "8184",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2049,
+    "seller_id": null,
+    "external_id": "3e7db01f-d18a-4e7f-8adc-9d6c778aced0",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1974-09-13 14:16:15 UTC",
+    "voucher_number": "8194",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2050,
+    "seller_id": null,
+    "external_id": "11f0f6ef-647c-43f8-bad1-3339ba4e45c2",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-13 15:09:53 UTC",
+    "voucher_number": "8190",
+    "voucher_value": "406.0"
+  },
+  {
+    "id": 2051,
+    "seller_id": null,
+    "external_id": "b1a28261-7d69-4671-b853-0ca916d7a22b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-13 18:14:33 UTC",
+    "voucher_number": "8199",
+    "voucher_value": "178.0"
+  },
+  {
+    "id": 2052,
+    "seller_id": null,
+    "external_id": "533daf53-3c60-4872-97be-63411c1c0760",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-14 08:35:03 UTC",
+    "voucher_number": "8220",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2053,
+    "seller_id": null,
+    "external_id": "a9bf48cb-bc68-4504-aea5-9bc55a5ff7a0",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-14 21:41:34 UTC",
+    "voucher_number": "8246",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2054,
+    "seller_id": null,
+    "external_id": "07667022-7398-4f9f-9b03-df37f4a3bd88",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-15 13:57:03 UTC",
+    "voucher_number": "8258",
+    "voucher_value": "198.0"
+  },
+  {
+    "id": 2055,
+    "seller_id": null,
+    "external_id": "ceaf6e1b-19f3-4c09-874d-c8df9c944f53",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-18 02:28:37 UTC",
+    "voucher_number": "8333",
+    "voucher_value": "926.0"
+  },
+  {
+    "id": 2056,
+    "seller_id": null,
+    "external_id": "60448cc0-daf2-4740-968a-785907d9abcc",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-18 08:15:29 UTC",
+    "voucher_number": "8338",
+    "voucher_value": "78.0"
+  },
+  {
+    "id": 2057,
+    "seller_id": null,
+    "external_id": "bee6fdce-2019-42d1-be96-56c805d98620",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1974-09-18 14:35:05 UTC",
+    "voucher_number": "8344",
+    "voucher_value": "118.0"
+  },
+  {
+    "id": 2058,
+    "seller_id": null,
+    "external_id": "a3b2b5f0-03ce-4d24-8a73-0f40e2fa1670",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-18 19:53:14 UTC",
+    "voucher_number": "8350",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2059,
+    "seller_id": null,
+    "external_id": "87bdf8e0-d7e3-4db9-a216-135e0b84691f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-18 21:50:27 UTC",
+    "voucher_number": "8352",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2060,
+    "seller_id": null,
+    "external_id": "3c0945e7-04f5-4b0d-9cfc-50b698ccf9a1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-21 17:34:08 UTC",
+    "voucher_number": "8386",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2061,
+    "seller_id": null,
+    "external_id": "6f8ceac2-d8ad-4549-9b62-0bd90cf3b9c0",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-22 23:29:29 UTC",
+    "voucher_number": "8421",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2062,
+    "seller_id": null,
+    "external_id": "e5cfd85c-bce6-490c-9418-52e3300150fc",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-28 05:48:09 UTC",
+    "voucher_number": "8515",
+    "voucher_value": "497.0"
+  },
+  {
+    "id": 2063,
+    "seller_id": null,
+    "external_id": "20aab2c8-2c5e-478b-bc9d-998bc4c0322b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-28 06:19:56 UTC",
+    "voucher_number": "8513",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2064,
+    "seller_id": null,
+    "external_id": "6c6286cd-2be9-4869-aa1d-0ae4a5952f86",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-30 09:57:06 UTC",
+    "voucher_number": "8538",
+    "voucher_value": "138.0"
+  },
+  {
+    "id": 2065,
+    "seller_id": null,
+    "external_id": "132243ed-82e8-46f4-beeb-9fba3d68ed16",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-09-30 22:17:04 UTC",
+    "voucher_number": "8536",
+    "voucher_value": "1299.0"
+  },
+  {
+    "id": 2066,
+    "seller_id": null,
+    "external_id": "ea1e5602-6646-47aa-9a50-d0897b4d1e00",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-01 02:50:31 UTC",
+    "voucher_number": "8556",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2067,
+    "seller_id": null,
+    "external_id": "7c002f95-1733-4713-9b98-8e9bfd79821b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-01 10:06:43 UTC",
+    "voucher_number": "8560",
+    "voucher_value": "156.0"
+  },
+  {
+    "id": 2068,
+    "seller_id": null,
+    "external_id": "6766b848-a240-45fa-b3e4-1ad1df4e18e3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-02 03:32:10 UTC",
+    "voucher_number": "8582",
+    "voucher_value": "68.0"
+  },
+  {
+    "id": 2069,
+    "seller_id": null,
+    "external_id": "522f6393-2ed1-45dc-89c5-8ba2850a770c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-02 09:20:43 UTC",
+    "voucher_number": "8585",
+    "voucher_value": "158.0"
+  },
+  {
+    "id": 2070,
+    "seller_id": null,
+    "external_id": "4ce488dc-0677-4f1e-ab6b-ed7335bb5084",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-02 13:10:29 UTC",
+    "voucher_number": "8592",
+    "voucher_value": "188.0"
+  },
+  {
+    "id": 2071,
+    "seller_id": null,
+    "external_id": "986279cf-65c6-45d4-91e3-06eab1dc504d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-02 13:49:57 UTC",
+    "voucher_number": "8593",
+    "voucher_value": "426.0"
+  },
+  {
+    "id": 2072,
+    "seller_id": null,
+    "external_id": "fca2f1a3-0073-49b9-a58a-73721e870921",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-04 14:19:45 UTC",
+    "voucher_number": "8606",
+    "voucher_value": "278.0"
+  },
+  {
+    "id": 2073,
+    "seller_id": null,
+    "external_id": "1805f9e6-55b3-45fb-a761-618d3ecb2635",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-06 21:16:56 UTC",
+    "voucher_number": "8648",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2074,
+    "seller_id": null,
+    "external_id": "0b67342c-5aee-4d12-9613-07523122dfcc",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-06 21:26:01 UTC",
+    "voucher_number": "8650",
+    "voucher_value": "396.0"
+  },
+  {
+    "id": 2075,
+    "seller_id": null,
+    "external_id": "7097ec65-8881-4b81-aad1-6aae09b5992a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-06 23:27:58 UTC",
+    "voucher_number": "8651",
+    "voucher_value": "896.0"
+  },
+  {
+    "id": 2076,
+    "seller_id": null,
+    "external_id": "f5d446f6-926d-4731-a2e9-6f1d0de5c922",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-08 02:40:52 UTC",
+    "voucher_number": "8663",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2077,
+    "seller_id": null,
+    "external_id": "93d23bb4-92fc-45f9-9608-8689a13a8937",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-08 07:13:27 UTC",
+    "voucher_number": "8669",
+    "voucher_value": "748.0"
+  },
+  {
+    "id": 2078,
+    "seller_id": null,
+    "external_id": "6ad33639-91f1-46de-8a86-5f53de5d9078",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-09 23:18:03 UTC",
+    "voucher_number": "8706",
+    "voucher_value": "1524.0"
+  },
+  {
+    "id": 2079,
+    "seller_id": null,
+    "external_id": "0e1751f9-f9ff-4202-96a3-2140128a1643",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-11 07:36:37 UTC",
+    "voucher_number": "8734",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2080,
+    "seller_id": null,
+    "external_id": "d30967a5-0cff-4c60-9cb3-83bc1de6eec9",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-11 09:33:29 UTC",
+    "voucher_number": "8739",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2081,
+    "seller_id": null,
+    "external_id": "1bb19efe-98b2-4366-b968-875a07fbfc3c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-11 13:02:37 UTC",
+    "voucher_number": "8747",
+    "voucher_value": "598.0"
+  },
+  {
+    "id": 2082,
+    "seller_id": null,
+    "external_id": "d52579b2-7f86-46d2-8574-936d7b1994b0",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-11 13:57:02 UTC",
+    "voucher_number": "8750",
+    "voucher_value": "718.0"
+  },
+  {
+    "id": 2083,
+    "seller_id": null,
+    "external_id": "8aebb51d-53d0-4fd1-918c-deb422220346",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-13 12:59:34 UTC",
+    "voucher_number": "8779",
+    "voucher_value": "88.0"
+  },
+  {
+    "id": 2084,
+    "seller_id": null,
+    "external_id": "6dcc0c98-85fc-4aea-bdd8-5fe817a2ef52",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-13 19:20:11 UTC",
+    "voucher_number": "8783",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2085,
+    "seller_id": null,
+    "external_id": "563bac62-ea49-4771-96e8-2bf111d5929f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-14 19:46:15 UTC",
+    "voucher_number": "8813",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2086,
+    "seller_id": null,
+    "external_id": "73ce200e-cacd-4249-a400-62edf2e4de75",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-16 11:54:00 UTC",
+    "voucher_number": "8827",
+    "voucher_value": "458.0"
+  },
+  {
+    "id": 2087,
+    "seller_id": null,
+    "external_id": "52e1248a-f251-4b03-9805-e99e1515a20b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-16 20:03:07 UTC",
+    "voucher_number": "8835",
+    "voucher_value": "776.7"
+  },
+  {
+    "id": 2088,
+    "seller_id": null,
+    "external_id": "68685807-d7a6-4c97-a569-43c4ab900b0f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-17 00:28:44 UTC",
+    "voucher_number": "8839",
+    "voucher_value": "989.0"
+  },
+  {
+    "id": 2089,
+    "seller_id": null,
+    "external_id": "d3108635-85da-4bb0-a459-579ebf224115",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-17 03:44:30 UTC",
+    "voucher_number": "8842",
+    "voucher_value": "596.79"
+  },
+  {
+    "id": 2090,
+    "seller_id": null,
+    "external_id": "f491e628-1118-411c-a165-352d20de7096",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-17 16:34:04 UTC",
+    "voucher_number": "8866",
+    "voucher_value": "178.0"
+  },
+  {
+    "id": 2091,
+    "seller_id": null,
+    "external_id": "50bcc2cc-ea1e-4b7b-80ab-fcc76cda43b9",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-18 01:10:39 UTC",
+    "voucher_number": "8881",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2092,
+    "seller_id": null,
+    "external_id": "03dc16c0-1e6b-4fc7-977e-fd68a57015e7",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-18 03:21:50 UTC",
+    "voucher_number": "8885",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2093,
+    "seller_id": null,
+    "external_id": "a9d739b2-bd1a-4bd8-8174-ffe522e1991d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-18 14:34:46 UTC",
+    "voucher_number": "8900",
+    "voucher_value": "166.0"
+  },
+  {
+    "id": 2094,
+    "seller_id": null,
+    "external_id": "5056726b-65cf-49d3-98d1-310bbf5b993c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-19 16:41:34 UTC",
+    "voucher_number": "8901",
+    "voucher_value": "48.0"
+  },
+  {
+    "id": 2095,
+    "seller_id": null,
+    "external_id": "71c44170-2815-40db-8df4-0bc57c7665fb",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-20 08:23:26 UTC",
+    "voucher_number": "8918",
+    "voucher_value": "129.0"
+  },
+  {
+    "id": 2096,
+    "seller_id": null,
+    "external_id": "0c33931f-c0b9-40be-9438-9de881201651",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-21 11:35:15 UTC",
+    "voucher_number": "8930",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2097,
+    "seller_id": null,
+    "external_id": "49cf6108-e263-4e10-9734-945b8b541dd3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-21 19:27:04 UTC",
+    "voucher_number": "8943",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2098,
+    "seller_id": null,
+    "external_id": "3e0ea246-1e8f-4081-aa6c-814e4c61504d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-22 13:51:17 UTC",
+    "voucher_number": "8956",
+    "voucher_value": "248.0"
+  },
+  {
+    "id": 2099,
+    "seller_id": null,
+    "external_id": "5844fa2e-8395-419f-8104-ca2443365b6d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-27 00:20:10 UTC",
+    "voucher_number": "9009",
+    "voucher_value": "146.0"
+  },
+  {
+    "id": 2100,
+    "seller_id": null,
+    "external_id": "e1ca7786-74c6-49cc-b732-fbf3b7197b17",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1974-10-29 00:06:25 UTC",
+    "voucher_number": "9026",
+    "voucher_value": "278.0"
+  },
+  {
+    "id": 2101,
+    "seller_id": null,
+    "external_id": "9b4a1299-e6ed-48fe-b433-dab42730a476",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1974-10-29 07:30:31 UTC",
+    "voucher_number": "9033",
+    "voucher_value": "148.0"
+  },
+  {
+    "id": 2102,
+    "seller_id": null,
+    "external_id": "079c1449-9089-4dc0-90dd-b724f4529d09",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-30 06:55:52 UTC",
+    "voucher_number": "9052",
+    "voucher_value": "598.0"
+  },
+  {
+    "id": 2103,
+    "seller_id": null,
+    "external_id": "c19f1aee-5028-4223-b385-c52c0d18f008",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1974-10-30 18:40:28 UTC",
+    "voucher_number": "9066",
+    "voucher_value": "368.0"
+  },
+  {
+    "id": 2104,
+    "seller_id": null,
+    "external_id": "1c6cd0fe-603b-46a3-a857-8d98897bc73d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-30 23:46:30 UTC",
+    "voucher_number": "9070",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2105,
+    "seller_id": null,
+    "external_id": "1425247f-4477-4b1d-b4f1-1b09cb6b6ef0",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-10-31 09:25:29 UTC",
+    "voucher_number": "9080",
+    "voucher_value": "566.0"
+  },
+  {
+    "id": 2106,
+    "seller_id": null,
+    "external_id": "3c00c813-61d6-46aa-863e-b4bc6e541b3c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-01 12:48:35 UTC",
+    "voucher_number": "9093",
+    "voucher_value": "1248.0"
+  },
+  {
+    "id": 2107,
+    "seller_id": null,
+    "external_id": "1ad98f38-1bc8-4cdf-91ed-a1f6357b411d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-02 01:52:21 UTC",
+    "voucher_number": "9115",
+    "voucher_value": "148.0"
+  },
+  {
+    "id": 2108,
+    "seller_id": null,
+    "external_id": "5c49bd47-a1b3-4848-a910-9fcba8975355",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-02 12:42:17 UTC",
+    "voucher_number": "9134",
+    "voucher_value": "936.0"
+  },
+  {
+    "id": 2109,
+    "seller_id": null,
+    "external_id": "a8657124-0f35-4be4-a124-03f49d6aa4c8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-02 18:16:27 UTC",
+    "voucher_number": "9137",
+    "voucher_value": "458.0"
+  },
+  {
+    "id": 2110,
+    "seller_id": null,
+    "external_id": "4efe449f-cca1-4b75-8691-f81962586e87",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-02 22:42:37 UTC",
+    "voucher_number": "9150",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2111,
+    "seller_id": null,
+    "external_id": "bc328d84-7b3a-4232-ac70-3eec180e473e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-03 22:01:44 UTC",
+    "voucher_number": "9160",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2112,
+    "seller_id": null,
+    "external_id": "07bcfb86-2ae5-4539-9c53-583319be9df2",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-04 03:44:42 UTC",
+    "voucher_number": "9171",
+    "voucher_value": "1812.0"
+  },
+  {
+    "id": 2113,
+    "seller_id": null,
+    "external_id": "58476516-5bae-460b-822e-41a88656293b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-05 07:24:47 UTC",
+    "voucher_number": "9194",
+    "voucher_value": "538.0"
+  },
+  {
+    "id": 2114,
+    "seller_id": null,
+    "external_id": "2116b65d-d0b2-495b-99a9-ffa32d074511",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-05 23:52:32 UTC",
+    "voucher_number": "9220",
+    "voucher_value": "458.0"
+  },
+  {
+    "id": 2115,
+    "seller_id": null,
+    "external_id": "581f2a6b-f188-4d81-994e-a3a47430a26f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-06 07:42:07 UTC",
+    "voucher_number": "9232",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2116,
+    "seller_id": null,
+    "external_id": "0ad7f633-ecab-4d33-be5f-6e8a6e55aa74",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-08 06:32:47 UTC",
+    "voucher_number": "9257",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2117,
+    "seller_id": null,
+    "external_id": "7a03126e-0b9c-4fc8-a611-eb38ed46a771",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-09 06:19:59 UTC",
+    "voucher_number": "9287",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2118,
+    "seller_id": null,
+    "external_id": "119c9001-719e-4447-8d5a-c2410baddeed",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-09 08:21:53 UTC",
+    "voucher_number": "9285",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2119,
+    "seller_id": null,
+    "external_id": "7fd4ad8c-37bc-457d-b2cc-6e35a2ead937",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-09 15:36:07 UTC",
+    "voucher_number": "9311",
+    "voucher_value": "278.0"
+  },
+  {
+    "id": 2120,
+    "seller_id": null,
+    "external_id": "0fbc2454-5454-46bf-8442-d9c67ac3405b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-12 03:22:47 UTC",
+    "voucher_number": "9367",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2121,
+    "seller_id": null,
+    "external_id": "e65a4ccd-556a-4384-90fd-964611c3e12c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-12 03:23:07 UTC",
+    "voucher_number": "9368",
+    "voucher_value": "198.0"
+  },
+  {
+    "id": 2122,
+    "seller_id": null,
+    "external_id": "296b3633-c398-46c7-af94-b9a122f8873e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-12 22:12:18 UTC",
+    "voucher_number": "9386",
+    "voucher_value": "718.0"
+  },
+  {
+    "id": 2123,
+    "seller_id": null,
+    "external_id": "a7b88cc2-248c-4a2e-9b7e-4a0ab014e19a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-12 23:49:52 UTC",
+    "voucher_number": "9388",
+    "voucher_value": "538.0"
+  },
+  {
+    "id": 2124,
+    "seller_id": null,
+    "external_id": "d8a3b227-c049-4202-8138-e2b3d68a8c59",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-13 11:52:49 UTC",
+    "voucher_number": "9397",
+    "voucher_value": "38.0"
+  },
+  {
+    "id": 2125,
+    "seller_id": null,
+    "external_id": "a4f3c559-dba3-4a7b-9bb6-7b54f9d8f7ec",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-13 23:04:46 UTC",
+    "voucher_number": "9408",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2126,
+    "seller_id": null,
+    "external_id": "ab4e5d54-29c5-4cc7-be6b-7eb7df9b1dce",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-14 07:52:34 UTC",
+    "voucher_number": "9419",
+    "voucher_value": "878.0"
+  },
+  {
+    "id": 2127,
+    "seller_id": null,
+    "external_id": "00569e98-1f63-4a2c-9234-7078f24a679f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-14 21:15:32 UTC",
+    "voucher_number": "9447",
+    "voucher_value": "1844.0"
+  },
+  {
+    "id": 2128,
+    "seller_id": null,
+    "external_id": "43f76514-4f0d-4aeb-8911-e3132927f2c7",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1974-11-16 18:00:07 UTC",
+    "voucher_number": "9493",
+    "voucher_value": "348.0"
+  },
+  {
+    "id": 2129,
+    "seller_id": null,
+    "external_id": "a67f302b-8d91-4cbc-bdc6-e1a1f4a105b4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-18 21:57:55 UTC",
+    "voucher_number": "9552",
+    "voucher_value": "898.0"
+  },
+  {
+    "id": 2130,
+    "seller_id": null,
+    "external_id": "7b882842-9bcc-45fb-9b12-39887f6ef985",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-19 02:29:02 UTC",
+    "voucher_number": "9558",
+    "voucher_value": "238.0"
+  },
+  {
+    "id": 2131,
+    "seller_id": null,
+    "external_id": "d7afc6fe-e5f4-4b32-b9c1-a851cff4eb90",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-19 10:11:02 UTC",
+    "voucher_number": "9567",
+    "voucher_value": "178.0"
+  },
+  {
+    "id": 2132,
+    "seller_id": null,
+    "external_id": "d4e7d000-321e-4725-b9c0-6425b107098c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-19 13:55:46 UTC",
+    "voucher_number": "9569",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2133,
+    "seller_id": null,
+    "external_id": "9e92e338-1a13-46ad-be16-fecea1b6342b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-20 02:42:16 UTC",
+    "voucher_number": "9588",
+    "voucher_value": "318.0"
+  },
+  {
+    "id": 2134,
+    "seller_id": null,
+    "external_id": "f26c9021-5f84-422f-9e63-57a1ed96199f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-20 05:01:16 UTC",
+    "voucher_number": "9591",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2135,
+    "seller_id": null,
+    "external_id": "ddac76a5-1859-47e8-afe4-7dd69a29a9a5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-20 22:45:38 UTC",
+    "voucher_number": "9604",
+    "voucher_value": "88.0"
+  },
+  {
+    "id": 2136,
+    "seller_id": null,
+    "external_id": "406609f2-be8c-4723-a0ac-5909079d826f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-21 00:15:19 UTC",
+    "voucher_number": "9609",
+    "voucher_value": "148.0"
+  },
+  {
+    "id": 2137,
+    "seller_id": null,
+    "external_id": "114a4890-4ee3-4b44-a220-e9502b900dbf",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-21 07:43:23 UTC",
+    "voucher_number": "9618",
+    "voucher_value": "206.0"
+  },
+  {
+    "id": 2138,
+    "seller_id": null,
+    "external_id": "176b0f98-96ec-4f9e-99a4-6f73712cefa5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-23 00:57:26 UTC",
+    "voucher_number": "9644",
+    "voucher_value": "996.0"
+  },
+  {
+    "id": 2139,
+    "seller_id": null,
+    "external_id": "131d7c97-6aef-4afa-85a8-01e286ff5771",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-26 04:41:11 UTC",
+    "voucher_number": "9719",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2140,
+    "seller_id": null,
+    "external_id": "f856e559-6c96-41f6-a959-21f640532718",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1974-11-26 18:28:40 UTC",
+    "voucher_number": "9749",
+    "voucher_value": "748.0"
+  },
+  {
+    "id": 2141,
+    "seller_id": null,
+    "external_id": "d07c00fb-50be-4100-be00-22d60b4dea2b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-26 22:38:21 UTC",
+    "voucher_number": "9753",
+    "voucher_value": "739.93"
+  },
+  {
+    "id": 2142,
+    "seller_id": null,
+    "external_id": "14740e81-a853-4cf6-9fea-8207d8ec352e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-29 07:22:03 UTC",
+    "voucher_number": "9792",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2143,
+    "seller_id": null,
+    "external_id": "447cd89e-f486-4dba-846e-64ae5d59ea38",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-29 09:16:27 UTC",
+    "voucher_number": "9794",
+    "voucher_value": "280.2"
+  },
+  {
+    "id": 2144,
+    "seller_id": null,
+    "external_id": "68d9d6b2-3a6e-45e0-80f7-b5c83e05ff4b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-11-30 09:59:04 UTC",
+    "voucher_number": "9800",
+    "voucher_value": "156.0"
+  },
+  {
+    "id": 2145,
+    "seller_id": null,
+    "external_id": "c173b1a4-d0f0-4e1c-937f-a256abb66dfc",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-01 16:40:25 UTC",
+    "voucher_number": "9829",
+    "voucher_value": "148.0"
+  },
+  {
+    "id": 2146,
+    "seller_id": null,
+    "external_id": "a261f4d8-dea8-47d8-84ff-db4a84dc7379",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-02 11:40:53 UTC",
+    "voucher_number": "9849",
+    "voucher_value": "68.0"
+  },
+  {
+    "id": 2147,
+    "seller_id": null,
+    "external_id": "e1219a2e-2f3d-4571-bf4d-50a98395b26a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-03 14:42:45 UTC",
+    "voucher_number": "9866",
+    "voucher_value": "776.0"
+  },
+  {
+    "id": 2148,
+    "seller_id": null,
+    "external_id": "3f574966-a7e5-4e55-baaf-b2fd8dab4903",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-04 10:25:49 UTC",
+    "voucher_number": "9878",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2149,
+    "seller_id": null,
+    "external_id": "f10d1e0d-87a2-4e14-ad9c-e6d9bb8d9c34",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-04 12:39:35 UTC",
+    "voucher_number": "9881",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2150,
+    "seller_id": null,
+    "external_id": "6bbe8253-9b09-4af5-88d8-572ad4c28d8b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-04 12:52:25 UTC",
+    "voucher_number": "9879",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2151,
+    "seller_id": null,
+    "external_id": "4b073b28-0b84-484c-a4a2-df38df1336b0",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-04 23:46:45 UTC",
+    "voucher_number": "9900",
+    "voucher_value": "898.0"
+  },
+  {
+    "id": 2152,
+    "seller_id": null,
+    "external_id": "d221067f-7faf-41a9-bb8b-b7da4b6c89d5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-05 15:46:52 UTC",
+    "voucher_number": "9908",
+    "voucher_value": "458.0"
+  },
+  {
+    "id": 2153,
+    "seller_id": null,
+    "external_id": "1689f22b-ca6d-409f-970d-3ffad05626a2",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-05 22:00:36 UTC",
+    "voucher_number": "9914",
+    "voucher_value": "458.0"
+  },
+  {
+    "id": 2154,
+    "seller_id": null,
+    "external_id": "c87f5598-fcc1-499e-9fe7-0589cfb31b41",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-06 11:47:02 UTC",
+    "voucher_number": "9938",
+    "voucher_value": "314.64"
+  },
+  {
+    "id": 2155,
+    "seller_id": null,
+    "external_id": "c0f03cc4-9b82-4a02-b564-407b7817e856",
+    "exchange_type": "Troca de Titularidade",
+    "processed_at": "1974-12-07 13:56:39 UTC",
+    "voucher_number": "9961",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2156,
+    "seller_id": null,
+    "external_id": "2f5a1f60-3770-4e41-af5b-878a60912265",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-07 17:05:50 UTC",
+    "voucher_number": "9971",
+    "voucher_value": "468.0"
+  },
+  {
+    "id": 2157,
+    "seller_id": null,
+    "external_id": "6d6cb0f4-475d-449e-89cd-48e2758bdd1c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-08 09:05:04 UTC",
+    "voucher_number": "9992",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2158,
+    "seller_id": null,
+    "external_id": "22d96453-7d32-4063-adde-3d8176c7dd6a",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1974-12-09 02:35:08 UTC",
+    "voucher_number": "10012",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2159,
+    "seller_id": null,
+    "external_id": "59ede7c6-948a-4cc2-acc4-4fe7aad4123e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-09 05:38:01 UTC",
+    "voucher_number": "10016",
+    "voucher_value": "328.0"
+  },
+  {
+    "id": 2160,
+    "seller_id": null,
+    "external_id": "d5481d89-cf1a-47d0-9766-2c3cf0f4f221",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-10 10:59:46 UTC",
+    "voucher_number": "10062",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2161,
+    "seller_id": null,
+    "external_id": "f89e32f3-52d5-4a1d-b254-638a8598ed8a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-11 14:18:48 UTC",
+    "voucher_number": "10078",
+    "voucher_value": "1084.0"
+  },
+  {
+    "id": 2162,
+    "seller_id": null,
+    "external_id": "6224c079-1ccf-4f78-9aed-3d99877fc2cc",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-11 16:10:58 UTC",
+    "voucher_number": "10084",
+    "voucher_value": "198.0"
+  },
+  {
+    "id": 2163,
+    "seller_id": null,
+    "external_id": "d28a1ce0-e5a5-4966-a67d-0479b9ccc591",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-13 01:58:58 UTC",
+    "voucher_number": "10115",
+    "voucher_value": "648.0"
+  },
+  {
+    "id": 2164,
+    "seller_id": null,
+    "external_id": "474351e6-0e9f-4ac9-be2d-6da204c1ff46",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1974-12-14 07:16:08 UTC",
+    "voucher_number": "10125",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2165,
+    "seller_id": null,
+    "external_id": "56a359b5-46a2-4929-b7a8-9c779224850d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-14 15:35:31 UTC",
+    "voucher_number": "10134",
+    "voucher_value": "178.0"
+  },
+  {
+    "id": 2166,
+    "seller_id": null,
+    "external_id": "e05201cc-d458-4622-8752-ab0359e82736",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-14 23:01:15 UTC",
+    "voucher_number": "10148",
+    "voucher_value": "748.0"
+  },
+  {
+    "id": 2167,
+    "seller_id": null,
+    "external_id": "90e62957-9417-4e81-a5d4-767f3ae1133f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-15 23:49:34 UTC",
+    "voucher_number": "10165",
+    "voucher_value": "348.0"
+  },
+  {
+    "id": 2168,
+    "seller_id": null,
+    "external_id": "27c4de65-35c6-46bc-b895-dc4c8ca56549",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-16 00:21:10 UTC",
+    "voucher_number": "10168",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2169,
+    "seller_id": null,
+    "external_id": "65f535e3-1348-4f04-95e9-5864a38c8258",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-16 06:37:07 UTC",
+    "voucher_number": "10178",
+    "voucher_value": "158.0"
+  },
+  {
+    "id": 2170,
+    "seller_id": null,
+    "external_id": "a6135edd-1aff-49d1-a320-f352e0f60fb3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-17 03:29:17 UTC",
+    "voucher_number": "10190",
+    "voucher_value": "348.0"
+  },
+  {
+    "id": 2171,
+    "seller_id": null,
+    "external_id": "08aabe94-0e6d-4f7f-b3a4-c3e1ba3600e5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-17 18:29:01 UTC",
+    "voucher_number": "10198",
+    "voucher_value": "264.0"
+  },
+  {
+    "id": 2172,
+    "seller_id": null,
+    "external_id": "8d0820f4-9769-454f-abf0-bab51a66954d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-21 15:13:41 UTC",
+    "voucher_number": "10245",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2173,
+    "seller_id": null,
+    "external_id": "7f899132-45f6-498d-a593-53ca4dd405a7",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-22 12:07:50 UTC",
+    "voucher_number": "10274",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2174,
+    "seller_id": null,
+    "external_id": "2e05a728-36f8-40b8-ae92-58323a34896a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-25 17:13:18 UTC",
+    "voucher_number": "10297",
+    "voucher_value": "449.0"
+  },
+  {
+    "id": 2175,
+    "seller_id": null,
+    "external_id": "8b4ea317-df57-4926-95fd-cd457cab67e3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-27 05:28:52 UTC",
+    "voucher_number": "10333",
+    "voucher_value": "414.0"
+  },
+  {
+    "id": 2176,
+    "seller_id": null,
+    "external_id": "03536d27-54d2-4fb2-afbf-bb7ae7d67734",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-27 09:33:35 UTC",
+    "voucher_number": "10335",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2177,
+    "seller_id": null,
+    "external_id": "1baaba41-e7a9-41bc-9335-f419b512fafd",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-29 00:57:28 UTC",
+    "voucher_number": "10370",
+    "voucher_value": "128.0"
+  },
+  {
+    "id": 2178,
+    "seller_id": null,
+    "external_id": "708613ea-a9b5-4863-96ea-2e7556eee1a8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1974-12-30 10:50:28 UTC",
+    "voucher_number": "10407",
+    "voucher_value": "1798.0"
+  },
+  {
+    "id": 2179,
+    "seller_id": null,
+    "external_id": "f1417085-c7da-4b53-a808-77c2bd2bbc59",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-01 06:01:41 UTC",
+    "voucher_number": "10447",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2180,
+    "seller_id": null,
+    "external_id": "18f74031-c2c7-47e3-ad55-6b6776e9e964",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-02 09:49:52 UTC",
+    "voucher_number": "10471",
+    "voucher_value": "429.0"
+  },
+  {
+    "id": 2181,
+    "seller_id": null,
+    "external_id": "6eb7dbb5-aae2-42fc-a1fe-090cf5e96f4d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-02 16:45:58 UTC",
+    "voucher_number": "10478",
+    "voucher_value": "799.0"
+  },
+  {
+    "id": 2182,
+    "seller_id": null,
+    "external_id": "13e94766-6e09-4506-9ded-b79409211fee",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-03 02:27:11 UTC",
+    "voucher_number": "10496",
+    "voucher_value": "174.0"
+  },
+  {
+    "id": 2183,
+    "seller_id": null,
+    "external_id": "8b6f6730-6a02-4a65-b65e-c3fd7e54102f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-03 21:28:45 UTC",
+    "voucher_number": "10520",
+    "voucher_value": "299.0"
+  },
+  {
+    "id": 2184,
+    "seller_id": null,
+    "external_id": "34de79d4-451b-43d9-bcf3-44689490e700",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-04 08:22:43 UTC",
+    "voucher_number": "10542",
+    "voucher_value": "147.0"
+  },
+  {
+    "id": 2185,
+    "seller_id": null,
+    "external_id": "16d57611-746c-494c-afae-9c01c5af7d28",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-05 00:46:44 UTC",
+    "voucher_number": "10549",
+    "voucher_value": "399.0"
+  },
+  {
+    "id": 2186,
+    "seller_id": null,
+    "external_id": "362ddff0-9453-4724-b4d5-99c5ff697aeb",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-05 02:37:47 UTC",
+    "voucher_number": "10551",
+    "voucher_value": "118.0"
+  },
+  {
+    "id": 2187,
+    "seller_id": null,
+    "external_id": "8a2180de-730b-4462-8d57-bed5e2e48259",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-05 11:45:08 UTC",
+    "voucher_number": "10564",
+    "voucher_value": "198.0"
+  },
+  {
+    "id": 2188,
+    "seller_id": null,
+    "external_id": "ef41d053-9747-437a-9264-5a600a541f1c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-05 22:24:37 UTC",
+    "voucher_number": "10572",
+    "voucher_value": "264.0"
+  },
+  {
+    "id": 2189,
+    "seller_id": null,
+    "external_id": "4d26fe54-29e0-4729-85ad-078bf576e6a4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-07 17:28:47 UTC",
+    "voucher_number": "10615",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2190,
+    "seller_id": null,
+    "external_id": "32def0a5-61f8-4a1a-a302-1f0a0f8837cb",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-07 17:39:22 UTC",
+    "voucher_number": "10613",
+    "voucher_value": "449.0"
+  },
+  {
+    "id": 2191,
+    "seller_id": null,
+    "external_id": "b7f11205-7ce5-4ac0-b2a2-945eeb19a2d1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-07 19:20:10 UTC",
+    "voucher_number": "10619",
+    "voucher_value": "128.0"
+  },
+  {
+    "id": 2192,
+    "seller_id": null,
+    "external_id": "84da7688-ade4-4ebe-a98a-d06bb2619c92",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-08 04:39:42 UTC",
+    "voucher_number": "10627",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2193,
+    "seller_id": null,
+    "external_id": "41b93728-40eb-4ff6-b8d5-f115cc3ef024",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-08 04:47:09 UTC",
+    "voucher_number": "10628",
+    "voucher_value": "299.0"
+  },
+  {
+    "id": 2194,
+    "seller_id": null,
+    "external_id": "37c9d0b6-d9d4-4fd3-8127-0591d118e8fb",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-08 07:54:58 UTC",
+    "voucher_number": "10632",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2195,
+    "seller_id": null,
+    "external_id": "6ae81b7e-cafd-403d-815c-4e70d8e2afb8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-10 12:55:01 UTC",
+    "voucher_number": "10668",
+    "voucher_value": "799.0"
+  },
+  {
+    "id": 2196,
+    "seller_id": null,
+    "external_id": "894d0e8c-2f00-4f8f-8200-7b5d67be82a4",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1975-01-11 06:14:10 UTC",
+    "voucher_number": "10697",
+    "voucher_value": "649.0"
+  },
+  {
+    "id": 2197,
+    "seller_id": null,
+    "external_id": "a7a05b5e-3785-455c-ab85-e4cf68471e09",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-11 18:08:51 UTC",
+    "voucher_number": "10713",
+    "voucher_value": "479.0"
+  },
+  {
+    "id": 2198,
+    "seller_id": null,
+    "external_id": "eee4bbc1-1414-4a36-903e-4b08a9726381",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-11 18:57:02 UTC",
+    "voucher_number": "10715",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2199,
+    "seller_id": null,
+    "external_id": "87518875-6ebd-4915-8072-18f1dca14c85",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-12 09:12:51 UTC",
+    "voucher_number": "10723",
+    "voucher_value": "547.0"
+  },
+  {
+    "id": 2200,
+    "seller_id": null,
+    "external_id": "7f4d4014-6b18-4543-828a-a7db36fd3bd9",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-12 12:46:59 UTC",
+    "voucher_number": "10726",
+    "voucher_value": "136.0"
+  },
+  {
+    "id": 2201,
+    "seller_id": null,
+    "external_id": "5981aaa1-b968-4ab5-a927-5aa6de55607f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-12 15:46:30 UTC",
+    "voucher_number": "10728",
+    "voucher_value": "248.0"
+  },
+  {
+    "id": 2202,
+    "seller_id": null,
+    "external_id": "6281ced2-e6c8-4b8d-a621-60d986e8e6f4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-12 23:39:20 UTC",
+    "voucher_number": "10745",
+    "voucher_value": "278.0"
+  },
+  {
+    "id": 2203,
+    "seller_id": null,
+    "external_id": "3e64267a-0526-41bf-bb68-3de521956759",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-14 01:43:24 UTC",
+    "voucher_number": "10775",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2204,
+    "seller_id": null,
+    "external_id": "e536afea-10ba-4cc4-b39d-9065657d396d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-14 21:17:53 UTC",
+    "voucher_number": "10790",
+    "voucher_value": "168.0"
+  },
+  {
+    "id": 2205,
+    "seller_id": null,
+    "external_id": "4756de60-1b66-4eb0-8c6f-579e35a66b2a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-15 03:28:29 UTC",
+    "voucher_number": "10800",
+    "voucher_value": "158.0"
+  },
+  {
+    "id": 2206,
+    "seller_id": null,
+    "external_id": "a2f386cb-fe73-4432-b570-afff65ff8cbc",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-15 22:57:28 UTC",
+    "voucher_number": "10823",
+    "voucher_value": "1298.0"
+  },
+  {
+    "id": 2207,
+    "seller_id": null,
+    "external_id": "421b8904-20e0-4cae-8ecb-fe171a1aae2d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-15 23:28:25 UTC",
+    "voucher_number": "10824",
+    "voucher_value": "1298.0"
+  },
+  {
+    "id": 2208,
+    "seller_id": null,
+    "external_id": "2454056d-1515-486f-8b3e-5f502291268f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-16 03:17:16 UTC",
+    "voucher_number": "10828",
+    "voucher_value": "449.0"
+  },
+  {
+    "id": 2209,
+    "seller_id": null,
+    "external_id": "bd824b24-0f5f-4972-bebc-4d68f9aaf795",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-16 23:43:37 UTC",
+    "voucher_number": "10833",
+    "voucher_value": "148.0"
+  },
+  {
+    "id": 2210,
+    "seller_id": null,
+    "external_id": "a0938681-e397-4660-8ca5-9e185b30828d",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1975-01-17 04:14:38 UTC",
+    "voucher_number": "10837",
+    "voucher_value": "238.0"
+  },
+  {
+    "id": 2211,
+    "seller_id": null,
+    "external_id": "71ae48cb-b90e-4f94-9141-f8421086f771",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-17 07:41:41 UTC",
+    "voucher_number": "10847",
+    "voucher_value": "1126.0"
+  },
+  {
+    "id": 2212,
+    "seller_id": null,
+    "external_id": "298add9d-39dd-4dac-8378-7ffffb3ae71e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-20 04:48:58 UTC",
+    "voucher_number": "10912",
+    "voucher_value": "718.0"
+  },
+  {
+    "id": 2213,
+    "seller_id": null,
+    "external_id": "fffd3e8d-2610-4553-b1f4-452dccf394d6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-20 15:39:34 UTC",
+    "voucher_number": "10920",
+    "voucher_value": "78.0"
+  },
+  {
+    "id": 2214,
+    "seller_id": null,
+    "external_id": "f50c1d3f-4aa2-4e43-bf19-388f12e9e486",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-22 12:58:11 UTC",
+    "voucher_number": "10942",
+    "voucher_value": "558.0"
+  },
+  {
+    "id": 2215,
+    "seller_id": null,
+    "external_id": "c258a207-ff28-457a-bbbb-e58a30f5542c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-24 17:42:05 UTC",
+    "voucher_number": "10988",
+    "voucher_value": "699.0"
+  },
+  {
+    "id": 2216,
+    "seller_id": null,
+    "external_id": "31df8327-a469-48a0-ad9f-4092cba086be",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-26 18:41:50 UTC",
+    "voucher_number": "11035",
+    "voucher_value": "799.0"
+  },
+  {
+    "id": 2217,
+    "seller_id": null,
+    "external_id": "a574bffe-1d80-49e4-a566-ab02eb3bb71d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-26 20:15:35 UTC",
+    "voucher_number": "11042",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2218,
+    "seller_id": null,
+    "external_id": "ebb7f52d-12bf-47cb-a2cf-41ea069f58c3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-26 22:40:46 UTC",
+    "voucher_number": "11044",
+    "voucher_value": "898.0"
+  },
+  {
+    "id": 2219,
+    "seller_id": null,
+    "external_id": "8cb695e2-74fa-4bdd-9a62-9ed1bcf2a6f8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-27 00:40:11 UTC",
+    "voucher_number": "11046",
+    "voucher_value": "264.0"
+  },
+  {
+    "id": 2220,
+    "seller_id": null,
+    "external_id": "97b94020-34fb-4b53-928c-d6dae1cb03fd",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-27 05:53:39 UTC",
+    "voucher_number": "11053",
+    "voucher_value": "449.0"
+  },
+  {
+    "id": 2221,
+    "seller_id": null,
+    "external_id": "c18752af-4c23-42cd-b91f-d6a455fa925a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-27 07:51:27 UTC",
+    "voucher_number": "11059",
+    "voucher_value": "278.0"
+  },
+  {
+    "id": 2222,
+    "seller_id": null,
+    "external_id": "79911f84-0e69-4ba0-98a6-90bd282a77df",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-27 18:44:17 UTC",
+    "voucher_number": "11062",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2223,
+    "seller_id": null,
+    "external_id": "a1fe99db-4a12-448d-8d1a-8cb7667a84bc",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-29 00:40:32 UTC",
+    "voucher_number": "11087",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2224,
+    "seller_id": null,
+    "external_id": "53d05f63-5472-4641-926c-116a697f37e7",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-29 11:41:55 UTC",
+    "voucher_number": "11106",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2225,
+    "seller_id": null,
+    "external_id": "1cb34b09-dc48-456c-a3d6-bd7b7feb8899",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1975-01-29 13:44:29 UTC",
+    "voucher_number": "11078",
+    "voucher_value": "138.0"
+  },
+  {
+    "id": 2226,
+    "seller_id": null,
+    "external_id": "59cb399f-622f-482a-9b64-065da136776a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-31 19:57:26 UTC",
+    "voucher_number": "11148",
+    "voucher_value": "264.0"
+  },
+  {
+    "id": 2227,
+    "seller_id": null,
+    "external_id": "1a81d8a5-1efc-4ee0-8d94-2be02418bc56",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-01-31 23:27:39 UTC",
+    "voucher_number": "11159",
+    "voucher_value": "399.0"
+  },
+  {
+    "id": 2228,
+    "seller_id": null,
+    "external_id": "309c92b5-30b3-439f-b89a-cfcb6a2ee918",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-01 21:31:52 UTC",
+    "voucher_number": "11165",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2229,
+    "seller_id": null,
+    "external_id": "23dfdb98-3461-453e-8aa1-8b5673dbce31",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-02 05:20:24 UTC",
+    "voucher_number": "11168",
+    "voucher_value": "511.1"
+  },
+  {
+    "id": 2230,
+    "seller_id": null,
+    "external_id": "c575a288-5c9a-4723-8b54-adc37cb1e044",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-02 13:36:25 UTC",
+    "voucher_number": "11176",
+    "voucher_value": "302.0"
+  },
+  {
+    "id": 2231,
+    "seller_id": null,
+    "external_id": "80b0dcdf-5822-4a14-bf6c-7c2e60339e3a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-02 13:59:24 UTC",
+    "voucher_number": "11178",
+    "voucher_value": "898.0"
+  },
+  {
+    "id": 2232,
+    "seller_id": null,
+    "external_id": "df6bcc1e-4c77-416e-b3af-17e781d6b96f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-04 23:08:54 UTC",
+    "voucher_number": "11209",
+    "voucher_value": "118.0"
+  },
+  {
+    "id": 2233,
+    "seller_id": null,
+    "external_id": "94db3a52-a1c1-49ac-9a9b-723fcbc6c5b5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-05 03:52:52 UTC",
+    "voucher_number": "11215",
+    "voucher_value": "596.0"
+  },
+  {
+    "id": 2234,
+    "seller_id": null,
+    "external_id": "71b31804-7fa1-4d3c-97ef-836e689ee3e6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-05 07:04:17 UTC",
+    "voucher_number": "11216",
+    "voucher_value": "68.0"
+  },
+  {
+    "id": 2235,
+    "seller_id": null,
+    "external_id": "5503a62e-384a-44e7-8331-2d92ba2cf9b1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-05 17:14:41 UTC",
+    "voucher_number": "11234",
+    "voucher_value": "499.0"
+  },
+  {
+    "id": 2236,
+    "seller_id": null,
+    "external_id": "d301c7ec-d683-4403-9e4e-80f1f3ac01f1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-05 20:21:30 UTC",
+    "voucher_number": "11243",
+    "voucher_value": "239.2"
+  },
+  {
+    "id": 2237,
+    "seller_id": null,
+    "external_id": "de12fde5-5b67-4e81-a061-ae44b448c749",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-05 20:31:58 UTC",
+    "voucher_number": "11244",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2238,
+    "seller_id": null,
+    "external_id": "e7ba2ef5-ef3c-4355-8fcc-41c4e2fd27ab",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-06 00:24:25 UTC",
+    "voucher_number": "11248",
+    "voucher_value": "787.74"
+  },
+  {
+    "id": 2239,
+    "seller_id": null,
+    "external_id": "c5955630-2ce4-48dc-84a5-6f536c732a22",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-07 07:55:55 UTC",
+    "voucher_number": "11256",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2240,
+    "seller_id": null,
+    "external_id": "2502dae0-6ecc-4ee0-a0d3-38c1009dc266",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-08 14:32:47 UTC",
+    "voucher_number": "11292",
+    "voucher_value": "48.0"
+  },
+  {
+    "id": 2241,
+    "seller_id": null,
+    "external_id": "5f1d3e9a-c3c1-42d7-a86d-b719842bf829",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-08 15:37:50 UTC",
+    "voucher_number": "11294",
+    "voucher_value": "148.0"
+  },
+  {
+    "id": 2242,
+    "seller_id": null,
+    "external_id": "e1d3103f-93c9-4eaa-84cb-b6c8840cc202",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-08 16:52:26 UTC",
+    "voucher_number": "11296",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2243,
+    "seller_id": null,
+    "external_id": "bd5ad2ed-e815-4081-b75f-8dd12accfcee",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-09 17:53:42 UTC",
+    "voucher_number": "11322",
+    "voucher_value": "128.0"
+  },
+  {
+    "id": 2244,
+    "seller_id": null,
+    "external_id": "c6b06b7c-bbc0-444b-bb61-4cc2ddafe018",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-09 18:20:04 UTC",
+    "voucher_number": "11323",
+    "voucher_value": "458.0"
+  },
+  {
+    "id": 2245,
+    "seller_id": null,
+    "external_id": "3437c3c9-5362-4dc9-a195-536a8ec5d80c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-09 20:46:30 UTC",
+    "voucher_number": "11325",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2246,
+    "seller_id": null,
+    "external_id": "479e86f0-d7fe-4f43-9d69-990ce27779e5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-09 21:40:16 UTC",
+    "voucher_number": "11318",
+    "voucher_value": "776.0"
+  },
+  {
+    "id": 2247,
+    "seller_id": null,
+    "external_id": "7bf7867f-a35f-4975-9b95-8a01ee2b7e14",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-10 00:19:01 UTC",
+    "voucher_number": "11330",
+    "voucher_value": "1398.0"
+  },
+  {
+    "id": 2248,
+    "seller_id": null,
+    "external_id": "cacfba20-b10d-4604-87bd-1c56e959e44e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-10 01:39:06 UTC",
+    "voucher_number": "11340",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2249,
+    "seller_id": null,
+    "external_id": "54467824-5560-4e90-afd0-568537d1b04a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-10 03:55:47 UTC",
+    "voucher_number": "11342",
+    "voucher_value": "379.0"
+  },
+  {
+    "id": 2250,
+    "seller_id": null,
+    "external_id": "23ca7bd3-526c-489f-b00c-68436b7de2b3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-10 10:33:21 UTC",
+    "voucher_number": "11352",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2251,
+    "seller_id": null,
+    "external_id": "e9285b15-29e0-4418-ac98-a4959a301099",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-10 19:33:21 UTC",
+    "voucher_number": "11363",
+    "voucher_value": "139.65"
+  },
+  {
+    "id": 2252,
+    "seller_id": null,
+    "external_id": "bdd83e54-9b8a-4e6f-b156-48b2b44c0e33",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-12 19:13:40 UTC",
+    "voucher_number": "11415",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2253,
+    "seller_id": null,
+    "external_id": "7577122b-b566-4b43-b390-847cf801901d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-12 20:07:49 UTC",
+    "voucher_number": "11416",
+    "voucher_value": "168.0"
+  },
+  {
+    "id": 2254,
+    "seller_id": null,
+    "external_id": "a42db866-6f59-4188-8e64-a710b7d87cc4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-13 00:08:01 UTC",
+    "voucher_number": "11420",
+    "voucher_value": "649.0"
+  },
+  {
+    "id": 2255,
+    "seller_id": null,
+    "external_id": "9d61bb54-00bd-4504-a67c-e5d19574a886",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-13 01:45:17 UTC",
+    "voucher_number": "11423",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2256,
+    "seller_id": null,
+    "external_id": "4c9a78d5-f80d-4a54-93e4-b3bdc940dd0c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-14 05:05:02 UTC",
+    "voucher_number": "11433",
+    "voucher_value": "178.0"
+  },
+  {
+    "id": 2257,
+    "seller_id": null,
+    "external_id": "44952e40-724b-46b8-a6bf-df7970a1e2d2",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-14 13:48:52 UTC",
+    "voucher_number": "11437",
+    "voucher_value": "774.0"
+  },
+  {
+    "id": 2258,
+    "seller_id": null,
+    "external_id": "621a6694-bcf4-432b-998a-0b9fa57b1cb5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-20 20:52:08 UTC",
+    "voucher_number": "11472",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2259,
+    "seller_id": null,
+    "external_id": "e456318a-cf9b-4f4b-8e9e-d332c657e0c6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-21 08:02:15 UTC",
+    "voucher_number": "11480",
+    "voucher_value": "747.0"
+  },
+  {
+    "id": 2260,
+    "seller_id": null,
+    "external_id": "d3698b30-4606-4f15-8484-b36629bb3117",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-23 04:29:09 UTC",
+    "voucher_number": "11513",
+    "voucher_value": "88.0"
+  },
+  {
+    "id": 2261,
+    "seller_id": null,
+    "external_id": "62690763-7cdb-4028-a8ce-a3ac98c7efdd",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-24 02:29:09 UTC",
+    "voucher_number": "11531",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2262,
+    "seller_id": null,
+    "external_id": "778d2f46-29f6-45ba-874a-5b787216cf6e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-25 11:45:37 UTC",
+    "voucher_number": "11541",
+    "voucher_value": "1234.0"
+  },
+  {
+    "id": 2263,
+    "seller_id": null,
+    "external_id": "3d178b6d-0a62-422a-a71e-e629121bbc47",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-25 14:32:50 UTC",
+    "voucher_number": "11545",
+    "voucher_value": "225.0"
+  },
+  {
+    "id": 2264,
+    "seller_id": null,
+    "external_id": "83cd8b84-9f53-47a9-90c9-c4ed7bc11609",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-26 00:12:03 UTC",
+    "voucher_number": "11558",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2265,
+    "seller_id": null,
+    "external_id": "38596abc-503c-4f25-9414-a037e1720b0a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-26 10:47:11 UTC",
+    "voucher_number": "11564",
+    "voucher_value": "148.0"
+  },
+  {
+    "id": 2266,
+    "seller_id": null,
+    "external_id": "12b1c7af-9a2b-49cb-be35-6e3300757e8a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-26 19:05:09 UTC",
+    "voucher_number": "11572",
+    "voucher_value": "278.0"
+  },
+  {
+    "id": 2267,
+    "seller_id": null,
+    "external_id": "221620ea-d4d2-4572-b976-ecab1ad5f31b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-28 09:09:38 UTC",
+    "voucher_number": "11603",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2268,
+    "seller_id": null,
+    "external_id": "3185157c-3aac-4544-9a9b-9204a4a0ed07",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-02-28 13:50:18 UTC",
+    "voucher_number": "11611",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2269,
+    "seller_id": null,
+    "external_id": "cc78b3b6-d213-4a84-bcf5-594d24612881",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-02 01:02:23 UTC",
+    "voucher_number": "11659",
+    "voucher_value": "462.0"
+  },
+  {
+    "id": 2270,
+    "seller_id": null,
+    "external_id": "367a96b4-167b-4c84-b303-d3e15c0c9a13",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-03 16:55:35 UTC",
+    "voucher_number": "11671",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2271,
+    "seller_id": null,
+    "external_id": "526aa0dc-866c-4f6d-bc15-aba475522065",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-03 21:22:45 UTC",
+    "voucher_number": "11676",
+    "voucher_value": "138.0"
+  },
+  {
+    "id": 2272,
+    "seller_id": null,
+    "external_id": "64dbfc57-8417-419e-9f27-203afc9cafe1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-07 03:03:38 UTC",
+    "voucher_number": "11717",
+    "voucher_value": "44.0"
+  },
+  {
+    "id": 2273,
+    "seller_id": null,
+    "external_id": "fe4d7815-063a-45cd-ba55-e9f19570eaa0",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-09 03:30:11 UTC",
+    "voucher_number": "11756",
+    "voucher_value": "658.0"
+  },
+  {
+    "id": 2274,
+    "seller_id": null,
+    "external_id": "97a3edb4-70d1-4569-8df9-ab1e1e39d45f",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1975-03-09 04:41:16 UTC",
+    "voucher_number": "11759",
+    "voucher_value": "199.0"
+  },
+  {
+    "id": 2275,
+    "seller_id": null,
+    "external_id": "527c18e5-4989-44ec-b904-b93db7766140",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-09 07:47:23 UTC",
+    "voucher_number": "11761",
+    "voucher_value": "638.0"
+  },
+  {
+    "id": 2276,
+    "seller_id": null,
+    "external_id": "b6dce962-448c-4ea9-91b6-5b5a30513e23",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-10 10:42:43 UTC",
+    "voucher_number": "11770",
+    "voucher_value": "299.0"
+  },
+  {
+    "id": 2277,
+    "seller_id": null,
+    "external_id": "6a22524e-a2ea-48cc-bf31-566e2244def7",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-11 12:52:06 UTC",
+    "voucher_number": "11801",
+    "voucher_value": "88.0"
+  },
+  {
+    "id": 2278,
+    "seller_id": null,
+    "external_id": "49dbd41c-9e37-460c-8188-3cdfbb360256",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-11 15:01:22 UTC",
+    "voucher_number": "11807",
+    "voucher_value": "58.0"
+  },
+  {
+    "id": 2279,
+    "seller_id": null,
+    "external_id": "afbe5323-5acf-489b-9bd1-b0eb3ffd32d0",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-14 10:19:16 UTC",
+    "voucher_number": "11846",
+    "voucher_value": "248.0"
+  },
+  {
+    "id": 2280,
+    "seller_id": null,
+    "external_id": "fc8a838c-b961-4798-a59e-890082cf7e32",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-15 02:10:35 UTC",
+    "voucher_number": "11855",
+    "voucher_value": "358.0"
+  },
+  {
+    "id": 2281,
+    "seller_id": null,
+    "external_id": "2eac6ecd-7675-4ce9-801a-69bd30881162",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-16 17:05:02 UTC",
+    "voucher_number": "11894",
+    "voucher_value": "963.0"
+  },
+  {
+    "id": 2282,
+    "seller_id": null,
+    "external_id": "f5481033-9703-47a8-9680-548b60a5e7af",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-16 17:20:43 UTC",
+    "voucher_number": "11895",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2283,
+    "seller_id": null,
+    "external_id": "79b743f8-cda5-4ff9-8bfc-cf3c1b23b55d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-17 03:38:31 UTC",
+    "voucher_number": "11916",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2284,
+    "seller_id": null,
+    "external_id": "57f25647-93b0-461c-b9cf-71ed331707f9",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-17 18:43:16 UTC",
+    "voucher_number": "11925",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2285,
+    "seller_id": null,
+    "external_id": "019758ac-43de-4446-8579-1d02c933ee96",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-18 02:13:05 UTC",
+    "voucher_number": "11934",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2286,
+    "seller_id": null,
+    "external_id": "07e4342f-716f-46e5-b894-c5e66e10a128",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-19 23:12:53 UTC",
+    "voucher_number": "11957",
+    "voucher_value": "568.1"
+  },
+  {
+    "id": 2287,
+    "seller_id": null,
+    "external_id": "694ea498-1a83-46f9-996e-a7c4548638b9",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-03-20 03:14:07 UTC",
+    "voucher_number": "11964",
+    "voucher_value": "174.0"
+  },
+  {
+    "id": 2288,
+    "seller_id": null,
+    "external_id": "6840f76a-3b2a-40fe-8aec-35fd036e290b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-02 16:55:06 UTC",
+    "voucher_number": "12073",
+    "voucher_value": "128.34"
+  },
+  {
+    "id": 2289,
+    "seller_id": null,
+    "external_id": "311ffb65-4399-43aa-bf77-2e8320017910",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-05 02:38:56 UTC",
+    "voucher_number": "12103",
+    "voucher_value": "176.0"
+  },
+  {
+    "id": 2290,
+    "seller_id": null,
+    "external_id": "44bf1008-0c84-47a8-beb1-f04bd3b13f9a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-06 01:07:32 UTC",
+    "voucher_number": "12124",
+    "voucher_value": "577.0"
+  },
+  {
+    "id": 2291,
+    "seller_id": null,
+    "external_id": "7b582349-9e53-4d0d-a29d-f043a1253fde",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-08 07:11:15 UTC",
+    "voucher_number": "12142",
+    "voucher_value": "616.55"
+  },
+  {
+    "id": 2292,
+    "seller_id": null,
+    "external_id": "6571c0f5-85b2-4c60-b8bb-65bd52218fe0",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-08 07:39:05 UTC",
+    "voucher_number": "12143",
+    "voucher_value": "72.67"
+  },
+  {
+    "id": 2293,
+    "seller_id": null,
+    "external_id": "6dfad6dc-c03f-409a-9c43-ecce18801941",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-09 18:11:41 UTC",
+    "voucher_number": "12154",
+    "voucher_value": "276.0"
+  },
+  {
+    "id": 2294,
+    "seller_id": null,
+    "external_id": "bdd0fb79-cf8d-4ca0-ae7b-ecfec3feef5d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-10 06:31:10 UTC",
+    "voucher_number": "12159",
+    "voucher_value": "328.0"
+  },
+  {
+    "id": 2295,
+    "seller_id": null,
+    "external_id": "f53d9fe2-78ef-4da2-8275-b035c2bdd92c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-12 23:07:43 UTC",
+    "voucher_number": "12195",
+    "voucher_value": "478.0"
+  },
+  {
+    "id": 2296,
+    "seller_id": null,
+    "external_id": "bc25128a-7344-409c-99c0-a2c7eb57ce16",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-13 01:26:10 UTC",
+    "voucher_number": "12199",
+    "voucher_value": "728.0"
+  },
+  {
+    "id": 2297,
+    "seller_id": null,
+    "external_id": "869603ae-4b34-49e4-b5b1-f06d2646d82f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-13 02:40:21 UTC",
+    "voucher_number": "12204",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2298,
+    "seller_id": null,
+    "external_id": "d16de538-4bfd-4b3e-8f0a-6aaa6196b1be",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-14 09:36:36 UTC",
+    "voucher_number": "12225",
+    "voucher_value": "299.0"
+  },
+  {
+    "id": 2299,
+    "seller_id": null,
+    "external_id": "d5a2c91f-4d66-4a6e-a177-917b826b4572",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-14 15:54:56 UTC",
+    "voucher_number": "12237",
+    "voucher_value": "393.0"
+  },
+  {
+    "id": 2300,
+    "seller_id": null,
+    "external_id": "80af1c52-38ba-4a96-afa9-c74535a34fe6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-15 15:33:39 UTC",
+    "voucher_number": "12261",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2301,
+    "seller_id": null,
+    "external_id": "f7499a7a-0c50-4c7c-a97f-d8f9abf7f4f8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-17 08:39:25 UTC",
+    "voucher_number": "12305",
+    "voucher_value": "76.0"
+  },
+  {
+    "id": 2302,
+    "seller_id": null,
+    "external_id": "f4c0c036-67f8-472c-8dc4-16407cd09a53",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-18 07:27:59 UTC",
+    "voucher_number": "12322",
+    "voucher_value": "264.0"
+  },
+  {
+    "id": 2303,
+    "seller_id": null,
+    "external_id": "fd38fd60-4558-4c61-988a-64d73ad9b1b4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-18 17:35:18 UTC",
+    "voucher_number": "12333",
+    "voucher_value": "749.0"
+  },
+  {
+    "id": 2304,
+    "seller_id": null,
+    "external_id": "aebf881c-285e-4cef-bbdc-0b6970e53217",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-18 20:59:31 UTC",
+    "voucher_number": "12337",
+    "voucher_value": "328.0"
+  },
+  {
+    "id": 2305,
+    "seller_id": null,
+    "external_id": "21937879-0fe5-4941-88ff-10b208374096",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-18 21:43:42 UTC",
+    "voucher_number": "12338",
+    "voucher_value": "607.0"
+  },
+  {
+    "id": 2306,
+    "seller_id": null,
+    "external_id": "d9ed9b1c-34ac-4b2d-be0a-6ab6fb097a86",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-19 06:00:26 UTC",
+    "voucher_number": "12341",
+    "voucher_value": "399.0"
+  },
+  {
+    "id": 2307,
+    "seller_id": null,
+    "external_id": "2d1d9113-37b9-4685-80de-98e6f965d958",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-19 19:10:12 UTC",
+    "voucher_number": "12344",
+    "voucher_value": "787.0"
+  },
+  {
+    "id": 2308,
+    "seller_id": null,
+    "external_id": "c7a88783-e4b7-43b3-b069-0aa57680a0b4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-23 20:58:51 UTC",
+    "voucher_number": "12433",
+    "voucher_value": "399.0"
+  },
+  {
+    "id": 2309,
+    "seller_id": null,
+    "external_id": "81bd40d9-8d29-4fc7-87cf-de4f247e7051",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-24 00:13:12 UTC",
+    "voucher_number": "12445",
+    "voucher_value": "128.0"
+  },
+  {
+    "id": 2310,
+    "seller_id": null,
+    "external_id": "86bc62a5-007e-4fcc-986f-0c02e6f52b87",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-24 01:34:18 UTC",
+    "voucher_number": "12447",
+    "voucher_value": "898.0"
+  },
+  {
+    "id": 2311,
+    "seller_id": null,
+    "external_id": "1d5bb025-d97c-4d15-8708-0ff1e0b0be9e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-25 01:59:14 UTC",
+    "voucher_number": "12459",
+    "voucher_value": "274.0"
+  },
+  {
+    "id": 2312,
+    "seller_id": null,
+    "external_id": "ee41f9fe-9373-4743-84eb-3c2b8ae76b65",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-25 08:40:43 UTC",
+    "voucher_number": "12465",
+    "voucher_value": "399.0"
+  },
+  {
+    "id": 2313,
+    "seller_id": null,
+    "external_id": "f652871d-062e-4fa4-a3f0-eddcf3f8bea5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-26 05:05:03 UTC",
+    "voucher_number": "12482",
+    "voucher_value": "728.0"
+  },
+  {
+    "id": 2314,
+    "seller_id": null,
+    "external_id": "24a122f4-02f3-4005-b63f-790a55093e60",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-26 05:23:08 UTC",
+    "voucher_number": "12480",
+    "voucher_value": "1294.0"
+  },
+  {
+    "id": 2315,
+    "seller_id": null,
+    "external_id": "3650d2f9-c80f-4a1b-8ad3-47a6ce170d17",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-26 23:21:08 UTC",
+    "voucher_number": "12489",
+    "voucher_value": "898.0"
+  },
+  {
+    "id": 2316,
+    "seller_id": null,
+    "external_id": "717e9b0d-4d4f-4a57-8a0b-9ee30499cadb",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-27 06:33:15 UTC",
+    "voucher_number": "12491",
+    "voucher_value": "138.0"
+  },
+  {
+    "id": 2317,
+    "seller_id": null,
+    "external_id": "4ad353e5-f425-47d0-9eda-f784ff6df612",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-27 19:22:46 UTC",
+    "voucher_number": "12508",
+    "voucher_value": "348.0"
+  },
+  {
+    "id": 2318,
+    "seller_id": null,
+    "external_id": "0175454e-f46f-46c5-84d8-0b7eb1af5135",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-27 19:25:23 UTC",
+    "voucher_number": "12504",
+    "voucher_value": "558.0"
+  },
+  {
+    "id": 2319,
+    "seller_id": null,
+    "external_id": "156e2ca1-1691-4df8-863a-682e2c9497b3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-28 09:20:08 UTC",
+    "voucher_number": "12523",
+    "voucher_value": "528.0"
+  },
+  {
+    "id": 2320,
+    "seller_id": null,
+    "external_id": "523e14a2-6335-444a-a4e2-6ff1cd005422",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-29 09:27:04 UTC",
+    "voucher_number": "12538",
+    "voucher_value": "119.0"
+  },
+  {
+    "id": 2321,
+    "seller_id": null,
+    "external_id": "94fdb190-8a46-44d8-bd62-f4c9fe712075",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-04-29 10:54:55 UTC",
+    "voucher_number": "12540",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2322,
+    "seller_id": null,
+    "external_id": "033d9bcb-cb5e-4273-8e1f-26c9254af4d8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-02 04:31:53 UTC",
+    "voucher_number": "12581",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2323,
+    "seller_id": null,
+    "external_id": "bef9121f-6ffc-402b-9239-f264accc4801",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-02 04:50:40 UTC",
+    "voucher_number": "12582",
+    "voucher_value": "198.0"
+  },
+  {
+    "id": 2324,
+    "seller_id": null,
+    "external_id": "8b26a7d0-8536-4b61-ba93-396dedf9d5bf",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-02 11:05:30 UTC",
+    "voucher_number": "12585",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2325,
+    "seller_id": null,
+    "external_id": "ba5c3843-2fac-415a-b4df-206aea25f43c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-06 08:15:45 UTC",
+    "voucher_number": "12628",
+    "voucher_value": "138.0"
+  },
+  {
+    "id": 2326,
+    "seller_id": null,
+    "external_id": "114af2c2-9d2d-4266-b47c-ecf5abcba2e9",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-06 10:11:11 UTC",
+    "voucher_number": "12629",
+    "voucher_value": "24.0"
+  },
+  {
+    "id": 2327,
+    "seller_id": null,
+    "external_id": "781642c2-1ed9-44f3-afc8-083ab9248b86",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-06 15:07:21 UTC",
+    "voucher_number": "12640",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2328,
+    "seller_id": null,
+    "external_id": "44fb39dd-239b-486b-8577-6ee4106dd2cf",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-08 09:24:06 UTC",
+    "voucher_number": "12658",
+    "voucher_value": "34.0"
+  },
+  {
+    "id": 2329,
+    "seller_id": null,
+    "external_id": "c5fccc68-a6f8-4faa-a6b0-3d772e9aabb7",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-09 12:21:00 UTC",
+    "voucher_number": "12668",
+    "voucher_value": "249.0"
+  },
+  {
+    "id": 2330,
+    "seller_id": null,
+    "external_id": "34f061dc-ef3f-47a3-a46b-ea68ad734cad",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-10 23:27:44 UTC",
+    "voucher_number": "12673",
+    "voucher_value": "373.0"
+  },
+  {
+    "id": 2331,
+    "seller_id": null,
+    "external_id": "4d86ae56-c569-490b-85a0-f9855784e09f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-12 07:38:32 UTC",
+    "voucher_number": "12680",
+    "voucher_value": "368.0"
+  },
+  {
+    "id": 2332,
+    "seller_id": null,
+    "external_id": "5c5d09fe-6b5b-4ec8-8aa6-1b017a836cd6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-14 08:10:47 UTC",
+    "voucher_number": "12686",
+    "voucher_value": "148.0"
+  },
+  {
+    "id": 2333,
+    "seller_id": null,
+    "external_id": "bd9b12d9-f1f0-45f1-9cb5-9b132392568f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-18 18:26:35 UTC",
+    "voucher_number": "12710",
+    "voucher_value": "898.0"
+  },
+  {
+    "id": 2334,
+    "seller_id": null,
+    "external_id": "4cc41ddb-1ec0-418d-bf46-d2f0f6a01042",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-19 01:36:16 UTC",
+    "voucher_number": "12713",
+    "voucher_value": "449.0"
+  },
+  {
+    "id": 2335,
+    "seller_id": null,
+    "external_id": "de3e83e0-b9e0-46ff-b68f-37b4e3348b32",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-23 20:34:46 UTC",
+    "voucher_number": "12754",
+    "voucher_value": "449.0"
+  },
+  {
+    "id": 2336,
+    "seller_id": null,
+    "external_id": "45b4e66c-e66f-4dd6-9cab-5e03bd135026",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-24 20:51:35 UTC",
+    "voucher_number": "12767",
+    "voucher_value": "29.0"
+  },
+  {
+    "id": 2337,
+    "seller_id": null,
+    "external_id": "72f0a5f8-e3cc-49b9-bc19-2d0d1032330b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-24 23:43:18 UTC",
+    "voucher_number": "12771",
+    "voucher_value": "658.0"
+  },
+  {
+    "id": 2338,
+    "seller_id": null,
+    "external_id": "fa671ca4-7ffd-4a34-8281-902698fbf325",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-25 09:50:44 UTC",
+    "voucher_number": "12772",
+    "voucher_value": "249.0"
+  },
+  {
+    "id": 2339,
+    "seller_id": null,
+    "external_id": "cc251820-2620-4675-a21d-2c0cb9b72963",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-25 12:18:10 UTC",
+    "voucher_number": "12774",
+    "voucher_value": "268.0"
+  },
+  {
+    "id": 2340,
+    "seller_id": null,
+    "external_id": "c10c6f30-8c29-4f87-b165-3430c7cdb281",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-27 11:59:28 UTC",
+    "voucher_number": "12779",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2341,
+    "seller_id": null,
+    "external_id": "133844fd-bf6b-42c2-9fa9-d6c50d7395f3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-27 14:43:36 UTC",
+    "voucher_number": "12781",
+    "voucher_value": "149.0"
+  },
+  {
+    "id": 2342,
+    "seller_id": null,
+    "external_id": "9cfddb67-0b00-4666-ae61-10b8ebfae874",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-27 18:18:18 UTC",
+    "voucher_number": "12784",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2343,
+    "seller_id": null,
+    "external_id": "5a08185d-35a6-497a-88a3-a4114871e4ca",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-28 14:57:22 UTC",
+    "voucher_number": "12796",
+    "voucher_value": "68.0"
+  },
+  {
+    "id": 2344,
+    "seller_id": null,
+    "external_id": "86da343d-b844-4b2d-ae03-e94fcf073f64",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-29 00:36:04 UTC",
+    "voucher_number": "12800",
+    "voucher_value": "449.0"
+  },
+  {
+    "id": 2345,
+    "seller_id": null,
+    "external_id": "55cfe7f1-1a83-403c-8b45-c09b28f76566",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-05-29 10:46:45 UTC",
+    "voucher_number": "12808",
+    "voucher_value": "697.0"
+  },
+  {
+    "id": 2346,
+    "seller_id": null,
+    "external_id": "03c291e3-e85d-47a9-828c-5643b589ad31",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1975-06-01 06:42:28 UTC",
+    "voucher_number": "12852",
+    "voucher_value": "78.0"
+  },
+  {
+    "id": 2347,
+    "seller_id": null,
+    "external_id": "45225c1e-63da-4afd-995f-83c396daa483",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-01 13:49:49 UTC",
+    "voucher_number": "12854",
+    "voucher_value": "149.0"
+  },
+  {
+    "id": 2348,
+    "seller_id": null,
+    "external_id": "43c547ff-fae2-48de-8ea6-265239f89018",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-02 09:47:21 UTC",
+    "voucher_number": "12876",
+    "voucher_value": "677.0"
+  },
+  {
+    "id": 2349,
+    "seller_id": null,
+    "external_id": "ac03e363-1e25-492a-b9ca-a224359fc3ee",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-04 01:41:24 UTC",
+    "voucher_number": "12896",
+    "voucher_value": "299.0"
+  },
+  {
+    "id": 2350,
+    "seller_id": null,
+    "external_id": "8328b03a-01ad-497f-9210-833ba58eda11",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-08 09:00:29 UTC",
+    "voucher_number": "12952",
+    "voucher_value": "34.0"
+  },
+  {
+    "id": 2351,
+    "seller_id": null,
+    "external_id": "275cf741-e1fd-4448-95ed-eda050adbbf4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-13 09:58:06 UTC",
+    "voucher_number": "13013",
+    "voucher_value": "24.0"
+  },
+  {
+    "id": 2352,
+    "seller_id": null,
+    "external_id": "a3886b02-e2c9-473a-ab1d-34921a140a68",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-13 19:33:07 UTC",
+    "voucher_number": "13022",
+    "voucher_value": "368.0"
+  },
+  {
+    "id": 2353,
+    "seller_id": null,
+    "external_id": "2506fbe9-4f4a-45e5-9b92-d5b778ebfa83",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-15 11:18:49 UTC",
+    "voucher_number": "13038",
+    "voucher_value": "378.0"
+  },
+  {
+    "id": 2354,
+    "seller_id": null,
+    "external_id": "e2efc7d9-981b-464d-b160-8117ee42d26d",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1975-06-15 18:46:48 UTC",
+    "voucher_number": "13042",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2355,
+    "seller_id": null,
+    "external_id": "8b3f68da-4e4b-4d71-b40d-c3309ec60400",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-15 18:50:02 UTC",
+    "voucher_number": "13043",
+    "voucher_value": "758.0"
+  },
+  {
+    "id": 2356,
+    "seller_id": null,
+    "external_id": "e006ce6a-6292-4613-9d05-705b5bb766e8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-18 03:44:09 UTC",
+    "voucher_number": "13072",
+    "voucher_value": "113.0"
+  },
+  {
+    "id": 2357,
+    "seller_id": null,
+    "external_id": "44830562-4b89-4374-b44e-34d55a29a389",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-19 08:35:45 UTC",
+    "voucher_number": "13091",
+    "voucher_value": "438.0"
+  },
+  {
+    "id": 2358,
+    "seller_id": null,
+    "external_id": "0cc08388-117d-4b4a-8b93-d66cb5a2f3af",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-20 13:52:57 UTC",
+    "voucher_number": "13098",
+    "voucher_value": "216.0"
+  },
+  {
+    "id": 2359,
+    "seller_id": null,
+    "external_id": "89f66b52-695c-4f40-b3bc-161d8ade1c22",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-22 10:33:40 UTC",
+    "voucher_number": "13119",
+    "voucher_value": "284.0"
+  },
+  {
+    "id": 2360,
+    "seller_id": null,
+    "external_id": "919e702c-7af9-401b-b5c7-4545b929aff3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-22 12:48:58 UTC",
+    "voucher_number": "13122",
+    "voucher_value": "78.0"
+  },
+  {
+    "id": 2361,
+    "seller_id": null,
+    "external_id": "4e79ffee-b3bb-49d4-8408-1d20b5fd3752",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-22 18:04:06 UTC",
+    "voucher_number": "13127",
+    "voucher_value": "236.0"
+  },
+  {
+    "id": 2362,
+    "seller_id": null,
+    "external_id": "ee93783e-5a6e-47c8-bcf4-ded851ae3e16",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-24 18:14:56 UTC",
+    "voucher_number": "13141",
+    "voucher_value": "238.0"
+  },
+  {
+    "id": 2363,
+    "seller_id": null,
+    "external_id": "30f0f690-b30e-43ff-a8a9-c9646af9d6e1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-25 06:25:51 UTC",
+    "voucher_number": "13153",
+    "voucher_value": "727.0"
+  },
+  {
+    "id": 2364,
+    "seller_id": null,
+    "external_id": "ec7e2ccd-d102-4e25-b8b4-c96b5f2c553a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-26 14:12:30 UTC",
+    "voucher_number": "13162",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2365,
+    "seller_id": null,
+    "external_id": "3ea5ba13-63ee-4c1b-9b92-b76fb9489194",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-27 09:16:11 UTC",
+    "voucher_number": "13173",
+    "voucher_value": "1062.1"
+  },
+  {
+    "id": 2366,
+    "seller_id": null,
+    "external_id": "a24682cd-813b-4536-8972-5d05d0af5d67",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-29 03:58:10 UTC",
+    "voucher_number": "13200",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2367,
+    "seller_id": null,
+    "external_id": "9751967c-f151-49de-8356-c01b8a4e400d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-06-30 11:38:11 UTC",
+    "voucher_number": "13225",
+    "voucher_value": "449.0"
+  },
+  {
+    "id": 2368,
+    "seller_id": null,
+    "external_id": "90ab327e-b279-4f1d-a44f-36520f8e4257",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-02 02:12:05 UTC",
+    "voucher_number": "13241",
+    "voucher_value": "472.0"
+  },
+  {
+    "id": 2369,
+    "seller_id": null,
+    "external_id": "d9ab0162-1c05-4aa6-8e89-cada949ac49d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-05 17:10:29 UTC",
+    "voucher_number": "13253",
+    "voucher_value": "958.0"
+  },
+  {
+    "id": 2370,
+    "seller_id": null,
+    "external_id": "8c24691b-2c0f-411c-85d5-4ad5a4ca39bb",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-06 08:52:45 UTC",
+    "voucher_number": "13263",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2371,
+    "seller_id": null,
+    "external_id": "93553e53-b6d1-444e-a143-08a17aca68c4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-07 06:04:20 UTC",
+    "voucher_number": "13276",
+    "voucher_value": "118.0"
+  },
+  {
+    "id": 2372,
+    "seller_id": null,
+    "external_id": "30ebe09e-8a5b-45ed-a888-ea2260ad489c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-10 00:12:55 UTC",
+    "voucher_number": "13303",
+    "voucher_value": "1526.0"
+  },
+  {
+    "id": 2373,
+    "seller_id": null,
+    "external_id": "9634b894-f151-4b60-9ac9-6db2f17a1048",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-10 01:51:05 UTC",
+    "voucher_number": "13312",
+    "voucher_value": "723.0"
+  },
+  {
+    "id": 2374,
+    "seller_id": null,
+    "external_id": "256f47ff-c9f0-4427-9dc1-33d50d8da965",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-10 16:15:37 UTC",
+    "voucher_number": "13321",
+    "voucher_value": "499.0"
+  },
+  {
+    "id": 2375,
+    "seller_id": null,
+    "external_id": "635a4a2d-42fb-43bc-b35b-ee25143700aa",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-11 04:40:01 UTC",
+    "voucher_number": "13329",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2376,
+    "seller_id": null,
+    "external_id": "4cd890b2-7d7b-442e-8ebf-7433f2b303d0",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-11 20:31:17 UTC",
+    "voucher_number": "13346",
+    "voucher_value": "728.0"
+  },
+  {
+    "id": 2377,
+    "seller_id": null,
+    "external_id": "0ca846a7-fdcb-4b07-a3fe-51326c8eff5d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-12 08:27:53 UTC",
+    "voucher_number": "13375",
+    "voucher_value": "368.0"
+  },
+  {
+    "id": 2378,
+    "seller_id": null,
+    "external_id": "a452f0e0-eec3-4dd1-9a3b-c974fb519643",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-14 03:31:37 UTC",
+    "voucher_number": "13411",
+    "voucher_value": "1594.0"
+  },
+  {
+    "id": 2379,
+    "seller_id": null,
+    "external_id": "08f097f6-ea08-43c6-a1fb-4ef44b5fe0e4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-14 14:54:42 UTC",
+    "voucher_number": "13426",
+    "voucher_value": "1346.0"
+  },
+  {
+    "id": 2380,
+    "seller_id": null,
+    "external_id": "5522e5d3-8358-4720-bef3-81505652ee4d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-14 19:40:53 UTC",
+    "voucher_number": "13430",
+    "voucher_value": "898.0"
+  },
+  {
+    "id": 2381,
+    "seller_id": null,
+    "external_id": "ad3b6a15-d521-4de7-bf62-1079d4fabaa9",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-14 21:34:06 UTC",
+    "voucher_number": "13439",
+    "voucher_value": "428.0"
+  },
+  {
+    "id": 2382,
+    "seller_id": null,
+    "external_id": "d9263da3-eaf7-4273-b7cc-e87b962501dd",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-16 09:47:00 UTC",
+    "voucher_number": "13468",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2383,
+    "seller_id": null,
+    "external_id": "712c3149-80d4-407c-9b09-eac7212ec44f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-16 10:16:35 UTC",
+    "voucher_number": "13469",
+    "voucher_value": "206.0"
+  },
+  {
+    "id": 2384,
+    "seller_id": null,
+    "external_id": "12b41788-9744-4b9d-9fbc-620c3a758a60",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-17 00:47:50 UTC",
+    "voucher_number": "13504",
+    "voucher_value": "499.0"
+  },
+  {
+    "id": 2385,
+    "seller_id": null,
+    "external_id": "ed08d65a-deec-4bb7-89a2-842ef337d5d8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-18 21:48:54 UTC",
+    "voucher_number": "13552",
+    "voucher_value": "449.0"
+  },
+  {
+    "id": 2386,
+    "seller_id": null,
+    "external_id": "63e54576-2cda-46fc-934c-a5e9bdf424b3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-19 04:48:06 UTC",
+    "voucher_number": "13557",
+    "voucher_value": "1396.0"
+  },
+  {
+    "id": 2387,
+    "seller_id": null,
+    "external_id": "cf09fde2-61fd-499a-946d-adf13d01e1c1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-20 20:48:06 UTC",
+    "voucher_number": "13612",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2388,
+    "seller_id": null,
+    "external_id": "92a0f443-bfd1-4d93-bd27-40f2db32b2ea",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-23 12:51:01 UTC",
+    "voucher_number": "13672",
+    "voucher_value": "616.0"
+  },
+  {
+    "id": 2389,
+    "seller_id": null,
+    "external_id": "b387f9df-6f41-4b04-9594-312f04dee450",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-24 19:14:37 UTC",
+    "voucher_number": "13715",
+    "voucher_value": "148.0"
+  },
+  {
+    "id": 2390,
+    "seller_id": null,
+    "external_id": "a24a52b9-690e-42f7-b37d-c885e1d552e9",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-25 00:34:20 UTC",
+    "voucher_number": "13732",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2391,
+    "seller_id": null,
+    "external_id": "bfb969e9-c3fb-4bce-b75c-f69d02ea9050",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1975-07-25 08:57:20 UTC",
+    "voucher_number": "13742",
+    "voucher_value": "1398.0"
+  },
+  {
+    "id": 2392,
+    "seller_id": null,
+    "external_id": "af83b161-e5ea-4be1-817e-ebcd74d1dc66",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-25 09:06:34 UTC",
+    "voucher_number": "13744",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2393,
+    "seller_id": null,
+    "external_id": "8a8b0d7b-80d9-44f1-8807-7d427362042b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-25 14:14:35 UTC",
+    "voucher_number": "13751",
+    "voucher_value": "204.0"
+  },
+  {
+    "id": 2394,
+    "seller_id": null,
+    "external_id": "52d60f61-6dc0-4ef6-acac-bb97f696e9c1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-26 14:22:34 UTC",
+    "voucher_number": "13788",
+    "voucher_value": "799.0"
+  },
+  {
+    "id": 2395,
+    "seller_id": null,
+    "external_id": "29544c89-4b54-44c0-99ec-37b31fc922f8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-28 02:28:40 UTC",
+    "voucher_number": "13816",
+    "voucher_value": "898.0"
+  },
+  {
+    "id": 2396,
+    "seller_id": null,
+    "external_id": "6ff26c71-94f1-44e1-8288-acc417c423a1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-28 20:57:21 UTC",
+    "voucher_number": "13842",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2397,
+    "seller_id": null,
+    "external_id": "015ef550-484c-46dd-8ce7-5e7d23cb3e93",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-29 21:24:29 UTC",
+    "voucher_number": "13871",
+    "voucher_value": "83.3"
+  },
+  {
+    "id": 2398,
+    "seller_id": null,
+    "external_id": "a95070a9-24b6-4719-b55c-1a15e2fb20b7",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-29 23:36:08 UTC",
+    "voucher_number": "13872",
+    "voucher_value": "868.0"
+  },
+  {
+    "id": 2399,
+    "seller_id": null,
+    "external_id": "c8569ae5-72c7-41f1-9cde-d2c9cb4b7db1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-29 23:59:56 UTC",
+    "voucher_number": "13874",
+    "voucher_value": "548.0"
+  },
+  {
+    "id": 2400,
+    "seller_id": null,
+    "external_id": "d0d07258-7f65-4c47-95c3-64a2c22479fb",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-30 00:22:32 UTC",
+    "voucher_number": "13875",
+    "voucher_value": "296.0"
+  },
+  {
+    "id": 2401,
+    "seller_id": null,
+    "external_id": "a3ce6ec2-e004-424e-876c-69e74de03766",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-07-30 06:14:43 UTC",
+    "voucher_number": "13885",
+    "voucher_value": "148.0"
+  },
+  {
+    "id": 2402,
+    "seller_id": null,
+    "external_id": "8a4e6573-b346-4d50-9085-7e397993a2dd",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-01 23:45:40 UTC",
+    "voucher_number": "13933",
+    "voucher_value": "499.0"
+  },
+  {
+    "id": 2403,
+    "seller_id": null,
+    "external_id": "7dcf7737-7cde-4528-a6c6-fc25e38a0333",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-02 02:38:58 UTC",
+    "voucher_number": "13937",
+    "voucher_value": "449.0"
+  },
+  {
+    "id": 2404,
+    "seller_id": null,
+    "external_id": "3fe44d1a-7ec4-46f3-bad2-46f6ce906acd",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-03 10:49:11 UTC",
+    "voucher_number": "13950",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2405,
+    "seller_id": null,
+    "external_id": "cb95d584-3318-4974-9710-7f5ab32e2ae5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-03 19:44:45 UTC",
+    "voucher_number": "13957",
+    "voucher_value": "119.0"
+  },
+  {
+    "id": 2406,
+    "seller_id": null,
+    "external_id": "e1b1810c-81bd-4ea3-b727-0d299bc6eb52",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-04 06:55:53 UTC",
+    "voucher_number": "13975",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2407,
+    "seller_id": null,
+    "external_id": "0643b6c1-dd8b-49ee-883d-e966e6c85dea",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-04 08:38:20 UTC",
+    "voucher_number": "13980",
+    "voucher_value": "1698.0"
+  },
+  {
+    "id": 2408,
+    "seller_id": null,
+    "external_id": "f441bf92-1c9f-4940-a577-bc5c59d7be56",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-04 12:49:07 UTC",
+    "voucher_number": "13983",
+    "voucher_value": "372.0"
+  },
+  {
+    "id": 2409,
+    "seller_id": null,
+    "external_id": "d46dbf7c-725a-4321-8736-4361f1a2749a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-05 08:51:33 UTC",
+    "voucher_number": "14008",
+    "voucher_value": "176.0"
+  },
+  {
+    "id": 2410,
+    "seller_id": null,
+    "external_id": "d3be77ea-1546-497a-80fb-5e68b1192c28",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-05 13:45:43 UTC",
+    "voucher_number": "14017",
+    "voucher_value": "278.0"
+  },
+  {
+    "id": 2411,
+    "seller_id": null,
+    "external_id": "8917f5d0-d87f-4acb-976d-7366a1b6830c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-05 14:41:32 UTC",
+    "voucher_number": "14021",
+    "voucher_value": "299.0"
+  },
+  {
+    "id": 2412,
+    "seller_id": null,
+    "external_id": "aff4a4ad-de66-43eb-9c34-523e78ca0339",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-06 03:47:31 UTC",
+    "voucher_number": "14032",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2413,
+    "seller_id": null,
+    "external_id": "84a2808a-ed2d-42a7-a71f-ce17f7e56463",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-06 09:45:12 UTC",
+    "voucher_number": "14038",
+    "voucher_value": "30.0"
+  },
+  {
+    "id": 2414,
+    "seller_id": null,
+    "external_id": "c2e78e08-50b9-4d2c-85ef-a9da24e57052",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-07 03:36:37 UTC",
+    "voucher_number": "14067",
+    "voucher_value": "168.0"
+  },
+  {
+    "id": 2415,
+    "seller_id": null,
+    "external_id": "b2dee476-4965-4f32-a4b3-ce9426b73e8d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-07 06:52:19 UTC",
+    "voucher_number": "14071",
+    "voucher_value": "329.0"
+  },
+  {
+    "id": 2416,
+    "seller_id": null,
+    "external_id": "80f1cd75-8e6f-4d1c-b32e-4bf63cb23bbc",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-07 09:37:47 UTC",
+    "voucher_number": "14076",
+    "voucher_value": "399.0"
+  },
+  {
+    "id": 2417,
+    "seller_id": null,
+    "external_id": "db8264d7-3eb3-43e0-a52c-024bf6a87e1a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-07 17:30:10 UTC",
+    "voucher_number": "14083",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2418,
+    "seller_id": null,
+    "external_id": "ec979f04-1aa3-4526-8eec-6d191a499624",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-07 22:31:59 UTC",
+    "voucher_number": "14091",
+    "voucher_value": "248.0"
+  },
+  {
+    "id": 2419,
+    "seller_id": null,
+    "external_id": "49da44fd-dd9b-4e90-9e53-a29378536074",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-08 20:45:10 UTC",
+    "voucher_number": "14098",
+    "voucher_value": "368.0"
+  },
+  {
+    "id": 2420,
+    "seller_id": null,
+    "external_id": "bd3a5536-6d23-42d6-a79e-6492d534c90e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-09 02:07:37 UTC",
+    "voucher_number": "14101",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2421,
+    "seller_id": null,
+    "external_id": "f73187c1-a5fe-497b-a984-7d22beef07f6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-11 14:48:43 UTC",
+    "voucher_number": "14130",
+    "voucher_value": "449.0"
+  },
+  {
+    "id": 2422,
+    "seller_id": null,
+    "external_id": "37614f07-36e6-4db5-ba67-f577dfe44735",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-11 20:10:02 UTC",
+    "voucher_number": "14132",
+    "voucher_value": "308.0"
+  },
+  {
+    "id": 2423,
+    "seller_id": null,
+    "external_id": "f4472767-841a-41d0-8717-bbf0e6b7776c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-12 17:05:39 UTC",
+    "voucher_number": "14146",
+    "voucher_value": "88.0"
+  },
+  {
+    "id": 2424,
+    "seller_id": null,
+    "external_id": "9ca1beed-9e6e-42c0-bc45-2217d8c4c2bc",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-12 18:12:22 UTC",
+    "voucher_number": "14149",
+    "voucher_value": "917.0"
+  },
+  {
+    "id": 2425,
+    "seller_id": null,
+    "external_id": "77b59a51-e624-4eae-8041-9bf973ad900b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-12 23:43:50 UTC",
+    "voucher_number": "14164",
+    "voucher_value": "428.0"
+  },
+  {
+    "id": 2426,
+    "seller_id": null,
+    "external_id": "cf25d0c5-9ef2-4705-9bce-96ac7f88f457",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-14 10:39:00 UTC",
+    "voucher_number": "14180",
+    "voucher_value": "238.0"
+  },
+  {
+    "id": 2427,
+    "seller_id": null,
+    "external_id": "cca1f163-b6c4-4ab8-bf46-14bdaf7b809c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-14 21:56:04 UTC",
+    "voucher_number": "14186",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2428,
+    "seller_id": null,
+    "external_id": "b20ecfbf-8798-47f4-abdd-353da6dce1ba",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-16 10:33:35 UTC",
+    "voucher_number": "14214",
+    "voucher_value": "866.0"
+  },
+  {
+    "id": 2429,
+    "seller_id": null,
+    "external_id": "b38eb931-d645-4520-b152-03ed80715584",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-17 23:10:23 UTC",
+    "voucher_number": "14245",
+    "voucher_value": "138.0"
+  },
+  {
+    "id": 2430,
+    "seller_id": null,
+    "external_id": "2c4573c0-6c2e-43ed-9684-1e2f6fb79ee3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-18 01:58:11 UTC",
+    "voucher_number": "14253",
+    "voucher_value": "128.0"
+  },
+  {
+    "id": 2431,
+    "seller_id": null,
+    "external_id": "09ff23c2-6fcb-4243-a7cd-1b25b59bb012",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-19 03:45:17 UTC",
+    "voucher_number": "14284",
+    "voucher_value": "1596.0"
+  },
+  {
+    "id": 2432,
+    "seller_id": null,
+    "external_id": "e2239636-5f01-4035-9962-377f6ba1f770",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-19 22:23:51 UTC",
+    "voucher_number": "14317",
+    "voucher_value": "176.0"
+  },
+  {
+    "id": 2433,
+    "seller_id": null,
+    "external_id": "8ae0c1ac-ec0a-4896-9350-4af4ff6ab34b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-20 04:27:29 UTC",
+    "voucher_number": "14344",
+    "voucher_value": "184.0"
+  },
+  {
+    "id": 2434,
+    "seller_id": null,
+    "external_id": "ad9c9d96-e5b4-44e5-9d3f-81fba11f7efe",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-20 05:42:24 UTC",
+    "voucher_number": "14347",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2435,
+    "seller_id": null,
+    "external_id": "fe89df6d-43e7-4ee6-8e61-cfed6d811c9a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-20 14:24:41 UTC",
+    "voucher_number": "14352",
+    "voucher_value": "148.0"
+  },
+  {
+    "id": 2436,
+    "seller_id": null,
+    "external_id": "195fac92-aecc-49b3-aa4e-5c8e410959c7",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-23 23:51:33 UTC",
+    "voucher_number": "14382",
+    "voucher_value": "598.0"
+  },
+  {
+    "id": 2437,
+    "seller_id": null,
+    "external_id": "caa41728-af5d-4a06-8ff3-d0c8be810028",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-24 06:34:49 UTC",
+    "voucher_number": "14387",
+    "voucher_value": "156.0"
+  },
+  {
+    "id": 2438,
+    "seller_id": null,
+    "external_id": "aabb04c7-11fc-4195-8482-989cce76e946",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-24 11:19:45 UTC",
+    "voucher_number": "14392",
+    "voucher_value": "658.0"
+  },
+  {
+    "id": 2439,
+    "seller_id": null,
+    "external_id": "4359158d-f083-4155-8d24-4d8bc20d98d4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-26 16:22:28 UTC",
+    "voucher_number": "14401",
+    "voucher_value": "38.0"
+  },
+  {
+    "id": 2440,
+    "seller_id": null,
+    "external_id": "5fb5620d-95ad-43fb-9015-09485ea82b7e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-27 04:17:57 UTC",
+    "voucher_number": "14405",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2441,
+    "seller_id": null,
+    "external_id": "6ad1f075-fb03-46bc-9d3f-dd2bf564b7bc",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-28 23:46:56 UTC",
+    "voucher_number": "14425",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2442,
+    "seller_id": null,
+    "external_id": "cf12ba94-0056-4cf7-a838-03d33e0d1289",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-29 16:04:53 UTC",
+    "voucher_number": "14435",
+    "voucher_value": "316.0"
+  },
+  {
+    "id": 2443,
+    "seller_id": null,
+    "external_id": "f796262d-2ed0-468c-a0e0-c3881992f309",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-29 16:29:36 UTC",
+    "voucher_number": "14436",
+    "voucher_value": "649.0"
+  },
+  {
+    "id": 2444,
+    "seller_id": null,
+    "external_id": "c47452ec-4504-41e7-a9dc-0a9ea6a0739a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-30 20:37:51 UTC",
+    "voucher_number": "14451",
+    "voucher_value": "515.13"
+  },
+  {
+    "id": 2445,
+    "seller_id": null,
+    "external_id": "b07e8259-2d77-4712-a2b0-2d4717c149e9",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-30 20:46:04 UTC",
+    "voucher_number": "14452",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2446,
+    "seller_id": null,
+    "external_id": "3436feb1-3d95-4591-836b-48f608f72968",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-08-31 08:20:28 UTC",
+    "voucher_number": "14463",
+    "voucher_value": "188.0"
+  },
+  {
+    "id": 2447,
+    "seller_id": null,
+    "external_id": "6cfa7a67-86db-4a85-a95f-3abbd8e411cf",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-02 22:25:59 UTC",
+    "voucher_number": "14500",
+    "voucher_value": "499.0"
+  },
+  {
+    "id": 2448,
+    "seller_id": null,
+    "external_id": "55b56737-3569-45fb-92d0-73c8970e889f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-03 15:43:00 UTC",
+    "voucher_number": "14515",
+    "voucher_value": "1236.0"
+  },
+  {
+    "id": 2449,
+    "seller_id": null,
+    "external_id": "f83ebdd6-5880-4dd1-8c1d-daa3c9c96aa3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-04 08:00:13 UTC",
+    "voucher_number": "14531",
+    "voucher_value": "449.0"
+  },
+  {
+    "id": 2450,
+    "seller_id": null,
+    "external_id": "cbecd7cb-0fb2-4d9e-b5f4-4ae74f9ef66f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-04 12:56:13 UTC",
+    "voucher_number": "14546",
+    "voucher_value": "368.0"
+  },
+  {
+    "id": 2451,
+    "seller_id": null,
+    "external_id": "649b0f19-44b9-434d-90cc-ec2dfa1e2760",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-04 14:03:53 UTC",
+    "voucher_number": "14550",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2452,
+    "seller_id": null,
+    "external_id": "c930cfde-b8df-4188-a54c-0bcbf3405542",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1975-09-04 17:45:35 UTC",
+    "voucher_number": "14555",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2453,
+    "seller_id": null,
+    "external_id": "107a814e-20ac-4ab6-a180-08e33a925c23",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-05 05:41:49 UTC",
+    "voucher_number": "14567",
+    "voucher_value": "238.0"
+  },
+  {
+    "id": 2454,
+    "seller_id": null,
+    "external_id": "8dbfe90c-21d2-4195-a26e-c14408b12bfa",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-05 08:19:47 UTC",
+    "voucher_number": "14574",
+    "voucher_value": "598.0"
+  },
+  {
+    "id": 2455,
+    "seller_id": null,
+    "external_id": "072dffcb-ff22-4736-bce2-a378e7bdbc05",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-06 01:52:59 UTC",
+    "voucher_number": "14589",
+    "voucher_value": "388.0"
+  },
+  {
+    "id": 2456,
+    "seller_id": null,
+    "external_id": "e2343614-ae8a-447c-a283-e2f1adfcbca8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-06 02:47:28 UTC",
+    "voucher_number": "14590",
+    "voucher_value": "598.0"
+  },
+  {
+    "id": 2457,
+    "seller_id": null,
+    "external_id": "4500d0ae-ffa1-452b-84b5-9728a3d04d0b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-06 08:19:08 UTC",
+    "voucher_number": "14595",
+    "voucher_value": "264.0"
+  },
+  {
+    "id": 2458,
+    "seller_id": null,
+    "external_id": "425e9dfa-124d-4ce8-a0e0-92da2960d048",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-06 21:55:26 UTC",
+    "voucher_number": "14602",
+    "voucher_value": "598.0"
+  },
+  {
+    "id": 2459,
+    "seller_id": null,
+    "external_id": "2b4f6de5-77fd-489f-b24a-497e1d8321d5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-07 04:52:38 UTC",
+    "voucher_number": "14616",
+    "voucher_value": "288.0"
+  },
+  {
+    "id": 2460,
+    "seller_id": null,
+    "external_id": "b7fbc814-7c44-4bdb-8b2e-200d275d734f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-11 07:15:23 UTC",
+    "voucher_number": "14664",
+    "voucher_value": "298.0"
+  },
+  {
+    "id": 2461,
+    "seller_id": null,
+    "external_id": "9d7274b1-f87b-4f8c-9bbd-32d289c0a123",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-11 12:47:30 UTC",
+    "voucher_number": "14671",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2462,
+    "seller_id": null,
+    "external_id": "156f8280-4583-4ebe-8195-c8c8d0dc05f8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-14 07:26:14 UTC",
+    "voucher_number": "14716",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2463,
+    "seller_id": null,
+    "external_id": "f22246e8-a52c-4ed4-8093-2d8fd698f268",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-21 03:58:20 UTC",
+    "voucher_number": "14819",
+    "voucher_value": "598.0"
+  },
+  {
+    "id": 2464,
+    "seller_id": null,
+    "external_id": "6411a760-e9ab-4ed1-a029-8f796d05fe14",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-22 17:28:06 UTC",
+    "voucher_number": "14832",
+    "voucher_value": "1398.0"
+  },
+  {
+    "id": 2465,
+    "seller_id": null,
+    "external_id": "ad19bf29-898e-40fd-a7a6-61242f21a6c8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-22 18:55:29 UTC",
+    "voucher_number": "14833",
+    "voucher_value": "345.1"
+  },
+  {
+    "id": 2466,
+    "seller_id": null,
+    "external_id": "6b7cb09d-08a4-411e-b712-64461791ce3d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-23 05:51:49 UTC",
+    "voucher_number": "14844",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2467,
+    "seller_id": null,
+    "external_id": "da38e64b-61c2-492b-b5d9-2a149b2d9a72",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-23 08:16:20 UTC",
+    "voucher_number": "14850",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2468,
+    "seller_id": null,
+    "external_id": "2dad104b-0a42-4f9f-9954-8ea99fdc900c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-23 10:58:06 UTC",
+    "voucher_number": "14854",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2469,
+    "seller_id": null,
+    "external_id": "bb4af0d8-b5b5-4c75-bd0f-f88cb88683c3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-23 16:32:07 UTC",
+    "voucher_number": "14864",
+    "voucher_value": "266.0"
+  },
+  {
+    "id": 2470,
+    "seller_id": null,
+    "external_id": "1e57b056-0f92-45e1-9193-4cb5489b7a58",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-23 20:23:05 UTC",
+    "voucher_number": "14868",
+    "voucher_value": "96.0"
+  },
+  {
+    "id": 2471,
+    "seller_id": null,
+    "external_id": "96f320be-fe32-43f0-a363-ab4cdcf87017",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-24 15:06:45 UTC",
+    "voucher_number": "14874",
+    "voucher_value": "598.0"
+  },
+  {
+    "id": 2472,
+    "seller_id": null,
+    "external_id": "5a911c42-7872-40e1-870e-6aaddaae84b0",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-25 18:18:05 UTC",
+    "voucher_number": "14897",
+    "voucher_value": "88.0"
+  },
+  {
+    "id": 2473,
+    "seller_id": null,
+    "external_id": "890b575f-4bea-4446-9990-c8f523b17fe1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-26 00:22:21 UTC",
+    "voucher_number": "14900",
+    "voucher_value": "74.0"
+  },
+  {
+    "id": 2474,
+    "seller_id": null,
+    "external_id": "8e7db10c-77fe-4abc-971c-d9a06897689b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-27 02:46:26 UTC",
+    "voucher_number": "14919",
+    "voucher_value": "663.1"
+  },
+  {
+    "id": 2475,
+    "seller_id": null,
+    "external_id": "d3258f71-6150-42e0-a357-38bddc677dc4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-27 03:48:11 UTC",
+    "voucher_number": "14921",
+    "voucher_value": "658.0"
+  },
+  {
+    "id": 2476,
+    "seller_id": null,
+    "external_id": "a35169d0-4488-4023-b360-d8e3011990a8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-27 04:37:48 UTC",
+    "voucher_number": "14917",
+    "voucher_value": "1604.0"
+  },
+  {
+    "id": 2477,
+    "seller_id": null,
+    "external_id": "b472a36b-ad6d-4289-bbe7-0edd49a709c7",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-27 13:09:44 UTC",
+    "voucher_number": "14930",
+    "voucher_value": "649.0"
+  },
+  {
+    "id": 2478,
+    "seller_id": null,
+    "external_id": "05d86f92-9672-4a5b-9383-41915b2678f1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-27 22:15:11 UTC",
+    "voucher_number": "14933",
+    "voucher_value": "414.0"
+  },
+  {
+    "id": 2479,
+    "seller_id": null,
+    "external_id": "8e9aa29e-ef5d-46b6-ade7-6b64bba6d1ff",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-28 23:49:29 UTC",
+    "voucher_number": "14958",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2480,
+    "seller_id": null,
+    "external_id": "c2be2bfa-d6b0-4371-b1b4-f1536570d0a3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-29 03:16:18 UTC",
+    "voucher_number": "14959",
+    "voucher_value": "1026.0"
+  },
+  {
+    "id": 2481,
+    "seller_id": null,
+    "external_id": "bc1f1445-5683-4f0b-ac1b-1359e9d81df6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-09-30 16:23:05 UTC",
+    "voucher_number": "14983",
+    "voucher_value": "598.0"
+  },
+  {
+    "id": 2482,
+    "seller_id": null,
+    "external_id": "81e3ffd1-12c8-4b2d-8cce-c5516e9c298b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-01 04:32:51 UTC",
+    "voucher_number": "14990",
+    "voucher_value": "238.0"
+  },
+  {
+    "id": 2483,
+    "seller_id": null,
+    "external_id": "7dc9e978-b87e-4584-8219-e44673bc5487",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-01 05:52:05 UTC",
+    "voucher_number": "14994",
+    "voucher_value": "998.0"
+  },
+  {
+    "id": 2484,
+    "seller_id": null,
+    "external_id": "c4c9aa2f-5cd6-42a7-b536-7972bf39faf3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-01 15:10:27 UTC",
+    "voucher_number": "15010",
+    "voucher_value": "428.0"
+  },
+  {
+    "id": 2485,
+    "seller_id": null,
+    "external_id": "d686c326-1d4f-47ad-aaa2-500046059fd3",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-01 19:23:50 UTC",
+    "voucher_number": "15011",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2486,
+    "seller_id": null,
+    "external_id": "5d95d6ca-6395-4a78-8c35-df73b23dc4c1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-01 20:12:01 UTC",
+    "voucher_number": "15013",
+    "voucher_value": "598.0"
+  },
+  {
+    "id": 2487,
+    "seller_id": null,
+    "external_id": "96f063c5-6e2c-4967-82b1-24911b252110",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-02 23:10:13 UTC",
+    "voucher_number": "15026",
+    "voucher_value": "128.0"
+  },
+  {
+    "id": 2488,
+    "seller_id": null,
+    "external_id": "4f953fcf-afff-4c4d-aa29-0f593016d7c4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-03 10:28:18 UTC",
+    "voucher_number": "15037",
+    "voucher_value": "598.0"
+  },
+  {
+    "id": 2489,
+    "seller_id": null,
+    "external_id": "41537c1e-df0c-434a-bc95-a99f3ad51c7e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-06 04:51:08 UTC",
+    "voucher_number": "15077",
+    "voucher_value": "1356.0"
+  },
+  {
+    "id": 2490,
+    "seller_id": null,
+    "external_id": "c50130e4-6579-439c-87ef-9e9d528e9c13",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-07 14:33:11 UTC",
+    "voucher_number": "15094",
+    "voucher_value": "124.0"
+  },
+  {
+    "id": 2491,
+    "seller_id": null,
+    "external_id": "4f11effb-3365-4678-83c6-aba2f5bbf2f6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-07 17:11:59 UTC",
+    "voucher_number": "15097",
+    "voucher_value": "78.0"
+  },
+  {
+    "id": 2492,
+    "seller_id": null,
+    "external_id": "eea7ccfd-022d-48ea-8baa-5016f0edb097",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1975-10-08 05:46:31 UTC",
+    "voucher_number": "15113",
+    "voucher_value": "228.0"
+  },
+  {
+    "id": 2493,
+    "seller_id": null,
+    "external_id": "d6faac01-860d-4295-8053-65c4dee23fa1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-08 09:01:18 UTC",
+    "voucher_number": "15118",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2494,
+    "seller_id": null,
+    "external_id": "a1b20791-70fd-4238-9c1f-a76c174ccda1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-09 10:55:00 UTC",
+    "voucher_number": "15140",
+    "voucher_value": "429.0"
+  },
+  {
+    "id": 2495,
+    "seller_id": null,
+    "external_id": "63079997-268b-46a3-950a-9395a4cd28ee",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-09 12:38:10 UTC",
+    "voucher_number": "15141",
+    "voucher_value": "349.0"
+  },
+  {
+    "id": 2496,
+    "seller_id": null,
+    "external_id": "af0cc7cb-05c1-4834-ba02-7c818e8aab45",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-09 19:22:26 UTC",
+    "voucher_number": "15150",
+    "voucher_value": "435.91"
+  },
+  {
+    "id": 2497,
+    "seller_id": null,
+    "external_id": "fe71f8bb-cd2e-4270-9a6e-16f00040d959",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-10 11:08:48 UTC",
+    "voucher_number": "15164",
+    "voucher_value": "499.0"
+  },
+  {
+    "id": 2498,
+    "seller_id": null,
+    "external_id": "743e94b0-55ca-45b8-a9ae-a097e59c40e9",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-11 06:15:17 UTC",
+    "voucher_number": "15170",
+    "voucher_value": "118.0"
+  },
+  {
+    "id": 2499,
+    "seller_id": null,
+    "external_id": "de2b915c-1c58-4ddc-9d43-c65435fa1747",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-12 07:51:04 UTC",
+    "voucher_number": "15195",
+    "voucher_value": "299.0"
+  },
+  {
+    "id": 2500,
+    "seller_id": null,
+    "external_id": "568b970e-505c-452b-8bee-376c04e834cc",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-12 08:23:18 UTC",
+    "voucher_number": "15196",
+    "voucher_value": "19.0"
+  },
+  {
+    "id": 2501,
+    "seller_id": null,
+    "external_id": "7da46b79-b3fc-49e7-af2a-f92a2706db7c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-14 12:37:27 UTC",
+    "voucher_number": "15219",
+    "voucher_value": "598.0"
+  },
+  {
+    "id": 2502,
+    "seller_id": null,
+    "external_id": "3c6c3731-8d36-4295-af18-cc2ae75e71cb",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-14 14:42:08 UTC",
+    "voucher_number": "15222",
+    "voucher_value": "498.0"
+  },
+  {
+    "id": 2503,
+    "seller_id": null,
+    "external_id": "76275506-73e2-41bd-882c-e72c33576a99",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-14 17:58:56 UTC",
+    "voucher_number": "15224",
+    "voucher_value": "538.0"
+  },
+  {
+    "id": 2504,
+    "seller_id": null,
+    "external_id": "5ef2efa2-2768-495c-ab3b-151b7e49945d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-15 06:46:30 UTC",
+    "voucher_number": "15242",
+    "voucher_value": "429.0"
+  },
+  {
+    "id": 2505,
+    "seller_id": null,
+    "external_id": "757aa51d-1cbd-4304-be9b-56086d8cf82b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-16 07:10:16 UTC",
+    "voucher_number": "15263",
+    "voucher_value": "149.0"
+  },
+  {
+    "id": 2506,
+    "seller_id": null,
+    "external_id": "d030b3f4-daf7-41d7-a37a-a6cb4ce2a4e6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-16 17:10:41 UTC",
+    "voucher_number": "15278",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2507,
+    "seller_id": null,
+    "external_id": "032a51cc-8def-47d3-b04c-bbd86f8d180b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-16 23:42:44 UTC",
+    "voucher_number": "15291",
+    "voucher_value": "198.0"
+  },
+  {
+    "id": 2508,
+    "seller_id": null,
+    "external_id": "5c372d66-af97-4cfe-ba65-062eeeca82fd",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-17 17:28:14 UTC",
+    "voucher_number": "15302",
+    "voucher_value": "1316.2"
+  },
+  {
+    "id": 2509,
+    "seller_id": null,
+    "external_id": "8799b3fc-7823-4912-8ef8-86e704530556",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-17 17:45:06 UTC",
+    "voucher_number": "15303",
+    "voucher_value": "521.64"
+  },
+  {
+    "id": 2510,
+    "seller_id": null,
+    "external_id": "8b0d0b37-c56d-4844-a447-e245336b542e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-17 17:49:35 UTC",
+    "voucher_number": "15301",
+    "voucher_value": "88.0"
+  },
+  {
+    "id": 2511,
+    "seller_id": null,
+    "external_id": "f7594546-7c45-407b-9701-b59e5cb56a3e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-18 04:51:45 UTC",
+    "voucher_number": "15318",
+    "voucher_value": "826.0"
+  },
+  {
+    "id": 2512,
+    "seller_id": null,
+    "external_id": "b41652f6-0418-4b1e-b908-bb67e4c32476",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-18 21:33:59 UTC",
+    "voucher_number": "15343",
+    "voucher_value": "88.0"
+  },
+  {
+    "id": 2513,
+    "seller_id": null,
+    "external_id": "dcd4a8bd-5f05-472c-b5d3-50f42de18b03",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-22 06:17:48 UTC",
+    "voucher_number": "15397",
+    "voucher_value": "328.0"
+  },
+  {
+    "id": 2514,
+    "seller_id": null,
+    "external_id": "83cae72a-b20c-494e-8003-8b71e1651fe2",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-23 00:27:53 UTC",
+    "voucher_number": "15405",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2515,
+    "seller_id": null,
+    "external_id": "756d5e83-11aa-4659-9a3f-0a6ca0b462fd",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-24 09:40:37 UTC",
+    "voucher_number": "15431",
+    "voucher_value": "758.0"
+  },
+  {
+    "id": 2516,
+    "seller_id": null,
+    "external_id": "b20f629d-ad3a-477a-bba7-bf6a7b74fe3a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-27 16:55:15 UTC",
+    "voucher_number": "15480",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2517,
+    "seller_id": null,
+    "external_id": "9f649fc9-5897-4097-ab88-0ad9e9118dc7",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-27 19:14:37 UTC",
+    "voucher_number": "15488",
+    "voucher_value": "848.9"
+  },
+  {
+    "id": 2518,
+    "seller_id": null,
+    "external_id": "ccd7a3fb-c0a1-470a-a111-907d1208126e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-28 16:23:05 UTC",
+    "voucher_number": "15509",
+    "voucher_value": "388.0"
+  },
+  {
+    "id": 2519,
+    "seller_id": null,
+    "external_id": "a2acde6c-6927-4a05-bf39-a77347bf6aec",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-30 11:36:07 UTC",
+    "voucher_number": "15541",
+    "voucher_value": "749.0"
+  },
+  {
+    "id": 2520,
+    "seller_id": null,
+    "external_id": "f176e5a5-457b-4085-abc2-a509a1bb7660",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-10-30 19:41:28 UTC",
+    "voucher_number": "15550",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2521,
+    "seller_id": null,
+    "external_id": "7bee40c3-f4fb-4aa2-8c42-f79eb5aafb9d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-01 00:59:11 UTC",
+    "voucher_number": "15578",
+    "voucher_value": "218.0"
+  },
+  {
+    "id": 2522,
+    "seller_id": null,
+    "external_id": "192f29e3-5270-4a1a-aa9c-78c5b00fe7f8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-02 08:00:45 UTC",
+    "voucher_number": "15615",
+    "voucher_value": "288.0"
+  },
+  {
+    "id": 2523,
+    "seller_id": null,
+    "external_id": "d85a0bfa-8448-4f5f-9c9d-6063f2a06897",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-02 15:39:55 UTC",
+    "voucher_number": "15620",
+    "voucher_value": "336.0"
+  },
+  {
+    "id": 2524,
+    "seller_id": null,
+    "external_id": "10a16c97-37f0-437b-bdfd-7ed536348fd9",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-04 14:02:25 UTC",
+    "voucher_number": "15646",
+    "voucher_value": "138.0"
+  },
+  {
+    "id": 2525,
+    "seller_id": null,
+    "external_id": "a89a050e-647d-493b-97a8-8de4a4157fa5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-05 07:25:39 UTC",
+    "voucher_number": "15686",
+    "voucher_value": "258.0"
+  },
+  {
+    "id": 2526,
+    "seller_id": null,
+    "external_id": "4a0705d5-3aa6-4b84-bd9f-6354b9b0c2fa",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-06 17:43:54 UTC",
+    "voucher_number": "15697",
+    "voucher_value": "342.0"
+  },
+  {
+    "id": 2527,
+    "seller_id": null,
+    "external_id": "f573a936-5c17-4f97-9bf0-bf27e381d330",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-06 19:45:04 UTC",
+    "voucher_number": "15701",
+    "voucher_value": "138.0"
+  },
+  {
+    "id": 2528,
+    "seller_id": null,
+    "external_id": "42068046-2236-49be-a88a-ffca90183112",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-07 03:13:18 UTC",
+    "voucher_number": "15713",
+    "voucher_value": "78.0"
+  },
+  {
+    "id": 2529,
+    "seller_id": null,
+    "external_id": "47583d7b-d40d-446e-9799-1b11911bd8c6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-07 10:12:07 UTC",
+    "voucher_number": "15723",
+    "voucher_value": "528.0"
+  },
+  {
+    "id": 2530,
+    "seller_id": null,
+    "external_id": "d05b6063-51df-4e4b-98a8-adacf6551c75",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-09 00:36:19 UTC",
+    "voucher_number": "15746",
+    "voucher_value": "288.0"
+  },
+  {
+    "id": 2531,
+    "seller_id": null,
+    "external_id": "b0b5745b-f621-4ab6-98a5-83da98591ffe",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-10 11:30:33 UTC",
+    "voucher_number": "15776",
+    "voucher_value": "84.0"
+  },
+  {
+    "id": 2532,
+    "seller_id": null,
+    "external_id": "fe2128bc-732e-439f-b15a-139e4b71d93f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-10 15:05:37 UTC",
+    "voucher_number": "15775",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2533,
+    "seller_id": null,
+    "external_id": "865e3c43-3d9d-4064-b2ba-fdad35cfd105",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-10 15:23:45 UTC",
+    "voucher_number": "15778",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2534,
+    "seller_id": null,
+    "external_id": "4860eebd-04b6-4493-8f8f-97bf25b11ef6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-11 13:38:50 UTC",
+    "voucher_number": "15797",
+    "voucher_value": "379.0"
+  },
+  {
+    "id": 2535,
+    "seller_id": null,
+    "external_id": "9cf25aff-82e2-4c85-a454-4e7899e149ef",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-11 19:11:09 UTC",
+    "voucher_number": "15808",
+    "voucher_value": "846.0"
+  },
+  {
+    "id": 2536,
+    "seller_id": null,
+    "external_id": "ddea4988-0ecf-4627-a9ce-3fe870a63e34",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1975-11-11 19:24:41 UTC",
+    "voucher_number": "15809",
+    "voucher_value": "148.0"
+  },
+  {
+    "id": 2537,
+    "seller_id": null,
+    "external_id": "6d55267a-48c8-45c2-bd41-06900560dd67",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-12 02:57:10 UTC",
+    "voucher_number": "15816",
+    "voucher_value": "198.0"
+  },
+  {
+    "id": 2538,
+    "seller_id": null,
+    "external_id": "ec383fb4-e6e3-4996-ba4f-5dfd9bd0c5f5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-13 13:05:51 UTC",
+    "voucher_number": "15858",
+    "voucher_value": "358.0"
+  },
+  {
+    "id": 2539,
+    "seller_id": null,
+    "external_id": "951b7e65-4046-4b47-aa6a-766b6230efd7",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-14 08:37:17 UTC",
+    "voucher_number": "15872",
+    "voucher_value": "328.0"
+  },
+  {
+    "id": 2540,
+    "seller_id": null,
+    "external_id": "11a5ca76-647e-493e-9ffe-42148b43a45d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-14 13:19:46 UTC",
+    "voucher_number": "15881",
+    "voucher_value": "256.0"
+  },
+  {
+    "id": 2541,
+    "seller_id": null,
+    "external_id": "e7090cbf-b6aa-46fa-9460-5689b9785589",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-11-14 13:53:02 UTC",
+    "voucher_number": "15883",
+    "voucher_value": "278.0"
+  },
+  {
+    "id": 2542,
+    "seller_id": null,
+    "external_id": "d37ebdb7-f73f-4570-942a-b66b09f05c9a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-12-11 11:03:29 UTC",
+    "voucher_number": "15969",
+    "voucher_value": "204.35"
+  },
+  {
+    "id": 2543,
+    "seller_id": null,
+    "external_id": "f7652897-9ba4-43d4-83fb-ecd343cb260f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-12-11 12:22:21 UTC",
+    "voucher_number": "15971",
+    "voucher_value": "328.0"
+  },
+  {
+    "id": 2544,
+    "seller_id": null,
+    "external_id": "0c0cdac5-3353-477b-85fa-eb6505d58d30",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-12-18 08:18:15 UTC",
+    "voucher_number": "16067",
+    "voucher_value": "528.0"
+  },
+  {
+    "id": 2545,
+    "seller_id": null,
+    "external_id": "d54a338e-7c96-4482-be19-bff0d594cd89",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-12-18 16:00:36 UTC",
+    "voucher_number": "16071",
+    "voucher_value": "1098.0"
+  },
+  {
+    "id": 2546,
+    "seller_id": null,
+    "external_id": "4397a4cc-3a71-487e-b442-c71c7ac74da8",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-12-22 18:22:47 UTC",
+    "voucher_number": "16107",
+    "voucher_value": "196.0"
+  },
+  {
+    "id": 2547,
+    "seller_id": null,
+    "external_id": "d9b154a7-fa0d-4002-91be-1dd2a103dc26",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-12-23 21:15:56 UTC",
+    "voucher_number": "16127",
+    "voucher_value": "414.0"
+  },
+  {
+    "id": 2548,
+    "seller_id": null,
+    "external_id": "985b1262-9b99-48a5-a4d8-c689c8c867cc",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-12-24 10:43:51 UTC",
+    "voucher_number": "16143",
+    "voucher_value": "138.0"
+  },
+  {
+    "id": 2549,
+    "seller_id": null,
+    "external_id": "9c652196-cf9e-48f7-80d1-8892ae8898e2",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-12-24 14:01:10 UTC",
+    "voucher_number": "16158",
+    "voucher_value": "1586.0"
+  },
+  {
+    "id": 2550,
+    "seller_id": null,
+    "external_id": "b6c16da1-4b38-45b0-a475-e0faa87f1cab",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-12-30 15:21:26 UTC",
+    "voucher_number": "16242",
+    "voucher_value": "226.48"
+  },
+  {
+    "id": 2551,
+    "seller_id": null,
+    "external_id": "57bcc62c-b6a1-43eb-9e5a-db698d742268",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1975-12-31 02:45:53 UTC",
+    "voucher_number": "16246",
+    "voucher_value": "379.0"
+  },
+  {
+    "id": 2552,
+    "seller_id": null,
+    "external_id": "84d8645a-1672-4e07-92c2-ff44eeaeffad",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-01-06 04:23:24 UTC",
+    "voucher_number": "16309",
+    "voucher_value": "128.0"
+  },
+  {
+    "id": 2553,
+    "seller_id": null,
+    "external_id": "c7151ebc-c67d-4b3c-8908-e46b74627012",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-01-06 10:09:10 UTC",
+    "voucher_number": "16311",
+    "voucher_value": "649.69"
+  },
+  {
+    "id": 2554,
+    "seller_id": null,
+    "external_id": "e2fd3ff3-7591-464e-b5e3-45aa12999c6b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-01-10 21:46:02 UTC",
+    "voucher_number": "16367",
+    "voucher_value": "248.0"
+  },
+  {
+    "id": 2555,
+    "seller_id": null,
+    "external_id": "3e09d45c-0e2b-4388-9672-2108632c52c2",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-01-15 03:10:05 UTC",
+    "voucher_number": "16397",
+    "voucher_value": "593.3"
+  },
+  {
+    "id": 2556,
+    "seller_id": null,
+    "external_id": "95db3c87-6a70-49a7-af4e-b31ba57a991f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-01-18 17:21:05 UTC",
+    "voucher_number": "16433",
+    "voucher_value": "798.0"
+  },
+  {
+    "id": 2557,
+    "seller_id": null,
+    "external_id": "106376a7-33fe-4853-aacc-f8de97d61419",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-01-18 20:27:02 UTC",
+    "voucher_number": "16438",
+    "voucher_value": "1256.0"
+  },
+  {
+    "id": 2558,
+    "seller_id": null,
+    "external_id": "3ef64df3-8408-48da-95f4-fb6996330d4e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-01-21 19:05:10 UTC",
+    "voucher_number": "16456",
+    "voucher_value": "856.0"
+  },
+  {
+    "id": 2559,
+    "seller_id": null,
+    "external_id": "172abc34-34b7-49e5-bd62-4789f250c73a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-01-23 01:21:31 UTC",
+    "voucher_number": "16485",
+    "voucher_value": "399.0"
+  },
+  {
+    "id": 2560,
+    "seller_id": null,
+    "external_id": "53fc6d6c-18d6-4be8-823e-769457305c34",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-01-25 19:14:12 UTC",
+    "voucher_number": "16488",
+    "voucher_value": "610.47"
+  },
+  {
+    "id": 2561,
+    "seller_id": null,
+    "external_id": "0a780014-83d9-447f-a1c5-3f8374d91ab2",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-01-30 06:36:55 UTC",
+    "voucher_number": "16523",
+    "voucher_value": "196.0"
+  },
+  {
+    "id": 2562,
+    "seller_id": null,
+    "external_id": "d9ef4e25-2128-46eb-9b9a-8c7f4f2727b1",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-01-30 07:11:43 UTC",
+    "voucher_number": "16524",
+    "voucher_value": "698.0"
+  },
+  {
+    "id": 2563,
+    "seller_id": null,
+    "external_id": "87280ebd-f6d2-402b-b738-13d9dcd68cfd",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-03 23:24:06 UTC",
+    "voucher_number": "16551",
+    "voucher_value": "328.0"
+  },
+  {
+    "id": 2564,
+    "seller_id": null,
+    "external_id": "270190cc-58ff-4703-b9d0-92ceba0846d4",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-04 03:01:36 UTC",
+    "voucher_number": "16557",
+    "voucher_value": "98.0"
+  },
+  {
+    "id": 2565,
+    "seller_id": null,
+    "external_id": "29cb2ca5-a83f-40c0-b8b9-059e505c4bfa",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-06 02:15:49 UTC",
+    "voucher_number": "16576",
+    "voucher_value": "116.0"
+  },
+  {
+    "id": 2566,
+    "seller_id": null,
+    "external_id": "a28f6013-f7fb-4071-8568-625a1bf3c196",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-12 05:20:55 UTC",
+    "voucher_number": "16622",
+    "voucher_value": "118.0"
+  },
+  {
+    "id": 2567,
+    "seller_id": null,
+    "external_id": "9c6dffd7-2c83-4f8e-9532-bc7b92116acd",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-12 07:58:02 UTC",
+    "voucher_number": "16626",
+    "voucher_value": "307.0"
+  },
+  {
+    "id": 2568,
+    "seller_id": null,
+    "external_id": "1f5eb9f7-416a-4966-b775-23e1ebfecbb6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-16 09:58:45 UTC",
+    "voucher_number": "16665",
+    "voucher_value": "74.0"
+  },
+  {
+    "id": 2569,
+    "seller_id": null,
+    "external_id": "2513d32b-0c59-46fc-8692-7cfad8770f97",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-17 20:27:38 UTC",
+    "voucher_number": "16682",
+    "voucher_value": "258.0"
+  },
+  {
+    "id": 2570,
+    "seller_id": null,
+    "external_id": "e907a3f8-2869-4642-996f-b6201b1ca56a",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-18 03:17:00 UTC",
+    "voucher_number": "16688",
+    "voucher_value": "328.0"
+  },
+  {
+    "id": 2571,
+    "seller_id": null,
+    "external_id": "12a55336-3c4a-476f-bc88-4b649f11108b",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-18 07:19:14 UTC",
+    "voucher_number": "16696",
+    "voucher_value": "158.0"
+  },
+  {
+    "id": 2572,
+    "seller_id": null,
+    "external_id": "6309d65d-136b-40fc-96a8-ceeddd196be0",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-18 18:35:48 UTC",
+    "voucher_number": "16714",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2573,
+    "seller_id": null,
+    "external_id": "086998d3-6ee2-48ca-b278-f8c00b4125f6",
+    "exchange_type": "Troca de CrÃ©dito",
+    "processed_at": "1976-02-26 05:11:16 UTC",
+    "voucher_number": "16766",
+    "voucher_value": "198.0"
+  },
+  {
+    "id": 2574,
+    "seller_id": null,
+    "external_id": "a0d5ea73-aa8d-4162-b9c5-65ef96406c36",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-26 16:18:56 UTC",
+    "voucher_number": "16776",
+    "voucher_value": "88.0"
+  },
+  {
+    "id": 2575,
+    "seller_id": null,
+    "external_id": "8b580236-8346-4e4f-8a85-682aefc67487",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-27 19:46:43 UTC",
+    "voucher_number": "16793",
+    "voucher_value": "128.0"
+  },
+  {
+    "id": 2576,
+    "seller_id": null,
+    "external_id": "2a124393-db5e-49ed-85ca-00bb3bc4807c",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-28 09:30:06 UTC",
+    "voucher_number": "16808",
+    "voucher_value": "278.0"
+  },
+  {
+    "id": 2577,
+    "seller_id": null,
+    "external_id": "78de01e4-f47c-4cd5-90eb-32078c94fd15",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-02-29 03:45:01 UTC",
+    "voucher_number": "16825",
+    "voucher_value": "248.0"
+  },
+  {
+    "id": 2578,
+    "seller_id": null,
+    "external_id": "c8a3ba8e-36d4-46e3-b587-bd67126bd5d6",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-03-01 22:29:00 UTC",
+    "voucher_number": "16842",
+    "voucher_value": "188.0"
+  },
+  {
+    "id": 2579,
+    "seller_id": null,
+    "external_id": "e0546857-df2a-484f-9f98-ba952ab1abda",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-03-02 04:40:36 UTC",
+    "voucher_number": "16845",
+    "voucher_value": "253.3"
+  },
+  {
+    "id": 2580,
+    "seller_id": null,
+    "external_id": "c0a60472-0b55-4685-996c-7de6e4efa65f",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-03-05 08:31:57 UTC",
+    "voucher_number": "16891",
+    "voucher_value": "156.0"
+  },
+  {
+    "id": 2581,
+    "seller_id": null,
+    "external_id": "9be80451-798b-475f-b984-ddfded3f9878",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-03-05 20:33:01 UTC",
+    "voucher_number": "16902",
+    "voucher_value": "167.0"
+  },
+  {
+    "id": 2582,
+    "seller_id": null,
+    "external_id": "d8167fab-ba68-4391-ad2b-c7ec694f8f3e",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-03-06 18:58:43 UTC",
+    "voucher_number": "16920",
+    "voucher_value": "991.1"
+  },
+  {
+    "id": 2583,
+    "seller_id": null,
+    "external_id": "3ec1ce81-410c-4225-bd68-70d428be2de5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-03-08 20:18:54 UTC",
+    "voucher_number": "16934",
+    "voucher_value": "278.0"
+  },
+  {
+    "id": 2584,
+    "seller_id": null,
+    "external_id": "820877fa-cd47-45da-90fb-cbc8fc17b38d",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-03-09 03:31:31 UTC",
+    "voucher_number": "16943",
+    "voucher_value": "398.0"
+  },
+  {
+    "id": 2585,
+    "seller_id": null,
+    "external_id": "035f33a5-c078-41ca-b137-6033d3611c10",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-03-09 10:39:18 UTC",
+    "voucher_number": "16958",
+    "voucher_value": "887.3"
+  },
+  {
+    "id": 2586,
+    "seller_id": null,
+    "external_id": "f218040d-ff89-4b6e-92a6-ae0ee5d5a9ec",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-03-10 23:16:56 UTC",
+    "voucher_number": "16974",
+    "voucher_value": "253.3"
+  },
+  {
+    "id": 2587,
+    "seller_id": null,
+    "external_id": "48b73d42-209b-4d7d-83b4-cd8364e59ab5",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-03-12 05:53:46 UTC",
+    "voucher_number": "16990",
+    "voucher_value": "626.0"
+  },
+  {
+    "id": 2588,
+    "seller_id": null,
+    "external_id": "2fdff578-059f-4ae3-a2da-05c859bd03fa",
+    "exchange_type": "TROCA SIMPLES",
+    "processed_at": "1976-03-13 08:27:53 UTC",
+    "voucher_number": "16998",
+    "voucher_value": "178.0"
   }
 ]

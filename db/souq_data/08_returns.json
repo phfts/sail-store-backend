@@ -998,5 +998,1375 @@
     "quantity_returned": "1.0",
     "processed_at": "1974-12-21 08:05:20 UTC",
     "original_sale_id": "4b3abb29-a564-4e30-8409-e4ecb821de22"
+  },
+  {
+    "id": 812,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "e5457944-518d-49ac-9846-79c908c2cefe",
+    "return_transaction": "537798",
+    "quantity_returned": "1.0",
+    "processed_at": "1974-12-26 21:58:28 UTC",
+    "original_sale_id": "b5678f0c-3070-4973-b2f5-00dd0e8136ce"
+  },
+  {
+    "id": 813,
+    "original_order_id": null,
+    "product_id": 52403,
+    "external_id": "f8eee2e4-90c5-49fd-92c3-fb1bce47de5e",
+    "return_transaction": "538640",
+    "quantity_returned": "1.0",
+    "processed_at": "1974-12-27 14:05:37 UTC",
+    "original_sale_id": "6e1b8c4d-151a-4185-9b53-4cebc751bce6"
+  },
+  {
+    "id": 814,
+    "original_order_id": null,
+    "product_id": 47601,
+    "external_id": "67ef43da-cd79-4cf2-bfd2-d39b1ea89526",
+    "return_transaction": "538668",
+    "quantity_returned": "1.0",
+    "processed_at": "1974-12-27 14:38:20 UTC",
+    "original_sale_id": "86993505-2013-4028-a2d2-c8dfb661f5c1"
+  },
+  {
+    "id": 815,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "fa858844-1b0c-484a-b6c7-4499da615d35",
+    "return_transaction": "539875",
+    "quantity_returned": "1.0",
+    "processed_at": "1974-12-28 20:05:44 UTC",
+    "original_sale_id": "4fd98a7a-e392-44b1-a736-7d795cc593ef"
+  },
+  {
+    "id": 816,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "efed3641-f002-4857-acd5-ee4b2094edd7",
+    "return_transaction": "539893",
+    "quantity_returned": "1.0",
+    "processed_at": "1974-12-28 20:32:30 UTC",
+    "original_sale_id": "d700968f-9326-43f7-9f90-5d80e657aacb"
+  },
+  {
+    "id": 817,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "1f4bf015-bc8a-4cce-8ec9-39e0f64c0e96",
+    "return_transaction": "540593",
+    "quantity_returned": "1.0",
+    "processed_at": "1974-12-29 13:56:42 UTC",
+    "original_sale_id": "947e8a59-10d0-4d19-85ba-a67e808c2699"
+  },
+  {
+    "id": 818,
+    "original_order_id": null,
+    "product_id": 51310,
+    "external_id": "cd0627af-8754-441d-b21f-240f4860bcaf",
+    "return_transaction": "542340",
+    "quantity_returned": "1.0",
+    "processed_at": "1974-12-31 03:48:54 UTC",
+    "original_sale_id": "886673e4-275c-45df-81c1-2bddd1458d48"
+  },
+  {
+    "id": 819,
+    "original_order_id": null,
+    "product_id": 51982,
+    "external_id": "3b896418-d3c8-467e-9e4c-b2cf526bcb49",
+    "return_transaction": "542345",
+    "quantity_returned": "1.0",
+    "processed_at": "1974-12-31 03:56:23 UTC",
+    "original_sale_id": "0d93af54-b017-49bc-a969-d7951f2ba320"
+  },
+  {
+    "id": 820,
+    "original_order_id": null,
+    "product_id": 51983,
+    "external_id": "9f81bb59-51c3-4b83-b7cc-3ebc27a7275d",
+    "return_transaction": "542360",
+    "quantity_returned": "2.0",
+    "processed_at": "1974-12-31 04:20:17 UTC",
+    "original_sale_id": "96e3916a-8509-42d2-b80f-80270f142213"
+  },
+  {
+    "id": 821,
+    "original_order_id": null,
+    "product_id": 52189,
+    "external_id": "68f7b347-1a63-4605-ac84-3576b0de4014",
+    "return_transaction": "545201",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-01-02 16:43:43 UTC",
+    "original_sale_id": "dc142d1f-2110-4e0d-b97a-219c7d530137"
+  },
+  {
+    "id": 822,
+    "original_order_id": null,
+    "product_id": 47237,
+    "external_id": "8258402d-c759-4837-a6c1-47f59c253c61",
+    "return_transaction": "547331",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-01-04 21:26:01 UTC",
+    "original_sale_id": "6f196b48-d686-4a6c-a97c-f01ed294cf5c"
+  },
+  {
+    "id": 823,
+    "original_order_id": null,
+    "product_id": 48288,
+    "external_id": "7f9ce1b5-d14d-4e8b-9770-e2bdc8d10c99",
+    "return_transaction": "547636",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-01-05 04:08:23 UTC",
+    "original_sale_id": "dde897bb-5ff1-45f5-b49b-829cd1e390c8"
+  },
+  {
+    "id": 824,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "b23ab256-edab-4c10-b43b-335238b187be",
+    "return_transaction": "553067",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-01-10 15:40:54 UTC",
+    "original_sale_id": "6ae9a669-4d20-4dc3-8091-4073ed76101e"
+  },
+  {
+    "id": 825,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "8a4d5667-5be3-404f-8316-b492745ad50a",
+    "return_transaction": "553131",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-01-10 17:55:49 UTC",
+    "original_sale_id": "2398078b-d022-4e7a-9a1c-ef6ec4d9a99b"
+  },
+  {
+    "id": 826,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "3db87c82-ff15-4e8c-beed-67b9c6ba0144",
+    "return_transaction": "553151",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-01-10 18:22:50 UTC",
+    "original_sale_id": "bd610518-0f90-4d0e-8178-2e5b228ae6f6"
+  },
+  {
+    "id": 827,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "62a9f2d6-ba55-4d15-8579-995c8cb45537",
+    "return_transaction": "553406",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-01-10 23:56:12 UTC",
+    "original_sale_id": "6c3bb31b-fbe9-412d-af9c-9d85e34161fd"
+  },
+  {
+    "id": 828,
+    "original_order_id": null,
+    "product_id": 52440,
+    "external_id": "62797ab6-f107-4adb-b406-80e43858dca2",
+    "return_transaction": "559481",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-01-16 23:46:31 UTC",
+    "original_sale_id": "61db57c0-0df0-4a1a-9a5d-0abac67393fa"
+  },
+  {
+    "id": 829,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "dfd2eef4-338c-4eda-99a6-80206e2c8428",
+    "return_transaction": "563678",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-01-21 12:11:33 UTC",
+    "original_sale_id": "a7735876-84e7-475b-bb98-29c996b211e0"
+  },
+  {
+    "id": 830,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "424f4b17-8c66-4e76-a2c0-ce8eb36e56a7",
+    "return_transaction": "571737",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-01-29 07:00:34 UTC",
+    "original_sale_id": "4d2fbc61-0c7f-4b83-95b1-4c1858bc533b"
+  },
+  {
+    "id": 831,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "ed034f3e-d8ec-4133-aec1-28ab86adc7e6",
+    "return_transaction": "576207",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-02 15:55:17 UTC",
+    "original_sale_id": "aa789d98-88d5-4d6e-9498-6828cec454b6"
+  },
+  {
+    "id": 832,
+    "original_order_id": null,
+    "product_id": 52212,
+    "external_id": "60f30e64-f4ad-4e13-98a3-8e01673a9da4",
+    "return_transaction": "576843",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-03 06:32:10 UTC",
+    "original_sale_id": "2da33332-1590-4286-856c-4cb9f12a8378"
+  },
+  {
+    "id": 833,
+    "original_order_id": null,
+    "product_id": 49286,
+    "external_id": "2a32e6f1-1940-40dc-8345-b08b544a1f52",
+    "return_transaction": "578448",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-04 22:58:51 UTC",
+    "original_sale_id": "8a02b1c1-b20b-4a92-9774-ef2b74b1be95"
+  },
+  {
+    "id": 834,
+    "original_order_id": null,
+    "product_id": 49286,
+    "external_id": "53195952-8828-4c59-9bd6-2126b1da04bf",
+    "return_transaction": "578450",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-04 23:02:05 UTC",
+    "original_sale_id": "8a02b1c1-b20b-4a92-9774-ef2b74b1be95"
+  },
+  {
+    "id": 835,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "1b09404f-b726-4081-b667-3569fff144bf",
+    "return_transaction": "579644",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-06 00:43:43 UTC",
+    "original_sale_id": "76e76c55-8f6c-4d6f-a359-cfedcdb3aacd"
+  },
+  {
+    "id": 836,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "d6cfe013-f2e0-4b13-9cd3-520a35296d0b",
+    "return_transaction": "580675",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-07 08:13:52 UTC",
+    "original_sale_id": "35773551-2a2f-4b66-ae86-e20317febd0d"
+  },
+  {
+    "id": 837,
+    "original_order_id": null,
+    "product_id": 47754,
+    "external_id": "be70d6de-c4b5-448e-b6a2-f98fa6e46f2c",
+    "return_transaction": "580718",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-07 09:06:20 UTC",
+    "original_sale_id": "7d4b8049-5f5f-4c3a-89a4-d13b223355ea"
+  },
+  {
+    "id": 838,
+    "original_order_id": null,
+    "product_id": 50062,
+    "external_id": "c26508ae-f329-4969-854a-8aff80ec1f3a",
+    "return_transaction": "584643",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-11 10:17:51 UTC",
+    "original_sale_id": "91b2168f-8452-43b8-9ba5-a2f65ebe00e6"
+  },
+  {
+    "id": 839,
+    "original_order_id": null,
+    "product_id": 50060,
+    "external_id": "aef3e385-3ef4-4230-95c4-88af175921ce",
+    "return_transaction": "584644",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-11 10:20:09 UTC",
+    "original_sale_id": "6f4d96d6-0b3a-46d2-b882-be3717095d9c"
+  },
+  {
+    "id": 840,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "11c7fb63-bebe-4399-a81d-30946fd0ae0f",
+    "return_transaction": "585846",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-12 15:44:23 UTC",
+    "original_sale_id": "d48f4a9d-a724-4988-9bb9-2de66c3ddfc9"
+  },
+  {
+    "id": 841,
+    "original_order_id": null,
+    "product_id": 47237,
+    "external_id": "1f4d1bdd-b4cf-4066-a4de-767b86bfbe43",
+    "return_transaction": "585848",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-12 15:48:29 UTC",
+    "original_sale_id": "98bc033e-8173-4776-8713-6bc80fa5bf76"
+  },
+  {
+    "id": 842,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "1b85ad94-34a5-4b81-895e-7688ecb21a20",
+    "return_transaction": "586535",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-13 22:48:32 UTC",
+    "original_sale_id": "838f0c1a-e4f9-434a-a77b-84417b7deaa2"
+  },
+  {
+    "id": 843,
+    "original_order_id": null,
+    "product_id": 48276,
+    "external_id": "242ee51b-f543-45a3-b603-c0e1c0292a5e",
+    "return_transaction": "587646",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-15 02:48:23 UTC",
+    "original_sale_id": "10d2cc85-70ea-4a0f-8a58-956d5115a23d"
+  },
+  {
+    "id": 844,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "a90355d7-db3f-4145-ab66-6d21b5fb1d02",
+    "return_transaction": "587671",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-15 03:26:35 UTC",
+    "original_sale_id": "feac0b6f-a91d-42da-9182-bebfd24f67c0"
+  },
+  {
+    "id": 845,
+    "original_order_id": null,
+    "product_id": 51762,
+    "external_id": "41832c3d-eae4-4ee1-b664-e1a1f186bb3c",
+    "return_transaction": "589537",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-21 17:57:49 UTC",
+    "original_sale_id": "a5849f12-b41d-4d1a-9b26-18e8a267c061"
+  },
+  {
+    "id": 846,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "d7f65138-9f0a-405b-ba0d-d81f029c8418",
+    "return_transaction": "590568",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-23 00:08:58 UTC",
+    "original_sale_id": "304a2a19-bf5f-4874-91ae-9c5c3e8a6cdc"
+  },
+  {
+    "id": 847,
+    "original_order_id": null,
+    "product_id": 52050,
+    "external_id": "54f9ca39-e5e4-4916-b16c-222ee71e4fd8",
+    "return_transaction": "594480",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-26 05:18:24 UTC",
+    "original_sale_id": "76b5b5b5-f9f9-4396-ae0a-6004e4d854ff"
+  },
+  {
+    "id": 848,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "818c61b3-4b65-4a21-8fd5-5fdcdb67e932",
+    "return_transaction": "594489",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-26 05:29:35 UTC",
+    "original_sale_id": "0b9f40a0-4f6f-44fc-b4b2-7439745dbae5"
+  },
+  {
+    "id": 849,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "14b3b16d-495a-4f31-a90c-75d50590e2fd",
+    "return_transaction": "594618",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-26 08:23:39 UTC",
+    "original_sale_id": "4e4c63b1-92ac-400a-b390-eb971d2fb083"
+  },
+  {
+    "id": 850,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "e36e6c19-6eb3-40ff-a8b1-00a5d478a83c",
+    "return_transaction": "594639",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-26 08:43:20 UTC",
+    "original_sale_id": "e2c252db-af91-4d1f-b102-2035775d9494"
+  },
+  {
+    "id": 851,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "59bf6b09-1c32-4641-9950-922eb9e0d821",
+    "return_transaction": "594654",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-26 09:05:50 UTC",
+    "original_sale_id": "52ed2ebc-e9b8-496a-af82-5f941ff60e35"
+  },
+  {
+    "id": 852,
+    "original_order_id": null,
+    "product_id": 42973,
+    "external_id": "a467bc52-73bb-4a64-9c41-a261974c97db",
+    "return_transaction": "594741",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-02-26 10:58:12 UTC",
+    "original_sale_id": "3cc09bea-eafa-460b-8800-dfc5677da42f"
+  },
+  {
+    "id": 853,
+    "original_order_id": null,
+    "product_id": 49353,
+    "external_id": "01398e59-6258-4151-8924-73ee70dc5fe1",
+    "return_transaction": "598987",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-03-03 12:39:18 UTC",
+    "original_sale_id": "a9bb677f-f71d-4966-a176-f08ad3a60379"
+  },
+  {
+    "id": 854,
+    "original_order_id": null,
+    "product_id": 49745,
+    "external_id": "ba95c522-6392-4c17-b112-f1a483dc1454",
+    "return_transaction": "599057",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-03-03 14:28:12 UTC",
+    "original_sale_id": "68a0e25f-9df1-41fe-8ded-aadf9ec7c355"
+  },
+  {
+    "id": 855,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "1be31b07-63d7-4787-868c-9f4632921988",
+    "return_transaction": "602884",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-03-07 23:19:20 UTC",
+    "original_sale_id": "280f1ebd-52e7-4c92-acf2-62cc185e6b94"
+  },
+  {
+    "id": 856,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "a4112277-7128-4f58-80db-25e4e30a1a25",
+    "return_transaction": "604433",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-03-09 22:22:51 UTC",
+    "original_sale_id": "58d0a98c-2947-4f8e-8f35-e589b094b474"
+  },
+  {
+    "id": 857,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "8f523458-ea47-48b7-b898-246ee2d13f10",
+    "return_transaction": "604434",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-03-09 22:25:10 UTC",
+    "original_sale_id": "6d2700d8-0674-45c4-8822-3061208ac24d"
+  },
+  {
+    "id": 858,
+    "original_order_id": null,
+    "product_id": 51734,
+    "external_id": "64c423c8-def4-4c70-a912-b8c1b1407945",
+    "return_transaction": "605191",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-03-11 04:00:15 UTC",
+    "original_sale_id": "33c30726-2882-42f4-98e5-195fa418334d"
+  },
+  {
+    "id": 859,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "09d16410-d2d4-47c9-ab3a-548027f33b69",
+    "return_transaction": "606045",
+    "quantity_returned": "100.0",
+    "processed_at": "1975-03-12 13:37:32 UTC",
+    "original_sale_id": "13953065-fcec-40d6-a39c-46d6f12f5e16"
+  },
+  {
+    "id": 860,
+    "original_order_id": null,
+    "product_id": 51798,
+    "external_id": "39efcc52-a792-4e49-a1a5-e3a8c32ac038",
+    "return_transaction": "628896",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-04-09 07:44:39 UTC",
+    "original_sale_id": "47b6670c-f15b-4d7b-9360-9e0abae3117b"
+  },
+  {
+    "id": 861,
+    "original_order_id": null,
+    "product_id": 51631,
+    "external_id": "be454881-05f2-401e-b475-d7a8ec38fce9",
+    "return_transaction": "647211",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-04-30 07:59:13 UTC",
+    "original_sale_id": "85575f99-1dd6-40ed-a63e-bd0d984c26ae"
+  },
+  {
+    "id": 862,
+    "original_order_id": null,
+    "product_id": 51017,
+    "external_id": "9d70ab11-738e-48bb-bf0f-511ebd2823bb",
+    "return_transaction": "649066",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-05-03 10:06:36 UTC",
+    "original_sale_id": "94f27ac5-9f12-4e61-a462-c69bd38d98de"
+  },
+  {
+    "id": 863,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "fa7c726f-522a-454f-a006-80cec11fc287",
+    "return_transaction": "665210",
+    "quantity_returned": "2.0",
+    "processed_at": "1975-05-21 12:54:50 UTC",
+    "original_sale_id": "4d07b478-7558-4725-8b8b-f2f902911f85"
+  },
+  {
+    "id": 864,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "6c83a2a4-9d7b-4d5e-9d2b-c200eabaa564",
+    "return_transaction": "673979",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-05-31 15:16:26 UTC",
+    "original_sale_id": "79f77cf1-2d51-413e-83a9-4889c6d77e9a"
+  },
+  {
+    "id": 865,
+    "original_order_id": null,
+    "product_id": 47974,
+    "external_id": "22ebeef8-79c8-4745-b4bc-58c4065544fc",
+    "return_transaction": "674444",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-06-01 02:59:31 UTC",
+    "original_sale_id": "268fe603-3052-4b49-a7b0-0aa3f5889e5a"
+  },
+  {
+    "id": 866,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "2908d1c0-c6e1-4e70-a71d-cc9b8a3d4937",
+    "return_transaction": "687718",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-06-14 11:17:20 UTC",
+    "original_sale_id": "6d55c2ea-9d99-4c97-b99c-cb624f24b497"
+  },
+  {
+    "id": 867,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "823cddd1-0f40-4ad6-b92e-04888f7987ff",
+    "return_transaction": "695710",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-06-21 12:23:02 UTC",
+    "original_sale_id": "fa891594-bef0-430e-97b0-30bd1751a246"
+  },
+  {
+    "id": 868,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "e6054463-b555-4fb2-b693-df91b52d12c5",
+    "return_transaction": "695769",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-06-21 13:44:06 UTC",
+    "original_sale_id": "40041cbb-f3df-47bd-9713-8c6419b492e5"
+  },
+  {
+    "id": 869,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "6c0897c1-cda7-476a-bd38-f09256d9cfe2",
+    "return_transaction": "695902",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-06-21 16:38:49 UTC",
+    "original_sale_id": "2f0f77f3-5998-42a2-b854-3f04e65b7a28"
+  },
+  {
+    "id": 870,
+    "original_order_id": null,
+    "product_id": 51632,
+    "external_id": "d8ec235a-1929-4e4e-b9f4-636bff50bf71",
+    "return_transaction": "695944",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-06-21 17:41:28 UTC",
+    "original_sale_id": "7ee74696-4190-45de-b285-72861a169ddc"
+  },
+  {
+    "id": 871,
+    "original_order_id": null,
+    "product_id": 48100,
+    "external_id": "be9599d6-6110-4c77-b809-529dc540174d",
+    "return_transaction": "696204",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-06-21 23:31:05 UTC",
+    "original_sale_id": "3df7709d-f463-4b9b-b85c-95c160716d7e"
+  },
+  {
+    "id": 872,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "c0f96173-400c-4514-a14c-40f30a4e4894",
+    "return_transaction": "696215",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-06-21 23:46:47 UTC",
+    "original_sale_id": "9cb4aa35-eb89-40c3-964c-c50570fe7c4d"
+  },
+  {
+    "id": 873,
+    "original_order_id": null,
+    "product_id": 49748,
+    "external_id": "f982c882-5b84-4aeb-a3b2-e0032ee9cb5c",
+    "return_transaction": "696334",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-06-22 02:21:10 UTC",
+    "original_sale_id": "7cc2e41c-2ed6-4747-9a70-6fe39b08b469"
+  },
+  {
+    "id": 874,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "78089100-072a-4493-a55c-32488097a0ed",
+    "return_transaction": "696482",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-06-22 04:31:03 UTC",
+    "original_sale_id": "1f8b40cc-1299-4752-9871-78382b57426d"
+  },
+  {
+    "id": 875,
+    "original_order_id": null,
+    "product_id": 47789,
+    "external_id": "bbd9157f-8e9b-48a2-9993-7c16601c6943",
+    "return_transaction": "704064",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-06-30 00:35:25 UTC",
+    "original_sale_id": "dacaa1a1-ad13-4b91-a612-fe6a555ce648"
+  },
+  {
+    "id": 876,
+    "original_order_id": null,
+    "product_id": 51715,
+    "external_id": "fbab1ee1-2d8b-47f5-95cb-17e34b6bd3fc",
+    "return_transaction": "713435",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-07-10 02:41:07 UTC",
+    "original_sale_id": "664b9c31-b7be-40a2-bdea-676826a25a68"
+  },
+  {
+    "id": 877,
+    "original_order_id": null,
+    "product_id": 47982,
+    "external_id": "b2d70adf-7c7b-4bd7-9075-b359878120d5",
+    "return_transaction": "715420",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-07-11 23:43:52 UTC",
+    "original_sale_id": "a7354580-e0dd-42d4-8f26-5f0c9a550483"
+  },
+  {
+    "id": 878,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "ff3ecf48-8ddc-407b-9f4a-d81b507ecb36",
+    "return_transaction": "715593",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-07-12 03:30:58 UTC",
+    "original_sale_id": "fcc0e59e-f584-4439-b02d-1a16a9a40f58"
+  },
+  {
+    "id": 879,
+    "original_order_id": null,
+    "product_id": 48880,
+    "external_id": "264199d1-487d-44de-90cb-ae28ab9bb129",
+    "return_transaction": "715758",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-07-12 07:27:51 UTC",
+    "original_sale_id": "d03698c9-5d53-406e-904b-387d59f0d00e"
+  },
+  {
+    "id": 880,
+    "original_order_id": null,
+    "product_id": 51828,
+    "external_id": "5dcbd993-d861-4e33-9dc1-0c947548422a",
+    "return_transaction": "715771",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-07-12 07:47:36 UTC",
+    "original_sale_id": "e3b8dc7b-2b02-4d3e-9485-63238e6de8cb"
+  },
+  {
+    "id": 881,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "660b4239-5cf3-4640-b863-53f3383dc688",
+    "return_transaction": "719940",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-07-18 15:30:42 UTC",
+    "original_sale_id": "56cd9d2c-c21b-4c32-93fd-af1ff2fe398d"
+  },
+  {
+    "id": 882,
+    "original_order_id": null,
+    "product_id": 51588,
+    "external_id": "c785bdff-ea34-4569-ac03-f46087f75168",
+    "return_transaction": "723112",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-07-22 00:03:19 UTC",
+    "original_sale_id": "16109b3f-a697-4a34-9c05-1ed9d2d3d01b"
+  },
+  {
+    "id": 883,
+    "original_order_id": null,
+    "product_id": 51594,
+    "external_id": "6e86429b-03f9-41a7-974d-2b8a1e8183f5",
+    "return_transaction": "724910",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-07-24 06:04:34 UTC",
+    "original_sale_id": "473cce48-583a-465a-8435-c6be3e442593"
+  },
+  {
+    "id": 884,
+    "original_order_id": null,
+    "product_id": 51964,
+    "external_id": "599ba542-7f1c-4704-95f1-4a4a927b6960",
+    "return_transaction": "724981",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-07-24 07:35:00 UTC",
+    "original_sale_id": "c7b992bd-91ab-4e1f-9c00-459625b4548c"
+  },
+  {
+    "id": 885,
+    "original_order_id": null,
+    "product_id": 51545,
+    "external_id": "e071ffe3-7356-42a1-b43f-708d0433c051",
+    "return_transaction": "728722",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-07-28 08:20:01 UTC",
+    "original_sale_id": "6b84ffd2-0e54-4c52-bb3f-6fb5f9454f5f"
+  },
+  {
+    "id": 886,
+    "original_order_id": null,
+    "product_id": 51768,
+    "external_id": "30dd16a5-8a5d-400e-98d1-6eb764dd2a0b",
+    "return_transaction": "730251",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-07-30 03:59:03 UTC",
+    "original_sale_id": "15b432ee-5dc5-457c-9b44-1e2cef893c88"
+  },
+  {
+    "id": 887,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "3df2fdd0-86a8-4769-a3bd-2bed0303ea20",
+    "return_transaction": "735193",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-08-05 06:55:46 UTC",
+    "original_sale_id": "aca11886-f828-4776-af4e-fe35d40b6518"
+  },
+  {
+    "id": 888,
+    "original_order_id": null,
+    "product_id": 49449,
+    "external_id": "d56078a8-bcb6-43a6-ba62-dd0ce6c93bad",
+    "return_transaction": "735737",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-08-05 18:10:00 UTC",
+    "original_sale_id": "8de12540-483c-4f23-9d79-d4255c29fda4"
+  },
+  {
+    "id": 889,
+    "original_order_id": null,
+    "product_id": 47995,
+    "external_id": "801aedb3-ff00-4045-bb1c-475944c501e7",
+    "return_transaction": "739407",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-08-09 22:42:44 UTC",
+    "original_sale_id": "2b2a352d-1074-4611-83a7-b6d62f1df5eb"
+  },
+  {
+    "id": 890,
+    "original_order_id": null,
+    "product_id": 47672,
+    "external_id": "4984cd37-3e35-4035-affb-71d9ca54c7df",
+    "return_transaction": "746828",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-08-17 18:52:08 UTC",
+    "original_sale_id": "6c6b3700-e401-482b-b7a5-3363b12491a8"
+  },
+  {
+    "id": 891,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "236c6368-3639-49ae-a6f3-af9e26414518",
+    "return_transaction": "746835",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-08-17 19:01:44 UTC",
+    "original_sale_id": "6706257e-8de7-43ee-8f07-c38674087eb1"
+  },
+  {
+    "id": 892,
+    "original_order_id": null,
+    "product_id": 51277,
+    "external_id": "f368e3aa-f880-4d47-8bca-1a402f6bf838",
+    "return_transaction": "747188",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-08-18 03:27:57 UTC",
+    "original_sale_id": "f7daea15-b2d0-401b-9dbc-8416ff64168f"
+  },
+  {
+    "id": 893,
+    "original_order_id": null,
+    "product_id": 52126,
+    "external_id": "f42115ad-9351-4358-80ff-5410ffc7237d",
+    "return_transaction": "747204",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-08-18 03:50:03 UTC",
+    "original_sale_id": "655f87a9-3538-42c5-a7ef-8d73e5422014"
+  },
+  {
+    "id": 894,
+    "original_order_id": null,
+    "product_id": 52139,
+    "external_id": "e505a7f0-3174-422f-9ccc-e8708de199c0",
+    "return_transaction": "747681",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-08-18 22:01:47 UTC",
+    "original_sale_id": "df7aefe0-f864-49a7-9164-780493c4356a"
+  },
+  {
+    "id": 895,
+    "original_order_id": null,
+    "product_id": 51300,
+    "external_id": "7179c082-f584-4a0d-8938-88aef0224498",
+    "return_transaction": "755814",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-08-27 08:02:44 UTC",
+    "original_sale_id": "006f4897-ff5b-4de4-b2eb-4d838ca20743"
+  },
+  {
+    "id": 896,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "267009f3-996e-4c2e-9230-8c36d0834287",
+    "return_transaction": "755997",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-08-27 11:29:06 UTC",
+    "original_sale_id": "744c5b9a-8874-405c-95e1-2f386cc0edd6"
+  },
+  {
+    "id": 897,
+    "original_order_id": null,
+    "product_id": 48469,
+    "external_id": "116f8aa6-3bb3-4d8e-a842-91bdf144ec03",
+    "return_transaction": "760156",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-08-30 20:49:03 UTC",
+    "original_sale_id": "1bf4ea4b-c770-4de6-a7a5-668232c4b720"
+  },
+  {
+    "id": 898,
+    "original_order_id": null,
+    "product_id": 51949,
+    "external_id": "1e558e0a-7c21-43b0-bd31-a1b99150eb9e",
+    "return_transaction": "760705",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-08-31 06:53:15 UTC",
+    "original_sale_id": "d4f6f8a5-fc1f-4b80-a394-84a606b07b82"
+  },
+  {
+    "id": 899,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "a9435c14-bfc1-4a17-8617-4a995b0b4cf1",
+    "return_transaction": "766757",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-06 16:13:43 UTC",
+    "original_sale_id": "05d46f7a-a7c7-4d0c-9931-d0ce30835760"
+  },
+  {
+    "id": 900,
+    "original_order_id": null,
+    "product_id": 49758,
+    "external_id": "6ea65f72-f427-4ac4-9cf6-2177d33eeec8",
+    "return_transaction": "766788",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-06 17:34:51 UTC",
+    "original_sale_id": "56561a17-d22b-43fe-83b2-2e820e5f128e"
+  },
+  {
+    "id": 901,
+    "original_order_id": null,
+    "product_id": 51508,
+    "external_id": "8456d56d-105f-4518-8903-650d1820a2c7",
+    "return_transaction": "770440",
+    "quantity_returned": "6.0",
+    "processed_at": "1975-09-11 15:24:35 UTC",
+    "original_sale_id": "d1577fed-0845-42cc-b42e-9d6058c1a4ab"
+  },
+  {
+    "id": 902,
+    "original_order_id": null,
+    "product_id": 51098,
+    "external_id": "64632b40-06cc-49c5-ae01-9c6e574c97b4",
+    "return_transaction": "773301",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-14 16:02:35 UTC",
+    "original_sale_id": "f1046d1e-5e6e-4d51-ba92-6793a6440175"
+  },
+  {
+    "id": 903,
+    "original_order_id": null,
+    "product_id": 51617,
+    "external_id": "b7a45f60-ba69-4128-a04d-5e706c549f91",
+    "return_transaction": "773315",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-14 16:18:34 UTC",
+    "original_sale_id": "c2eb8ede-e7ab-4315-b840-e49286567ab8"
+  },
+  {
+    "id": 904,
+    "original_order_id": null,
+    "product_id": 48018,
+    "external_id": "a7a9d8a3-db0b-4b36-b898-21b687761c40",
+    "return_transaction": "773887",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-15 20:54:21 UTC",
+    "original_sale_id": "89dd4acf-8409-4ceb-9061-808f8a6c28f9"
+  },
+  {
+    "id": 905,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "b60815ee-e648-4ea3-b589-09f2ee50f9c4",
+    "return_transaction": "775351",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-18 13:48:20 UTC",
+    "original_sale_id": "38aebbb8-5a65-4793-b90e-2e75d11ed236"
+  },
+  {
+    "id": 906,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "b2e4840d-9302-4ffe-93c8-e92e51f08b5a",
+    "return_transaction": "775794",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-18 22:35:44 UTC",
+    "original_sale_id": "c1251b5f-787b-4e13-8a3e-3813c0341970"
+  },
+  {
+    "id": 907,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "fda23ae9-b914-407d-822c-91d10a3357fd",
+    "return_transaction": "778572",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-20 14:06:02 UTC",
+    "original_sale_id": "0726b03f-4fa6-4aa0-9785-0d63cd002ae4"
+  },
+  {
+    "id": 908,
+    "original_order_id": null,
+    "product_id": 52144,
+    "external_id": "cd6a925d-99fb-40cc-9e55-63980db35559",
+    "return_transaction": "778577",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-20 14:12:41 UTC",
+    "original_sale_id": "08c82145-7939-48f1-8803-cbafe75e15fb"
+  },
+  {
+    "id": 909,
+    "original_order_id": null,
+    "product_id": 51340,
+    "external_id": "65dd49b4-213e-43db-a0c4-ebf1bf3a529b",
+    "return_transaction": "782862",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-25 05:27:42 UTC",
+    "original_sale_id": "d20b03e9-ce2d-4866-b116-5f083241da80"
+  },
+  {
+    "id": 910,
+    "original_order_id": null,
+    "product_id": 51320,
+    "external_id": "525bd6de-ac4a-4d08-a10c-92095c9019b6",
+    "return_transaction": "783907",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-26 02:52:41 UTC",
+    "original_sale_id": "a813d732-43ee-4ab6-9bd6-36c2134d9d43"
+  },
+  {
+    "id": 911,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "c6023207-c32a-4959-8abf-3993728891cf",
+    "return_transaction": "786236",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-28 14:28:19 UTC",
+    "original_sale_id": "360dbfb8-141f-4111-8082-05a67a3a7ebf"
+  },
+  {
+    "id": 912,
+    "original_order_id": null,
+    "product_id": 47995,
+    "external_id": "532735d8-bb84-476b-a563-827c4474594a",
+    "return_transaction": "787462",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-29 17:26:27 UTC",
+    "original_sale_id": "73d055ff-1583-4157-9067-6fb0677d000d"
+  },
+  {
+    "id": 913,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "0cc6d0db-9c1a-4179-adcd-58bce8e80237",
+    "return_transaction": "787644",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-09-29 21:14:15 UTC",
+    "original_sale_id": "8e81d112-f199-4172-9477-87d48d2fad65"
+  },
+  {
+    "id": 914,
+    "original_order_id": null,
+    "product_id": 48470,
+    "external_id": "394d00d9-a46e-4b88-98d3-7dee82f4b459",
+    "return_transaction": "793821",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-10-08 06:19:33 UTC",
+    "original_sale_id": "929dd5b0-2bf4-4100-8cf8-059dfb71d759"
+  },
+  {
+    "id": 915,
+    "original_order_id": null,
+    "product_id": 51980,
+    "external_id": "fcef8fcc-ac3d-48e2-bb42-9595a1d4283a",
+    "return_transaction": "795953",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-10-11 04:50:27 UTC",
+    "original_sale_id": "d9a3c36c-8ea4-40b0-b3e0-1368c60e9955"
+  },
+  {
+    "id": 916,
+    "original_order_id": null,
+    "product_id": 49469,
+    "external_id": "6e5c75c2-a792-4048-8605-996646c247d5",
+    "return_transaction": "795964",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-10-11 05:06:34 UTC",
+    "original_sale_id": "d33a279b-0449-4a77-952e-be6cb6f28b2a"
+  },
+  {
+    "id": 917,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "f4b5ed80-138b-4d43-969c-08ad43949861",
+    "return_transaction": "795977",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-10-11 05:24:43 UTC",
+    "original_sale_id": "076b2727-14ab-4ed2-b89e-3147c10f407a"
+  },
+  {
+    "id": 918,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "7f8ea711-b74f-40b3-b749-36b9afee0514",
+    "return_transaction": "796015",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-10-11 06:19:50 UTC",
+    "original_sale_id": "b020d0cd-5875-4e1e-a29d-69a0547befd6"
+  },
+  {
+    "id": 919,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "2542117e-ee4b-4cbc-9517-55fc2798dc1c",
+    "return_transaction": "796195",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-10-11 10:14:34 UTC",
+    "original_sale_id": "1bf1fb80-b51d-4edc-a285-0095b4b80c10"
+  },
+  {
+    "id": 920,
+    "original_order_id": null,
+    "product_id": 51352,
+    "external_id": "e0737f8e-5d75-4f3b-bf8b-d4fe2d081d8a",
+    "return_transaction": "803869",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-10-18 21:35:32 UTC",
+    "original_sale_id": "64a6a455-af8a-4c4f-85c7-592383fb9c0a"
+  },
+  {
+    "id": 921,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "26a10503-6579-4d83-b176-32bb37eaf64a",
+    "return_transaction": "806561",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-10-21 21:14:31 UTC",
+    "original_sale_id": "49cc4f42-e3d3-4e7f-b43e-df2ce07f37ec"
+  },
+  {
+    "id": 922,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "d0a79e3d-a496-4213-a3d5-7762ef255db9",
+    "return_transaction": "807692",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-10-23 13:13:10 UTC",
+    "original_sale_id": "0c89ce8a-75df-4406-ba62-52cadc43854e"
+  },
+  {
+    "id": 923,
+    "original_order_id": null,
+    "product_id": 51172,
+    "external_id": "8d7d02ee-192b-4220-a881-aaed1ed4a353",
+    "return_transaction": "811875",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-10-28 03:33:47 UTC",
+    "original_sale_id": "fb973719-4425-463f-9180-4efb5e85110d"
+  },
+  {
+    "id": 924,
+    "original_order_id": null,
+    "product_id": 51065,
+    "external_id": "9435bfec-b3a3-4c97-9bd1-6bd8ae5487ba",
+    "return_transaction": "812051",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-10-28 07:29:34 UTC",
+    "original_sale_id": "e92f9100-4859-43a7-a414-2e4964c959e6"
+  },
+  {
+    "id": 925,
+    "original_order_id": null,
+    "product_id": 49207,
+    "external_id": "c5f6422c-b0a4-4d7c-89f9-c2946c5943e4",
+    "return_transaction": "812274",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-10-28 12:16:45 UTC",
+    "original_sale_id": "f42a6821-a87a-4676-9d33-a14444253de1"
+  },
+  {
+    "id": 926,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "aecd6534-ea1a-4709-aca7-9e7bfb5fe5d2",
+    "return_transaction": "818974",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-11-05 05:57:23 UTC",
+    "original_sale_id": "5490230c-e206-4be6-b540-d12a8fd693d2"
+  },
+  {
+    "id": 927,
+    "original_order_id": null,
+    "product_id": 51850,
+    "external_id": "109365de-2531-478d-929b-a1f0916a03e7",
+    "return_transaction": "819439",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-11-06 01:39:46 UTC",
+    "original_sale_id": "4ff880a0-733e-4003-85bd-63d695f40933"
+  },
+  {
+    "id": 928,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "ff0492a0-e83a-4a80-9e30-505c5cfd4734",
+    "return_transaction": "819441",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-11-06 01:44:17 UTC",
+    "original_sale_id": "2342fb65-1064-4689-976d-90b34a83d254"
+  },
+  {
+    "id": 929,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "d798fd61-08ad-4f67-ba89-e32287f229d5",
+    "return_transaction": "819442",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-11-06 01:46:58 UTC",
+    "original_sale_id": "7a8da508-cade-466f-a0c8-6c85b036f776"
+  },
+  {
+    "id": 930,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "79e9e937-d17e-49fb-ae82-fbda365d37f0",
+    "return_transaction": "822462",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-11-09 02:07:56 UTC",
+    "original_sale_id": "04aa6f5a-b3c2-4b49-9a5e-53a3855598b2"
+  },
+  {
+    "id": 931,
+    "original_order_id": null,
+    "product_id": 52629,
+    "external_id": "80b80627-41be-4a0b-a6aa-2478e8689ef0",
+    "return_transaction": "828577",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-11-15 21:50:53 UTC",
+    "original_sale_id": "aa8b92ae-12fe-4b75-87a1-c7fe7feb210d"
+  },
+  {
+    "id": 932,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "677b3acd-1ebb-42f3-abba-31132b694ece",
+    "return_transaction": "833003",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-12-13 22:58:26 UTC",
+    "original_sale_id": "2a81c42b-ac50-4612-ad91-2215738046c8"
+  },
+  {
+    "id": 933,
+    "original_order_id": null,
+    "product_id": 52264,
+    "external_id": "0966ce4b-b539-4e39-80e0-a3aa16c5afb4",
+    "return_transaction": "835913",
+    "quantity_returned": "3.0",
+    "processed_at": "1975-12-17 22:51:10 UTC",
+    "original_sale_id": "8bd552e7-86fa-4cd3-919e-bc39351152ad"
+  },
+  {
+    "id": 934,
+    "original_order_id": null,
+    "product_id": 49130,
+    "external_id": "2df39e3a-e8b0-4b12-a1be-1605a44c6045",
+    "return_transaction": "841394",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-12-24 09:17:03 UTC",
+    "original_sale_id": "0324d982-fe86-451d-8ca7-654e203280b6"
+  },
+  {
+    "id": 935,
+    "original_order_id": null,
+    "product_id": 51069,
+    "external_id": "03275d32-012b-44dd-92fe-fb2c47613af4",
+    "return_transaction": "844809",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-12-29 15:24:57 UTC",
+    "original_sale_id": "5e044d1c-7898-4bbf-a537-10f59f202f36"
+  },
+  {
+    "id": 936,
+    "original_order_id": null,
+    "product_id": 49752,
+    "external_id": "06194657-167a-45ab-b57a-799fbf93497d",
+    "return_transaction": "846770",
+    "quantity_returned": "1.0",
+    "processed_at": "1975-12-31 08:24:24 UTC",
+    "original_sale_id": "4f50c813-c677-4e34-8aae-4a7f207806f0"
+  },
+  {
+    "id": 937,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "1d329b42-e149-4aee-88f9-b2a2b67df2a5",
+    "return_transaction": "847172",
+    "quantity_returned": "1.0",
+    "processed_at": "1976-01-01 21:12:18 UTC",
+    "original_sale_id": "93d70eac-8ba0-44ea-b933-40076303b3a5"
+  },
+  {
+    "id": 938,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "03c77e9c-31ba-4fd7-aa1f-d1f9c4077e5a",
+    "return_transaction": "847173",
+    "quantity_returned": "1.0",
+    "processed_at": "1976-01-01 21:14:40 UTC",
+    "original_sale_id": "0ca0500d-a8f1-4dc0-a7cf-28e7ba1ee453"
+  },
+  {
+    "id": 939,
+    "original_order_id": null,
+    "product_id": 51609,
+    "external_id": "23a4213b-6b44-4aaf-b606-323dcc3100f5",
+    "return_transaction": "847175",
+    "quantity_returned": "1.0",
+    "processed_at": "1976-01-01 21:17:04 UTC",
+    "original_sale_id": "7f7bc9ec-69ec-498c-81aa-e15c74488780"
+  },
+  {
+    "id": 940,
+    "original_order_id": null,
+    "product_id": 49350,
+    "external_id": "47d89831-375a-4a48-a924-f7243e5a8e00",
+    "return_transaction": "847176",
+    "quantity_returned": "1.0",
+    "processed_at": "1976-01-01 21:19:24 UTC",
+    "original_sale_id": "6b2cbace-1d09-49ee-9e73-4ad0c0198c70"
+  },
+  {
+    "id": 941,
+    "original_order_id": null,
+    "product_id": 49351,
+    "external_id": "37110345-1f82-42ca-8fcd-8b876fcf9d42",
+    "return_transaction": "847177",
+    "quantity_returned": "1.0",
+    "processed_at": "1976-01-01 21:24:00 UTC",
+    "original_sale_id": "a8cb5bf4-a84c-4d3b-afeb-4fb3be9e7107"
+  },
+  {
+    "id": 942,
+    "original_order_id": null,
+    "product_id": 51283,
+    "external_id": "9c33a4e7-3951-4a56-8c81-8015be7a6899",
+    "return_transaction": "861207",
+    "quantity_returned": "1.0",
+    "processed_at": "1976-01-21 20:21:19 UTC",
+    "original_sale_id": "979ccdfd-45d0-404e-abb0-9e2dd8503e39"
+  },
+  {
+    "id": 943,
+    "original_order_id": null,
+    "product_id": 51768,
+    "external_id": "f95b39df-f489-4617-ab0a-4bcef94f4137",
+    "return_transaction": "866158",
+    "quantity_returned": "1.0",
+    "processed_at": "1976-01-29 06:33:33 UTC",
+    "original_sale_id": "7c556333-e830-42aa-8bac-3d5c93af2801"
+  },
+  {
+    "id": 944,
+    "original_order_id": null,
+    "product_id": 51759,
+    "external_id": "8ad3ca6c-8ce8-4d87-b78d-4a6d6cd7785e",
+    "return_transaction": "868122",
+    "quantity_returned": "1.0",
+    "processed_at": "1976-02-03 01:56:34 UTC",
+    "original_sale_id": "e01e54fb-e348-4f39-b3d1-9656545fb878"
+  },
+  {
+    "id": 945,
+    "original_order_id": null,
+    "product_id": 51408,
+    "external_id": "89fec416-c0cc-453b-b487-55292c71fdf0",
+    "return_transaction": "870990",
+    "quantity_returned": "1.0",
+    "processed_at": "1976-02-06 11:47:13 UTC",
+    "original_sale_id": "ea6ec99b-880b-41b0-ad52-d5ea2bba76be"
+  },
+  {
+    "id": 946,
+    "original_order_id": null,
+    "product_id": 51088,
+    "external_id": "530a2597-40db-493b-9f47-f1759a396829",
+    "return_transaction": "878474",
+    "quantity_returned": "1.0",
+    "processed_at": "1976-02-18 05:05:14 UTC",
+    "original_sale_id": "05dae5cf-198c-4232-b698-5bceb108e10d"
+  },
+  {
+    "id": 947,
+    "original_order_id": null,
+    "product_id": null,
+    "external_id": "2228feaa-090a-4cd2-8e23-1aa831903f19",
+    "return_transaction": "882906",
+    "quantity_returned": "1.0",
+    "processed_at": "1976-02-25 22:36:14 UTC",
+    "original_sale_id": "f98e683b-a531-49d9-a79c-f9607e466c16"
+  },
+  {
+    "id": 948,
+    "original_order_id": null,
+    "product_id": 52660,
+    "external_id": "48b832bf-5417-4ce8-9779-84b6dba2340b",
+    "return_transaction": "896288",
+    "quantity_returned": "1.0",
+    "processed_at": "1976-03-15 22:11:05 UTC",
+    "original_sale_id": "d9a62b17-bd84-49b3-8c3e-687a5ebd15f6"
   }
 ]
