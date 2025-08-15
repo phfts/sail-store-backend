@@ -590,7 +590,7 @@ namespace :souq do
     company_data = JSON.parse(File.read(file_path))
     
     # Verifica se já existe
-    existing_company = Company.find_by(cnpj: company_data['cnpj'])
+    existing_company = Company.find_by(name: company_data['name'])
     
     if existing_company
       puts "⚠️  Empresa já existe (ID: #{existing_company.id})"
@@ -598,8 +598,6 @@ namespace :souq do
     else
       @souq_company = Company.create!(
         name: company_data['name'],
-        cnpj: company_data['cnpj'],
-        address: company_data['address'],
         active: company_data['active'],
         description: company_data['description'],
         simplified_frontend: company_data['simplified_frontend']
