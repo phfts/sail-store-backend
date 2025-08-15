@@ -361,7 +361,7 @@ namespace :souq do
       # Buscar seller pelo external_id na empresa SOUQ
       seller = Seller.find_by(
         company_id: @souq_company.id,
-        external_id: order_data['seller_id']
+        external_id: order_data['seller_external_id']
       )
       
       next unless seller
@@ -375,7 +375,7 @@ namespace :souq do
       
       # Criar itens da venda
       order_data['order_items'].each do |item_data|
-        product = Product.find_by(external_id: item_data['product_id'])
+        product = Product.find_by(external_id: item_data['product_external_id'])
         next unless product
         
         OrderItem.create!(
@@ -556,14 +556,14 @@ namespace :souq do
                   .map do |order|
       {
         id: order.id,
-        seller_id: order.seller_id,
+        seller_external_id: order.seller.external_id,
         external_id: order.external_id,
         sold_at: order.sold_at,
         order_items: order.order_items.map do |item|
           {
             id: item.id,
             order_id: item.order_id,
-            product_id: item.product_id,
+            product_external_id: item.product.external_id,
             store_id: item.store_id,
             quantity: item.quantity,
             unit_price: item.unit_price,
@@ -729,7 +729,7 @@ namespace :souq do
       # Buscar seller pelo external_id
       seller = Seller.find_by(
         company_id: @souq_company.id,
-        external_id: order_data['seller_id']
+        external_id: order_data['seller_external_id']
       )
       
       next unless seller # Pula se vendedor não existe
@@ -750,7 +750,7 @@ namespace :souq do
       
       # Criar itens da venda
       order_data['order_items'].each do |item_data|
-        product = Product.find_by(external_id: item_data['product_id'])
+        product = Product.find_by(external_id: item_data['product_external_id'])
         next unless product
         
         existing_item = OrderItem.find_by(

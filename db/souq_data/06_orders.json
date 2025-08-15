@@ -1,14 +1,14 @@
 [
   {
     "id": 16055,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2529",
     "sold_at": "2025-01-15",
     "order_items": [
       {
         "id": 21909,
         "order_id": 16055,
-        "product_id": 47867,
+        "product_external_id": "224385",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "228.0",
@@ -17,7 +17,7 @@
       {
         "id": 24626,
         "order_id": 16055,
-        "product_id": 51814,
+        "product_external_id": "228201",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "798.0",
@@ -26,7 +26,7 @@
       {
         "id": 24627,
         "order_id": 16055,
-        "product_id": 51737,
+        "product_external_id": "225610",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "668.0",
@@ -35,7 +35,7 @@
       {
         "id": 24628,
         "order_id": 16055,
-        "product_id": 48551,
+        "product_external_id": "228203",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "798.0",
@@ -44,7 +44,7 @@
       {
         "id": 24629,
         "order_id": 16055,
-        "product_id": 47990,
+        "product_external_id": "218108",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "998.0",
@@ -53,7 +53,7 @@
       {
         "id": 24630,
         "order_id": 16055,
-        "product_id": 48880,
+        "product_external_id": "220699",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "998.0",
@@ -62,7 +62,7 @@
       {
         "id": 26278,
         "order_id": 16055,
-        "product_id": 51963,
+        "product_external_id": "146259",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "298.0",
@@ -72,14 +72,14 @@
   },
   {
     "id": 16056,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1069",
     "sold_at": "2025-01-15",
     "order_items": [
       {
         "id": 21910,
         "order_id": 16056,
-        "product_id": 47757,
+        "product_external_id": "224345",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "248.0",
@@ -89,14 +89,14 @@
   },
   {
     "id": 16057,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2532",
     "sold_at": "2025-01-15",
     "order_items": [
       {
         "id": 21911,
         "order_id": 16057,
-        "product_id": 47716,
+        "product_external_id": "219495",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "508.0",
@@ -105,7 +105,7 @@
       {
         "id": 21912,
         "order_id": 16057,
-        "product_id": 48198,
+        "product_external_id": "219124",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -114,7 +114,7 @@
       {
         "id": 21913,
         "order_id": 16057,
-        "product_id": 52412,
+        "product_external_id": "219133",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "368.0",
@@ -123,7 +123,7 @@
       {
         "id": 21914,
         "order_id": 16057,
-        "product_id": 48850,
+        "product_external_id": "210154",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "68.0",
@@ -132,7 +132,7 @@
       {
         "id": 21915,
         "order_id": 16057,
-        "product_id": 49373,
+        "product_external_id": "210158",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "58.0",
@@ -141,7 +141,7 @@
       {
         "id": 21916,
         "order_id": 16057,
-        "product_id": 48853,
+        "product_external_id": "210160",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "118.0",
@@ -150,7 +150,7 @@
       {
         "id": 25486,
         "order_id": 16057,
-        "product_id": 47786,
+        "product_external_id": "227803",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "298.0",
@@ -160,14 +160,14 @@
   },
   {
     "id": 16060,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2535",
     "sold_at": "2025-01-15",
     "order_items": [
       {
         "id": 21921,
         "order_id": 16060,
-        "product_id": 52096,
+        "product_external_id": "211825",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "28.0",
@@ -176,7 +176,7 @@
       {
         "id": 21922,
         "order_id": 16060,
-        "product_id": 52092,
+        "product_external_id": "211821",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "28.0",
@@ -186,14 +186,14 @@
   },
   {
     "id": 16061,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2536",
     "sold_at": "2025-01-15",
     "order_items": [
       {
         "id": 21923,
         "order_id": 16061,
-        "product_id": 52104,
+        "product_external_id": "211916",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "678.0",
@@ -202,7 +202,7 @@
       {
         "id": 25641,
         "order_id": 16061,
-        "product_id": 49350,
+        "product_external_id": "218969",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "258.0",
@@ -212,14 +212,14 @@
   },
   {
     "id": 16067,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1076",
     "sold_at": "2025-01-15",
     "order_items": [
       {
         "id": 21929,
         "order_id": 16067,
-        "product_id": 43100,
+        "product_external_id": "224305",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -229,14 +229,14 @@
   },
   {
     "id": 16074,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2548",
     "sold_at": "2025-01-16",
     "order_items": [
       {
         "id": 21939,
         "order_id": 16074,
-        "product_id": 52566,
+        "product_external_id": "220774",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "78.0",
@@ -245,7 +245,7 @@
       {
         "id": 25778,
         "order_id": 16074,
-        "product_id": 51862,
+        "product_external_id": "226332",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -255,14 +255,14 @@
   },
   {
     "id": 16075,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2551",
     "sold_at": "2025-01-16",
     "order_items": [
       {
         "id": 21940,
         "order_id": 16075,
-        "product_id": 51680,
+        "product_external_id": "220360",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -271,7 +271,7 @@
       {
         "id": 24707,
         "order_id": 16075,
-        "product_id": 48749,
+        "product_external_id": "217096",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "349.0",
@@ -280,7 +280,7 @@
       {
         "id": 25522,
         "order_id": 16075,
-        "product_id": 52267,
+        "product_external_id": "217460",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "58.0",
@@ -289,7 +289,7 @@
       {
         "id": 25523,
         "order_id": 16075,
-        "product_id": 52140,
+        "product_external_id": "216539",
         "store_id": 6,
         "quantity": 2,
         "unit_price": "48.0",
@@ -298,7 +298,7 @@
       {
         "id": 25524,
         "order_id": 16075,
-        "product_id": 51499,
+        "product_external_id": "217939",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "44.0",
@@ -307,7 +307,7 @@
       {
         "id": 25525,
         "order_id": 16075,
-        "product_id": 51500,
+        "product_external_id": "217942",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "44.0",
@@ -317,14 +317,14 @@
   },
   {
     "id": 16076,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2552",
     "sold_at": "2025-01-16",
     "order_items": [
       {
         "id": 21941,
         "order_id": 16076,
-        "product_id": 50056,
+        "product_external_id": "220175",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "298.0",
@@ -333,7 +333,7 @@
       {
         "id": 24711,
         "order_id": 16076,
-        "product_id": 51661,
+        "product_external_id": "225768",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "1098.0",
@@ -342,7 +342,7 @@
       {
         "id": 24712,
         "order_id": 16076,
-        "product_id": 52393,
+        "product_external_id": "218823",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "998.0",
@@ -351,7 +351,7 @@
       {
         "id": 24713,
         "order_id": 16076,
-        "product_id": 51835,
+        "product_external_id": "218820",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "698.0",
@@ -360,7 +360,7 @@
       {
         "id": 24714,
         "order_id": 16076,
-        "product_id": 51740,
+        "product_external_id": "225904",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "798.0",
@@ -369,7 +369,7 @@
       {
         "id": 24715,
         "order_id": 16076,
-        "product_id": 51715,
+        "product_external_id": "227251",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "1498.0",
@@ -378,7 +378,7 @@
       {
         "id": 25584,
         "order_id": 16076,
-        "product_id": 51326,
+        "product_external_id": "226397",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "698.0",
@@ -388,14 +388,14 @@
   },
   {
     "id": 16077,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1231",
     "sold_at": "2025-01-16",
     "order_items": [
       {
         "id": 21942,
         "order_id": 16077,
-        "product_id": 51707,
+        "product_external_id": "225210",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -404,7 +404,7 @@
       {
         "id": 22236,
         "order_id": 16077,
-        "product_id": 51755,
+        "product_external_id": "219073",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "998.0",
@@ -413,7 +413,7 @@
       {
         "id": 22237,
         "order_id": 16077,
-        "product_id": 50962,
+        "product_external_id": "210185",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "538.0",
@@ -423,14 +423,14 @@
   },
   {
     "id": 16078,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2553",
     "sold_at": "2025-01-16",
     "order_items": [
       {
         "id": 21943,
         "order_id": 16078,
-        "product_id": 52086,
+        "product_external_id": "211780",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "84.0",
@@ -439,7 +439,7 @@
       {
         "id": 24717,
         "order_id": 16078,
-        "product_id": 48473,
+        "product_external_id": "218117",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "499.0",
@@ -448,7 +448,7 @@
       {
         "id": 26026,
         "order_id": 16078,
-        "product_id": 51827,
+        "product_external_id": "225912",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "528.0",
@@ -457,7 +457,7 @@
       {
         "id": 26027,
         "order_id": 16078,
-        "product_id": 51124,
+        "product_external_id": "227310",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "658.0",
@@ -466,7 +466,7 @@
       {
         "id": 26028,
         "order_id": 16078,
-        "product_id": 51294,
+        "product_external_id": "229501",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "428.0",
@@ -476,14 +476,14 @@
   },
   {
     "id": 16082,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1087",
     "sold_at": "2025-01-16",
     "order_items": [
       {
         "id": 21948,
         "order_id": 16082,
-        "product_id": 52080,
+        "product_external_id": "211518",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "138.0",
@@ -493,14 +493,14 @@
   },
   {
     "id": 16094,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2569",
     "sold_at": "2025-01-17",
     "order_items": [
       {
         "id": 21963,
         "order_id": 16094,
-        "product_id": 52129,
+        "product_external_id": "213660",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "228.0",
@@ -509,7 +509,7 @@
       {
         "id": 24745,
         "order_id": 16094,
-        "product_id": 51606,
+        "product_external_id": "225929",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "798.0",
@@ -518,7 +518,7 @@
       {
         "id": 24746,
         "order_id": 16094,
-        "product_id": 52670,
+        "product_external_id": "229129",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "998.0",
@@ -527,7 +527,7 @@
       {
         "id": 24747,
         "order_id": 16094,
-        "product_id": 48017,
+        "product_external_id": "228022",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "798.0",
@@ -536,7 +536,7 @@
       {
         "id": 24748,
         "order_id": 16094,
-        "product_id": 51828,
+        "product_external_id": "225913",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "798.0",
@@ -545,7 +545,7 @@
       {
         "id": 25448,
         "order_id": 16094,
-        "product_id": 51558,
+        "product_external_id": "220603",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "158.0",
@@ -555,14 +555,14 @@
   },
   {
     "id": 16100,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1095",
     "sold_at": "2025-01-17",
     "order_items": [
       {
         "id": 21971,
         "order_id": 16100,
-        "product_id": 48293,
+        "product_external_id": "224364",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "148.0",
@@ -572,14 +572,14 @@
   },
   {
     "id": 16111,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1106",
     "sold_at": "2025-01-17",
     "order_items": [
       {
         "id": 21987,
         "order_id": 16111,
-        "product_id": 52466,
+        "product_external_id": "219764",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "178.0",
@@ -589,14 +589,14 @@
   },
   {
     "id": 16113,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1265",
     "sold_at": "2025-01-18",
     "order_items": [
       {
         "id": 21990,
         "order_id": 16113,
-        "product_id": 47716,
+        "product_external_id": "219495",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "858.0",
@@ -605,7 +605,7 @@
       {
         "id": 22302,
         "order_id": 16113,
-        "product_id": 47752,
+        "product_external_id": "219166",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "728.0",
@@ -615,14 +615,14 @@
   },
   {
     "id": 16115,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2588",
     "sold_at": "2025-01-18",
     "order_items": [
       {
         "id": 21992,
         "order_id": 16115,
-        "product_id": 46975,
+        "product_external_id": "216838",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "528.0",
@@ -631,7 +631,7 @@
       {
         "id": 25023,
         "order_id": 16115,
-        "product_id": 51386,
+        "product_external_id": "225974",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "158.0",
@@ -641,14 +641,14 @@
   },
   {
     "id": 16118,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2590",
     "sold_at": "2025-01-18",
     "order_items": [
       {
         "id": 21996,
         "order_id": 16118,
-        "product_id": 47235,
+        "product_external_id": "224367",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "148.0",
@@ -657,7 +657,7 @@
       {
         "id": 21997,
         "order_id": 16118,
-        "product_id": 49644,
+        "product_external_id": "216938",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -666,7 +666,7 @@
       {
         "id": 25521,
         "order_id": 16118,
-        "product_id": 51910,
+        "product_external_id": "220675",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "108.0",
@@ -676,14 +676,14 @@
   },
   {
     "id": 16122,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1112",
     "sold_at": "2025-01-18",
     "order_items": [
       {
         "id": 22002,
         "order_id": 16122,
-        "product_id": 47578,
+        "product_external_id": "144940",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "28.0",
@@ -693,14 +693,14 @@
   },
   {
     "id": 16123,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2601",
     "sold_at": "2025-01-18",
     "order_items": [
       {
         "id": 22003,
         "order_id": 16123,
-        "product_id": 52079,
+        "product_external_id": "211444",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "118.0",
@@ -710,14 +710,14 @@
   },
   {
     "id": 16129,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2610",
     "sold_at": "2025-01-18",
     "order_items": [
       {
         "id": 22010,
         "order_id": 16129,
-        "product_id": 50106,
+        "product_external_id": "220356",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -726,7 +726,7 @@
       {
         "id": 24887,
         "order_id": 16129,
-        "product_id": 49350,
+        "product_external_id": "218969",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "368.0",
@@ -735,7 +735,7 @@
       {
         "id": 26508,
         "order_id": 16129,
-        "product_id": 51312,
+        "product_external_id": "229500",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "428.0",
@@ -744,7 +744,7 @@
       {
         "id": 26509,
         "order_id": 16129,
-        "product_id": 49369,
+        "product_external_id": "217984",
         "store_id": 6,
         "quantity": 2,
         "unit_price": "68.0",
@@ -754,14 +754,14 @@
   },
   {
     "id": 16142,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2630",
     "sold_at": "2025-01-19",
     "order_items": [
       {
         "id": 22025,
         "order_id": 16142,
-        "product_id": 51949,
+        "product_external_id": "140448",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "48.0",
@@ -770,7 +770,7 @@
       {
         "id": 26494,
         "order_id": 16142,
-        "product_id": 51068,
+        "product_external_id": "228917",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "698.0",
@@ -779,7 +779,7 @@
       {
         "id": 26495,
         "order_id": 16142,
-        "product_id": 48748,
+        "product_external_id": "217092",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "649.0",
@@ -788,7 +788,7 @@
       {
         "id": 26496,
         "order_id": 16142,
-        "product_id": 50097,
+        "product_external_id": "219057",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "299.0",
@@ -797,7 +797,7 @@
       {
         "id": 26497,
         "order_id": 16142,
-        "product_id": 51063,
+        "product_external_id": "226421",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "198.0",
@@ -807,14 +807,14 @@
   },
   {
     "id": 16145,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1128",
     "sold_at": "2025-01-20",
     "order_items": [
       {
         "id": 22028,
         "order_id": 16145,
-        "product_id": 52523,
+        "product_external_id": "220465",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "68.0",
@@ -824,14 +824,14 @@
   },
   {
     "id": 16150,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2644",
     "sold_at": "2025-01-20",
     "order_items": [
       {
         "id": 22033,
         "order_id": 16150,
-        "product_id": 52615,
+        "product_external_id": "224612",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "698.0",
@@ -840,7 +840,7 @@
       {
         "id": 25403,
         "order_id": 16150,
-        "product_id": 51828,
+        "product_external_id": "225913",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "528.0",
@@ -850,14 +850,14 @@
   },
   {
     "id": 16151,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1306",
     "sold_at": "2025-01-20",
     "order_items": [
       {
         "id": 22034,
         "order_id": 16151,
-        "product_id": 50166,
+        "product_external_id": "216827",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "758.0",
@@ -867,14 +867,14 @@
   },
   {
     "id": 16152,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2645",
     "sold_at": "2025-01-20",
     "order_items": [
       {
         "id": 22035,
         "order_id": 16152,
-        "product_id": 48469,
+        "product_external_id": "216828",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -883,7 +883,7 @@
       {
         "id": 25384,
         "order_id": 16152,
-        "product_id": 51677,
+        "product_external_id": "227800",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "288.0",
@@ -893,14 +893,14 @@
   },
   {
     "id": 16153,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1132",
     "sold_at": "2025-01-20",
     "order_items": [
       {
         "id": 22036,
         "order_id": 16153,
-        "product_id": 42979,
+        "product_external_id": "218841",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "898.0",
@@ -910,14 +910,14 @@
   },
   {
     "id": 16166,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2671",
     "sold_at": "2025-01-22",
     "order_items": [
       {
         "id": 22057,
         "order_id": 16166,
-        "product_id": 52340,
+        "product_external_id": "218127",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -926,7 +926,7 @@
       {
         "id": 25358,
         "order_id": 16166,
-        "product_id": 52565,
+        "product_external_id": "220773",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "119.0",
@@ -935,7 +935,7 @@
       {
         "id": 25915,
         "order_id": 16166,
-        "product_id": 49373,
+        "product_external_id": "210158",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "48.0",
@@ -945,14 +945,14 @@
   },
   {
     "id": 16167,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2672",
     "sold_at": "2025-01-22",
     "order_items": [
       {
         "id": 22058,
         "order_id": 16167,
-        "product_id": 52008,
+        "product_external_id": "188991",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "188.0",
@@ -962,14 +962,14 @@
   },
   {
     "id": 16169,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2674",
     "sold_at": "2025-01-22",
     "order_items": [
       {
         "id": 22060,
         "order_id": 16169,
-        "product_id": 52567,
+        "product_external_id": "220794",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "48.0",
@@ -978,7 +978,7 @@
       {
         "id": 25198,
         "order_id": 16169,
-        "product_id": 51933,
+        "product_external_id": "220840",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "98.0",
@@ -987,7 +987,7 @@
       {
         "id": 25215,
         "order_id": 16169,
-        "product_id": 47554,
+        "product_external_id": "226408",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "298.0",
@@ -997,14 +997,14 @@
   },
   {
     "id": 16181,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2686",
     "sold_at": "2025-01-23",
     "order_items": [
       {
         "id": 22082,
         "order_id": 16181,
-        "product_id": 51313,
+        "product_external_id": "182890",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "698.0",
@@ -1013,7 +1013,7 @@
       {
         "id": 25696,
         "order_id": 16181,
-        "product_id": 46461,
+        "product_external_id": "219059",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "299.0",
@@ -1022,7 +1022,7 @@
       {
         "id": 26388,
         "order_id": 16181,
-        "product_id": 52479,
+        "product_external_id": "219956",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "88.0",
@@ -1031,7 +1031,7 @@
       {
         "id": 26389,
         "order_id": 16181,
-        "product_id": 51168,
+        "product_external_id": "217983",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "68.0",
@@ -1040,7 +1040,7 @@
       {
         "id": 26390,
         "order_id": 16181,
-        "product_id": 49369,
+        "product_external_id": "217984",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "68.0",
@@ -1050,14 +1050,14 @@
   },
   {
     "id": 16184,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2687",
     "sold_at": "2025-01-23",
     "order_items": [
       {
         "id": 22086,
         "order_id": 16184,
-        "product_id": 52079,
+        "product_external_id": "211444",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "118.0",
@@ -1067,14 +1067,14 @@
   },
   {
     "id": 16187,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2691",
     "sold_at": "2025-01-23",
     "order_items": [
       {
         "id": 22089,
         "order_id": 16187,
-        "product_id": 48876,
+        "product_external_id": "220177",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "238.0",
@@ -1084,14 +1084,14 @@
   },
   {
     "id": 16189,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1153",
     "sold_at": "2025-01-23",
     "order_items": [
       {
         "id": 22091,
         "order_id": 16189,
-        "product_id": 51528,
+        "product_external_id": "225266",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "68.0",
@@ -1101,14 +1101,14 @@
   },
   {
     "id": 16204,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2711",
     "sold_at": "2025-01-24",
     "order_items": [
       {
         "id": 22118,
         "order_id": 16204,
-        "product_id": 47880,
+        "product_external_id": "145118",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "44.0",
@@ -1117,7 +1117,7 @@
       {
         "id": 22119,
         "order_id": 16204,
-        "product_id": 47579,
+        "product_external_id": "182466",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "28.0",
@@ -1126,7 +1126,7 @@
       {
         "id": 26157,
         "order_id": 16204,
-        "product_id": 51220,
+        "product_external_id": "181914",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "698.0",
@@ -1136,14 +1136,14 @@
   },
   {
     "id": 16210,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1368",
     "sold_at": "2025-01-24",
     "order_items": [
       {
         "id": 22132,
         "order_id": 16210,
-        "product_id": 48201,
+        "product_external_id": "220172",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -1153,14 +1153,14 @@
   },
   {
     "id": 16212,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2715",
     "sold_at": "2025-01-24",
     "order_items": [
       {
         "id": 22134,
         "order_id": 16212,
-        "product_id": 46746,
+        "product_external_id": "216984",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "298.0",
@@ -1169,7 +1169,7 @@
       {
         "id": 25504,
         "order_id": 16212,
-        "product_id": 51503,
+        "product_external_id": "220454",
         "store_id": 6,
         "quantity": 2,
         "unit_price": "78.0",
@@ -1178,7 +1178,7 @@
       {
         "id": 25984,
         "order_id": 16212,
-        "product_id": 51599,
+        "product_external_id": "225622",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -1187,7 +1187,7 @@
       {
         "id": 25985,
         "order_id": 16212,
-        "product_id": 51098,
+        "product_external_id": "227209",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "758.0",
@@ -1196,7 +1196,7 @@
       {
         "id": 25986,
         "order_id": 16212,
-        "product_id": 47995,
+        "product_external_id": "225628",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "1098.0",
@@ -1206,14 +1206,14 @@
   },
   {
     "id": 16216,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1174",
     "sold_at": "2025-01-25",
     "order_items": [
       {
         "id": 22139,
         "order_id": 16216,
-        "product_id": 48959,
+        "product_external_id": "162154",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "98.0",
@@ -1223,14 +1223,14 @@
   },
   {
     "id": 16218,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1374",
     "sold_at": "2025-01-25",
     "order_items": [
       {
         "id": 22142,
         "order_id": 16218,
-        "product_id": 49141,
+        "product_external_id": "216915",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "748.0",
@@ -1239,7 +1239,7 @@
       {
         "id": 22600,
         "order_id": 16218,
-        "product_id": 46225,
+        "product_external_id": "216835",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "422.0",
@@ -1248,7 +1248,7 @@
       {
         "id": 22601,
         "order_id": 16218,
-        "product_id": 51853,
+        "product_external_id": "220135",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -1257,7 +1257,7 @@
       {
         "id": 22602,
         "order_id": 16218,
-        "product_id": 52231,
+        "product_external_id": "217321",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "528.0",
@@ -1267,14 +1267,14 @@
   },
   {
     "id": 16220,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2719",
     "sold_at": "2025-01-25",
     "order_items": [
       {
         "id": 22144,
         "order_id": 16220,
-        "product_id": 52140,
+        "product_external_id": "216539",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "48.0",
@@ -1283,7 +1283,7 @@
       {
         "id": 25550,
         "order_id": 16220,
-        "product_id": 48377,
+        "product_external_id": "225742",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -1292,7 +1292,7 @@
       {
         "id": 26513,
         "order_id": 16220,
-        "product_id": 51341,
+        "product_external_id": "225937",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "268.0",
@@ -1302,14 +1302,14 @@
   },
   {
     "id": 16224,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1186",
     "sold_at": "2025-01-25",
     "order_items": [
       {
         "id": 22149,
         "order_id": 16224,
-        "product_id": 51932,
+        "product_external_id": "220790",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "44.0",
@@ -1318,7 +1318,7 @@
       {
         "id": 22150,
         "order_id": 16224,
-        "product_id": 52300,
+        "product_external_id": "217706",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "78.0",
@@ -1328,14 +1328,14 @@
   },
   {
     "id": 16244,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1206",
     "sold_at": "2025-01-26",
     "order_items": [
       {
         "id": 22182,
         "order_id": 16244,
-        "product_id": 51112,
+        "product_external_id": "224286",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "798.0",
@@ -1345,14 +1345,14 @@
   },
   {
     "id": 16246,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2749",
     "sold_at": "2025-01-27",
     "order_items": [
       {
         "id": 22184,
         "order_id": 16246,
-        "product_id": 52137,
+        "product_external_id": "216536",
         "store_id": 6,
         "quantity": 3,
         "unit_price": "48.0",
@@ -1361,7 +1361,7 @@
       {
         "id": 22185,
         "order_id": 16246,
-        "product_id": 52140,
+        "product_external_id": "216539",
         "store_id": 6,
         "quantity": 3,
         "unit_price": "48.0",
@@ -1370,7 +1370,7 @@
       {
         "id": 22186,
         "order_id": 16246,
-        "product_id": 52139,
+        "product_external_id": "216538",
         "store_id": 6,
         "quantity": 3,
         "unit_price": "48.0",
@@ -1379,7 +1379,7 @@
       {
         "id": 22187,
         "order_id": 16246,
-        "product_id": 51707,
+        "product_external_id": "225210",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -1388,7 +1388,7 @@
       {
         "id": 25089,
         "order_id": 16246,
-        "product_id": 51354,
+        "product_external_id": "227243",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "798.0",
@@ -1398,14 +1398,14 @@
   },
   {
     "id": 16247,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2750",
     "sold_at": "2025-01-27",
     "order_items": [
       {
         "id": 22188,
         "order_id": 16247,
-        "product_id": 52234,
+        "product_external_id": "217324",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "528.0",
@@ -1414,7 +1414,7 @@
       {
         "id": 25678,
         "order_id": 16247,
-        "product_id": 51755,
+        "product_external_id": "219073",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -1423,7 +1423,7 @@
       {
         "id": 26311,
         "order_id": 16247,
-        "product_id": 51677,
+        "product_external_id": "227800",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -1432,7 +1432,7 @@
       {
         "id": 26312,
         "order_id": 16247,
-        "product_id": 51805,
+        "product_external_id": "225941",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "268.0",
@@ -1441,7 +1441,7 @@
       {
         "id": 26313,
         "order_id": 16247,
-        "product_id": 51801,
+        "product_external_id": "225600",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "548.0",
@@ -1450,7 +1450,7 @@
       {
         "id": 26314,
         "order_id": 16247,
-        "product_id": 51536,
+        "product_external_id": "227970",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "548.0",
@@ -1459,7 +1459,7 @@
       {
         "id": 26315,
         "order_id": 16247,
-        "product_id": 48881,
+        "product_external_id": "227804",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -1468,7 +1468,7 @@
       {
         "id": 26316,
         "order_id": 16247,
-        "product_id": 51615,
+        "product_external_id": "227208",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "758.0",
@@ -1477,7 +1477,7 @@
       {
         "id": 26317,
         "order_id": 16247,
-        "product_id": 47723,
+        "product_external_id": "225623",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -1486,7 +1486,7 @@
       {
         "id": 26318,
         "order_id": 16247,
-        "product_id": 48470,
+        "product_external_id": "225626",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "1098.0",
@@ -1495,7 +1495,7 @@
       {
         "id": 26319,
         "order_id": 16247,
-        "product_id": 51316,
+        "product_external_id": "219047",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "1098.0",
@@ -1504,7 +1504,7 @@
       {
         "id": 26320,
         "order_id": 16247,
-        "product_id": 51753,
+        "product_external_id": "219046",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "1098.0",
@@ -1513,7 +1513,7 @@
       {
         "id": 26321,
         "order_id": 16247,
-        "product_id": 51300,
+        "product_external_id": "225702",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "898.0",
@@ -1523,14 +1523,14 @@
   },
   {
     "id": 16248,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2751",
     "sold_at": "2025-01-27",
     "order_items": [
       {
         "id": 22189,
         "order_id": 16248,
-        "product_id": 51975,
+        "product_external_id": "158997",
         "store_id": 6,
         "quantity": 2,
         "unit_price": "88.0",
@@ -1540,14 +1540,14 @@
   },
   {
     "id": 16268,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2771",
     "sold_at": "2025-01-29",
     "order_items": [
       {
         "id": 22217,
         "order_id": 16268,
-        "product_id": 52431,
+        "product_external_id": "219517",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "178.0",
@@ -1556,7 +1556,7 @@
       {
         "id": 25548,
         "order_id": 16268,
-        "product_id": 51770,
+        "product_external_id": "228763",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -1565,7 +1565,7 @@
       {
         "id": 25931,
         "order_id": 16268,
-        "product_id": 51873,
+        "product_external_id": "216950",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "668.0",
@@ -1574,7 +1574,7 @@
       {
         "id": 25932,
         "order_id": 16268,
-        "product_id": 51364,
+        "product_external_id": "227796",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "198.0",
@@ -1583,7 +1583,7 @@
       {
         "id": 25933,
         "order_id": 16268,
-        "product_id": 52676,
+        "product_external_id": "226182",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "798.0",
@@ -1593,14 +1593,14 @@
   },
   {
     "id": 16275,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2776",
     "sold_at": "2025-01-29",
     "order_items": [
       {
         "id": 22226,
         "order_id": 16275,
-        "product_id": 47254,
+        "product_external_id": "211841",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "298.0",
@@ -1609,7 +1609,7 @@
       {
         "id": 25258,
         "order_id": 16275,
-        "product_id": 51806,
+        "product_external_id": "227199",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -1619,14 +1619,14 @@
   },
   {
     "id": 16276,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2777",
     "sold_at": "2025-01-29",
     "order_items": [
       {
         "id": 22227,
         "order_id": 16276,
-        "product_id": 52137,
+        "product_external_id": "216536",
         "store_id": 6,
         "quantity": 2,
         "unit_price": "48.0",
@@ -1635,7 +1635,7 @@
       {
         "id": 25129,
         "order_id": 16276,
-        "product_id": 51423,
+        "product_external_id": "220450",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "178.0",
@@ -1644,7 +1644,7 @@
       {
         "id": 25130,
         "order_id": 16276,
-        "product_id": 52527,
+        "product_external_id": "220473",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "108.0",
@@ -1653,7 +1653,7 @@
       {
         "id": 25131,
         "order_id": 16276,
-        "product_id": 51503,
+        "product_external_id": "220454",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "78.0",
@@ -1663,14 +1663,14 @@
   },
   {
     "id": 16277,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2778",
     "sold_at": "2025-01-29",
     "order_items": [
       {
         "id": 22228,
         "order_id": 16277,
-        "product_id": 52137,
+        "product_external_id": "216536",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "48.0",
@@ -1680,14 +1680,14 @@
   },
   {
     "id": 16279,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2780",
     "sold_at": "2025-01-29",
     "order_items": [
       {
         "id": 22230,
         "order_id": 16279,
-        "product_id": 52423,
+        "product_external_id": "219375",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "628.0",
@@ -1696,7 +1696,7 @@
       {
         "id": 22231,
         "order_id": 16279,
-        "product_id": 48473,
+        "product_external_id": "218117",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -1705,7 +1705,7 @@
       {
         "id": 22232,
         "order_id": 16279,
-        "product_id": 48000,
+        "product_external_id": "216914",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "748.0",
@@ -1714,7 +1714,7 @@
       {
         "id": 22233,
         "order_id": 16279,
-        "product_id": 52633,
+        "product_external_id": "225201",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -1723,7 +1723,7 @@
       {
         "id": 22234,
         "order_id": 16279,
-        "product_id": 52178,
+        "product_external_id": "216816",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "468.0",
@@ -1732,7 +1732,7 @@
       {
         "id": 25117,
         "order_id": 16279,
-        "product_id": 51677,
+        "product_external_id": "227800",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -1741,7 +1741,7 @@
       {
         "id": 25118,
         "order_id": 16279,
-        "product_id": 51805,
+        "product_external_id": "225941",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "268.0",
@@ -1750,7 +1750,7 @@
       {
         "id": 25119,
         "order_id": 16279,
-        "product_id": 51801,
+        "product_external_id": "225600",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "548.0",
@@ -1759,7 +1759,7 @@
       {
         "id": 25120,
         "order_id": 16279,
-        "product_id": 51536,
+        "product_external_id": "227970",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "548.0",
@@ -1768,7 +1768,7 @@
       {
         "id": 25121,
         "order_id": 16279,
-        "product_id": 48881,
+        "product_external_id": "227804",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -1777,7 +1777,7 @@
       {
         "id": 25122,
         "order_id": 16279,
-        "product_id": 51615,
+        "product_external_id": "227208",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "758.0",
@@ -1786,7 +1786,7 @@
       {
         "id": 25123,
         "order_id": 16279,
-        "product_id": 47723,
+        "product_external_id": "225623",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -1795,7 +1795,7 @@
       {
         "id": 25124,
         "order_id": 16279,
-        "product_id": 48470,
+        "product_external_id": "225626",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "1098.0",
@@ -1804,7 +1804,7 @@
       {
         "id": 25125,
         "order_id": 16279,
-        "product_id": 51316,
+        "product_external_id": "219047",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "1098.0",
@@ -1813,7 +1813,7 @@
       {
         "id": 25126,
         "order_id": 16279,
-        "product_id": 51753,
+        "product_external_id": "219046",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "1098.0",
@@ -1822,7 +1822,7 @@
       {
         "id": 25127,
         "order_id": 16279,
-        "product_id": 51300,
+        "product_external_id": "225702",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "898.0",
@@ -1831,7 +1831,7 @@
       {
         "id": 26034,
         "order_id": 16279,
-        "product_id": 49376,
+        "product_external_id": "216759",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "649.0",
@@ -1841,14 +1841,14 @@
   },
   {
     "id": 16281,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1232",
     "sold_at": "2025-01-30",
     "order_items": [
       {
         "id": 22238,
         "order_id": 16281,
-        "product_id": 51598,
+        "product_external_id": "210201",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "528.0",
@@ -1857,7 +1857,7 @@
       {
         "id": 22239,
         "order_id": 16281,
-        "product_id": 52441,
+        "product_external_id": "219527",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "148.0",
@@ -1866,7 +1866,7 @@
       {
         "id": 22240,
         "order_id": 16281,
-        "product_id": 48737,
+        "product_external_id": "224365",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "128.0",
@@ -1876,14 +1876,14 @@
   },
   {
     "id": 16286,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2793",
     "sold_at": "2025-01-30",
     "order_items": [
       {
         "id": 22249,
         "order_id": 16286,
-        "product_id": 52556,
+        "product_external_id": "220683",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "188.0",
@@ -1892,7 +1892,7 @@
       {
         "id": 26435,
         "order_id": 16286,
-        "product_id": 51423,
+        "product_external_id": "220450",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "178.0",
@@ -1901,7 +1901,7 @@
       {
         "id": 26436,
         "order_id": 16286,
-        "product_id": 51503,
+        "product_external_id": "220454",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "78.0",
@@ -1911,14 +1911,14 @@
   },
   {
     "id": 16288,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1239",
     "sold_at": "2025-01-30",
     "order_items": [
       {
         "id": 22251,
         "order_id": 16288,
-        "product_id": 42997,
+        "product_external_id": "224483",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "298.0",
@@ -1928,14 +1928,14 @@
   },
   {
     "id": 16290,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1242",
     "sold_at": "2025-01-30",
     "order_items": [
       {
         "id": 22256,
         "order_id": 16290,
-        "product_id": 52557,
+        "product_external_id": "220684",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "84.0",
@@ -1945,14 +1945,14 @@
   },
   {
     "id": 16317,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2825",
     "sold_at": "2025-02-01",
     "order_items": [
       {
         "id": 22294,
         "order_id": 16317,
-        "product_id": 51901,
+        "product_external_id": "145165",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "48.0",
@@ -1961,7 +1961,7 @@
       {
         "id": 26611,
         "order_id": 16317,
-        "product_id": 51753,
+        "product_external_id": "219046",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "698.0",
@@ -1971,14 +1971,14 @@
   },
   {
     "id": 16319,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1263",
     "sold_at": "2025-02-01",
     "order_items": [
       {
         "id": 22296,
         "order_id": 16319,
-        "product_id": 52556,
+        "product_external_id": "220683",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "188.0",
@@ -1988,14 +1988,14 @@
   },
   {
     "id": 16321,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2828",
     "sold_at": "2025-02-01",
     "order_items": [
       {
         "id": 22299,
         "order_id": 16321,
-        "product_id": 52412,
+        "product_external_id": "219133",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "368.0",
@@ -2004,7 +2004,7 @@
       {
         "id": 22300,
         "order_id": 16321,
-        "product_id": 49374,
+        "product_external_id": "210155",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "58.0",
@@ -2013,7 +2013,7 @@
       {
         "id": 26382,
         "order_id": 16321,
-        "product_id": 51862,
+        "product_external_id": "226332",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -2022,7 +2022,7 @@
       {
         "id": 26614,
         "order_id": 16321,
-        "product_id": 51350,
+        "product_external_id": "229560",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "248.0",
@@ -2032,14 +2032,14 @@
   },
   {
     "id": 16323,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2831",
     "sold_at": "2025-02-01",
     "order_items": [
       {
         "id": 22303,
         "order_id": 16323,
-        "product_id": 52233,
+        "product_external_id": "217323",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "528.0",
@@ -2048,7 +2048,7 @@
       {
         "id": 26661,
         "order_id": 16323,
-        "product_id": 51276,
+        "product_external_id": "225577",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "698.0",
@@ -2058,14 +2058,14 @@
   },
   {
     "id": 16325,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2833",
     "sold_at": "2025-02-01",
     "order_items": [
       {
         "id": 22306,
         "order_id": 16325,
-        "product_id": 52299,
+        "product_external_id": "217702",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "108.0",
@@ -2075,14 +2075,14 @@
   },
   {
     "id": 16328,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2835",
     "sold_at": "2025-02-01",
     "order_items": [
       {
         "id": 22309,
         "order_id": 16328,
-        "product_id": 52626,
+        "product_external_id": "225014",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -2091,7 +2091,7 @@
       {
         "id": 22310,
         "order_id": 16328,
-        "product_id": 52466,
+        "product_external_id": "219764",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "178.0",
@@ -2100,7 +2100,7 @@
       {
         "id": 24969,
         "order_id": 16328,
-        "product_id": 51864,
+        "product_external_id": "226376",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -2109,7 +2109,7 @@
       {
         "id": 26618,
         "order_id": 16328,
-        "product_id": 52327,
+        "product_external_id": "217919",
         "store_id": 6,
         "quantity": 2,
         "unit_price": "58.0",
@@ -2118,7 +2118,7 @@
       {
         "id": 26619,
         "order_id": 16328,
-        "product_id": 52664,
+        "product_external_id": "220855",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "88.0",
@@ -2127,7 +2127,7 @@
       {
         "id": 26620,
         "order_id": 16328,
-        "product_id": 52573,
+        "product_external_id": "220854",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "88.0",
@@ -2136,7 +2136,7 @@
       {
         "id": 26621,
         "order_id": 16328,
-        "product_id": 51423,
+        "product_external_id": "220450",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "178.0",
@@ -2145,7 +2145,7 @@
       {
         "id": 26622,
         "order_id": 16328,
-        "product_id": 51498,
+        "product_external_id": "220448",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "178.0",
@@ -2154,7 +2154,7 @@
       {
         "id": 26623,
         "order_id": 16328,
-        "product_id": 52663,
+        "product_external_id": "220449",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "178.0",
@@ -2164,14 +2164,14 @@
   },
   {
     "id": 16332,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2839",
     "sold_at": "2025-02-01",
     "order_items": [
       {
         "id": 22315,
         "order_id": 16332,
-        "product_id": 52231,
+        "product_external_id": "217321",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "528.0",
@@ -2180,7 +2180,7 @@
       {
         "id": 22316,
         "order_id": 16332,
-        "product_id": 52330,
+        "product_external_id": "218000",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "368.0",
@@ -2189,7 +2189,7 @@
       {
         "id": 22317,
         "order_id": 16332,
-        "product_id": 46226,
+        "product_external_id": "216837",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "422.0",
@@ -2198,7 +2198,7 @@
       {
         "id": 26649,
         "order_id": 16332,
-        "product_id": 51594,
+        "product_external_id": "227253",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "998.0",
@@ -2208,14 +2208,14 @@
   },
   {
     "id": 16337,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1519",
     "sold_at": "2025-02-01",
     "order_items": [
       {
         "id": 22322,
         "order_id": 16337,
-        "product_id": 46979,
+        "product_external_id": "216758",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -2225,14 +2225,14 @@
   },
   {
     "id": 16338,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1520",
     "sold_at": "2025-02-01",
     "order_items": [
       {
         "id": 22323,
         "order_id": 16338,
-        "product_id": 46979,
+        "product_external_id": "216758",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "448.0",
@@ -2242,14 +2242,14 @@
   },
   {
     "id": 16339,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1278",
     "sold_at": "2025-02-01",
     "order_items": [
       {
         "id": 22324,
         "order_id": 16339,
-        "product_id": 52634,
+        "product_external_id": "225202",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -2258,7 +2258,7 @@
       {
         "id": 22325,
         "order_id": 16339,
-        "product_id": 52214,
+        "product_external_id": "217226",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "248.0",
@@ -2268,14 +2268,14 @@
   },
   {
     "id": 16340,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2845",
     "sold_at": "2025-02-01",
     "order_items": [
       {
         "id": 22326,
         "order_id": 16340,
-        "product_id": 50962,
+        "product_external_id": "210185",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "538.0",
@@ -2284,7 +2284,7 @@
       {
         "id": 26662,
         "order_id": 16340,
-        "product_id": 51528,
+        "product_external_id": "225266",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "74.0",
@@ -2293,7 +2293,7 @@
       {
         "id": 26663,
         "order_id": 16340,
-        "product_id": 48669,
+        "product_external_id": "211517",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "98.0",
@@ -2303,14 +2303,14 @@
   },
   {
     "id": 16353,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1294",
     "sold_at": "2025-02-02",
     "order_items": [
       {
         "id": 22342,
         "order_id": 16353,
-        "product_id": 51817,
+        "product_external_id": "210397",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "318.0",
@@ -2320,14 +2320,14 @@
   },
   {
     "id": 16354,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2852",
     "sold_at": "2025-02-02",
     "order_items": [
       {
         "id": 22343,
         "order_id": 16354,
-        "product_id": 52115,
+        "product_external_id": "212659",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -2336,7 +2336,7 @@
       {
         "id": 22344,
         "order_id": 16354,
-        "product_id": 51956,
+        "product_external_id": "146252",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "236.0",
@@ -2345,7 +2345,7 @@
       {
         "id": 26681,
         "order_id": 16354,
-        "product_id": 51731,
+        "product_external_id": "219065",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "458.0",
@@ -2354,7 +2354,7 @@
       {
         "id": 26682,
         "order_id": 16354,
-        "product_id": 42467,
+        "product_external_id": "219070",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -2363,7 +2363,7 @@
       {
         "id": 26683,
         "order_id": 16354,
-        "product_id": 51323,
+        "product_external_id": "224218",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "528.0",
@@ -2372,7 +2372,7 @@
       {
         "id": 26684,
         "order_id": 16354,
-        "product_id": 51796,
+        "product_external_id": "224217",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "528.0",
@@ -2382,14 +2382,14 @@
   },
   {
     "id": 16361,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2856",
     "sold_at": "2025-02-02",
     "order_items": [
       {
         "id": 22356,
         "order_id": 16361,
-        "product_id": 52216,
+        "product_external_id": "217277",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "608.0",
@@ -2398,7 +2398,7 @@
       {
         "id": 22357,
         "order_id": 16361,
-        "product_id": 48956,
+        "product_external_id": "218107",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -2407,7 +2407,7 @@
       {
         "id": 26718,
         "order_id": 16361,
-        "product_id": 51558,
+        "product_external_id": "220603",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "158.0",
@@ -2416,7 +2416,7 @@
       {
         "id": 26719,
         "order_id": 16361,
-        "product_id": 52525,
+        "product_external_id": "220468",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "64.0",
@@ -2426,14 +2426,14 @@
   },
   {
     "id": 16362,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2857",
     "sold_at": "2025-02-02",
     "order_items": [
       {
         "id": 22358,
         "order_id": 16362,
-        "product_id": 43009,
+        "product_external_id": "216742",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "248.0",
@@ -2442,7 +2442,7 @@
       {
         "id": 26728,
         "order_id": 16362,
-        "product_id": 50965,
+        "product_external_id": "224447",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "568.0",
@@ -2452,14 +2452,14 @@
   },
   {
     "id": 16364,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2860",
     "sold_at": "2025-02-02",
     "order_items": [
       {
         "id": 22362,
         "order_id": 16364,
-        "product_id": 52080,
+        "product_external_id": "211518",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "138.0",
@@ -2468,7 +2468,7 @@
       {
         "id": 22363,
         "order_id": 16364,
-        "product_id": 52140,
+        "product_external_id": "216539",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "38.0",
@@ -2478,14 +2478,14 @@
   },
   {
     "id": 16366,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2862",
     "sold_at": "2025-02-02",
     "order_items": [
       {
         "id": 22365,
         "order_id": 16366,
-        "product_id": 51977,
+        "product_external_id": "161260",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "68.0",
@@ -2494,7 +2494,7 @@
       {
         "id": 26759,
         "order_id": 16366,
-        "product_id": 51910,
+        "product_external_id": "220675",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "108.0",
@@ -2503,7 +2503,7 @@
       {
         "id": 26760,
         "order_id": 16366,
-        "product_id": 50070,
+        "product_external_id": "227288",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "148.0",
@@ -2513,14 +2513,14 @@
   },
   {
     "id": 16369,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1299",
     "sold_at": "2025-02-02",
     "order_items": [
       {
         "id": 22369,
         "order_id": 16369,
-        "product_id": 46227,
+        "product_external_id": "217353",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "338.0",
@@ -2530,14 +2530,14 @@
   },
   {
     "id": 16371,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2868",
     "sold_at": "2025-02-02",
     "order_items": [
       {
         "id": 22373,
         "order_id": 16371,
-        "product_id": 52633,
+        "product_external_id": "225201",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -2546,7 +2546,7 @@
       {
         "id": 22374,
         "order_id": 16371,
-        "product_id": 51313,
+        "product_external_id": "182890",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "698.0",
@@ -2555,7 +2555,7 @@
       {
         "id": 22375,
         "order_id": 16371,
-        "product_id": 51965,
+        "product_external_id": "147078",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "758.0",
@@ -2564,7 +2564,7 @@
       {
         "id": 26813,
         "order_id": 16371,
-        "product_id": 51846,
+        "product_external_id": "227252",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "998.0",
@@ -2574,14 +2574,14 @@
   },
   {
     "id": 16375,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2871",
     "sold_at": "2025-02-02",
     "order_items": [
       {
         "id": 22381,
         "order_id": 16375,
-        "product_id": 52340,
+        "product_external_id": "218127",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -2590,7 +2590,7 @@
       {
         "id": 22382,
         "order_id": 16375,
-        "product_id": 42993,
+        "product_external_id": "217354",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "338.0",
@@ -2599,7 +2599,7 @@
       {
         "id": 26848,
         "order_id": 16375,
-        "product_id": 47581,
+        "product_external_id": "220676",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "138.0",
@@ -2609,14 +2609,14 @@
   },
   {
     "id": 16377,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1540",
     "sold_at": "2025-02-03",
     "order_items": [
       {
         "id": 22385,
         "order_id": 16377,
-        "product_id": 50962,
+        "product_external_id": "210185",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "1298.0",
@@ -2626,14 +2626,14 @@
   },
   {
     "id": 16378,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2873",
     "sold_at": "2025-02-03",
     "order_items": [
       {
         "id": 22386,
         "order_id": 16378,
-        "product_id": 47789,
+        "product_external_id": "210186",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "538.0",
@@ -2642,7 +2642,7 @@
       {
         "id": 26827,
         "order_id": 16378,
-        "product_id": 51423,
+        "product_external_id": "220450",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "178.0",
@@ -2652,14 +2652,14 @@
   },
   {
     "id": 16380,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2876",
     "sold_at": "2025-02-03",
     "order_items": [
       {
         "id": 22388,
         "order_id": 16380,
-        "product_id": 50161,
+        "product_external_id": "220698",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -2668,7 +2668,7 @@
       {
         "id": 22389,
         "order_id": 16380,
-        "product_id": 52465,
+        "product_external_id": "219758",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "148.0",
@@ -2677,7 +2677,7 @@
       {
         "id": 22390,
         "order_id": 16380,
-        "product_id": 51889,
+        "product_external_id": "219757",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "88.0",
@@ -2686,7 +2686,7 @@
       {
         "id": 26830,
         "order_id": 16380,
-        "product_id": 51569,
+        "product_external_id": "225387",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "78.0",
@@ -2695,7 +2695,7 @@
       {
         "id": 26831,
         "order_id": 16380,
-        "product_id": 51555,
+        "product_external_id": "220523",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "248.0",
@@ -2705,14 +2705,14 @@
   },
   {
     "id": 16381,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2877",
     "sold_at": "2025-02-03",
     "order_items": [
       {
         "id": 22391,
         "order_id": 16381,
-        "product_id": 52138,
+        "product_external_id": "216537",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "38.0",
@@ -2721,7 +2721,7 @@
       {
         "id": 22392,
         "order_id": 16381,
-        "product_id": 52137,
+        "product_external_id": "216536",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "38.0",
@@ -2730,7 +2730,7 @@
       {
         "id": 22393,
         "order_id": 16381,
-        "product_id": 52139,
+        "product_external_id": "216538",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "38.0",
@@ -2739,7 +2739,7 @@
       {
         "id": 26828,
         "order_id": 16381,
-        "product_id": 51423,
+        "product_external_id": "220450",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "178.0",
@@ -2748,7 +2748,7 @@
       {
         "id": 26829,
         "order_id": 16381,
-        "product_id": 51651,
+        "product_external_id": "225686",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "978.0",
@@ -2758,14 +2758,14 @@
   },
   {
     "id": 16384,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1543",
     "sold_at": "2025-02-03",
     "order_items": [
       {
         "id": 22397,
         "order_id": 16384,
-        "product_id": 50087,
+        "product_external_id": "220700",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -2775,14 +2775,14 @@
   },
   {
     "id": 16388,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2887",
     "sold_at": "2025-02-03",
     "order_items": [
       {
         "id": 22402,
         "order_id": 16388,
-        "product_id": 52080,
+        "product_external_id": "211518",
         "store_id": 6,
         "quantity": 2,
         "unit_price": "138.0",
@@ -2791,7 +2791,7 @@
       {
         "id": 26882,
         "order_id": 16388,
-        "product_id": 52669,
+        "product_external_id": "225750",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "188.0",
@@ -2801,14 +2801,14 @@
   },
   {
     "id": 16408,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1312",
     "sold_at": "2025-02-05",
     "order_items": [
       {
         "id": 22438,
         "order_id": 16408,
-        "product_id": 52466,
+        "product_external_id": "219764",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "178.0",
@@ -2817,7 +2817,7 @@
       {
         "id": 22439,
         "order_id": 16408,
-        "product_id": 52565,
+        "product_external_id": "220773",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "128.0",
@@ -2827,14 +2827,14 @@
   },
   {
     "id": 16414,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1585",
     "sold_at": "2025-02-05",
     "order_items": [
       {
         "id": 22445,
         "order_id": 16414,
-        "product_id": 47601,
+        "product_external_id": "212045",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "718.0",
@@ -2844,14 +2844,14 @@
   },
   {
     "id": 16415,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1316",
     "sold_at": "2025-02-05",
     "order_items": [
       {
         "id": 22446,
         "order_id": 16415,
-        "product_id": 48292,
+        "product_external_id": "219167",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "728.0",
@@ -2861,14 +2861,14 @@
   },
   {
     "id": 16416,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1586",
     "sold_at": "2025-02-05",
     "order_items": [
       {
         "id": 22447,
         "order_id": 16416,
-        "product_id": 50962,
+        "product_external_id": "210185",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "538.0",
@@ -2878,14 +2878,14 @@
   },
   {
     "id": 16417,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1317",
     "sold_at": "2025-02-05",
     "order_items": [
       {
         "id": 22448,
         "order_id": 16417,
-        "product_id": 47789,
+        "product_external_id": "210186",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "538.0",
@@ -2895,14 +2895,14 @@
   },
   {
     "id": 16420,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2924",
     "sold_at": "2025-02-06",
     "order_items": [
       {
         "id": 22451,
         "order_id": 16420,
-        "product_id": 52389,
+        "product_external_id": "218702",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -2911,7 +2911,7 @@
       {
         "id": 27059,
         "order_id": 16420,
-        "product_id": 51765,
+        "product_external_id": "227505",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "298.0",
@@ -2920,7 +2920,7 @@
       {
         "id": 27060,
         "order_id": 16420,
-        "product_id": 51869,
+        "product_external_id": "228242",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -2929,7 +2929,7 @@
       {
         "id": 27061,
         "order_id": 16420,
-        "product_id": 51878,
+        "product_external_id": "219161",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "348.0",
@@ -2938,7 +2938,7 @@
       {
         "id": 27062,
         "order_id": 16420,
-        "product_id": 52680,
+        "product_external_id": "229562",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "198.0",
@@ -2948,14 +2948,14 @@
   },
   {
     "id": 16424,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1323",
     "sold_at": "2025-02-06",
     "order_items": [
       {
         "id": 22456,
         "order_id": 16424,
-        "product_id": 51958,
+        "product_external_id": "146254",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "278.0",
@@ -2965,14 +2965,14 @@
   },
   {
     "id": 16427,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2932",
     "sold_at": "2025-02-06",
     "order_items": [
       {
         "id": 22459,
         "order_id": 16427,
-        "product_id": 48957,
+        "product_external_id": "218842",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "898.0",
@@ -2981,7 +2981,7 @@
       {
         "id": 22460,
         "order_id": 16427,
-        "product_id": 47577,
+        "product_external_id": "218944",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "298.0",
@@ -2990,7 +2990,7 @@
       {
         "id": 26186,
         "order_id": 16427,
-        "product_id": 48825,
+        "product_external_id": "227799",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -2999,7 +2999,7 @@
       {
         "id": 27110,
         "order_id": 16427,
-        "product_id": 51542,
+        "product_external_id": "220526",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "248.0",
@@ -3008,7 +3008,7 @@
       {
         "id": 27111,
         "order_id": 16427,
-        "product_id": 51556,
+        "product_external_id": "220528",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "248.0",
@@ -3018,14 +3018,14 @@
   },
   {
     "id": 16435,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2935",
     "sold_at": "2025-02-07",
     "order_items": [
       {
         "id": 22482,
         "order_id": 16435,
-        "product_id": 52523,
+        "product_external_id": "220465",
         "store_id": 6,
         "quantity": 2,
         "unit_price": "68.0",
@@ -3034,7 +3034,7 @@
       {
         "id": 22483,
         "order_id": 16435,
-        "product_id": 51707,
+        "product_external_id": "225210",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -3044,14 +3044,14 @@
   },
   {
     "id": 16436,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2937",
     "sold_at": "2025-02-07",
     "order_items": [
       {
         "id": 22484,
         "order_id": 16436,
-        "product_id": 48201,
+        "product_external_id": "220172",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "398.0",
@@ -3060,7 +3060,7 @@
       {
         "id": 24970,
         "order_id": 16436,
-        "product_id": 51803,
+        "product_external_id": "225826",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -3069,7 +3069,7 @@
       {
         "id": 27108,
         "order_id": 16436,
-        "product_id": 52160,
+        "product_external_id": "216660",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "68.0",
@@ -3078,7 +3078,7 @@
       {
         "id": 27109,
         "order_id": 16436,
-        "product_id": 52144,
+        "product_external_id": "216553",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "298.0",
@@ -3088,14 +3088,14 @@
   },
   {
     "id": 16438,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2940",
     "sold_at": "2025-02-07",
     "order_items": [
       {
         "id": 22491,
         "order_id": 16438,
-        "product_id": 47838,
+        "product_external_id": "211646",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "448.0",
@@ -3104,7 +3104,7 @@
       {
         "id": 27093,
         "order_id": 16438,
-        "product_id": 50965,
+        "product_external_id": "224447",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "568.0",
@@ -3113,7 +3113,7 @@
       {
         "id": 27094,
         "order_id": 16438,
-        "product_id": 47943,
+        "product_external_id": "226263",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "498.0",
@@ -3123,14 +3123,14 @@
   },
   {
     "id": 16440,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2942",
     "sold_at": "2025-02-07",
     "order_items": [
       {
         "id": 22493,
         "order_id": 16440,
-        "product_id": 47713,
+        "product_external_id": "210395",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "318.0",
@@ -3139,7 +3139,7 @@
       {
         "id": 27097,
         "order_id": 16440,
-        "product_id": 51665,
+        "product_external_id": "226382",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "678.0",
@@ -3148,7 +3148,7 @@
       {
         "id": 27098,
         "order_id": 16440,
-        "product_id": 51697,
+        "product_external_id": "228147",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "998.0",
@@ -3158,14 +3158,14 @@
   },
   {
     "id": 16443,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2945",
     "sold_at": "2025-02-07",
     "order_items": [
       {
         "id": 22496,
         "order_id": 16443,
-        "product_id": 52227,
+        "product_external_id": "217317",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -3174,7 +3174,7 @@
       {
         "id": 27116,
         "order_id": 16443,
-        "product_id": 51589,
+        "product_external_id": "225606",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "298.0",
@@ -3183,7 +3183,7 @@
       {
         "id": 27117,
         "order_id": 16443,
-        "product_id": 51588,
+        "product_external_id": "225601",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "298.0",
@@ -3193,14 +3193,14 @@
   },
   {
     "id": 16447,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2952",
     "sold_at": "2025-02-07",
     "order_items": [
       {
         "id": 22502,
         "order_id": 16447,
-        "product_id": 47601,
+        "product_external_id": "212045",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "718.0",
@@ -3209,7 +3209,7 @@
       {
         "id": 25748,
         "order_id": 16447,
-        "product_id": 49209,
+        "product_external_id": "227292",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "638.0",
@@ -3218,7 +3218,7 @@
       {
         "id": 25749,
         "order_id": 16447,
-        "product_id": 51358,
+        "product_external_id": "225859",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "368.0",
@@ -3227,7 +3227,7 @@
       {
         "id": 25750,
         "order_id": 16447,
-        "product_id": 51803,
+        "product_external_id": "225826",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "598.0",
@@ -3236,7 +3236,7 @@
       {
         "id": 27137,
         "order_id": 16447,
-        "product_id": 51899,
+        "product_external_id": "227239",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "158.0",
@@ -3246,14 +3246,14 @@
   },
   {
     "id": 16448,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2953",
     "sold_at": "2025-02-07",
     "order_items": [
       {
         "id": 22503,
         "order_id": 16448,
-        "product_id": 47601,
+        "product_external_id": "212045",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "718.0",
@@ -3262,7 +3262,7 @@
       {
         "id": 27138,
         "order_id": 16448,
-        "product_id": 51924,
+        "product_external_id": "217690",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "88.0",
@@ -3272,14 +3272,14 @@
   },
   {
     "id": 16451,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2960",
     "sold_at": "2025-02-08",
     "order_items": [
       {
         "id": 22506,
         "order_id": 16451,
-        "product_id": 51499,
+        "product_external_id": "217939",
         "store_id": 6,
         "quantity": 3,
         "unit_price": "44.0",
@@ -3288,7 +3288,7 @@
       {
         "id": 22507,
         "order_id": 16451,
-        "product_id": 50095,
+        "product_external_id": "211975",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "368.0",
@@ -3297,7 +3297,7 @@
       {
         "id": 22508,
         "order_id": 16451,
-        "product_id": 52041,
+        "product_external_id": "210006",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "448.0",
@@ -3306,7 +3306,7 @@
       {
         "id": 25455,
         "order_id": 16451,
-        "product_id": 48289,
+        "product_external_id": "216760",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "649.0",
@@ -3316,14 +3316,14 @@
   },
   {
     "id": 16466,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2974",
     "sold_at": "2025-02-08",
     "order_items": [
       {
         "id": 22529,
         "order_id": 16466,
-        "product_id": 52466,
+        "product_external_id": "219764",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "178.0",
@@ -3333,14 +3333,14 @@
   },
   {
     "id": 16472,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1351",
     "sold_at": "2025-02-09",
     "order_items": [
       {
         "id": 22536,
         "order_id": 16472,
-        "product_id": 47869,
+        "product_external_id": "217352",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "338.0",
@@ -3350,14 +3350,14 @@
   },
   {
     "id": 16477,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "1357",
     "sold_at": "2025-02-09",
     "order_items": [
       {
         "id": 22548,
         "order_id": 16477,
-        "product_id": 52203,
+        "product_external_id": "217062",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "358.0",
@@ -3367,14 +3367,14 @@
   },
   {
     "id": 16480,
-    "seller_id": 41,
+    "seller_external_id": "100",
     "external_id": "2987",
     "sold_at": "2025-02-09",
     "order_items": [
       {
         "id": 22553,
         "order_id": 16480,
-        "product_id": 52161,
+        "product_external_id": "216671",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "168.0",
@@ -3383,7 +3383,7 @@
       {
         "id": 22554,
         "order_id": 16480,
-        "product_id": 52577,
+        "product_external_id": "223863",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "128.0",
@@ -3392,7 +3392,7 @@
       {
         "id": 22555,
         "order_id": 16480,
-        "product_id": 48996,
+        "product_external_id": "224531",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "318.0",
@@ -3401,7 +3401,7 @@
       {
         "id": 22556,
         "order_id": 16480,
-        "product_id": 47759,
+        "product_external_id": "216836",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "422.0",
@@ -3410,7 +3410,7 @@
       {
         "id": 27196,
         "order_id": 16480,
-        "product_id": 51502,
+        "product_external_id": "220489",
         "store_id": 6,
         "quantity": 1,
         "unit_price": "168.0",
@@ -3419,7 +3419,7 @@
       {
         "id": 27197,
         "order_id": 16480,
-        "product_id": 51518,
+        "product_external_id": "220453",
         "store_id": 6,
         "quantity": 2,
         "unit_price": "98.0",
