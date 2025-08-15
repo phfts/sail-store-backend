@@ -483,13 +483,13 @@ class DashboardController < ApplicationController
   end
 
   def calculate_seller_commission(seller, net_sales, store)
-    # Buscar meta ativa do vendedor para calcular o percentual de atingimento
-    active_goal = seller.goals.where('start_date <= ? AND end_date >= ?', Date.current, Date.current).first
+    # Buscar meta mais recente do vendedor (ativa ou a última expirada)
+    recent_goal = seller.goals.order(end_date: :desc).first
     
-    return 0 unless active_goal && active_goal.target_value > 0
+    return 0 unless recent_goal && recent_goal.target_value > 0
     
-    # Calcular percentual de atingimento
-    achievement_percentage = (active_goal.current_value / active_goal.target_value) * 100
+    # Calcular percentual de atingimento baseado na meta mais recente
+    achievement_percentage = (recent_goal.current_value / recent_goal.target_value) * 100
     
     # Buscar níveis de comissão da loja, ordenados por achievement_percentage decrescente
     commission_levels = store.commission_levels.where(active: true).order(achievement_percentage: :desc)
@@ -501,7 +501,7 @@ class DashboardController < ApplicationController
     
     return 0 unless applicable_level
     
-    # Calcular comissão: vendas líquidas × percentual de comissão
+    # Calcular comissão baseada nas vendas líquidas anuais × percentual de comissão
     commission_value = net_sales * (applicable_level.commission_percentage / 100.0)
     
     commission_value
