@@ -197,6 +197,9 @@ class DashboardController < ApplicationController
       average_per_day = days_worked > 0 ? (seller_sales.to_f / days_worked) : 0
       individual_potential = best_average_per_day * days_worked
       
+      # Calcular comissão do vendedor baseada nos níveis configurados
+      commission = calculate_seller_commission(seller, net_sales, store)
+      
       {
         id: seller.id,
         name: seller.name,
@@ -210,6 +213,7 @@ class DashboardController < ApplicationController
         average_orders_per_day: days_worked > 0 ? (seller_orders.count.to_f / days_worked).round(2) : 0,
         returns_exchanges_value: total_returns_exchanges_value.round(2),
         returns_exchanges_count: total_returns_exchanges_count,
+        commission: commission.round(2),
         avatar: nil
       }
     end.sort_by { |seller| -seller[:sales] }
@@ -476,6 +480,31 @@ class DashboardController < ApplicationController
     end
     
     monthly_data
+  end
+
+  def calculate_seller_commission(seller, net_sales, store)
+    # Buscar meta ativa do vendedor para calcular o percentual de atingimento
+    active_goal = seller.goals.where('start_date <= ? AND end_date >= ?', Date.current, Date.current).first
+    
+    return 0 unless active_goal && active_goal.target_value > 0
+    
+    # Calcular percentual de atingimento
+    achievement_percentage = (active_goal.current_value / active_goal.target_value) * 100
+    
+    # Buscar níveis de comissão da loja, ordenados por achievement_percentage decrescente
+    commission_levels = store.commission_levels.where(active: true).order(achievement_percentage: :desc)
+    
+    return 0 if commission_levels.empty?
+    
+    # Encontrar o nível de comissão aplicável (o maior achievement_percentage que o vendedor atingiu)
+    applicable_level = commission_levels.find { |level| achievement_percentage >= level.achievement_percentage }
+    
+    return 0 unless applicable_level
+    
+    # Calcular comissão: vendas líquidas × percentual de comissão
+    commission_value = net_sales * (applicable_level.commission_percentage / 100.0)
+    
+    commission_value
   end
 
   def ensure_store_access

@@ -38,6 +38,11 @@ class GoalsController < ApplicationController
       end
     end
 
+    # Calcular progresso automaticamente para todas as metas
+    @goals.each do |goal|
+      update_goal_progress(goal)
+    end
+
     render json: @goals.as_json(
       include: { 
         seller: { 
@@ -76,6 +81,9 @@ class GoalsController < ApplicationController
     end
 
     if @goal.save
+      # Calcular progresso inicial da meta
+      update_goal_progress(@goal)
+      
       render json: @goal.as_json(
         include: { 
           seller: { 
@@ -139,26 +147,8 @@ class GoalsController < ApplicationController
       end
     end
     
-    # Calcular o valor atual das vendas para esta meta
-    if @goal.goal_scope == 'individual' && @goal.seller_id.present?
-      # Meta individual: somar vendas do vendedor no período da meta
-      current_sales = Order.joins(:order_items)
-                          .where(seller_id: @goal.seller_id)
-                          .where('orders.created_at >= ? AND orders.created_at <= ?', 
-                                 @goal.start_date.beginning_of_day, @goal.end_date.end_of_day)
-                          .sum('order_items.quantity * order_items.unit_price')
-    else
-      # Meta da loja: somar vendas da loja no período da meta
-      store_id = current_user.admin? ? @goal.seller&.store_id : current_user.store_id
-      current_sales = Order.joins(:order_items, :seller)
-                          .where(sellers: { store_id: store_id })
-                          .where('orders.created_at >= ? AND orders.created_at <= ?', 
-                                 @goal.start_date.beginning_of_day, @goal.end_date.end_of_day)
-                          .sum('order_items.quantity * order_items.unit_price')
-    end
-    
-    # Atualizar o current_value da meta
-    @goal.update(current_value: current_sales)
+    # Calcular progresso usando método reutilizável
+    update_goal_progress(@goal)
     
     render json: @goal.as_json(
       include: { 
@@ -175,6 +165,29 @@ class GoalsController < ApplicationController
 
   def set_goal
     @goal = Goal.find(params[:id])
+  end
+
+  def update_goal_progress(goal)
+    # Calcular o valor atual das vendas para esta meta
+    if goal.goal_scope == 'individual' && goal.seller_id.present?
+      # Meta individual: somar vendas do vendedor no período da meta usando sold_at
+      current_sales = Order.joins(:order_items)
+                          .where(seller_id: goal.seller_id)
+                          .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                 goal.start_date.beginning_of_day, goal.end_date.end_of_day)
+                          .sum('order_items.quantity * order_items.unit_price')
+    else
+      # Meta da loja: somar vendas da loja no período da meta usando sold_at
+      store_id = current_user.admin? ? goal.seller&.store_id : current_user.store_id
+      current_sales = Order.joins(:order_items, :seller)
+                          .where(sellers: { store_id: store_id })
+                          .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                 goal.start_date.beginning_of_day, goal.end_date.end_of_day)
+                          .sum('order_items.quantity * order_items.unit_price')
+    end
+    
+    # Atualizar o current_value da meta
+    goal.update_column(:current_value, current_sales || 0)
   end
 
   def goal_params
