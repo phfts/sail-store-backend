@@ -4,9 +4,32 @@ require_relative '../../lib/google_drive_oauth'
 
 class GoogleDriveService
   def initialize
-    # Usa autenticação OAuth2 via navegador para desenvolvimento
-    config_file = Rails.root.join('config', 'google_drive_config.json')
-    @session = GoogleDriveOAuth.authenticate(config_file)
+    if Rails.env.production?
+      # Em produção, usa credenciais OAuth2 das variáveis de ambiente
+      puts "🔐 Autenticando com credenciais de produção..."
+      
+      client_id = ENV['GOOGLE_DRIVE_CLIENT_ID']
+      client_secret = ENV['GOOGLE_DRIVE_CLIENT_SECRET']
+      refresh_token = ENV['GOOGLE_DRIVE_REFRESH_TOKEN']
+      
+      if client_id.blank? || client_secret.blank? || refresh_token.blank?
+        raise "Credenciais do Google Drive não configuradas no Heroku"
+      end
+      
+      # Cria sessão com credenciais OAuth2
+      oauth_credentials = {
+        'client_id' => client_id,
+        'client_secret' => client_secret,
+        'refresh_token' => refresh_token,
+        'type' => 'authorized_user'
+      }
+      
+      @session = GoogleDrive::Session.from_credentials(oauth_credentials)
+    else
+      # Em desenvolvimento, usa OAuth2 via navegador
+      config_file = Rails.root.join('config', 'google_drive_config.json')
+      @session = GoogleDriveOAuth.authenticate(config_file)
+    end
   end
 
   # Busca arquivo por nome em uma pasta específica
