@@ -2,6 +2,7 @@ class SellersController < ApplicationController
   before_action :set_seller, only: %i[ show update destroy activate deactivate busy_status ]
   before_action :require_admin!, only: %i[ create update destroy ]
   before_action :ensure_store_access, only: %i[ index by_store_slug show ]
+  skip_before_action :authenticate_user!, only: %i[ kpis ]
 
   # GET /sellers
   def index
