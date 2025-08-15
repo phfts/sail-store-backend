@@ -349,7 +349,101 @@ class SellersController < ApplicationController
     render json: { message: 'Vendedor excluído com sucesso' }
   end
 
+  # GET /sellers/:id/kpis (mock endpoint)
+  def kpis
+    seller_id = params[:id]
+    
+    # Mock data para demonstração dos KPIs
+    mock_data = {
+      seller_info: {
+        id: seller_id,
+        name: "João Silva",
+        phone: "+55 (11) 99999-9999",
+        email: "joao.silva@loja.com"
+      },
+      
+      # Metas e vendas
+      targets: {
+        monthly_target: 15000.00,
+        current_sales: 8750.00,
+        daily_target_adjusted: 520.83,
+        super_target: 20000.00,
+        amount_to_super_target: 11250.00,
+        days_remaining_month: 12
+      },
+      
+      # Percentuais de meta
+      goal_percentages: {
+        seller_monthly: 58.33,
+        seller_weekly: 72.50,
+        store_monthly: 65.80,
+        commission_calculation: 58.33
+      },
+      
+      # Tickets médios
+      average_tickets: {
+        seller_ticket: 125.75,
+        store_ticket: 142.30
+      },
+      
+      # PA (Produtos por Atendimento)
+      products_per_service: {
+        seller_pa: 2.3,
+        store_pa: 2.1
+      },
+      
+      # Comissão
+      commission: {
+        calculated_amount: 437.50,
+        percentage_rate: 5.0,
+        achievement_level: "Básico",
+        next_level_at: 70.0
+      },
+      
+      # Vendas da loja
+      store_sales: {
+        total_monthly: 125000.00,
+        total_current_month: 82250.00,
+        store_monthly_target: 125000.00
+      },
+      
+      # Dados calculados adicionais
+      calculated_metrics: {
+        sales_per_day_average: 729.17,
+        projected_month_end: 12250.00,
+        target_gap: 6250.00,
+        performance_trend: "growing", # growing, stable, declining
+        ranking_position: 3,
+        total_sellers_in_store: 8
+      },
+      
+      # Histórico semanal (últimas 4 semanas)
+      weekly_history: [
+        { week: "Semana 1", sales: 2100.00, target: 3750.00, percentage: 56.0 },
+        { week: "Semana 2", sales: 2850.00, target: 3750.00, percentage: 76.0 },
+        { week: "Semana 3", sales: 1950.00, target: 3750.00, percentage: 52.0 },
+        { week: "Semana 4", sales: 1850.00, target: 3750.00, percentage: 49.3 }
+      ],
+      
+      # Níveis de comissão disponíveis
+      commission_levels: [
+        { level: "Básico", min_percentage: 0, max_percentage: 69.99, commission_rate: 5.0 },
+        { level: "Intermediário", min_percentage: 70, max_percentage: 89.99, commission_rate: 7.5 },
+        { level: "Avançado", min_percentage: 90, max_percentage: 109.99, commission_rate: 10.0 },
+        { level: "Expert", min_percentage: 110, max_percentage: Float::INFINITY, commission_rate: 12.5 }
+      ],
+      
+      # Timestamps
+      generated_at: Time.current.iso8601,
+      period: {
+        start_date: Date.current.beginning_of_month.iso8601,
+        end_date: Date.current.end_of_month.iso8601,
+        current_date: Date.current.iso8601
+      }
+    }
 
+    render json: mock_data
+  end
 
   private
 

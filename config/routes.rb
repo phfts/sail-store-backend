@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       patch :activate
       patch :deactivate
       put :busy_status
+      get :kpis
     end
     collection do
       get 'by_external_id/:external_id', to: 'sellers#by_external_id'
