@@ -8,21 +8,40 @@
 
 # Criar usuário admin inicial
 admin_email = 'admin@sail.app.br'
-admin_password = 'admin123'
 
 # Verificar se o admin já existe
 admin = User.find_by(email: admin_email)
 
 unless admin
+  # Solicitar senha do admin no console
+  print "Digite a senha para o usuário admin (#{admin_email}): "
+  admin_password = STDIN.gets.chomp
+  
+  # Validar se a senha não está vazia
+  if admin_password.blank?
+    puts "❌ Senha não pode estar vazia!"
+    exit 1
+  end
+  
+  # Confirmar a senha
+  print "Confirme a senha: "
+  password_confirmation = STDIN.gets.chomp
+  
+  unless admin_password == password_confirmation
+    puts "❌ Senhas não coincidem!"
+    exit 1
+  end
+  
   admin = User.create!(
     email: admin_email,
     password: admin_password,
     admin: true
   )
   puts "✅ Usuário admin criado: #{admin.email}"
-  puts "🔑 Senha: #{admin_password}"
+  puts "🔑 Senha definida com sucesso!"
 else
   puts "✅ Usuário admin já existe: #{admin.email}"
+  puts "💡 Use 'rails user:change_password' para alterar a senha"
 end
 
 # Criar turnos de exemplo se não existirem
