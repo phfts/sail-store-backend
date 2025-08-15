@@ -9,7 +9,7 @@ namespace :souq do
     FileUtils.mkdir_p(backup_dir)
     
     # Buscar empresa SOUQ
-    souq_company = Company.find_by(cnpj: '16945787001508')
+    souq_company = Company.find_by(name: 'SOUQ')
     unless souq_company
       puts "❌ Empresa SOUQ não encontrada"
       exit 1
@@ -214,15 +214,13 @@ namespace :souq do
     
     company_data = JSON.parse(File.read(file_path))
     
-    @souq_company = Company.find_by(cnpj: company_data['cnpj'])
+    @souq_company = Company.find_by(name: company_data['name'])
     
     if @souq_company
       puts "✅ Empresa SOUQ já existe (ID: #{@souq_company.id})"
     else
       @souq_company = Company.create!(
         name: company_data['name'],
-        cnpj: company_data['cnpj'],
-        address: company_data['address'],
         active: company_data['active'],
         description: company_data['description'],
         simplified_frontend: company_data['simplified_frontend']
@@ -249,7 +247,9 @@ namespace :souq do
     else
       @souq_store = Store.create!(
         company_id: @souq_company.id,
-        name: store_data['name']
+        name: store_data['name'],
+        cnpj: store_data['cnpj'],
+        address: store_data['address']
       )
       puts "🆕 Loja criada (ID: #{@souq_store.id})"
     end
@@ -398,8 +398,6 @@ namespace :souq do
     company_data = {
       id: company.id,
       name: company.name,
-      cnpj: company.cnpj,
-      address: company.address,
       active: company.active,
       description: company.description,
       simplified_frontend: company.simplified_frontend,
@@ -421,6 +419,8 @@ namespace :souq do
       id: store.id,
       company_id: store.company_id,
       name: store.name,
+      cnpj: store.cnpj,
+      address: store.address,
       slug: store.slug
     }
     

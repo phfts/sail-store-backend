@@ -27,15 +27,13 @@ namespace :souq do
     
     company_data = {
       name: "SOUQ",
-      cnpj: "16945787001508",
-      address: "PÁTIO HIGIENÓPOLIS - São Paulo, SP",
       active: true,
       description: "SOUQ - SP - PÁTIO HIGIENÓPOLIS - Portal Souq - Matriz",
       simplified_frontend: false
     }
     
     # Verifica se a empresa já existe
-    existing_company = Company.find_by(cnpj: company_data[:cnpj])
+    existing_company = Company.find_by(name: company_data[:name])
     
     if existing_company
       puts "⚠️  Empresa SOUQ já existe (ID: #{existing_company.id})"
@@ -46,7 +44,6 @@ namespace :souq do
       puts "✅ Empresa SOUQ criada com sucesso!"
       puts "   ID: #{@souq_company.id}"
       puts "   Nome: #{@souq_company.name}"
-      puts "   CNPJ: #{@souq_company.cnpj}"
       puts "   Slug: #{@souq_company.slug}"
     end
     
@@ -69,7 +66,9 @@ namespace :souq do
     
     store_data = {
       company_id: @souq_company.id,
-      name: "PÁTIO HIGIENÓPOLIS"
+      name: "PÁTIO HIGIENÓPOLIS",
+      cnpj: "16945787001508",
+      address: "PÁTIO HIGIENÓPOLIS - São Paulo, SP"
     }
     
     # Verifica se a loja já existe
@@ -400,7 +399,7 @@ namespace :souq do
     puts "🧹 Limpando dados SOUQ..."
     
     # Busca a empresa SOUQ
-    company = Company.find_by(cnpj: '16945787001508')
+    company = Company.find_by(name: 'SOUQ')
     
     if company
       puts "🗑️  Removendo empresa SOUQ e todos os dados relacionados..."
