@@ -1,0 +1,102 @@
+[
+  {
+    "id": 21,
+    "company_id": 3,
+    "store_id": 3,
+    "name": "MARLISE PETTA",
+    "external_id": "100",
+    "email": null,
+    "whatsapp": null,
+    "store_admin": false
+  },
+  {
+    "id": 22,
+    "company_id": 3,
+    "store_id": 3,
+    "name": "SILVIA DE JESUS CAMPASSI FERREIRA",
+    "external_id": "360",
+    "email": null,
+    "whatsapp": null,
+    "store_admin": false
+  },
+  {
+    "id": 23,
+    "company_id": 3,
+    "store_id": 3,
+    "name": "ANGELA MARIA PEREIRA DA SILVA",
+    "external_id": "548",
+    "email": null,
+    "whatsapp": null,
+    "store_admin": false
+  },
+  {
+    "id": 24,
+    "company_id": 3,
+    "store_id": 3,
+    "name": "GABRIELA ALVES SIQUEIRA",
+    "external_id": "612",
+    "email": null,
+    "whatsapp": null,
+    "store_admin": false
+  },
+  {
+    "id": 25,
+    "company_id": 3,
+    "store_id": 3,
+    "name": "MARIA ADVANIR PEREIRA DE SOUZA",
+    "external_id": "723",
+    "email": null,
+    "whatsapp": null,
+    "store_admin": false
+  },
+  {
+    "id": 26,
+    "company_id": 3,
+    "store_id": 3,
+    "name": "CLEBIA OLIVEIRA PIRES",
+    "external_id": "1332",
+    "email": null,
+    "whatsapp": null,
+    "store_admin": false
+  },
+  {
+    "id": 27,
+    "company_id": 3,
+    "store_id": 3,
+    "name": "ISABELA ALMEIDA XAVIER",
+    "external_id": "1362",
+    "email": null,
+    "whatsapp": null,
+    "store_admin": false
+  },
+  {
+    "id": 28,
+    "company_id": 3,
+    "store_id": 3,
+    "name": "ROSANGELA ROMOALDO ALVES",
+    "external_id": "477",
+    "email": null,
+    "whatsapp": null,
+    "store_admin": false
+  },
+  {
+    "id": 29,
+    "company_id": 3,
+    "store_id": 3,
+    "name": "LUCINEIA CASTRO",
+    "external_id": "1394",
+    "email": null,
+    "whatsapp": null,
+    "store_admin": false
+  },
+  {
+    "id": 30,
+    "company_id": 3,
+    "store_id": 3,
+    "name": "PRISCILA RIBEIRO PONTES",
+    "external_id": "1396",
+    "email": null,
+    "whatsapp": null,
+    "store_admin": false
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "id": 3,
+  "name": "SOUQ",
+  "cnpj": "16945787001508",
+  "address": "PÁTIO HIGIENÓPOLIS - São Paulo, SP",
+  "active": true,
+  "description": "SOUQ - SP - PÁTIO HIGIENÓPOLIS - Portal Souq - Matriz",
+  "simplified_frontend": false,
+  "slug": "souq"
+}
