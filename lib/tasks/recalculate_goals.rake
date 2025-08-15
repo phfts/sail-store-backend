@@ -37,3 +37,4 @@ namespace :goals do
     puts "Recálculo concluído!"
   end
 end
+

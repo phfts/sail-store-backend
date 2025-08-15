@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Criar usuário admin inicial
-admin_email = 'admin@sail.com'
+admin_email = 'admin@sail.app.br'
 admin_password = 'admin123'
 
 # Verificar se o admin já existe
