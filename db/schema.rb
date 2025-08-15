@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_14_201956) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_15_005836) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -78,6 +78,27 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_14_201956) do
     t.text "description"
     t.boolean "simplified_frontend", default: false, null: false
     t.index ["slug"], name: "index_companies_on_slug", unique: true
+  end
+
+  create_table "exchanges", force: :cascade do |t|
+    t.string "external_id"
+    t.string "voucher_number"
+    t.decimal "voucher_value"
+    t.string "original_document"
+    t.string "new_document"
+    t.string "customer_code"
+    t.string "exchange_type"
+    t.boolean "is_credit"
+    t.datetime "processed_at"
+    t.bigint "seller_id"
+    t.bigint "original_order_id"
+    t.bigint "new_order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["external_id"], name: "index_exchanges_on_external_id", unique: true
+    t.index ["new_order_id"], name: "index_exchanges_on_new_order_id"
+    t.index ["original_order_id"], name: "index_exchanges_on_original_order_id"
+    t.index ["seller_id"], name: "index_exchanges_on_seller_id"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -156,6 +177,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_14_201956) do
     t.index ["store_id"], name: "index_queue_items_on_store_id"
   end
 
+  create_table "returns", force: :cascade do |t|
+    t.string "external_id"
+    t.string "original_sale_id"
+    t.string "product_external_id"
+    t.string "original_transaction"
+    t.string "return_transaction"
+    t.decimal "quantity_returned"
+    t.datetime "processed_at"
+    t.bigint "original_order_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["external_id"], name: "index_returns_on_external_id", unique: true
+    t.index ["original_order_id"], name: "index_returns_on_original_order_id"
+    t.index ["product_id"], name: "index_returns_on_product_id"
+  end
+
   create_table "schedules", force: :cascade do |t|
     t.bigint "seller_id", null: false
     t.bigint "shift_id", null: false
@@ -228,6 +266,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_14_201956) do
   add_foreign_key "adjustments", "stores"
   add_foreign_key "categories", "companies"
   add_foreign_key "commission_levels", "stores", on_delete: :cascade
+  add_foreign_key "exchanges", "orders", column: "new_order_id"
+  add_foreign_key "exchanges", "orders", column: "original_order_id"
+  add_foreign_key "exchanges", "sellers"
   add_foreign_key "goals", "sellers", on_delete: :cascade
   add_foreign_key "login_logs", "users", on_delete: :cascade
   add_foreign_key "order_items", "orders", on_delete: :cascade
@@ -238,6 +279,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_14_201956) do
   add_foreign_key "queue_items", "companies"
   add_foreign_key "queue_items", "sellers"
   add_foreign_key "queue_items", "stores"
+  add_foreign_key "returns", "orders", column: "original_order_id"
+  add_foreign_key "returns", "products"
   add_foreign_key "schedules", "sellers", on_delete: :cascade
   add_foreign_key "schedules", "shifts", on_delete: :cascade
   add_foreign_key "schedules", "stores", on_delete: :cascade

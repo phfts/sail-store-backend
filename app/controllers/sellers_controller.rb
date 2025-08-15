@@ -144,7 +144,8 @@ class SellersController < ApplicationController
       end
       
       # Filtrar por status de ativação se especificado
-      sellers = store.company.sellers.includes(:user, :store)
+      # Incluir absences para evitar N+1
+      sellers = store.company.sellers.includes(:user, :store, :absences)
       
       if params[:include_inactive] == 'true'
         # Incluir todos os vendedores (ativos e inativos)

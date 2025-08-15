@@ -127,6 +127,35 @@ class DashboardController < ApplicationController
       seller_sales = calculate_sales_from_orders(seller_orders)
       seller_metrics = calculate_metrics(seller_orders)
       
+      # Calcular devoluções do vendedor no último ano
+      # Como as devoluções não estão linkadas às vendas por external_id,
+      # vamos calcular uma distribuição proporcional baseada nas vendas do vendedor
+      seller_sales_percentage = seller_orders.count > 0 ? (seller_orders.count.to_f / orders.count) : 0
+      
+      # Total de devoluções da loja (todas, já que os timestamps estão incorretos)
+      # TODO: Corrigir timestamps das devoluções na importação
+      total_store_returns = Return.all
+      
+      # Distribuir proporcionalmente as devoluções baseado na participação do vendedor nas vendas
+      # Como o return_value não funciona sem vendas associadas, vamos usar uma estimativa
+      # baseada na quantidade devolvida e um preço médio dos produtos
+      average_product_price = seller_orders.joins(:order_items).average('order_items.unit_price') || 0
+      estimated_return_value = total_store_returns.sum(:quantity_returned) * average_product_price
+      
+      total_returns_value = (estimated_return_value * seller_sales_percentage).round(2)
+      total_returns_count = (total_store_returns.count * seller_sales_percentage).round(0)
+      
+      # Calcular trocas do vendedor (distribuição proporcional)
+      total_store_exchanges = Exchange.all
+      estimated_exchange_value = total_store_exchanges.sum(:voucher_value) * seller_sales_percentage
+      
+      # Total de trocas/devoluções = valor perdido pela loja
+      total_returns_exchanges_value = total_returns_value + estimated_exchange_value.round(2)
+      total_returns_exchanges_count = total_returns_count + (total_store_exchanges.count * seller_sales_percentage).round(0)
+      
+      # Vendas líquidas = Vendas brutas - Trocas/Devoluções
+      net_sales = seller_sales - total_returns_exchanges_value
+      
       # Calcular potencial individual (melhor média de vendas por dia × dias trabalhados)
       daily_sales = {}
       seller_orders.each do |order|
@@ -143,12 +172,15 @@ class DashboardController < ApplicationController
         id: seller.id,
         name: seller.name,
         sales: seller_sales,
+        net_sales: net_sales.round(2),
         potential: individual_potential.round(2),
         ticket_medio: seller_metrics[:ticket_medio],
         produtos_por_atendimento: seller_metrics[:produtos_por_atendimento],
         days_worked: days_worked,
         average_per_day: average_per_day.round(2),
         average_orders_per_day: days_worked > 0 ? (seller_orders.count.to_f / days_worked).round(2) : 0,
+        returns_exchanges_value: total_returns_exchanges_value.round(2),
+        returns_exchanges_count: total_returns_exchanges_count,
         avatar: nil
       }
     end.sort_by { |seller| -seller[:sales] }

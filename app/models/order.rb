@@ -2,6 +2,9 @@ class Order < ApplicationRecord
   belongs_to :seller
   has_many :order_items, dependent: :destroy
   has_many :products, through: :order_items
+  has_many :returns, class_name: 'Return', foreign_key: 'original_order_id', dependent: :destroy
+  has_many :original_exchanges, class_name: 'Exchange', foreign_key: 'original_order_id', dependent: :destroy
+  has_many :new_exchanges, class_name: 'Exchange', foreign_key: 'new_order_id', dependent: :destroy
   
   accepts_nested_attributes_for :order_items, allow_destroy: true
   
@@ -10,9 +13,21 @@ class Order < ApplicationRecord
   # Callback para atualizar o progresso das metas quando uma venda é criada
   after_create :update_goals_progress
   
-  # Calcula o total do pedido
+  # Calcula o total bruto do pedido
   def total
     order_items.sum { |item| item.quantity * item.unit_price }
+  end
+  
+  # Calcula o total líquido (descontando devoluções)
+  def net_total
+    gross_total = total
+    returned_value = returns.sum(&:return_value)
+    gross_total - returned_value
+  end
+  
+  # Valor total das devoluções
+  def total_returned
+    returns.sum(&:return_value)
   end
   
   private

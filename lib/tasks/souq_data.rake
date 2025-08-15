@@ -1,5 +1,8 @@
 require 'csv'
 
+# Configuração do Google Drive
+SOUQ_GOOGLE_DRIVE_FOLDER_ID = ENV['SOUQ_GOOGLE_DRIVE_FOLDER_ID'] || 'your_folder_id_here'
+
 namespace :souq do
   desc "Carrega todos os dados SOUQ na ordem correta"
   task load_all: :environment do
@@ -12,6 +15,8 @@ namespace :souq do
     Rake::Task["souq:load_sellers"].invoke
     Rake::Task["souq:load_products"].invoke
     Rake::Task["souq:load_orders"].invoke
+    # Rake::Task["souq:load_exchanges"].invoke  # Arquivo não encontrado na pasta
+    # Rake::Task["souq:load_returns"].invoke    # Arquivo não encontrado na pasta
     
     puts "\n🎉 CARREGAMENTO CONCLUÍDO COM SUCESSO!"
   end
@@ -126,15 +131,22 @@ namespace :souq do
     @souq_company = Company.find(company_id)
     @souq_store = Store.find(store_id)
     
-    # Caminho do arquivo CSV
-    csv_file = "../analysis/data/souq/SOUQ_-_SP_-_PÁTIO_HIGIENÓPOLIS/dados/LinxVendedores_store=16945787001508_historical.csv"
+    # Inicializa o serviço do Google Drive
+    drive_service = GoogleDriveService.new
     
-    unless File.exist?(csv_file)
-      puts "❌ Arquivo CSV não encontrado: #{csv_file}"
+    # Nome do arquivo CSV
+    csv_filename = "sellers"
+    
+    # Baixa o arquivo do Google Drive
+    puts "📥 Baixando arquivo do Google Drive: #{csv_filename}"
+    csv_file = drive_service.download_csv_file(SOUQ_GOOGLE_DRIVE_FOLDER_ID, csv_filename)
+    
+    unless csv_file
+      puts "❌ Arquivo CSV não encontrado no Google Drive: #{csv_filename}"
       exit 1
     end
     
-    puts "📁 Lendo arquivo: #{csv_file}"
+    puts "📁 Lendo arquivo: #{csv_filename}"
     
     created_count = 0
     skipped_count = 0
@@ -186,6 +198,10 @@ namespace :souq do
     puts "   Vendedores com erro: #{error_count}"
     puts "   Total de vendedores na empresa: #{Seller.where(company_id: @souq_company.id).count}"
     puts "   Total de vendedores na loja: #{Seller.where(store_id: @souq_store.id).count}"
+    
+    # Limpa o arquivo temporário
+    File.unlink(csv_file) if csv_file && File.exist?(csv_file)
+    puts "🗑️  Arquivo temporário removido"
   end
 
   desc "Carrega produtos do arquivo CSV"
@@ -198,27 +214,22 @@ namespace :souq do
     @souq_company = Company.find(company_id)
     @outros_category = Category.find(category_id)
     
-    # Caminho do arquivo CSV (usando o mais recente)
-    csv_files = [
-      "../analysis/data/souq/SOUQ_-_SP_-_PÁTIO_HIGIENÓPOLIS/dados/LinxProdutos_store=16945787001508_beginDate=2025-01-01_endDate=2025-08-12.csv",
-      "../analysis/data/souq/SOUQ_-_SP_-_PÁTIO_HIGIENÓPOLIS/dados/LinxProdutos_store=16945787001508_beginDate=2024-01-01_endDate=2024-12-31.csv",
-      "../analysis/data/souq/SOUQ_-_SP_-_PÁTIO_HIGIENÓPOLIS/dados/LinxProdutos_store=16945787001508_beginDate=2023-01-01_endDate=2023-12-31.csv"
-    ]
+    # Inicializa o serviço do Google Drive
+    drive_service = GoogleDriveService.new
     
-    csv_file = nil
-    csv_files.each do |file|
-      if File.exist?(file)
-        csv_file = file
-        break
-      end
-    end
+    # Nome do arquivo CSV de produtos
+    csv_filename = "products"
+    
+    # Baixa o arquivo do Google Drive
+    puts "📥 Baixando arquivo de produtos do Google Drive: #{csv_filename}"
+    csv_file = drive_service.download_csv_file(SOUQ_GOOGLE_DRIVE_FOLDER_ID, csv_filename)
     
     unless csv_file
-      puts "❌ Nenhum arquivo CSV de produtos encontrado"
+      puts "❌ Nenhum arquivo CSV de produtos encontrado no Google Drive"
       exit 1
     end
     
-    puts "📁 Lendo arquivo: #{csv_file}"
+    puts "📁 Lendo arquivo de produtos..."
     
     created_count = 0
     skipped_count = 0
@@ -258,6 +269,10 @@ namespace :souq do
     puts "   Produtos com erro: #{error_count}"
     puts "   Total de produtos na categoria: #{@outros_category.products.count}"
     puts "   Total de produtos no sistema: #{Product.count}"
+    
+    # Limpa o arquivo temporário
+    File.unlink(csv_file) if csv_file && File.exist?(csv_file)
+    puts "🗑️  Arquivo temporário removido"
   end
 
   desc "Carrega vendas do arquivo CSV"
@@ -270,27 +285,22 @@ namespace :souq do
     @souq_company = Company.find(company_id)
     @souq_store = Store.find(store_id)
     
-    # Caminho do arquivo CSV (usando o mais recente)
-    csv_files = [
-      "../analysis/data/souq/SOUQ_-_SP_-_PÁTIO_HIGIENÓPOLIS/dados/LinxMovimento_store=16945787001508_beginDate=2025-01-01_endDate=2025-08-12.csv",
-      "../analysis/data/souq/SOUQ_-_SP_-_PÁTIO_HIGIENÓPOLIS/dados/LinxMovimento_store=16945787001508_beginDate=2024-01-01_endDate=2024-12-31.csv",
-      "../analysis/data/souq/SOUQ_-_SP_-_PÁTIO_HIGIENÓPOLIS/dados/LinxMovimento_store=16945787001508_beginDate=2023-01-01_endDate=2023-12-31.csv"
-    ]
+    # Inicializa o serviço do Google Drive
+    drive_service = GoogleDriveService.new
     
-    csv_file = nil
-    csv_files.each do |file|
-      if File.exist?(file)
-        csv_file = file
-        break
-      end
-    end
+    # Nome do arquivo CSV de vendas
+    csv_filename = "orders"
+    
+    # Baixa o arquivo do Google Drive
+    puts "📥 Baixando arquivo de vendas do Google Drive: #{csv_filename}"
+    csv_file = drive_service.download_csv_file(SOUQ_GOOGLE_DRIVE_FOLDER_ID, csv_filename)
     
     unless csv_file
-      puts "❌ Nenhum arquivo CSV de vendas encontrado"
+      puts "❌ Nenhum arquivo CSV de vendas encontrado no Google Drive"
       exit 1
     end
     
-    puts "📁 Lendo arquivo: #{csv_file}"
+    puts "📁 Lendo arquivo de vendas..."
     
     created_count = 0
     skipped_count = 0
@@ -325,38 +335,51 @@ namespace :souq do
       
       order_data = {
         seller_id: seller.id,
-        external_id: row['transacao'],
+        external_id: row['documento'],
         sold_at: sold_at
       }
       
-      # Verifica se a venda já existe
-      existing_order = Order.find_by(external_id: order_data[:external_id])
+      # Busca ou cria a venda
+      order = Order.find_by(external_id: order_data[:external_id])
       
-      if existing_order
-        skipped_count += 1
-      else
+      if order.nil?
         begin
           # Cria a venda
           order = Order.create!(order_data)
-          
-          # Cria o item da venda
-          quantity = row['quantidade'].to_f
-          unit_price = row['preco_unitario'].to_f
-          
+          created_count += 1
+        rescue => e
+          error_count += 1
+          puts "❌ Erro ao criar venda #{order_data[:external_id]}: #{e.message}"
+          next
+        end
+      else
+        skipped_count += 1
+      end
+      
+      # Sempre cria o item da venda (mesmo se o pedido já existia)
+      begin
+        quantity = row['quantidade'].to_f
+        unit_price = row['preco_unitario'].to_f
+        
+        # Verifica se este item específico já existe
+        existing_item = OrderItem.find_by(
+          order_id: order.id,
+          product_id: product.id
+        )
+        
+        unless existing_item
           OrderItem.create!(
             order_id: order.id,
             product_id: product.id,
             store_id: @souq_store.id,
             quantity: quantity,
             unit_price: unit_price,
-            external_id: "#{order.external_id}_#{product.external_id}"
+            external_id: row['transacao']
           )
-          
-          created_count += 1
-        rescue => e
-          error_count += 1
-          puts "❌ Erro ao criar venda #{order_data[:external_id]}: #{e.message}"
         end
+      rescue => e
+        error_count += 1
+        puts "❌ Erro ao criar item da venda #{order.external_id}: #{e.message}"
       end
     end
     
@@ -366,6 +389,10 @@ namespace :souq do
     puts "   Vendas com erro: #{error_count}"
     puts "   Total de vendas no sistema: #{Order.count}"
     puts "   Total de itens de venda: #{OrderItem.count}"
+    
+    # Limpa o arquivo temporário
+    File.unlink(csv_file) if csv_file && File.exist?(csv_file)
+    puts "🗑️  Arquivo temporário removido"
   end
 
   desc "Limpa todos os dados SOUQ"
@@ -392,5 +419,195 @@ namespace :souq do
     File.delete('tmp/souq_category_id.txt') if File.exist?('tmp/souq_category_id.txt')
     
     puts "🗂️  Arquivos temporários removidos"
+  end
+
+  desc "Carrega trocas do arquivo CSV"
+  task load_exchanges: :environment do
+    puts "🔄 Carregando trocas..."
+    
+    # Carrega os IDs
+    company_id = File.read('tmp/souq_company_id.txt').strip
+    @souq_company = Company.find(company_id)
+    
+    # Inicializa o serviço do Google Drive
+    drive_service = GoogleDriveService.new
+    
+    # Padrão para buscar o arquivo mais recente de trocas
+    exchanges_pattern = /LinxMovimentoTrocas_store=16945787001508_beginDate=\d{4}-\d{2}-\d{2}_endDate=\d{4}-\d{2}-\d{2}\.csv/
+    
+    # Baixa o arquivo mais recente do Google Drive
+    puts "📥 Buscando arquivo mais recente de trocas no Google Drive..."
+    csv_file = drive_service.download_latest_csv_file(SOUQ_GOOGLE_DRIVE_FOLDER_ID, exchanges_pattern)
+    
+    unless csv_file
+      puts "❌ Nenhum arquivo CSV de trocas encontrado no Google Drive"
+      exit 1
+    end
+    
+    puts "📁 Lendo arquivo de trocas..."
+    
+    created_count = 0
+    skipped_count = 0
+    error_count = 0
+    
+    CSV.foreach(csv_file, headers: true, encoding: 'UTF-8') do |row|
+      # Pula registros excluídos ou vazios
+      next if row['excluido'] == 'True' || row['identificador'].blank?
+      
+      # Converte timestamp para datetime
+      processed_at = begin
+        Time.at(row['timestamp'].to_i)
+      rescue
+        Time.current
+      end
+      
+      # Busca vendedor se houver código
+      seller = nil
+      if row['vale_cod_cliente'].present?
+        # Tenta encontrar o vendedor pelo código do cliente (pode não existir)
+        seller = Seller.find_by(
+          company_id: @souq_company.id,
+          external_id: row['vale_cod_cliente']
+        )
+      end
+      
+      # Busca orders relacionadas se houver documentos
+      original_order = nil
+      new_order = nil
+      
+      if row['doc_origem'].present? && row['doc_origem'] != '0'
+        original_order = Order.find_by(external_id: row['doc_origem'])
+      end
+      
+      if row['doc_venda'].present? && row['doc_venda'] != '0'
+        new_order = Order.find_by(external_id: row['doc_venda'])
+      end
+      
+      # Determina se é crédito ou débito baseado no valor original
+      is_credit = row['valor_original'].present? && !row['valor_original'].include?('-')
+      
+      # Dados da troca
+      exchange_data = {
+        external_id: row['identificador'].presence || "#{row['num_vale']}_#{row['timestamp']}",
+        voucher_number: row['num_vale'],
+        voucher_value: row['valor_vale'].gsub(',', '.').to_f,
+        exchange_type: row['motivo'],
+        original_document: row['doc_origem'],
+        new_document: row['doc_venda'],
+        customer_code: row['cod_cliente'],
+        is_credit: is_credit,
+        processed_at: processed_at,
+        seller: seller,
+        original_order: original_order,
+        new_order: new_order
+      }
+      
+      # Verifica se a troca já existe
+      existing_exchange = Exchange.find_by(external_id: exchange_data[:external_id])
+      
+      if existing_exchange
+        skipped_count += 1
+      else
+        begin
+          exchange = Exchange.create!(exchange_data)
+          created_count += 1
+        rescue => e
+          error_count += 1
+          puts "❌ Erro ao criar troca #{exchange_data[:external_id]}: #{e.message}"
+        end
+      end
+    end
+    
+    puts "\n📊 Resumo final:"
+    puts "   Trocas criadas: #{created_count}"
+    puts "   Trocas ignoradas: #{skipped_count}"
+    puts "   Trocas com erro: #{error_count}"
+    puts "   Total de trocas no sistema: #{Exchange.count}"
+    
+    # Limpa o arquivo temporário
+    File.unlink(csv_file) if csv_file && File.exist?(csv_file)
+    puts "🗑️  Arquivo temporário removido"
+  end
+
+  desc "Carrega devoluções do arquivo CSV"
+  task load_returns: :environment do
+    puts "📦 Carregando devoluções..."
+    
+    # Inicializa o serviço do Google Drive
+    drive_service = GoogleDriveService.new
+    
+    # Nome do arquivo CSV de devoluções
+    returns_filename = "LinxMovimentoDevolucoesItens_store=16945787001508_historical.csv"
+    
+    # Baixa o arquivo do Google Drive
+    puts "📥 Baixando arquivo de devoluções do Google Drive: #{returns_filename}"
+    csv_file = drive_service.download_csv_file(SOUQ_GOOGLE_DRIVE_FOLDER_ID, returns_filename)
+    
+    unless csv_file
+      puts "❌ Arquivo CSV de devoluções não encontrado no Google Drive: #{returns_filename}"
+      exit 1
+    end
+    
+    puts "📁 Lendo arquivo de devoluções..."
+    
+    created_count = 0
+    skipped_count = 0
+    error_count = 0
+    
+    CSV.foreach(csv_file, headers: true, encoding: 'UTF-8') do |row|
+      # Pula registros vazios
+      next if row['identificador_devolucao'].blank? || row['codigoproduto'].blank?
+      
+      # Converte timestamp para datetime
+      processed_at = begin
+        Time.at(row['timestamp'].to_i)
+      rescue
+        Time.current
+      end
+      
+      # Busca a venda original
+      original_order = Order.find_by(external_id: row['identificador_venda'])
+      
+      # Busca o produto
+      product = Product.find_by(external_id: row['codigoproduto'])
+      
+      # Dados da devolução
+      return_data = {
+        external_id: row['identificador_devolucao'],
+        original_sale_id: row['identificador_venda'],
+        product_external_id: row['codigoproduto'],
+        original_transaction: row['transacao_origem'],
+        return_transaction: row['transacao_devolucao'],
+        quantity_returned: row['qtde_devolvida'].to_f,
+        processed_at: processed_at,
+        original_order: original_order,
+        product: product
+      }
+      
+      # Verifica se a devolução já existe
+      existing_return = Return.find_by(external_id: return_data[:external_id])
+      
+      if existing_return
+        skipped_count += 1
+      else
+        begin
+          return_record = Return.create!(return_data)
+          created_count += 1
+        rescue => e
+          error_count += 1
+          puts "❌ Erro ao criar devolução #{return_data[:external_id]}: #{e.message}"
+        end
+      end
+    end
+    
+    puts "\n📊 Resumo final:"
+    puts "   Devoluções criadas: #{created_count}"
+    puts "   Devoluções ignoradas: #{skipped_count}"
+    puts "   Devoluções com erro: #{error_count}"
+    puts "   Total de devoluções no sistema: #{Return.count}"
+    
+    # Limpa o arquivo temporário
+    File.unlink(csv_file) if csv_file && File.exist?(csv_file)
+    puts "🗑️  Arquivo temporário removido"
   end
 end

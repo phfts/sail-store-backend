@@ -55,3 +55,8 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 # JWT for API authentication
 gem 'jwt'
+
+# Google Drive API for accessing CSV files
+gem 'google_drive', '~> 3.0'
+gem 'googleauth'
+gem 'webrick'
