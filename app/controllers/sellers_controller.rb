@@ -350,100 +350,237 @@ class SellersController < ApplicationController
     render json: { message: 'Vendedor excluído com sucesso' }
   end
 
-  # GET /sellers/:id/kpis (mock endpoint)
+  # GET /sellers/:id/kpis - KPIs baseados nos campos da planilha
   def kpis
     seller_id = params[:id]
     
-    # Mock data para demonstração dos KPIs
-    mock_data = {
-      seller_info: {
-        id: seller_id,
-        name: "João Silva",
-        phone: "+55 (11) 99999-9999",
-        email: "joao.silva@loja.com"
+    # Buscar vendedor real ou usar o primeiro disponível
+    seller = Seller.includes(:store, :company, :goals, :orders => :order_items).first
+    
+    if seller.nil?
+      render json: { error: "Nenhum vendedor encontrado" }, status: :not_found
+      return
+    end
+    
+    store = seller.store
+    current_date = Date.current
+    
+    # Buscar todas as metas ativas do vendedor
+    active_goals = seller.goals.active.order(:start_date)
+    
+    # Processar cada meta dinamicamente
+    goals_data = []
+    
+    active_goals.each do |goal|
+      goal_start = goal.start_date
+      goal_end = goal.end_date
+      goal_target = goal.target_value
+      goal_current_value = goal.current_value || 0
+      
+      # Calcular vendas no período da meta
+      goal_orders = seller.orders.includes(:order_items)
+                         .where('sold_at >= ? AND sold_at <= ?', goal_start, goal_end)
+      goal_sales = goal_orders.joins(:order_items)
+                             .sum('order_items.quantity * order_items.unit_price')
+      
+      # Calcular métricas do período
+      goal_orders_count = goal_orders.count
+      goal_total_items = goal_orders.joins(:order_items).sum('order_items.quantity')
+      
+      # Dias da meta
+      goal_total_days = (goal_end - goal_start).to_i + 1
+      goal_days_elapsed = [current_date - goal_start + 1, 0].max.to_i
+      goal_days_remaining = [goal_end - current_date, 0].max.to_i
+      
+      # Calcular percentual e métricas
+      goal_percentage = goal_target > 0 ? (goal_sales / goal_target * 100).round(2) : 0
+      goal_ticket = goal_orders_count > 0 ? goal_sales / goal_orders_count : 0
+      goal_pa = goal_orders_count > 0 ? goal_total_items.to_f / goal_orders_count : 0
+      
+      # Classificar tipo de período
+      goal_type = case goal_total_days
+                  when 1..7 then 'diario'
+                  when 8..14 then 'semanal'
+                  when 15..35 then 'mensal'
+                  when 36..100 then 'trimestral'
+                  else 'personalizado'
+                  end
+      
+      goals_data << {
+        id: goal.id,
+        tipo: goal_type,
+        nome_periodo: "#{goal_type.capitalize} (#{goal_total_days} dias)",
+        inicio: goal_start.strftime("%d/%m/%Y"),
+        fim: goal_end.strftime("%d/%m/%Y"),
+        meta_valor: goal_target,
+        vendas_realizadas: goal_sales,
+        percentual_atingido: goal_percentage,
+        dias_total: goal_total_days,
+        dias_decorridos: goal_days_elapsed,
+        dias_restantes: goal_days_remaining,
+        meta_recalculada_dia: goal_days_remaining > 0 ? ((goal_target - goal_sales) / goal_days_remaining).round(2) : 0,
+        ticket_medio: goal_ticket.round(2),
+        pa_produtos_atendimento: goal_pa.round(2),
+        pedidos_count: goal_orders_count,
+        produtos_vendidos: goal_total_items,
+        quanto_falta_super_meta: [(goal_target * 1.2) - goal_sales, 0].max.round(2),
+        meta_data: {
+          inicio_iso: goal_start.iso8601,
+          fim_iso: goal_end.iso8601,
+          goal_type: goal.goal_type,
+          goal_scope: goal.goal_scope
+        }
+      }
+    end
+    
+    # Se não há metas, criar fallback
+    if goals_data.empty?
+      fallback_start = current_date.beginning_of_month
+      fallback_end = current_date.end_of_month
+      fallback_target = 15000.0
+      fallback_sales = 8750.0
+      fallback_days_total = fallback_end.day
+      fallback_days_elapsed = current_date.day
+      fallback_days_remaining = fallback_end.day - current_date.day
+      
+      goals_data << {
+        id: nil,
+        tipo: 'mensal',
+        nome_periodo: "Mensal (#{fallback_days_total} dias)",
+        inicio: fallback_start.strftime("%d/%m/%Y"),
+        fim: fallback_end.strftime("%d/%m/%Y"),
+        meta_valor: fallback_target,
+        vendas_realizadas: fallback_sales,
+        percentual_atingido: (fallback_sales / fallback_target * 100).round(2),
+        dias_total: fallback_days_total,
+        dias_decorridos: fallback_days_elapsed,
+        dias_restantes: fallback_days_remaining,
+        meta_recalculada_dia: fallback_days_remaining > 0 ? ((fallback_target - fallback_sales) / fallback_days_remaining).round(2) : 0,
+        ticket_medio: 0,
+        pa_produtos_atendimento: 0,
+        pedidos_count: 0,
+        produtos_vendidos: 0,
+        quanto_falta_super_meta: [(fallback_target * 1.2) - fallback_sales, 0].max.round(2),
+        meta_data: {
+          inicio_iso: fallback_start.iso8601,
+          fim_iso: fallback_end.iso8601,
+          goal_type: 'sales',
+          goal_scope: 'individual'
+        }
+      }
+    end
+    
+    # Usar a meta principal (primeira ou maior) para cálculos gerais
+    primary_goal = goals_data.first
+    monthly_target = primary_goal[:meta_valor]
+    monthly_sales = primary_goal[:vendas_realizadas]
+    monthly_days_remaining = primary_goal[:dias_restantes]
+    
+    # Calcular métricas da loja baseado na meta principal
+    primary_start = Date.parse(primary_goal[:meta_data][:inicio_iso])
+    primary_end = Date.parse(primary_goal[:meta_data][:fim_iso])
+    
+    store_orders = Order.joins(:seller)
+                        .where(sellers: { store_id: store.id })
+                        .includes(:order_items)
+                        .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
+    store_sales = store_orders.joins(:order_items).sum('order_items.quantity * order_items.unit_price')
+    store_orders_count = store_orders.count
+    store_total_items = store_orders.joins(:order_items).sum('order_items.quantity')
+    store_target = monthly_target * 8 # assumindo 8 vendedores
+    
+    # Calcular KPIs conforme planilha (baseado na meta principal)
+    seller_ticket = primary_goal[:ticket_medio]
+    store_ticket = store_orders_count > 0 ? store_sales / store_orders_count : 0
+    seller_pa = primary_goal[:pa_produtos_atendimento]
+    store_pa = store_orders_count > 0 ? store_total_items.to_f / store_orders_count : 0
+    
+    # Percentuais
+    seller_percentage = primary_goal[:percentual_atingido]
+    store_percentage = store_target > 0 ? (store_sales / store_target * 100).round(2) : 0
+    
+    # Comissão - usar commission_levels ou fallback simples
+    commission_levels = store.commission_levels.order(:achievement_percentage)
+    if commission_levels.any?
+      current_level = commission_levels.where('achievement_percentage <= ?', seller_percentage).last
+      commission_rate = current_level&.commission_percentage || 3.5
+    else
+      # Níveis simples baseados em performance
+      commission_rate = case seller_percentage
+                       when 0..69.99 then 3.5
+                       when 70..89.99 then 4.0
+                       when 90..109.99 then 4.5
+                       else 5.0
+                       end
+    end
+    
+    commission_amount = monthly_sales * (commission_rate / 100)
+    
+    # Dados conforme planilha
+    kpi_data = {
+      # Campos básicos da planilha
+      telefone: seller.formatted_whatsapp || "+55 (11) 99999-9999",
+      nome: seller.display_name || "Vendedor Mock",
+      
+      # === ARRAY DINÂMICO DE METAS ===
+      metas: goals_data,
+      
+      # === DADOS CONSOLIDADOS (baseados na meta principal) ===
+      meta_principal: {
+        meta_valor: primary_goal[:meta_valor],
+        vendas_realizadas: primary_goal[:vendas_realizadas],
+        percentual_atingido: primary_goal[:percentual_atingido],
+        tipo_periodo: primary_goal[:tipo],
+        inicio: primary_goal[:inicio],
+        fim: primary_goal[:fim],
+        dias_restantes: primary_goal[:dias_restantes],
+        meta_recalculada_dia: primary_goal[:meta_recalculada_dia],
+        quanto_falta_super_meta: primary_goal[:quanto_falta_super_meta]
       },
       
-      # Metas e vendas
-      targets: {
-        monthly_target: 15000.00,
-        current_sales: 8750.00,
-        daily_target_adjusted: 520.83,
-        super_target: 20000.00,
-        amount_to_super_target: 11250.00,
-        days_remaining_month: 12
+      # === DADOS DA LOJA ===
+      loja: {
+        total_vendas: store_sales,
+        ticket_medio: store_ticket.round(2),
+        meta_periodo: store_target,
+        percentual_atingido: store_percentage,
+        pa_produtos_atendimento: store_pa.round(2),
+        pedidos_count: store_orders_count,
+        produtos_vendidos: store_total_items
       },
       
-      # Percentuais de meta
-      goal_percentages: {
-        seller_monthly: 58.33,
-        seller_weekly: 72.50,
-        store_monthly: 65.80,
-        commission_calculation: 58.33
+      # === DADOS DO VENDEDOR ===
+      vendedor: {
+        ticket_medio: seller_ticket,
+        pa_produtos_atendimento: seller_pa,
+        comissao_calculada: commission_amount.round(2),
+        percentual_comissao: commission_rate,
+        total_metas_ativas: goals_data.length
       },
       
-      # Tickets médios
-      average_tickets: {
-        seller_ticket: 125.75,
-        store_ticket: 142.30
-      },
+      # === NÍVEIS DE COMISSÃO ===
+      commission_levels: commission_levels.any? ? 
+        commission_levels.map { |cl| { level: cl.achievement_percentage, commission: cl.commission_percentage } } :
+        [
+          { level: 70.0, commission: 3.5 },
+          { level: 80.0, commission: 4.0 },
+          { level: 90.0, commission: 4.5 },
+          { level: 100.0, commission: 5.0 }
+        ],
       
-      # PA (Produtos por Atendimento)
-      products_per_service: {
-        seller_pa: 2.3,
-        store_pa: 2.1
-      },
-      
-      # Comissão
-      commission: {
-        calculated_amount: 437.50,
-        percentage_rate: 5.0,
-        achievement_level: "Básico",
-        next_level_at: 70.0
-      },
-      
-      # Vendas da loja
-      store_sales: {
-        total_monthly: 125000.00,
-        total_current_month: 82250.00,
-        store_monthly_target: 125000.00
-      },
-      
-      # Dados calculados adicionais
-      calculated_metrics: {
-        sales_per_day_average: 729.17,
-        projected_month_end: 12250.00,
-        target_gap: 6250.00,
-        performance_trend: "growing", # growing, stable, declining
-        ranking_position: 3,
-        total_sellers_in_store: 8
-      },
-      
-      # Histórico semanal (últimas 4 semanas)
-      weekly_history: [
-        { week: "Semana 1", sales: 2100.00, target: 3750.00, percentage: 56.0 },
-        { week: "Semana 2", sales: 2850.00, target: 3750.00, percentage: 76.0 },
-        { week: "Semana 3", sales: 1950.00, target: 3750.00, percentage: 52.0 },
-        { week: "Semana 4", sales: 1850.00, target: 3750.00, percentage: 49.3 }
-      ],
-      
-      # Níveis de comissão disponíveis
-      commission_levels: [
-        { level: "Básico", min_percentage: 0, max_percentage: 69.99, commission_rate: 5.0 },
-        { level: "Intermediário", min_percentage: 70, max_percentage: 89.99, commission_rate: 7.5 },
-        { level: "Avançado", min_percentage: 90, max_percentage: 109.99, commission_rate: 10.0 },
-        { level: "Expert", min_percentage: 110, max_percentage: Float::INFINITY, commission_rate: 12.5 }
-      ],
-      
-      # Timestamps
-      generated_at: Time.current.iso8601,
-      period: {
-        start_date: Date.current.beginning_of_month.iso8601,
-        end_date: Date.current.end_of_month.iso8601,
-        current_date: Date.current.iso8601
+      # === METADADOS ===
+      metadados: {
+        data_atual: current_date.iso8601,
+        total_metas_ativas: goals_data.length,
+        tipos_metas: goals_data.map { |g| g[:tipo] }.uniq,
+        periodo_analise: {
+          inicio: goals_data.map { |g| g[:meta_data][:inicio_iso] }.min,
+          fim: goals_data.map { |g| g[:meta_data][:fim_iso] }.max
+        }
       }
     }
 
-    render json: mock_data
+    render json: kpi_data
   end
 
   private
