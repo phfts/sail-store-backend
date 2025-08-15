@@ -42,6 +42,8 @@ namespace :souq do
     export_sellers_data(souq_company, backup_dir)
     export_products_data(outros_category, backup_dir)
     export_orders_data(souq_company, backup_dir)
+    export_exchanges_data(souq_company, backup_dir)
+    export_returns_data(souq_company, backup_dir)
     
     puts "\n🎉 Backup criado em: #{backup_dir}"
     puts "\n📋 Arquivos criados:"
@@ -390,6 +392,55 @@ namespace :souq do
     
     puts "✅ Vendas: #{created_orders} novas, #{skipped_orders} já existiam"
     puts "✅ Itens: #{created_items} novos"
+  end
+  
+  def export_exchanges_data(company, backup_dir)
+    puts "\n📤 Exportando trocas..."
+    
+    exchanges = Exchange.limit(100)
+                       .map do |exchange|
+      {
+        id: exchange.id,
+        seller_id: exchange.seller_id,
+        external_id: exchange.external_id,
+        exchange_type: exchange.exchange_type,
+        processed_at: exchange.processed_at,
+        voucher_number: exchange.voucher_number,
+        voucher_value: exchange.voucher_value
+      }
+    end
+    
+    File.write(
+      backup_dir.join('07_exchanges.json'),
+      JSON.pretty_generate(exchanges)
+    )
+    
+    puts "✅ #{exchanges.count} trocas exportadas (limitado a 100 para teste)"
+  end
+  
+  def export_returns_data(company, backup_dir)
+    puts "\n📤 Exportando devoluções..."
+    
+    returns = Return.limit(100)
+                    .map do |return_record|
+      {
+        id: return_record.id,
+        original_order_id: return_record.original_order_id,
+        product_id: return_record.product_id,
+        external_id: return_record.external_id,
+        return_transaction: return_record.return_transaction,
+        quantity_returned: return_record.quantity_returned,
+        processed_at: return_record.processed_at,
+        original_sale_id: return_record.original_sale_id
+      }
+    end
+    
+    File.write(
+      backup_dir.join('08_returns.json'),
+      JSON.pretty_generate(returns)
+    )
+    
+    puts "✅ #{returns.count} devoluções exportadas (limitado a 100 para teste)"
   end
   
   def export_company_data(company, backup_dir)

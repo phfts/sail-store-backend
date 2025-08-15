@@ -15,8 +15,8 @@ namespace :souq do
     Rake::Task["souq:load_sellers"].invoke
     Rake::Task["souq:load_products"].invoke
     Rake::Task["souq:load_orders"].invoke
-    # Rake::Task["souq:load_exchanges"].invoke  # Arquivo não encontrado na pasta
-    # Rake::Task["souq:load_returns"].invoke    # Arquivo não encontrado na pasta
+    Rake::Task["souq:load_exchanges"].invoke
+    Rake::Task["souq:load_returns"].invoke
     
     puts "\n🎉 CARREGAMENTO CONCLUÍDO COM SUCESSO!"
   end
@@ -284,20 +284,25 @@ namespace :souq do
     @souq_company = Company.find(company_id)
     @souq_store = Store.find(store_id)
     
-    # Inicializa o serviço do Google Drive
-    drive_service = GoogleDriveService.new
+    # Usar arquivos locais da pasta orders
+    orders_path = "/home/paulo/Downloads/souq-data/souq-data/orders"
     
-    # Nome do arquivo CSV de vendas
-    csv_filename = "orders"
+    puts "📁 Usando arquivos locais de: #{orders_path}"
     
-    # Baixa o arquivo do Google Drive
-    puts "📥 Baixando arquivo de vendas do Google Drive: #{csv_filename}"
-    csv_file = drive_service.download_csv_file(SOUQ_GOOGLE_DRIVE_FOLDER_ID, csv_filename)
+    # Procurar arquivo de vendas para a loja 16945787001508 (PÁTIO HIGIENÓPOLIS)
+    pattern = "LinxMovimento_store=16945787001508_*.csv"
+    matching_files = Dir.glob(File.join(orders_path, pattern))
     
-    unless csv_file
-      puts "❌ Nenhum arquivo CSV de vendas encontrado no Google Drive"
-      exit 1
+    if matching_files.empty?
+      puts "❌ Nenhum arquivo de vendas encontrado para a loja 16945787001508"
+      return
     end
+    
+    # Usar o arquivo mais recente (2025)
+    csv_file = matching_files.find { |f| f.include?("2025") } || matching_files.last
+    puts "📄 Usando arquivo: #{File.basename(csv_file)}"
+    
+
     
     puts "📁 Lendo arquivo de vendas..."
     
@@ -389,9 +394,7 @@ namespace :souq do
     puts "   Total de vendas no sistema: #{Order.count}"
     puts "   Total de itens de venda: #{OrderItem.count}"
     
-    # Limpa o arquivo temporário
-    File.unlink(csv_file) if csv_file && File.exist?(csv_file)
-    puts "🗑️  Arquivo temporário removido"
+    puts "✅ Importação de vendas concluída!"
   end
 
   desc "Limpa todos os dados SOUQ"
@@ -428,20 +431,23 @@ namespace :souq do
     company_id = File.read('tmp/souq_company_id.txt').strip
     @souq_company = Company.find(company_id)
     
-    # Inicializa o serviço do Google Drive
-    drive_service = GoogleDriveService.new
+    # Usar arquivos locais da pasta orders
+    orders_path = "/home/paulo/Downloads/souq-data/souq-data/orders"
     
-    # Padrão para buscar o arquivo mais recente de trocas
-    exchanges_pattern = /LinxMovimentoTrocas_store=16945787001508_beginDate=\d{4}-\d{2}-\d{2}_endDate=\d{4}-\d{2}-\d{2}\.csv/
+    puts "📁 Usando arquivos locais de: #{orders_path}"
     
-    # Baixa o arquivo mais recente do Google Drive
-    puts "📥 Buscando arquivo mais recente de trocas no Google Drive..."
-    csv_file = drive_service.download_latest_csv_file(SOUQ_GOOGLE_DRIVE_FOLDER_ID, exchanges_pattern)
+    # Procurar arquivo de trocas para a loja 16945787001508 (PÁTIO HIGIENÓPOLIS)
+    pattern = "LinxMovimentoTrocas_store=16945787001508_*.csv"
+    matching_files = Dir.glob(File.join(orders_path, pattern))
     
-    unless csv_file
-      puts "❌ Nenhum arquivo CSV de trocas encontrado no Google Drive"
-      exit 1
+    if matching_files.empty?
+      puts "❌ Nenhum arquivo de trocas encontrado para a loja 16945787001508"
+      return
     end
+    
+    # Usar o arquivo mais recente (2025)
+    csv_file = matching_files.find { |f| f.include?("2025") } || matching_files.last
+    puts "📄 Usando arquivo: #{File.basename(csv_file)}"
     
     puts "📁 Lendo arquivo de trocas..."
     
@@ -523,29 +529,28 @@ namespace :souq do
     puts "   Trocas com erro: #{error_count}"
     puts "   Total de trocas no sistema: #{Exchange.count}"
     
-    # Limpa o arquivo temporário
-    File.unlink(csv_file) if csv_file && File.exist?(csv_file)
-    puts "🗑️  Arquivo temporário removido"
+    puts "✅ Importação de trocas concluída!"
   end
 
   desc "Carrega devoluções do arquivo CSV"
   task load_returns: :environment do
     puts "📦 Carregando devoluções..."
     
-    # Inicializa o serviço do Google Drive
-    drive_service = GoogleDriveService.new
+    # Usar arquivos locais da pasta orders
+    orders_path = "/home/paulo/Downloads/souq-data/souq-data/orders"
     
-    # Nome do arquivo CSV de devoluções
+    puts "📁 Usando arquivos locais de: #{orders_path}"
+    
+    # Procurar arquivo de devoluções para a loja 16945787001508 (PÁTIO HIGIENÓPOLIS)
     returns_filename = "LinxMovimentoDevolucoesItens_store=16945787001508_historical.csv"
+    csv_file = File.join(orders_path, returns_filename)
     
-    # Baixa o arquivo do Google Drive
-    puts "📥 Baixando arquivo de devoluções do Google Drive: #{returns_filename}"
-    csv_file = drive_service.download_csv_file(SOUQ_GOOGLE_DRIVE_FOLDER_ID, returns_filename)
-    
-    unless csv_file
-      puts "❌ Arquivo CSV de devoluções não encontrado no Google Drive: #{returns_filename}"
-      exit 1
+    unless File.exist?(csv_file)
+      puts "❌ Arquivo de devoluções não encontrado: #{returns_filename}"
+      return
     end
+    
+    puts "📄 Usando arquivo: #{returns_filename}"
     
     puts "📁 Lendo arquivo de devoluções..."
     
@@ -605,8 +610,6 @@ namespace :souq do
     puts "   Devoluções com erro: #{error_count}"
     puts "   Total de devoluções no sistema: #{Return.count}"
     
-    # Limpa o arquivo temporário
-    File.unlink(csv_file) if csv_file && File.exist?(csv_file)
-    puts "🗑️  Arquivo temporário removido"
+    puts "✅ Importação de devoluções concluída!"
   end
 end

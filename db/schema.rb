@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_15_005836) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_15_025415) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -69,8 +69,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_15_005836) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.string "cnpj"
-    t.text "address"
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -261,10 +259,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_15_005836) do
   end
 
   add_foreign_key "absences", "sellers", on_delete: :cascade
-  add_foreign_key "adjustments", "companies"
+  add_foreign_key "adjustments", "companies", on_delete: :cascade
   add_foreign_key "adjustments", "sellers"
   add_foreign_key "adjustments", "stores"
-  add_foreign_key "categories", "companies"
+  add_foreign_key "categories", "companies", on_delete: :cascade
   add_foreign_key "commission_levels", "stores", on_delete: :cascade
   add_foreign_key "exchanges", "orders", column: "new_order_id"
   add_foreign_key "exchanges", "orders", column: "original_order_id"
@@ -276,7 +274,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_15_005836) do
   add_foreign_key "order_items", "stores"
   add_foreign_key "orders", "sellers", on_delete: :cascade
   add_foreign_key "products", "categories", on_delete: :cascade
-  add_foreign_key "queue_items", "companies"
+  add_foreign_key "queue_items", "companies", on_delete: :cascade
   add_foreign_key "queue_items", "sellers"
   add_foreign_key "queue_items", "stores"
   add_foreign_key "returns", "orders", column: "original_order_id"
@@ -284,9 +282,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_15_005836) do
   add_foreign_key "schedules", "sellers", on_delete: :cascade
   add_foreign_key "schedules", "shifts", on_delete: :cascade
   add_foreign_key "schedules", "stores", on_delete: :cascade
-  add_foreign_key "sellers", "companies"
+  add_foreign_key "sellers", "companies", on_delete: :cascade
   add_foreign_key "sellers", "stores", on_delete: :cascade
   add_foreign_key "sellers", "users", on_delete: :cascade
   add_foreign_key "shifts", "stores", on_delete: :cascade
-  add_foreign_key "stores", "companies"
+  add_foreign_key "stores", "companies", on_delete: :cascade
 end
