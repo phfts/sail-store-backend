@@ -4,7 +4,7 @@ require 'google_drive'
 require 'webrick'
 require 'uri'
 
-class GoogleDriveOAuth
+class GoogleDriveOauth
   SCOPE = ['https://www.googleapis.com/auth/drive.readonly'].freeze
   REDIRECT_URI = 'http://localhost:8080/oauth2callback'
   

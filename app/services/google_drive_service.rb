@@ -1,6 +1,5 @@
 require 'google_drive'
 require 'tempfile'
-require_relative '../../lib/google_drive_oauth'
 
 class GoogleDriveService
   def initialize
@@ -27,8 +26,9 @@ class GoogleDriveService
       @session = GoogleDrive::Session.from_credentials(oauth_credentials)
     else
       # Em desenvolvimento, usa OAuth2 via navegador
+      require_relative '../../lib/google_drive_oauth'
       config_file = Rails.root.join('config', 'google_drive_config.json')
-      @session = GoogleDriveOAuth.authenticate(config_file)
+      @session = GoogleDriveOauth.authenticate(config_file)
     end
   end
 
