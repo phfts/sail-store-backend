@@ -65,23 +65,53 @@ class DashboardController < ApplicationController
     # Calcular vendas a partir dos order items
     orders = store.orders.includes(:seller, :order_items)
     
+    # Calcular trocas e devoluções totais da loja para descontar do total
+    total_exchanges_value = Exchange.joins(:seller).where(sellers: { store_id: store.id }).sum(:voucher_value)
+    total_returns_value = calculate_total_returns_value(store)
+    total_adjustments = total_exchanges_value + total_returns_value
+    
     # Vendas do mês atual
     current_month_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
       Date.current.beginning_of_month, Date.current.end_of_month)
-    current_month_sales = calculate_sales_from_orders(current_month_orders)
+    current_month_sales_gross = calculate_sales_from_orders(current_month_orders)
+    # Trocas/devoluções do mês atual
+    current_month_exchanges = Exchange.joins(:seller)
+      .where(sellers: { store_id: store.id })
+      .where('processed_at >= ? AND processed_at <= ?', 
+        Date.current.beginning_of_month, Date.current.end_of_month)
+      .sum(:voucher_value)
+    current_month_returns = calculate_period_returns_value(store, Date.current.beginning_of_month, Date.current.end_of_month)
+    current_month_sales = current_month_sales_gross - current_month_exchanges - current_month_returns
     
     # Vendas da semana atual
     current_week_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
       Date.current.beginning_of_week, Date.current.end_of_week)
-    current_week_sales = calculate_sales_from_orders(current_week_orders)
+    current_week_sales_gross = calculate_sales_from_orders(current_week_orders)
+    # Trocas/devoluções da semana atual
+    current_week_exchanges = Exchange.joins(:seller)
+      .where(sellers: { store_id: store.id })
+      .where('processed_at >= ? AND processed_at <= ?', 
+        Date.current.beginning_of_week, Date.current.end_of_week)
+      .sum(:voucher_value)
+    current_week_returns = calculate_period_returns_value(store, Date.current.beginning_of_week, Date.current.end_of_week)
+    current_week_sales = current_week_sales_gross - current_week_exchanges - current_week_returns
     
     # Vendas de hoje
     today_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
       Date.current.beginning_of_day, Date.current.end_of_day)
-    today_sales = calculate_sales_from_orders(today_orders)
+    today_sales_gross = calculate_sales_from_orders(today_orders)
+    # Trocas/devoluções de hoje
+    today_exchanges = Exchange.joins(:seller)
+      .where(sellers: { store_id: store.id })
+      .where('processed_at >= ? AND processed_at <= ?', 
+        Date.current.beginning_of_day, Date.current.end_of_day)
+      .sum(:voucher_value)
+    today_returns = calculate_period_returns_value(store, Date.current.beginning_of_day, Date.current.end_of_day)
+    today_sales = today_sales_gross - today_exchanges - today_returns
     
-    # Total de vendas (todos os pedidos)
-    total_sales = calculate_sales_from_orders(orders)
+    # Total de vendas líquidas (todos os pedidos menos trocas/devoluções)
+    total_sales_gross = calculate_sales_from_orders(orders)
+    total_sales = total_sales_gross - total_adjustments
     
     # Calcular Ticket Médio e PA (Produto por Atendimento)
     current_month_metrics = calculate_metrics(current_month_orders)
@@ -132,9 +162,8 @@ class DashboardController < ApplicationController
       # vamos calcular uma distribuição proporcional baseada nas vendas do vendedor
       seller_sales_percentage = seller_orders.count > 0 ? (seller_orders.count.to_f / orders.count) : 0
       
-      # Total de devoluções da loja (todas, já que os timestamps estão incorretos)
-      # TODO: Corrigir timestamps das devoluções na importação
-      total_store_returns = Return.all
+      # Total de devoluções da loja
+      total_store_returns = Return.joins(original_order: :seller).where(sellers: { store_id: store.id }).distinct
       
       # Distribuir proporcionalmente as devoluções baseado na participação do vendedor nas vendas
       # Como o return_value não funciona sem vendas associadas, vamos usar uma estimativa
@@ -146,7 +175,7 @@ class DashboardController < ApplicationController
       total_returns_count = (total_store_returns.count * seller_sales_percentage).round(0)
       
       # Calcular trocas do vendedor (distribuição proporcional)
-      total_store_exchanges = Exchange.all
+      total_store_exchanges = Exchange.joins(:seller).where(sellers: { store_id: store.id })
       estimated_exchange_value = total_store_exchanges.sum(:voucher_value) * seller_sales_percentage
       
       # Total de trocas/devoluções = valor perdido pela loja
@@ -225,7 +254,8 @@ class DashboardController < ApplicationController
         currentMonth: current_month_sales,
         currentWeek: current_week_sales,
         today: today_sales,
-        averagePerDay: current_month_orders.count > 0 ? (current_month_sales / Date.current.day).round(2) : 0
+        averagePerDay: current_month_orders.count > 0 ? (current_month_sales / Date.current.day).round(2) : 0,
+        monthlyBreakdown: calculate_monthly_net_sales(store, orders)
       },
       metrics: {
         ticketMedio: {
@@ -371,6 +401,81 @@ class DashboardController < ApplicationController
         days_worked: best_seller_data[:days_worked]
       }
     }
+  end
+
+  def calculate_total_returns_value(store)
+    # Calcular valor total das devoluções da loja
+    # Como as devoluções não têm ligação direta com vendas, vamos estimar com base no preço médio
+    returns = Return.joins(original_order: :seller).where(sellers: { store_id: store.id })
+    
+    # Se não há devoluções, retornar 0
+    return 0 if returns.empty?
+    
+    # Calcular preço médio dos produtos da loja para estimar valor das devoluções
+    average_price = store.orders.joins(:order_items).average('order_items.unit_price') || 0
+    
+    # Valor estimado das devoluções = quantidade devolvida × preço médio
+    returns.sum(:quantity_returned) * average_price
+  end
+  
+  def calculate_period_returns_value(store, start_date, end_date)
+    # Calcular valor das devoluções em um período específico
+    # Primeiro tentar o join, se falhar, retornar 0
+    begin
+      returns = Return.joins(original_order: :seller)
+                      .where(sellers: { store_id: store.id })
+                      .where('returns.processed_at >= ? AND returns.processed_at <= ?', start_date, end_date)
+      
+      return 0 if returns.empty?
+      
+      average_price = store.orders.joins(:order_items).average('order_items.unit_price') || 0
+      returns.sum(:quantity_returned) * average_price
+    rescue => e
+      # Se houver erro no join (devoluções sem original_order), retornar 0
+      Rails.logger.warn "Erro ao calcular devoluções: #{e.message}"
+      0
+    end
+  end
+
+  def calculate_monthly_net_sales(store, orders)
+    # Calcular vendas líquidas mês a mês para 2025
+    monthly_data = {}
+    current_year = Date.current.year
+    
+    # Para cada mês de 2025
+    (1..12).each do |month|
+      start_date = Date.new(current_year, month, 1)
+      end_date = start_date.end_of_month
+      
+      # Pular meses futuros
+      next if start_date > Date.current
+      
+      # Vendas brutas do mês
+      month_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', start_date, end_date)
+      gross_sales = calculate_sales_from_orders(month_orders)
+      
+      # Trocas do mês
+      month_exchanges = Exchange.joins(:seller)
+        .where(sellers: { store_id: store.id })
+        .where('processed_at >= ? AND processed_at <= ?', start_date, end_date)
+        .sum(:voucher_value)
+      
+      # Devoluções do mês
+      month_returns = calculate_period_returns_value(store, start_date, end_date)
+      
+      # Vendas líquidas
+      net_sales = gross_sales - month_exchanges - month_returns
+      
+      month_key = start_date.strftime('%Y-%m')
+      monthly_data[month_key] = {
+        gross: gross_sales.round(2),
+        exchanges: month_exchanges.round(2),
+        returns: month_returns.round(2),
+        net: net_sales.round(2)
+      }
+    end
+    
+    monthly_data
   end
 
   def ensure_store_access
