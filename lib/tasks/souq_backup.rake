@@ -170,6 +170,8 @@ namespace :souq do
     restore_sellers_data(production_dir)
     restore_products_data(production_dir)
     restore_orders_data(production_dir)
+    restore_exchanges_data(production_dir)
+    restore_returns_data(production_dir)
     
     puts "\n🎉 DADOS DE PRODUÇÃO RESTAURADOS!"
     puts "\n📊 Estado final:"
@@ -528,7 +530,32 @@ namespace :souq do
   def export_products_data(category, backup_dir)
     puts "\n📤 Exportando produtos..."
     
-    products = category.products.limit(1000).map do |product|
+    # Primeiro, obter todos os product_external_ids necessários dos pedidos
+    company = category.company
+    order_product_ids = Set.new
+    
+    Order.joins(:seller)
+         .where(seller: { company_id: company.id })
+         .includes(:order_items)
+         .each do |order|
+      order.order_items.each do |item|
+        order_product_ids.add(item.product.external_id)
+      end
+    end
+    
+    puts "🔍 Produtos necessários para pedidos: #{order_product_ids.size}"
+    
+    # Exportar TODOS os produtos necessários + alguns extras
+    products_to_export = category.products.where(external_id: order_product_ids.to_a)
+    
+    # Se ainda temos espaço, adicionar mais produtos da categoria
+    if products_to_export.count < 1000
+      additional_products = category.products.where.not(external_id: order_product_ids.to_a)
+                                            .limit(1000 - products_to_export.count)
+      products_to_export = products_to_export.or(additional_products)
+    end
+    
+    products = products_to_export.map do |product|
       {
         id: product.id,
         category_id: product.category_id,
@@ -543,7 +570,7 @@ namespace :souq do
       JSON.pretty_generate(products)
     )
     
-    puts "✅ #{products.count} produtos exportados (limitado a 1000 para teste)"
+    puts "✅ #{products.count} produtos exportados (incluindo todos os necessários para pedidos)"
   end
   
   def export_orders_data(company, backup_dir)
