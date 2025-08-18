@@ -1,8 +1,9 @@
 {
-  "id": 2,
-  "company_id": 2,
-  "name": "PÁTIO HIGIENÓPOLIS",
-  "cnpj": null,
+  "id": 1,
+  "company_id": 1,
+  "name": "SOUQ - SP - IGUATEMI SP",
+  "cnpj": "16945787002148",
+  "external_id": "iguatemi_sp",
   "address": null,
-  "slug": "patio-higienopolis"
+  "slug": "souq-sp-iguatemi-sp"
 }
