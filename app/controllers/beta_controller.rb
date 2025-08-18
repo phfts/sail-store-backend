@@ -3,14 +3,12 @@ class BetaController < ApplicationController
 
   # GET /beta/sellers
   def sellers
-    # Buscar Marlise pelo nome (vendedora em beta)
-    marlise = Seller.joins(:user)
-                   .where("UPPER(sellers.name) LIKE ?", "%MARLISE%")
-                   .first
+    # Buscar beta_seller pelo nome (vendedora em beta)
+    beta_seller =  Seller.find_by_name('ELAINE DIOGO PAULO')
 
-    if marlise
-      # Retornar array com o ID real da Marlise
-      render json: [marlise.id]
+    if beta_seller
+      # Retornar array com o ID real da beta_seller
+      render json: [{id: beta_seller.id, name: beta_seller.name}]
     else
       # Fallback caso não encontre - retornar array vazio ou ID mockado
       render json: []
@@ -259,6 +257,9 @@ class BetaController < ApplicationController
         }
       }
     }
+
+    # TODO: fix this
+    kpi_data[:telefone] = '+55 (19) 98873-2450'
 
     render json: kpi_data
   end

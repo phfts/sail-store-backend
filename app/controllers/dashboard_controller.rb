@@ -24,6 +24,10 @@ class DashboardController < ApplicationController
       return
     end
 
+    # Determinar período baseado no parâmetro
+    period = params[:period] || 'all-time'
+    date_range = calculate_date_range(period)
+
     # Buscar dados dos vendedores
     sellers = store.sellers.includes(:user)
     active_sellers = sellers.select(&:active?)
@@ -148,11 +152,11 @@ class DashboardController < ApplicationController
       end
     end
 
-    # Dados anuais de todos os vendedores ativos
+    # Dados de vendedores baseados no período selecionado
     sellers_annual_data = active_sellers.map do |seller|
       seller_orders = orders.where(seller: seller)
         .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
-          1.year.ago.beginning_of_day, Date.current.end_of_day)
+          date_range[:start_date], date_range[:end_date])
       
       seller_sales = calculate_sales_from_orders(seller_orders)
       seller_metrics = calculate_metrics(seller_orders)
@@ -514,6 +518,37 @@ class DashboardController < ApplicationController
     # Usuários regulares precisam ter acesso à loja
     unless current_user.store
       render json: { error: "Acesso negado" }, status: :forbidden
+    end
+  end
+
+  def calculate_date_range(period)
+    case period
+    when 'current-month'
+      {
+        start_date: Date.current.beginning_of_month.beginning_of_day,
+        end_date: Date.current.end_of_day
+      }
+    when 'all-time'
+      {
+        start_date: 1.year.ago.beginning_of_day,
+        end_date: Date.current.end_of_day
+      }
+    else
+      # Para períodos específicos no formato "YYYY-MM"
+      if period.match(/^\d{4}-\d{2}$/)
+        year, month = period.split('-').map(&:to_i)
+        start_date = Date.new(year, month, 1)
+        {
+          start_date: start_date.beginning_of_day,
+          end_date: start_date.end_of_month.end_of_day
+        }
+      else
+        # Fallback para último ano
+        {
+          start_date: 1.year.ago.beginning_of_day,
+          end_date: Date.current.end_of_day
+        }
+      end
     end
   end
 end 
