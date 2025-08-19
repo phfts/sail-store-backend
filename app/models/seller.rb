@@ -98,6 +98,12 @@ class Seller < ApplicationRecord
     name.presence || user&.email
   end
   
+  # Método para obter o primeiro nome do vendedor
+  def first_name
+    return nil unless name.present?
+    name.split.first
+  end
+  
   # Método para verificar se o vendedor está ativo
   def active?
     active_until.nil? || active_until > Time.current

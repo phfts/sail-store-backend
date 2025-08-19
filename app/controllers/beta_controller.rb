@@ -193,12 +193,13 @@ class BetaController < ApplicationController
       telefone: seller.formatted_whatsapp || "+55 (11) 99999-9999",
       nome: seller.display_name || "Vendedor Mock",
       id: seller.id, # ID real do vendedor
+      primeiro_nome: format_name(seller.first_name),
       
       # Status de trabalho
       trabalhando_hoje: working_today,
       
       # Últimos dias com vendas
-      ultimos_dias_vendas: last_sales_days,
+      ultimos_dias_trabalhados: last_sales_days,
       
       # === ARRAY DINÂMICO DE METAS ===
       metas: goals_data,
@@ -277,6 +278,14 @@ class BetaController < ApplicationController
     # Se não tem agendamentos específicos, assumir que está trabalhando (fallback)
     # ou verificar se está ativo e não ausente
     seller.active? && !seller.absent?
+  end
+
+  def format_name(name)
+    return "" if name.blank?
+    
+    # Converte para string, remove espaços extras e capitaliza
+    # (primeira letra maiúscula, demais minúsculas)
+    name.to_s.strip.capitalize
   end
 
   def calculate_last_sales_days(seller, limit = 7)
