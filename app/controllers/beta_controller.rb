@@ -9,7 +9,10 @@ class BetaController < ApplicationController
 
     if beta_seller
       # Retornar array com o ID real da beta_seller
-      render json: [{id: beta_seller.id, name: beta_seller.name}, {id: beta_seller_2.id, name: beta_seller_2.name}]
+      render json: [
+        {id: beta_seller.id, name: beta_seller.name, telefone: beta_seller.formatted_whatsapp || '+55 (11) 99999-9999'}, 
+        {id: beta_seller_2.id, name: beta_seller_2.name, telefone: beta_seller_2.formatted_whatsapp || '+55 (11) 99999-9999'}
+      ]
     else
       # Fallback caso não encontre - retornar array vazio ou ID mockado
       render json: []
@@ -260,8 +263,7 @@ class BetaController < ApplicationController
       }
     }
 
-    # TODO: fix this
-    kpi_data[:telefone] = '+55 (19) 98873-2450'
+    # Telefone já está sendo definido com o valor real do vendedor acima
 
     render json: kpi_data
   end
