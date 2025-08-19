@@ -169,7 +169,7 @@ class SellersController < ApplicationController
       render json: seller_response(@seller)
     else
       # Usuários regulares só podem ver vendedores da sua loja
-      if @seller.store_id == current_user.store_id
+      if current_user.store && @seller.store_id == current_user.store.id
         render json: seller_response(@seller)
       else
         render json: { error: "Acesso negado" }, status: :forbidden
