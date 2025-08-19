@@ -146,7 +146,9 @@ class SellersController < ApplicationController
       
       # Filtrar por status de ativação se especificado
       # Incluir absences para evitar N+1
+      # Ordenar por queue_order primeiro, depois por nome
       sellers = store.company.sellers.includes(:user, :store, :absences)
+                     .order(:queue_order, :name)
       
       if params[:include_inactive] == 'true'
         # Incluir todos os vendedores (ativos e inativos)
@@ -583,6 +585,67 @@ class SellersController < ApplicationController
     render json: kpi_data
   end
 
+  # PUT /stores/:slug/sellers/queue_order
+  def update_queue_order
+    begin
+      if current_user.admin?
+        store = Store.find_by!(slug: params[:slug])
+      else
+        store = current_user.store
+        unless store&.slug == params[:slug]
+          render json: { error: "Acesso negado" }, status: :forbidden
+          return
+        end
+      end
+
+      seller_orders = params[:seller_orders]
+      unless seller_orders.is_a?(Array)
+        render json: { error: "seller_orders deve ser um array" }, status: :unprocessable_entity
+        return
+      end
+
+      # Usar transação para garantir consistência
+      ActiveRecord::Base.transaction do
+        seller_orders.each_with_index do |seller_data, index|
+          seller_id = seller_data[:seller_id] || seller_data['seller_id']
+          seller = store.sellers.find(seller_id)
+          seller.update!(queue_order: index + 1)
+        end
+      end
+
+      # Retornar vendedores atualizados
+      sellers = store.sellers.includes(:user, :absences)
+                     .order(:queue_order, :name)
+
+      sellers_data = sellers.map do |seller|
+        current_absence = seller.current_absence
+        
+        {
+          id: seller.id.to_s,
+          name: seller.name,
+          active: seller.active?,
+          is_busy: seller.is_busy,
+          is_absent: current_absence.present?,
+          queue_order: seller.queue_order,
+          current_absence: current_absence ? {
+            id: current_absence.id.to_s,
+            absence_type: current_absence.absence_type,
+            start_date: current_absence.start_date,
+            end_date: current_absence.end_date
+          } : nil
+        }
+      end
+
+      render json: { message: "Ordem atualizada com sucesso", sellers: sellers_data }
+    rescue ActiveRecord::RecordNotFound => e
+      render json: { error: "Registro não encontrado: #{e.message}" }, status: :not_found
+    rescue ActiveRecord::RecordInvalid => e
+      render json: { error: "Dados inválidos: #{e.message}" }, status: :unprocessable_entity
+    rescue => e
+      render json: { error: "Erro interno: #{e.message}" }, status: :internal_server_error
+    end
+  end
+
   private
 
   def calculate_seller_ranking(sellers, start_date, end_date)
@@ -675,6 +738,7 @@ class SellersController < ApplicationController
       active_until: seller.active_until,
       is_busy: seller.is_busy,
       is_absent: seller.absent?,
+      queue_order: seller.queue_order,
       current_absence: seller.current_absence ? {
         id: seller.current_absence.id,
         absence_type: seller.current_absence.absence_type,

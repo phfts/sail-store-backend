@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
         get '/stores/:slug/sellers', to: 'sellers#by_store_slug'
       get '/stores/:slug/sellers/ranking', to: 'sellers#ranking'
+      put '/stores/:slug/sellers/queue_order', to: 'sellers#update_queue_order'
   
   # Rotas de autenticação
   post '/auth/login', to: 'auth#login'

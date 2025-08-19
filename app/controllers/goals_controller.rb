@@ -9,9 +9,12 @@ class GoalsController < ApplicationController
                    .order(created_at: :desc)
     else
       # Usuários regulares veem apenas as metas da sua loja
-      @goals = current_user.store.goals
-                           .includes(:seller)
-                           .order(created_at: :desc)
+      # Buscar metas individuais dos vendedores da loja + metas por loja (store_wide)
+      seller_ids = current_user.store.sellers.pluck(:id)
+      @goals = Goal.includes(:seller)
+                   .where('seller_id IN (?) OR (seller_id IS NULL AND goal_scope = ?)', 
+                          seller_ids, Goal.goal_scopes[:store_wide])
+                   .order(created_at: :desc)
     end
     
     # Filtrar por seller_id se especificado
@@ -101,7 +104,12 @@ class GoalsController < ApplicationController
   def update
     # Verificar se o goal pertence à loja do usuário (se não for admin)
     unless current_user.admin?
-      unless current_user.store.goals.exists?(@goal.id)
+      # Verificar se é meta individual da loja ou meta por loja (store_wide)
+      seller_ids = current_user.store.sellers.pluck(:id)
+      goal_belongs_to_store = (@goal.seller_id.present? && seller_ids.include?(@goal.seller_id)) ||
+                              (@goal.seller_id.nil? && @goal.goal_scope == 'store_wide')
+      
+      unless goal_belongs_to_store
         render json: { error: 'Meta não encontrada ou não pertence à sua loja' }, status: :not_found
         return
       end
@@ -125,7 +133,12 @@ class GoalsController < ApplicationController
   def destroy
     # Verificar se o goal pertence à loja do usuário (se não for admin)
     unless current_user.admin?
-      unless current_user.store.goals.exists?(@goal.id)
+      # Verificar se é meta individual da loja ou meta por loja (store_wide)
+      seller_ids = current_user.store.sellers.pluck(:id)
+      goal_belongs_to_store = (@goal.seller_id.present? && seller_ids.include?(@goal.seller_id)) ||
+                              (@goal.seller_id.nil? && @goal.goal_scope == 'store_wide')
+      
+      unless goal_belongs_to_store
         render json: { error: 'Meta não encontrada ou não pertence à sua loja' }, status: :not_found
         return
       end
@@ -141,7 +154,12 @@ class GoalsController < ApplicationController
     
     # Verificar se o goal pertence à loja do usuário (se não for admin)
     unless current_user.admin?
-      unless current_user.store.goals.exists?(@goal.id)
+      # Verificar se é meta individual da loja ou meta por loja (store_wide)
+      seller_ids = current_user.store.sellers.pluck(:id)
+      goal_belongs_to_store = (@goal.seller_id.present? && seller_ids.include?(@goal.seller_id)) ||
+                              (@goal.seller_id.nil? && @goal.goal_scope == 'store_wide')
+      
+      unless goal_belongs_to_store
         render json: { error: 'Meta não encontrada ou não pertence à sua loja' }, status: :not_found
         return
       end
@@ -178,12 +196,17 @@ class GoalsController < ApplicationController
                           .sum('order_items.quantity * order_items.unit_price')
     else
       # Meta da loja: somar vendas da loja no período da meta usando sold_at
-      store_id = current_user.admin? ? goal.seller&.store_id : current_user.store&.id
-      current_sales = Order.joins(:order_items, :seller)
-                          .where(sellers: { store_id: store_id })
-                          .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
-                                 goal.start_date.beginning_of_day, goal.end_date.end_of_day)
-                          .sum('order_items.quantity * order_items.unit_price')
+      # Para meta por loja, sempre usar a loja do usuário atual
+      store_id = current_user.store&.id
+      if store_id.present?
+        current_sales = Order.joins(:order_items, :seller)
+                            .where(sellers: { store_id: store_id })
+                            .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                   goal.start_date.beginning_of_day, goal.end_date.end_of_day)
+                            .sum('order_items.quantity * order_items.unit_price')
+      else
+        current_sales = 0
+      end
     end
     
     # Atualizar o current_value da meta
