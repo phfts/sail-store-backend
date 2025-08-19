@@ -170,7 +170,8 @@ namespace :souq do
     restore_sellers_data(production_dir)
     restore_products_data(production_dir)
     restore_orders_data(production_dir)
-    # TODO: Implementar restore_exchanges_data e restore_returns_data quando necessário
+    restore_exchanges_data(production_dir)
+    restore_returns_data(production_dir)
     
     puts "\n🎉 DADOS DE PRODUÇÃO RESTAURADOS!"
     puts "\n📊 Estado final:"
@@ -187,6 +188,8 @@ namespace :souq do
     products = Product.count
     orders = Order.count
     order_items = OrderItem.count
+    exchanges = Exchange.count
+    returns = Return.count
     
     puts "🏢 Empresas: #{companies}"
     puts "🏪 Lojas: #{stores}"
@@ -195,6 +198,8 @@ namespace :souq do
     puts "📦 Produtos: #{products}"
     puts "🛒 Vendas: #{orders}"
     puts "📋 Itens de venda: #{order_items}"
+    puts "🔄 Trocas: #{exchanges}"
+    puts "↩️  Devoluções: #{returns}"
   end
   
   def incremental_restore_data(backup_dir)
@@ -775,5 +780,92 @@ namespace :souq do
     
     puts "✅ Vendas: #{created_orders} criadas, #{skipped_orders} já existiam"
     puts "✅ Itens: #{created_items} criados"
+  end
+  
+  def restore_exchanges_data(backup_dir)
+    puts "📥 Restaurando trocas..."
+    file_path = backup_dir.join('07_exchanges.json')
+    
+    unless File.exist?(file_path)
+      puts "⚠️ Arquivo de trocas não encontrado: #{file_path}"
+      return
+    end
+    
+    exchanges_data = JSON.parse(File.read(file_path))
+    created_exchanges = 0
+    skipped_exchanges = 0
+    
+    exchanges_data.each do |exchange_data|
+      if Exchange.exists?(external_id: exchange_data['external_id'])
+        skipped_exchanges += 1
+        next
+      end
+      
+      # Buscar seller pelo external_id
+      seller = Seller.find_by(external_id: exchange_data['seller_external_id'])
+      
+      unless seller
+        puts "⚠️ Vendedor não encontrado: #{exchange_data['seller_external_id']}"
+        next
+      end
+      
+      Exchange.create!(
+        external_id: exchange_data['external_id'],
+        voucher_number: exchange_data['voucher_number'],
+        voucher_value: exchange_data['voucher_value'],
+        original_document: exchange_data['original_document'],
+        customer_code: exchange_data['customer_code'],
+        exchange_type: exchange_data['exchange_type'],
+        is_credit: exchange_data['is_credit'],
+        processed_at: exchange_data['processed_at'],
+        seller_id: seller.id
+      )
+      created_exchanges += 1
+    end
+    
+    puts "✅ Trocas: #{created_exchanges} criadas, #{skipped_exchanges} já existiam"
+  end
+  
+  def restore_returns_data(backup_dir)
+    puts "📥 Restaurando devoluções..."
+    file_path = backup_dir.join('08_returns.json')
+    
+    unless File.exist?(file_path)
+      puts "⚠️ Arquivo de devoluções não encontrado: #{file_path}"
+      return
+    end
+    
+    returns_data = JSON.parse(File.read(file_path))
+    created_returns = 0
+    skipped_returns = 0
+    
+    returns_data.each do |return_data|
+      if Return.exists?(external_id: return_data['external_id'])
+        skipped_returns += 1
+        next
+      end
+      
+      # Buscar produto pelo external_id
+      product = Product.find_by(external_id: return_data['product_external_id'])
+      
+      unless product
+        puts "⚠️ Produto não encontrado: #{return_data['product_external_id']}"
+        next
+      end
+      
+      Return.create!(
+        external_id: return_data['external_id'],
+        original_sale_id: return_data['original_sale_id'],
+        product_external_id: return_data['product_external_id'],
+        original_transaction: return_data['original_transaction'],
+        return_transaction: return_data['return_transaction'],
+        quantity_returned: return_data['quantity_returned'],
+        processed_at: return_data['processed_at'],
+        product_id: product.id
+      )
+      created_returns += 1
+    end
+    
+    puts "✅ Devoluções: #{created_returns} criadas, #{skipped_returns} já existiam"
   end
 end
