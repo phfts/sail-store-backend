@@ -5,10 +5,11 @@ class BetaController < ApplicationController
   def sellers
     # Buscar beta_seller pelo nome (vendedora em beta)
     beta_seller =  Seller.find_by_name('ELAINE DIOGO PAULO')
+    beta_seller_2 =  Seller.find_by_name('BARBARA DA SILVA GUIMARAES')
 
     if beta_seller
       # Retornar array com o ID real da beta_seller
-      render json: [{id: beta_seller.id, name: beta_seller.name}]
+      render json: [{id: beta_seller.id, name: beta_seller.name}, {id: beta_seller_2.id, name: beta_seller_2.name}]
     else
       # Fallback caso não encontre - retornar array vazio ou ID mockado
       render json: []
