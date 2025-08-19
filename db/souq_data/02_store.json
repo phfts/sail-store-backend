@@ -1,9 +1,8 @@
 {
-  "id": 1,
-  "company_id": 1,
+  "id": 7,
+  "company_id": 7,
   "name": "SOUQ - SP - IGUATEMI SP",
   "cnpj": "16945787002148",
-  "external_id": "iguatemi_sp",
   "address": null,
   "slug": "souq-sp-iguatemi-sp"
 }

@@ -1,8 +1,8 @@
 {
-  "id": 2,
+  "id": 7,
   "name": "SOUQ",
-  "active": true,
-  "description": "SOUQ - SP - PÁTIO HIGIENÓPOLIS - Portal Souq - Matriz",
+  "active": null,
+  "description": "Rede de lojas Souq",
   "simplified_frontend": false,
-  "slug": "souq-1"
+  "slug": "souq"
 }
