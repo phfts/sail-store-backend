@@ -403,16 +403,19 @@ namespace :souq do
   def export_exchanges_data(company, backup_dir)
     puts "\n📤 Exportando trocas..."
     
-    exchanges = Exchange.all
+    exchanges = Exchange.includes(:seller)
                        .map do |exchange|
       {
         id: exchange.id,
-        seller_id: exchange.seller_id,
+        seller_external_id: exchange.seller&.external_id,
         external_id: exchange.external_id,
         exchange_type: exchange.exchange_type,
         processed_at: exchange.processed_at,
         voucher_number: exchange.voucher_number,
-        voucher_value: exchange.voucher_value
+        voucher_value: exchange.voucher_value,
+        original_document: exchange.original_document,
+        customer_code: exchange.customer_code,
+        is_credit: exchange.is_credit
       }
     end
     
@@ -427,17 +430,18 @@ namespace :souq do
   def export_returns_data(company, backup_dir)
     puts "\n📤 Exportando devoluções..."
     
-    returns = Return.all
+    returns = Return.includes(:product)
                     .map do |return_record|
       {
         id: return_record.id,
         original_order_id: return_record.original_order_id,
-        product_id: return_record.product_id,
+        product_external_id: return_record.product&.external_id,
         external_id: return_record.external_id,
         return_transaction: return_record.return_transaction,
         quantity_returned: return_record.quantity_returned,
         processed_at: return_record.processed_at,
-        original_sale_id: return_record.original_sale_id
+        original_sale_id: return_record.original_sale_id,
+        original_transaction: return_record.original_transaction
       }
     end
     

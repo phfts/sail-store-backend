@@ -1,1631 +1,2174 @@
 [
   {
     "id": 2020,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "12849",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-17 00:00:00 UTC",
     "voucher_number": "1284",
-    "voucher_value": "698.0"
+    "voucher_value": "698.0",
+    "original_document": "1284",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2021,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "12848",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-17 00:00:00 UTC",
     "voucher_number": "1284",
-    "voucher_value": "498.0"
+    "voucher_value": "498.0",
+    "original_document": "1284",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2022,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "12847",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-17 00:00:00 UTC",
     "voucher_number": "1284",
-    "voucher_value": "498.0"
+    "voucher_value": "498.0",
+    "original_document": "1284",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2023,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "12846",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-17 00:00:00 UTC",
     "voucher_number": "1284",
-    "voucher_value": "348.0"
+    "voucher_value": "348.0",
+    "original_document": "1284",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2024,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "12845",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-17 00:00:00 UTC",
     "voucher_number": "1284",
-    "voucher_value": "1098.0"
+    "voucher_value": "1098.0",
+    "original_document": "1284",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2025,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "12844",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-17 00:00:00 UTC",
     "voucher_number": "1284",
-    "voucher_value": "528.0"
+    "voucher_value": "528.0",
+    "original_document": "1284",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2026,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "12843",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-17 00:00:00 UTC",
     "voucher_number": "1284",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "1284",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2027,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "12842",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-17 00:00:00 UTC",
     "voucher_number": "1284",
-    "voucher_value": "698.0"
+    "voucher_value": "698.0",
+    "original_document": "1284",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2028,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "12841",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-17 00:00:00 UTC",
     "voucher_number": "1284",
-    "voucher_value": "698.0"
+    "voucher_value": "698.0",
+    "original_document": "1284",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2029,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "13485",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-22 00:00:00 UTC",
     "voucher_number": "1348",
-    "voucher_value": "98.0"
+    "voucher_value": "98.0",
+    "original_document": "1348",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2030,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "13484",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-22 00:00:00 UTC",
     "voucher_number": "1348",
-    "voucher_value": "68.0"
+    "voucher_value": "68.0",
+    "original_document": "1348",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2031,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "13483",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-22 00:00:00 UTC",
     "voucher_number": "1348",
-    "voucher_value": "1198.0"
+    "voucher_value": "1198.0",
+    "original_document": "1348",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2032,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "13482",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-22 00:00:00 UTC",
     "voucher_number": "1348",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "1348",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2033,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "13481",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-22 00:00:00 UTC",
     "voucher_number": "1348",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "1348",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2034,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "13996",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-27 00:00:00 UTC",
     "voucher_number": "1399",
-    "voucher_value": "498.0"
+    "voucher_value": "498.0",
+    "original_document": "1399",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2035,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "13995",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-27 00:00:00 UTC",
     "voucher_number": "1399",
-    "voucher_value": "498.0"
+    "voucher_value": "498.0",
+    "original_document": "1399",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2036,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "13994",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-27 00:00:00 UTC",
     "voucher_number": "1399",
-    "voucher_value": "498.0"
+    "voucher_value": "498.0",
+    "original_document": "1399",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2037,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "13993",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-27 00:00:00 UTC",
     "voucher_number": "1399",
-    "voucher_value": "758.0"
+    "voucher_value": "758.0",
+    "original_document": "1399",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2038,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "13992",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-27 00:00:00 UTC",
     "voucher_number": "1399",
-    "voucher_value": "128.0"
+    "voucher_value": "128.0",
+    "original_document": "1399",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2039,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "13991",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-27 00:00:00 UTC",
     "voucher_number": "1399",
-    "voucher_value": "108.0"
+    "voucher_value": "108.0",
+    "original_document": "1399",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2040,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "14457",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-31 00:00:00 UTC",
     "voucher_number": "1445",
-    "voucher_value": "498.0"
+    "voucher_value": "498.0",
+    "original_document": "1445",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2041,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "14456",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-31 00:00:00 UTC",
     "voucher_number": "1445",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "1445",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2042,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "14455",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-31 00:00:00 UTC",
     "voucher_number": "1445",
-    "voucher_value": "498.0"
+    "voucher_value": "498.0",
+    "original_document": "1445",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2043,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "14454",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-31 00:00:00 UTC",
     "voucher_number": "1445",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "1445",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2044,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "14453",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-31 00:00:00 UTC",
     "voucher_number": "1445",
-    "voucher_value": "1298.0"
+    "voucher_value": "1298.0",
+    "original_document": "1445",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2045,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "14452",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-31 00:00:00 UTC",
     "voucher_number": "1445",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "1445",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2046,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "14451",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-31 00:00:00 UTC",
     "voucher_number": "1445",
-    "voucher_value": "458.0"
+    "voucher_value": "458.0",
+    "original_document": "1445",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2047,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "14463",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-31 00:00:00 UTC",
     "voucher_number": "1446",
-    "voucher_value": "698.0"
+    "voucher_value": "698.0",
+    "original_document": "1446",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2048,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "14462",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-31 00:00:00 UTC",
     "voucher_number": "1446",
-    "voucher_value": "458.0"
+    "voucher_value": "458.0",
+    "original_document": "1446",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2049,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "14461",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-01-31 00:00:00 UTC",
     "voucher_number": "1446",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "1446",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2050,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "15605",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-02-12 00:00:00 UTC",
     "voucher_number": "1560",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "1560",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2051,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "15604",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-02-12 00:00:00 UTC",
     "voucher_number": "1560",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "1560",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2052,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "15603",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-02-12 00:00:00 UTC",
     "voucher_number": "1560",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "1560",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2053,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "15602",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-02-12 00:00:00 UTC",
     "voucher_number": "1560",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "1560",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2054,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "15601",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-02-12 00:00:00 UTC",
     "voucher_number": "1560",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "1560",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2055,
-    "seller_id": 97,
+    "seller_external_id": "1285",
     "external_id": "16612",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-02-25 00:00:00 UTC",
     "voucher_number": "1661",
-    "voucher_value": "89.0"
+    "voucher_value": "89.0",
+    "original_document": "1661",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2056,
-    "seller_id": 97,
+    "seller_external_id": "1285",
     "external_id": "16611",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-02-25 00:00:00 UTC",
     "voucher_number": "1661",
-    "voucher_value": "48.0"
+    "voucher_value": "48.0",
+    "original_document": "1661",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2057,
-    "seller_id": 101,
+    "seller_external_id": "1318",
     "external_id": "16872",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-02-28 00:00:00 UTC",
     "voucher_number": "1687",
-    "voucher_value": "1198.0"
+    "voucher_value": "1198.0",
+    "original_document": "1687",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2058,
-    "seller_id": 101,
+    "seller_external_id": "1318",
     "external_id": "16871",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-02-28 00:00:00 UTC",
     "voucher_number": "1687",
-    "voucher_value": "758.0"
+    "voucher_value": "758.0",
+    "original_document": "1687",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2059,
-    "seller_id": 99,
+    "seller_external_id": "878",
     "external_id": "172910",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-08 00:00:00 UTC",
     "voucher_number": "1729",
-    "voucher_value": "27.0"
+    "voucher_value": "27.0",
+    "original_document": "1729",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2060,
-    "seller_id": 99,
+    "seller_external_id": "878",
     "external_id": "17299",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-08 00:00:00 UTC",
     "voucher_number": "1729",
-    "voucher_value": "348.0"
+    "voucher_value": "348.0",
+    "original_document": "1729",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2061,
-    "seller_id": 99,
+    "seller_external_id": "878",
     "external_id": "17298",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-08 00:00:00 UTC",
     "voucher_number": "1729",
-    "voucher_value": "498.0"
+    "voucher_value": "498.0",
+    "original_document": "1729",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2062,
-    "seller_id": 99,
+    "seller_external_id": "878",
     "external_id": "17297",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-08 00:00:00 UTC",
     "voucher_number": "1729",
-    "voucher_value": "148.0"
+    "voucher_value": "148.0",
+    "original_document": "1729",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2063,
-    "seller_id": 99,
+    "seller_external_id": "878",
     "external_id": "17296",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-08 00:00:00 UTC",
     "voucher_number": "1729",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "1729",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2064,
-    "seller_id": 99,
+    "seller_external_id": "878",
     "external_id": "17295",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-08 00:00:00 UTC",
     "voucher_number": "1729",
-    "voucher_value": "528.0"
+    "voucher_value": "528.0",
+    "original_document": "1729",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2065,
-    "seller_id": 99,
+    "seller_external_id": "878",
     "external_id": "17294",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-08 00:00:00 UTC",
     "voucher_number": "1729",
-    "voucher_value": "1098.0"
+    "voucher_value": "1098.0",
+    "original_document": "1729",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2066,
-    "seller_id": 99,
+    "seller_external_id": "878",
     "external_id": "17293",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-08 00:00:00 UTC",
     "voucher_number": "1729",
-    "voucher_value": "128.0"
+    "voucher_value": "128.0",
+    "original_document": "1729",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2067,
-    "seller_id": 99,
+    "seller_external_id": "878",
     "external_id": "17292",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-08 00:00:00 UTC",
     "voucher_number": "1729",
-    "voucher_value": "198.0"
+    "voucher_value": "198.0",
+    "original_document": "1729",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2068,
-    "seller_id": 99,
+    "seller_external_id": "878",
     "external_id": "17291",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-08 00:00:00 UTC",
     "voucher_number": "1729",
-    "voucher_value": "148.0"
+    "voucher_value": "148.0",
+    "original_document": "1729",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2069,
-    "seller_id": 105,
+    "seller_external_id": "280",
     "external_id": "18021",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-21 00:00:00 UTC",
     "voucher_number": "1802",
-    "voucher_value": "568.0"
+    "voucher_value": "568.0",
+    "original_document": "1802",
+    "customer_code": "266161",
+    "is_credit": true
   },
   {
     "id": 2070,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "18032",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-21 00:00:00 UTC",
     "voucher_number": "1803",
-    "voucher_value": "1098.0"
+    "voucher_value": "1098.0",
+    "original_document": "1803",
+    "customer_code": "388227",
+    "is_credit": true
   },
   {
     "id": 2071,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "18031",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-21 00:00:00 UTC",
     "voucher_number": "1803",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "1803",
+    "customer_code": "388227",
+    "is_credit": true
   },
   {
     "id": 2072,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "18175",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-24 00:00:00 UTC",
     "voucher_number": "1817",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "1817",
+    "customer_code": "92633",
+    "is_credit": true
   },
   {
     "id": 2073,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "18174",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-24 00:00:00 UTC",
     "voucher_number": "1817",
-    "voucher_value": "558.0"
+    "voucher_value": "558.0",
+    "original_document": "1817",
+    "customer_code": "92633",
+    "is_credit": true
   },
   {
     "id": 2074,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "18173",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-24 00:00:00 UTC",
     "voucher_number": "1817",
-    "voucher_value": "728.0"
+    "voucher_value": "728.0",
+    "original_document": "1817",
+    "customer_code": "92633",
+    "is_credit": true
   },
   {
     "id": 2075,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "18172",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-24 00:00:00 UTC",
     "voucher_number": "1817",
-    "voucher_value": "298.0"
+    "voucher_value": "298.0",
+    "original_document": "1817",
+    "customer_code": "92633",
+    "is_credit": true
   },
   {
     "id": 2076,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "18171",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-03-24 00:00:00 UTC",
     "voucher_number": "1817",
-    "voucher_value": "298.0"
+    "voucher_value": "298.0",
+    "original_document": "1817",
+    "customer_code": "92633",
+    "is_credit": true
   },
   {
     "id": 2077,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "19851",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-04-28 00:00:00 UTC",
     "voucher_number": "1985",
-    "voucher_value": "698.0"
+    "voucher_value": "698.0",
+    "original_document": "1985",
+    "customer_code": "270258",
+    "is_credit": true
   },
   {
     "id": 2078,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23663",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-18 00:00:00 UTC",
     "voucher_number": "2366",
-    "voucher_value": "498.0"
+    "voucher_value": "498.0",
+    "original_document": "2366",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2079,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23662",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-18 00:00:00 UTC",
     "voucher_number": "2366",
-    "voucher_value": "188.0"
+    "voucher_value": "188.0",
+    "original_document": "2366",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2080,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23661",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-18 00:00:00 UTC",
     "voucher_number": "2366",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2366",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2081,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "21851",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-22 00:00:00 UTC",
     "voucher_number": "2185",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2185",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2082,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "21852",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-22 00:00:00 UTC",
     "voucher_number": "2185",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2185",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2083,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "22321",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-30 00:00:00 UTC",
     "voucher_number": "2232",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "2232",
+    "customer_code": "187527",
+    "is_credit": true
   },
   {
     "id": 2084,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "215612",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-20 00:00:00 UTC",
     "voucher_number": "2156",
-    "voucher_value": "1098.0"
+    "voucher_value": "1098.0",
+    "original_document": "2156",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2085,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "21562",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-20 00:00:00 UTC",
     "voucher_number": "2156",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "2156",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2086,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "215611",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-20 00:00:00 UTC",
     "voucher_number": "2156",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2156",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2087,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "215610",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-20 00:00:00 UTC",
     "voucher_number": "2156",
-    "voucher_value": "698.0"
+    "voucher_value": "698.0",
+    "original_document": "2156",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2088,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "21569",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-20 00:00:00 UTC",
     "voucher_number": "2156",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "2156",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2089,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "21568",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-20 00:00:00 UTC",
     "voucher_number": "2156",
-    "voucher_value": "698.0"
+    "voucher_value": "698.0",
+    "original_document": "2156",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2090,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "21567",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-20 00:00:00 UTC",
     "voucher_number": "2156",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2156",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2091,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "21566",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-20 00:00:00 UTC",
     "voucher_number": "2156",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2156",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2092,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "21565",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-20 00:00:00 UTC",
     "voucher_number": "2156",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "2156",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2093,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "21564",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-20 00:00:00 UTC",
     "voucher_number": "2156",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2156",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2094,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "21563",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-20 00:00:00 UTC",
     "voucher_number": "2156",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2156",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2095,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "21561",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-20 00:00:00 UTC",
     "voucher_number": "2156",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2156",
+    "customer_code": "188750",
+    "is_credit": true
   },
   {
     "id": 2096,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23512",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2351",
-    "voucher_value": "34.5"
+    "voucher_value": "34.5",
+    "original_document": "2351",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2097,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23511",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2351",
-    "voucher_value": "34.5"
+    "voucher_value": "34.5",
+    "original_document": "2351",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2098,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "23323",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-14 00:00:00 UTC",
     "voucher_number": "2332",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2332",
+    "customer_code": "122548",
+    "is_credit": true
   },
   {
     "id": 2099,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "23322",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-14 00:00:00 UTC",
     "voucher_number": "2332",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2332",
+    "customer_code": "122548",
+    "is_credit": true
   },
   {
     "id": 2100,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "23321",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-14 00:00:00 UTC",
     "voucher_number": "2332",
-    "voucher_value": "698.0"
+    "voucher_value": "698.0",
+    "original_document": "2332",
+    "customer_code": "122548",
+    "is_credit": true
   },
   {
     "id": 2101,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "23231",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-12 00:00:00 UTC",
     "voucher_number": "2323",
-    "voucher_value": "270.04"
+    "voucher_value": "270.04",
+    "original_document": "2323",
+    "customer_code": "364683",
+    "is_credit": true
   },
   {
     "id": 2102,
-    "seller_id": 105,
+    "seller_external_id": "280",
     "external_id": "22062",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-28 00:00:00 UTC",
     "voucher_number": "2206",
-    "voucher_value": "498.0"
+    "voucher_value": "498.0",
+    "original_document": "2206",
+    "customer_code": "257002",
+    "is_credit": true
   },
   {
     "id": 2103,
-    "seller_id": 105,
+    "seller_external_id": "280",
     "external_id": "22061",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-28 00:00:00 UTC",
     "voucher_number": "2206",
-    "voucher_value": "368.0"
+    "voucher_value": "368.0",
+    "original_document": "2206",
+    "customer_code": "257002",
+    "is_credit": true
   },
   {
     "id": 2104,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "24282",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-27 00:00:00 UTC",
     "voucher_number": "2428",
-    "voucher_value": "858.0"
+    "voucher_value": "858.0",
+    "original_document": "2428",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2105,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "24281",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-27 00:00:00 UTC",
     "voucher_number": "2428",
-    "voucher_value": "858.0"
+    "voucher_value": "858.0",
+    "original_document": "2428",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2106,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23832",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-20 00:00:00 UTC",
     "voucher_number": "2383",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2383",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2107,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23831",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-20 00:00:00 UTC",
     "voucher_number": "2383",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2383",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2108,
-    "seller_id": 97,
+    "seller_external_id": "1285",
     "external_id": "23561",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2356",
-    "voucher_value": "1498.0"
+    "voucher_value": "1498.0",
+    "original_document": "2356",
+    "customer_code": "343591",
+    "is_credit": true
   },
   {
     "id": 2109,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "23461",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2346",
-    "voucher_value": "34.5"
+    "voucher_value": "34.5",
+    "original_document": "2346",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2110,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "21662",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-21 00:00:00 UTC",
     "voucher_number": "2166",
-    "voucher_value": "2998.0"
+    "voucher_value": "2998.0",
+    "original_document": "2166",
+    "customer_code": "92633",
+    "is_credit": true
   },
   {
     "id": 2111,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "21661",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-21 00:00:00 UTC",
     "voucher_number": "2166",
-    "voucher_value": "1598.0"
+    "voucher_value": "1598.0",
+    "original_document": "2166",
+    "customer_code": "92633",
+    "is_credit": true
   },
   {
     "id": 2112,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "24701",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-03 00:00:00 UTC",
     "voucher_number": "2470",
-    "voucher_value": "398.0"
+    "voucher_value": "398.0",
+    "original_document": "2470",
+    "customer_code": "266161",
+    "is_credit": true
   },
   {
     "id": 2113,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "22721",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2272",
-    "voucher_value": "1268.0"
+    "voucher_value": "1268.0",
+    "original_document": "2272",
+    "customer_code": "280008",
+    "is_credit": true
   },
   {
     "id": 2114,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "25584",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-15 00:00:00 UTC",
     "voucher_number": "2558",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2558",
+    "customer_code": "330742",
+    "is_credit": true
   },
   {
     "id": 2115,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "25583",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-15 00:00:00 UTC",
     "voucher_number": "2558",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2558",
+    "customer_code": "330742",
+    "is_credit": true
   },
   {
     "id": 2116,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "25582",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-15 00:00:00 UTC",
     "voucher_number": "2558",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "2558",
+    "customer_code": "330742",
+    "is_credit": true
   },
   {
     "id": 2117,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "25581",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-15 00:00:00 UTC",
     "voucher_number": "2558",
-    "voucher_value": "758.0"
+    "voucher_value": "758.0",
+    "original_document": "2558",
+    "customer_code": "330742",
+    "is_credit": true
   },
   {
     "id": 2118,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "24293",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-27 00:00:00 UTC",
     "voucher_number": "2429",
-    "voucher_value": "858.0"
+    "voucher_value": "858.0",
+    "original_document": "2429",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2119,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "24292",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-27 00:00:00 UTC",
     "voucher_number": "2429",
-    "voucher_value": "858.0"
+    "voucher_value": "858.0",
+    "original_document": "2429",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2120,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "24291",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-27 00:00:00 UTC",
     "voucher_number": "2429",
-    "voucher_value": "858.0"
+    "voucher_value": "858.0",
+    "original_document": "2429",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2121,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23682",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-18 00:00:00 UTC",
     "voucher_number": "2368",
-    "voucher_value": "498.0"
+    "voucher_value": "498.0",
+    "original_document": "2368",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2122,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23681",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-18 00:00:00 UTC",
     "voucher_number": "2368",
-    "voucher_value": "498.0"
+    "voucher_value": "498.0",
+    "original_document": "2368",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2123,
-    "seller_id": 105,
+    "seller_external_id": "280",
     "external_id": "23609",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-17 00:00:00 UTC",
     "voucher_number": "2360",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "2360",
+    "customer_code": "142680",
+    "is_credit": true
   },
   {
     "id": 2124,
-    "seller_id": 105,
+    "seller_external_id": "280",
     "external_id": "23608",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-17 00:00:00 UTC",
     "voucher_number": "2360",
-    "voucher_value": "658.0"
+    "voucher_value": "658.0",
+    "original_document": "2360",
+    "customer_code": "142680",
+    "is_credit": true
   },
   {
     "id": 2125,
-    "seller_id": 105,
+    "seller_external_id": "280",
     "external_id": "23607",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-17 00:00:00 UTC",
     "voucher_number": "2360",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "2360",
+    "customer_code": "142680",
+    "is_credit": true
   },
   {
     "id": 2126,
-    "seller_id": 105,
+    "seller_external_id": "280",
     "external_id": "23606",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-17 00:00:00 UTC",
     "voucher_number": "2360",
-    "voucher_value": "1198.0"
+    "voucher_value": "1198.0",
+    "original_document": "2360",
+    "customer_code": "142680",
+    "is_credit": true
   },
   {
     "id": 2127,
-    "seller_id": 105,
+    "seller_external_id": "280",
     "external_id": "23605",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-17 00:00:00 UTC",
     "voucher_number": "2360",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2360",
+    "customer_code": "142680",
+    "is_credit": true
   },
   {
     "id": 2128,
-    "seller_id": 105,
+    "seller_external_id": "280",
     "external_id": "23604",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-17 00:00:00 UTC",
     "voucher_number": "2360",
-    "voucher_value": "308.0"
+    "voucher_value": "308.0",
+    "original_document": "2360",
+    "customer_code": "142680",
+    "is_credit": true
   },
   {
     "id": 2129,
-    "seller_id": 105,
+    "seller_external_id": "280",
     "external_id": "23603",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-17 00:00:00 UTC",
     "voucher_number": "2360",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "2360",
+    "customer_code": "142680",
+    "is_credit": true
   },
   {
     "id": 2130,
-    "seller_id": 105,
+    "seller_external_id": "280",
     "external_id": "23602",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-17 00:00:00 UTC",
     "voucher_number": "2360",
-    "voucher_value": "328.0"
+    "voucher_value": "328.0",
+    "original_document": "2360",
+    "customer_code": "142680",
+    "is_credit": true
   },
   {
     "id": 2131,
-    "seller_id": 105,
+    "seller_external_id": "280",
     "external_id": "23601",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-17 00:00:00 UTC",
     "voucher_number": "2360",
-    "voucher_value": "198.0"
+    "voucher_value": "198.0",
+    "original_document": "2360",
+    "customer_code": "142680",
+    "is_credit": true
   },
   {
     "id": 2132,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "21701",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-05-21 00:00:00 UTC",
     "voucher_number": "2170",
-    "voucher_value": "448.0"
+    "voucher_value": "448.0",
+    "original_document": "2170",
+    "customer_code": "266867",
+    "is_credit": true
   },
   {
     "id": 2133,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23503",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2350",
-    "voucher_value": "34.5"
+    "voucher_value": "34.5",
+    "original_document": "2350",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2134,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23502",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2350",
-    "voucher_value": "34.5"
+    "voucher_value": "34.5",
+    "original_document": "2350",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2135,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23501",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2350",
-    "voucher_value": "34.5"
+    "voucher_value": "34.5",
+    "original_document": "2350",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2136,
-    "seller_id": 106,
+    "seller_external_id": "534",
     "external_id": "25083",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-08 00:00:00 UTC",
     "voucher_number": "2508",
-    "voucher_value": "858.0"
+    "voucher_value": "858.0",
+    "original_document": "2508",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2137,
-    "seller_id": 106,
+    "seller_external_id": "534",
     "external_id": "25082",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-08 00:00:00 UTC",
     "voucher_number": "2508",
-    "voucher_value": "858.0"
+    "voucher_value": "858.0",
+    "original_document": "2508",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2138,
-    "seller_id": 106,
+    "seller_external_id": "534",
     "external_id": "25081",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-08 00:00:00 UTC",
     "voucher_number": "2508",
-    "voucher_value": "858.0"
+    "voucher_value": "858.0",
+    "original_document": "2508",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2139,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23435",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2343",
-    "voucher_value": "34.5"
+    "voucher_value": "34.5",
+    "original_document": "2343",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2140,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23434",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2343",
-    "voucher_value": "34.5"
+    "voucher_value": "34.5",
+    "original_document": "2343",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2141,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23433",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2343",
-    "voucher_value": "34.5"
+    "voucher_value": "34.5",
+    "original_document": "2343",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2142,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23432",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2343",
-    "voucher_value": "34.5"
+    "voucher_value": "34.5",
+    "original_document": "2343",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2143,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23431",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2343",
-    "voucher_value": "34.5"
+    "voucher_value": "34.5",
+    "original_document": "2343",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2144,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23843",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-20 00:00:00 UTC",
     "voucher_number": "2384",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2384",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2145,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23842",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-20 00:00:00 UTC",
     "voucher_number": "2384",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2384",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2146,
-    "seller_id": 111,
+    "seller_external_id": "1366",
     "external_id": "23841",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-20 00:00:00 UTC",
     "voucher_number": "2384",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2384",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2147,
-    "seller_id": 100,
+    "seller_external_id": "509",
     "external_id": "23451",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-16 00:00:00 UTC",
     "voucher_number": "2345",
-    "voucher_value": "34.5"
+    "voucher_value": "34.5",
+    "original_document": "2345",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2148,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "23221",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-12 00:00:00 UTC",
     "voucher_number": "2322",
-    "voucher_value": "1698.0"
+    "voucher_value": "1698.0",
+    "original_document": "2322",
+    "customer_code": "364683",
+    "is_credit": true
   },
   {
     "id": 2149,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "227313",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "1598.0"
+    "voucher_value": "1598.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2150,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "227312",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "2998.0"
+    "voucher_value": "2998.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2151,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "227311",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2152,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "227310",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2153,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "22739",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2154,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "22738",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "1098.0"
+    "voucher_value": "1098.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2155,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "22737",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "1198.0"
+    "voucher_value": "1198.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2156,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "22736",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "1098.0"
+    "voucher_value": "1098.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2157,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "22735",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2158,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "22734",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "1398.0"
+    "voucher_value": "1398.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2159,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "22733",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2160,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "22732",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2161,
-    "seller_id": 96,
+    "seller_external_id": "849",
     "external_id": "22731",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-06-04 00:00:00 UTC",
     "voucher_number": "2273",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2273",
+    "customer_code": "291161",
+    "is_credit": true
   },
   {
     "id": 2162,
-    "seller_id": 106,
+    "seller_external_id": "534",
     "external_id": "25121",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-08 00:00:00 UTC",
     "voucher_number": "2512",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2512",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2163,
-    "seller_id": 106,
+    "seller_external_id": "534",
     "external_id": "25072",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-08 00:00:00 UTC",
     "voucher_number": "2507",
-    "voucher_value": "858.0"
+    "voucher_value": "858.0",
+    "original_document": "2507",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2164,
-    "seller_id": 106,
+    "seller_external_id": "534",
     "external_id": "25071",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-08 00:00:00 UTC",
     "voucher_number": "2507",
-    "voucher_value": "858.0"
+    "voucher_value": "858.0",
+    "original_document": "2507",
+    "customer_code": "353050",
+    "is_credit": true
   },
   {
     "id": 2165,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "25832",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-18 00:00:00 UTC",
     "voucher_number": "2583",
-    "voucher_value": "628.0"
+    "voucher_value": "628.0",
+    "original_document": "2583",
+    "customer_code": "330742",
+    "is_credit": true
   },
   {
     "id": 2166,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "25831",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-18 00:00:00 UTC",
     "voucher_number": "2583",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "2583",
+    "customer_code": "330742",
+    "is_credit": true
   },
   {
     "id": 2167,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261623",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "98.0"
+    "voucher_value": "98.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2168,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261622",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "68.0"
+    "voucher_value": "68.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2169,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261621",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2170,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261620",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "698.0"
+    "voucher_value": "698.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2171,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261619",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "468.0"
+    "voucher_value": "468.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2172,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261618",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "1098.0"
+    "voucher_value": "1098.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2173,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261617",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2174,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261616",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2175,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261615",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "698.0"
+    "voucher_value": "698.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2176,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261614",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "1398.0"
+    "voucher_value": "1398.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2177,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261613",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "1398.0"
+    "voucher_value": "1398.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2178,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261612",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "998.0"
+    "voucher_value": "998.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2179,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261611",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2180,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "261610",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "448.0"
+    "voucher_value": "448.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2181,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "26169",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2182,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "26168",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "1098.0"
+    "voucher_value": "1098.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2183,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "26167",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "1598.0"
+    "voucher_value": "1598.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2184,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "26166",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "1098.0"
+    "voucher_value": "1098.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2185,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "26165",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "758.0"
+    "voucher_value": "758.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2186,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "26164",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2187,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "26163",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2188,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "26162",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "898.0"
+    "voucher_value": "898.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2189,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "26161",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-24 00:00:00 UTC",
     "voucher_number": "2616",
-    "voucher_value": "1098.0"
+    "voucher_value": "1098.0",
+    "original_document": "2616",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2190,
-    "seller_id": 104,
+    "seller_external_id": "550",
     "external_id": "26261",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-07-25 00:00:00 UTC",
     "voucher_number": "2626",
-    "voucher_value": "1598.0"
+    "voucher_value": "1598.0",
+    "original_document": "2626",
+    "customer_code": "259244",
+    "is_credit": true
   },
   {
     "id": 2191,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "26804",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-08-01 00:00:00 UTC",
     "voucher_number": "2680",
-    "voucher_value": "1198.0"
+    "voucher_value": "1198.0",
+    "original_document": "2680",
+    "customer_code": "191245",
+    "is_credit": true
   },
   {
     "id": 2192,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "26803",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-08-01 00:00:00 UTC",
     "voucher_number": "2680",
-    "voucher_value": "798.0"
+    "voucher_value": "798.0",
+    "original_document": "2680",
+    "customer_code": "191245",
+    "is_credit": true
   },
   {
     "id": 2193,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "26802",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-08-01 00:00:00 UTC",
     "voucher_number": "2680",
-    "voucher_value": "758.0"
+    "voucher_value": "758.0",
+    "original_document": "2680",
+    "customer_code": "191245",
+    "is_credit": true
   },
   {
     "id": 2194,
-    "seller_id": 98,
+    "seller_external_id": "570",
     "external_id": "26801",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-08-01 00:00:00 UTC",
     "voucher_number": "2680",
-    "voucher_value": "698.0"
+    "voucher_value": "698.0",
+    "original_document": "2680",
+    "customer_code": "191245",
+    "is_credit": true
   },
   {
     "id": 2195,
-    "seller_id": 106,
+    "seller_external_id": "534",
     "external_id": "27006",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-08-04 00:00:00 UTC",
     "voucher_number": "2700",
-    "voucher_value": "568.0"
+    "voucher_value": "568.0",
+    "original_document": "2700",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2196,
-    "seller_id": 106,
+    "seller_external_id": "534",
     "external_id": "27005",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-08-04 00:00:00 UTC",
     "voucher_number": "2700",
-    "voucher_value": "668.0"
+    "voucher_value": "668.0",
+    "original_document": "2700",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2197,
-    "seller_id": 106,
+    "seller_external_id": "534",
     "external_id": "27004",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-08-04 00:00:00 UTC",
     "voucher_number": "2700",
-    "voucher_value": "598.0"
+    "voucher_value": "598.0",
+    "original_document": "2700",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2198,
-    "seller_id": 106,
+    "seller_external_id": "534",
     "external_id": "27003",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-08-04 00:00:00 UTC",
     "voucher_number": "2700",
-    "voucher_value": "758.0"
+    "voucher_value": "758.0",
+    "original_document": "2700",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2199,
-    "seller_id": 106,
+    "seller_external_id": "534",
     "external_id": "27002",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-08-04 00:00:00 UTC",
     "voucher_number": "2700",
-    "voucher_value": "1298.0"
+    "voucher_value": "1298.0",
+    "original_document": "2700",
+    "customer_code": "167651",
+    "is_credit": true
   },
   {
     "id": 2200,
-    "seller_id": 106,
+    "seller_external_id": "534",
     "external_id": "27001",
     "exchange_type": "TROCA SIMPLES",
     "processed_at": "2025-08-04 00:00:00 UTC",
     "voucher_number": "2700",
-    "voucher_value": "1998.0"
+    "voucher_value": "1998.0",
+    "original_document": "2700",
+    "customer_code": "167651",
+    "is_credit": true
   }
 ]
