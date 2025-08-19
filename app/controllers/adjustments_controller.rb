@@ -81,7 +81,7 @@ class AdjustmentsController < ApplicationController
     @store = Store.find_by!(slug: params[:slug])
     
     # Verificar se o usuário tem acesso à loja
-    unless current_user.admin? || current_user.store_id == @store.id
+    unless current_user.admin? || (current_user.store && current_user.store.id == @store.id)
       render json: { error: "Acesso negado" }, status: :forbidden
       return
     end

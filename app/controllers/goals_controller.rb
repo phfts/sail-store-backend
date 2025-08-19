@@ -178,7 +178,7 @@ class GoalsController < ApplicationController
                           .sum('order_items.quantity * order_items.unit_price')
     else
       # Meta da loja: somar vendas da loja no período da meta usando sold_at
-      store_id = current_user.admin? ? goal.seller&.store_id : current_user.store_id
+      store_id = current_user.admin? ? goal.seller&.store_id : current_user.store&.id
       current_sales = Order.joins(:order_items, :seller)
                           .where(sellers: { store_id: store_id })
                           .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
