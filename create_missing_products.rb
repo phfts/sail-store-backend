@@ -47,3 +47,4 @@ end
 puts "✅ Produtos criados: #{created_count}"
 puts "ℹ️ Produtos já existentes: #{existing_count}"
 puts "📊 Total de produtos agora: #{Product.count}"
+

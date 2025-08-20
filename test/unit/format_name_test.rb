@@ -91,3 +91,4 @@ class FormatNameTest < ActiveSupport::TestCase
     assert_equal "", result
   end
 end
+

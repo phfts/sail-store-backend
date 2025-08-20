@@ -156,3 +156,4 @@ class BetaControllerTest < ActionDispatch::IntegrationTest
     assert_equal "", response_data['primeiro_nome']
   end
 end
+

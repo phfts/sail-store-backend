@@ -152,3 +152,4 @@ ensure
   # Cleanup
   Goal.where(description: ['TESTE INDIVIDUAL', 'TESTE LOJA']).delete_all
 end
+

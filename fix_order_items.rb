@@ -61,3 +61,4 @@ if File.exist?(file_path)
 else
   puts '❌ Arquivo de backup não encontrado'
 end
+

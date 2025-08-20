@@ -46,3 +46,4 @@ puts '✅ Criação de produtos concluída:'
 puts "  ✅ Produtos criados: #{created_count}"
 puts "  ℹ️ Produtos já existiam: #{existing_count}"
 puts "🎯 Total de produtos na categoria: #{category.products.count}"
+

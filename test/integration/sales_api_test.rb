@@ -215,3 +215,4 @@ class SalesApiTest < ActionDispatch::IntegrationTest
     Company.where(name: 'Empresa API Test').delete_all rescue nil
   end
 end
+

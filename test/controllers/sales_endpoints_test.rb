@@ -223,3 +223,4 @@ class SalesEndpointsTest < ActionDispatch::IntegrationTest
     puts "Aviso no cleanup: #{e.message}"
   end
 end
+
