@@ -14,6 +14,7 @@ class BetaController < ApplicationController
           id: beta_seller.id, 
           name: beta_seller.name, 
           telefone: beta_seller.formatted_whatsapp || '+55 (19) 98873-2450',
+          participante_piloto: true,
           store: {
             id: beta_seller.store.id,
             name: beta_seller.store.name,
@@ -30,6 +31,7 @@ class BetaController < ApplicationController
           id: beta_seller_2.id, 
           name: beta_seller_2.name, 
           telefone: beta_seller_2.formatted_whatsapp || '+55 (19) 98873-2450',
+          participante_piloto: true,
           store: {
             id: beta_seller_2.store.id,
             name: beta_seller_2.store.name,

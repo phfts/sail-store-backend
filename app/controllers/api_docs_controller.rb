@@ -544,21 +544,26 @@ class ApiDocsController < ApplicationController
         },
         products: {
           description: "Gerenciamento de produtos",
-          base_path: "/stores/:slug/products",
+          base_path: "/products",
           endpoints: [
             {
               method: "GET",
-              path: "/stores/:slug/products",
-              description: "Listar produtos de uma loja",
+              path: "/products",
+              description: "Listar todos os produtos",
               auth_required: true,
               response: {
                 products: [
                   {
                     id: 1,
-                    name: "Smartphone XYZ",
-                    category_id: 1,
-                    store_id: 1,
-                    price: 1500.00,
+                    name: "BLUSA BORDALLO",
+                    external_id: "224217",
+                    sku: "224217",
+                    category_id: 8,
+                    category: {
+                      id: 8,
+                      external_id: "CAT001",
+                      name: "Roupas"
+                    },
                     created_at: "2024-01-01T00:00:00Z"
                   }
                 ]
@@ -566,25 +571,90 @@ class ApiDocsController < ApplicationController
             },
             {
               method: "POST",
-              path: "/stores/:slug/products",
+              path: "/products",
               description: "Criar novo produto",
               auth_required: true,
               request_body: {
                 product: {
-                  name: "Notebook ABC",
-                  category_id: 1,
-                  price: 3000.00
+                  name: "BLUSA BORDALLO",
+                  external_id: "224217",
+                  sku: "224217",
+                  category_id: 8
                 }
               },
               response: {
                 product: {
                   id: 2,
-                  name: "Notebook ABC",
-                  category_id: 1,
-                  store_id: 1,
-                  price: 3000.00,
+                  name: "BLUSA BORDALLO",
+                  external_id: "224217",
+                  sku: "224217",
+                  category_id: 8,
+                  category: {
+                    id: 8,
+                    external_id: "CAT001",
+                    name: "Roupas"
+                  },
                   created_at: "2024-01-03T00:00:00Z"
                 }
+              }
+            },
+            {
+              method: "GET",
+              path: "/products/:id",
+              description: "Obter produto específico",
+              auth_required: true,
+              response: {
+                product: {
+                  id: 1,
+                  name: "BLUSA BORDALLO",
+                  external_id: "224217",
+                  sku: "224217",
+                  category_id: 8,
+                  category: {
+                    id: 8,
+                    external_id: "CAT001",
+                    name: "Roupas"
+                  },
+                  created_at: "2024-01-01T00:00:00Z"
+                }
+              }
+            },
+            {
+              method: "PUT",
+              path: "/products/:id",
+              description: "Atualizar produto",
+              auth_required: true,
+              request_body: {
+                product: {
+                  name: "BLUSA BORDALLO ATUALIZADA",
+                  external_id: "224217",
+                  sku: "224217",
+                  category_id: 8
+                }
+              },
+              response: {
+                product: {
+                  id: 1,
+                  name: "BLUSA BORDALLO ATUALIZADA",
+                  external_id: "224217",
+                  sku: "224217",
+                  category_id: 8,
+                  category: {
+                    id: 8,
+                    external_id: "CAT001",
+                    name: "Roupas"
+                  },
+                  updated_at: "2024-01-03T00:00:00Z"
+                }
+              }
+            },
+            {
+              method: "DELETE",
+              path: "/products/:id",
+              description: "Excluir produto",
+              auth_required: true,
+              response: {
+                message: "Produto excluído com sucesso"
               }
             }
           ]
@@ -1275,28 +1345,25 @@ class ApiDocsController < ApplicationController
                        <div class="endpoint">
                            <div class="endpoint-header">
                                <span class="method get">GET</span>
-                               <span class="path">/stores/:slug/products</span>
+                               <span class="path">/products</span>
                                <span class="auth-badge">Auth</span>
                            </div>
-                           <div class="description">Listar produtos de uma loja</div>
+                           <div class="description">Listar todos os produtos</div>
                            <h4>Response:</h4>
                            <div class="code-block">{
   "products": [
     {
       "id": 1,
-      "name": "Smartphone XYZ",
-      "category_id": 1,
-      "store_id": 1,
-      "price": 1500.00,
+      "name": "BLUSA BORDALLO",
+      "external_id": "224217",
+      "sku": "224217",
+      "category_id": 8,
+      "category": {
+        "id": 8,
+        "external_id": "CAT001",
+        "name": "Roupas"
+      },
       "created_at": "2024-01-01T00:00:00Z"
-    },
-    {
-      "id": 2,
-      "name": "Notebook ABC",
-      "category_id": 1,
-      "store_id": 1,
-      "price": 3000.00,
-      "created_at": "2024-01-02T00:00:00Z"
     }
   ]
 }</div>
@@ -1305,28 +1372,106 @@ class ApiDocsController < ApplicationController
                        <div class="endpoint">
                            <div class="endpoint-header">
                                <span class="method post">POST</span>
-                               <span class="path">/stores/:slug/products</span>
+                               <span class="path">/products</span>
                                <span class="auth-badge">Auth</span>
                            </div>
                            <div class="description">Criar novo produto</div>
                            <h4>Request Body:</h4>
                            <div class="code-block">{
   "product": {
-    "name": "Tablet DEF",
-    "category_id": 1,
-    "price": 1200.00
+    "name": "BLUSA BORDALLO",
+    "external_id": "224217",
+    "sku": "224217",
+    "category_id": 8
   }
 }</div>
                            <h4>Response:</h4>
                            <div class="code-block">{
   "product": {
-    "id": 3,
-    "name": "Tablet DEF",
-    "category_id": 1,
-    "store_id": 1,
-    "price": 1200.00,
+    "id": 2,
+    "name": "BLUSA BORDALLO",
+    "external_id": "224217",
+    "sku": "224217",
+    "category_id": 8,
+    "category": {
+      "id": 8,
+      "external_id": "CAT001",
+      "name": "Roupas"
+    },
     "created_at": "2024-01-03T00:00:00Z"
   }
+}</div>
+                       </div>
+                       
+                       <div class="endpoint">
+                           <div class="endpoint-header">
+                               <span class="method get">GET</span>
+                               <span class="path">/products/:id</span>
+                               <span class="auth-badge">Auth</span>
+                           </div>
+                           <div class="description">Obter produto específico</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "product": {
+    "id": 1,
+    "name": "BLUSA BORDALLO",
+    "external_id": "224217",
+    "sku": "224217",
+    "category_id": 8,
+    "category": {
+      "id": 8,
+      "external_id": "CAT001",
+      "name": "Roupas"
+    },
+    "created_at": "2024-01-01T00:00:00Z"
+  }
+}</div>
+                       </div>
+                       
+                       <div class="endpoint">
+                           <div class="endpoint-header">
+                               <span class="method put">PUT</span>
+                               <span class="path">/products/:id</span>
+                               <span class="auth-badge">Auth</span>
+                           </div>
+                           <div class="description">Atualizar produto</div>
+                           <h4>Request Body:</h4>
+                           <div class="code-block">{
+  "product": {
+    "name": "BLUSA BORDALLO ATUALIZADA",
+    "external_id": "224217",
+    "sku": "224217",
+    "category_id": 8
+  }
+}</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "product": {
+    "id": 1,
+    "name": "BLUSA BORDALLO ATUALIZADA",
+    "external_id": "224217",
+    "sku": "224217",
+    "category_id": 8,
+    "category": {
+      "id": 8,
+      "external_id": "CAT001",
+      "name": "Roupas"
+    },
+    "updated_at": "2024-01-03T00:00:00Z"
+  }
+}</div>
+                       </div>
+                       
+                       <div class="endpoint">
+                           <div class="endpoint-header">
+                               <span class="method delete">DELETE</span>
+                               <span class="path">/products/:id</span>
+                               <span class="auth-badge">Auth</span>
+                           </div>
+                           <div class="description">Excluir produto</div>
+                           <h4>Response:</h4>
+                           <div class="code-block">{
+  "message": "Produto excluído com sucesso"
 }</div>
                        </div>
                    </div>

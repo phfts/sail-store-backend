@@ -9,6 +9,10 @@ class OrderItemsController < ApplicationController
       @order_items = @order_items.where(order_id: params[:order_id])
     end
     
+    if params[:store_id]
+      @order_items = @order_items.joins(order: :seller).where(sellers: { store_id: params[:store_id] })
+    end
+    
     render json: @order_items.as_json(
       include: { 
         order: { 
