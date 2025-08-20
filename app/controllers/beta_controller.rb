@@ -525,7 +525,7 @@ class BetaController < ApplicationController
     # Dados conforme planilha
     kpi_data = {
       # Campos básicos da planilha
-      telefone: seller.formatted_whatsapp || seller.phone,
+      telefone: seller.formatted_whatsapp,
       nome: seller.display_name,
       id: seller.id, # ID real do vendedor
       primeiro_nome: format_name(seller.first_name),

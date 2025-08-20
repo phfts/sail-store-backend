@@ -491,7 +491,7 @@ class SellersController < ApplicationController
     # Dados conforme planilha
     kpi_data = {
       # Campos básicos da planilha
-      telefone: seller.formatted_whatsapp || seller.phone,
+      telefone: seller.formatted_whatsapp,
       nome: seller.display_name,
       
       # === ARRAY DINÂMICO DE METAS ===
