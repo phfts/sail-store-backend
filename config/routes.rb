@@ -130,6 +130,7 @@ Rails.application.routes.draw do
   # Rotas beta
   get '/beta/sellers', to: 'beta#sellers'
   get '/beta/managers', to: 'beta#managers'
+  get '/beta/managers/:id/kpis', to: 'beta#manager_kpis'
   get '/beta/sellers/:id/kpis', to: 'beta#kpis'
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

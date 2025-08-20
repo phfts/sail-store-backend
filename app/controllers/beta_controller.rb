@@ -1,5 +1,5 @@
 class BetaController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:sellers, :kpis, :managers]
+  skip_before_action :authenticate_user!, only: [:sellers, :kpis, :managers, :manager_kpis]
 
   # GET /beta/sellers
   def sellers
@@ -49,6 +49,222 @@ class BetaController < ApplicationController
     end
 
     render json: managers_data
+  end
+
+  # GET /beta/managers/:id/kpis
+  def manager_kpis
+    manager_id = params[:id]
+    
+    # Buscar manager pelo ID
+    manager = Seller.includes(:store, :company, :user)
+                   .where(store_admin: true)
+                   .find_by(id: manager_id)
+    
+    if manager.nil?
+      render json: { error: "Manager não encontrado" }, status: :not_found
+      return
+    end
+    
+    store = manager.store
+    current_date = Date.current
+    
+    # Buscar todos os sellers ativos da loja
+    store_sellers = store.sellers.includes(:goals, :orders => :order_items)
+                        .where(active_until: nil)
+                        .or(store.sellers.where('active_until > ?', current_date))
+    
+    # Buscar todas as metas ativas dos sellers da loja
+    store_goals = Goal.joins(:seller)
+                     .where(sellers: { store_id: store.id })
+                     .active
+                     .order(:start_date)
+    
+    # Processar cada meta da loja
+    store_goals_data = []
+    
+    store_goals.each do |goal|
+      goal_start = goal.start_date
+      goal_end = goal.end_date
+      goal_target = goal.target_value
+      
+      # Calcular vendas da loja no período da meta
+      store_orders = Order.joins(:seller)
+                         .where(sellers: { store_id: store.id })
+                         .includes(:order_items)
+                         .where('orders.sold_at >= ? AND orders.sold_at <= ?', goal_start, goal_end)
+      
+      store_sales = store_orders.joins(:order_items)
+                               .sum('order_items.quantity * order_items.unit_price')
+      
+      # Calcular métricas do período
+      store_orders_count = store_orders.count
+      store_total_items = store_orders.joins(:order_items).sum('order_items.quantity')
+      
+      # Dias da meta
+      goal_total_days = (goal_end - goal_start).to_i + 1
+      goal_days_elapsed = [current_date - goal_start + 1, 0].max.to_i
+      goal_days_remaining = [goal_end - current_date, 0].max.to_i
+      
+      # Calcular percentual e métricas
+      goal_percentage = goal_target > 0 ? (store_sales / goal_target * 100).round(2) : 0
+      goal_ticket = store_orders_count > 0 ? store_sales / store_orders_count : 0
+      goal_pa = store_orders_count > 0 ? store_total_items.to_f / store_orders_count : 0
+      
+      # Calcular meta por dia restante
+      remaining_target = [goal_target - store_sales, 0].max
+      daily_target = goal_days_remaining > 0 ? (remaining_target / goal_days_remaining).round(2) : 0
+      
+      # Classificar tipo de período
+      goal_type = case goal_total_days
+                  when 1..7 then 'diario'
+                  when 8..14 then 'semanal'
+                  when 15..35 then 'mensal'
+                  when 36..100 then 'trimestral'
+                  else 'personalizado'
+                  end
+      
+      store_goals_data << {
+        id: goal.id,
+        seller_id: goal.seller_id,
+        seller_name: goal.seller.display_name,
+        tipo: goal_type,
+        nome_periodo: "#{goal_type.capitalize} (#{goal_total_days} dias)",
+        inicio: goal_start.strftime("%d/%m/%Y"),
+        fim: goal_end.strftime("%d/%m/%Y"),
+        meta_valor: goal_target,
+        vendas_realizadas: store_sales,
+        percentual_atingido: goal_percentage,
+        dias_total: goal_total_days,
+        dias_decorridos: goal_days_elapsed,
+        dias_restantes: goal_days_remaining,
+        meta_por_dia_restante: daily_target,
+        quanto_falta_super_meta: [(goal_target * 1.2) - store_sales, 0].max.round(2),
+        ticket_medio: goal_ticket.round(2),
+        pa_produtos_atendimento: goal_pa.round(2),
+        pedidos_count: store_orders_count,
+        produtos_vendidos: store_total_items,
+        meta_data: {
+          inicio_iso: goal_start.iso8601,
+          fim_iso: goal_end.iso8601,
+          goal_type: goal.goal_type,
+          goal_scope: goal.goal_scope
+        }
+      }
+    end
+    
+    # Se não há metas, criar fallback
+    if store_goals_data.empty?
+      fallback_start = current_date.beginning_of_month
+      fallback_end = current_date.end_of_month
+      fallback_target = 150000.0 # Meta maior para loja
+      fallback_sales = 87500.0
+      fallback_days_total = fallback_end.day
+      fallback_days_elapsed = current_date.day
+      fallback_days_remaining = fallback_end.day - current_date.day
+      fallback_daily_target = fallback_days_remaining > 0 ? ((fallback_target - fallback_sales) / fallback_days_remaining).round(2) : 0
+      
+      store_goals_data << {
+        id: nil,
+        seller_id: nil,
+        seller_name: "Loja #{store.name}",
+        tipo: 'mensal',
+        nome_periodo: "Mensal (#{fallback_days_total} dias)",
+        inicio: fallback_start.strftime("%d/%m/%Y"),
+        fim: fallback_end.strftime("%d/%m/%Y"),
+        meta_valor: fallback_target,
+        vendas_realizadas: fallback_sales,
+        percentual_atingido: (fallback_sales / fallback_target * 100).round(2),
+        dias_total: fallback_days_total,
+        dias_decorridos: fallback_days_elapsed,
+        dias_restantes: fallback_days_remaining,
+        meta_por_dia_restante: fallback_daily_target,
+        quanto_falta_super_meta: [(fallback_target * 1.2) - fallback_sales, 0].max.round(2),
+        ticket_medio: 0,
+        pa_produtos_atendimento: 0,
+        pedidos_count: 0,
+        produtos_vendidos: 0,
+        meta_data: {
+          inicio_iso: fallback_start.iso8601,
+          fim_iso: fallback_end.iso8601,
+          goal_type: 'sales',
+          goal_scope: 'store'
+        }
+      }
+    end
+    
+    # Calcular KPIs consolidados da loja
+    total_sellers = store_sellers.count
+    active_goals_count = store_goals_data.length
+    
+    # Usar a meta principal (primeira ou maior) para cálculos gerais
+    primary_goal = store_goals_data.first
+    total_target = primary_goal[:meta_valor]
+    total_sales = primary_goal[:vendas_realizadas]
+    total_percentage = primary_goal[:percentual_atingido]
+    total_days_remaining = primary_goal[:dias_restantes]
+    total_daily_target = primary_goal[:meta_por_dia_restante]
+    
+    # Calcular métricas dos últimos 7 dias
+    last_7_days_sales = calculate_store_last_sales_days(store, 7)
+    
+    # Dados do manager
+    kpi_data = {
+      # Informações do manager
+      manager: {
+        id: manager.id,
+        name: manager.display_name,
+        email: manager.email,
+        telefone: manager.formatted_whatsapp
+      },
+      
+      # Informações da loja
+      store: {
+        id: store.id,
+        name: store.name,
+        slug: store.slug,
+        total_sellers: total_sellers,
+        active_goals: active_goals_count
+      },
+      
+      # Informações da empresa
+      company: {
+        id: manager.company.id,
+        name: manager.company.name
+      },
+      
+      # === ARRAY DINÂMICO DE METAS DA LOJA ===
+      metas_loja: store_goals_data,
+      
+      # === DADOS CONSOLIDADOS ===
+      consolidado: {
+        meta_total: total_target,
+        vendas_realizadas: total_sales,
+        percentual_atingido: total_percentage,
+        dias_restantes: total_days_remaining,
+        meta_por_dia_restante: total_daily_target,
+        quanto_falta_super_meta: primary_goal[:quanto_falta_super_meta],
+        ticket_medio: primary_goal[:ticket_medio],
+        pa_produtos_atendimento: primary_goal[:pa_produtos_atendimento],
+        pedidos_count: primary_goal[:pedidos_count],
+        produtos_vendidos: primary_goal[:produtos_vendidos]
+      },
+      
+      # === ÚLTIMOS 7 DIAS ===
+      ultimos_7_dias: last_7_days_sales,
+      
+      # === METADADOS ===
+      metadados: {
+        data_atual: current_date.iso8601,
+        total_metas_ativas: active_goals_count,
+        tipos_metas: store_goals_data.map { |g| g[:tipo] }.uniq,
+        periodo_analise: {
+          inicio: store_goals_data.map { |g| g[:meta_data][:inicio_iso] }.min,
+          fim: store_goals_data.map { |g| g[:meta_data][:fim_iso] }.max
+        }
+      }
+    }
+
+    render json: kpi_data
   end
 
   # GET /beta/kpis/:id - KPIs baseados nos campos da planilha
@@ -338,6 +554,45 @@ class BetaController < ApplicationController
     sales_days = sales_dates.map do |date|
       day_orders = seller.orders.includes(:order_items)
                         .where('DATE(orders.sold_at) = ?', date)
+      
+      day_sales = day_orders.joins(:order_items)
+                           .sum('order_items.quantity * order_items.unit_price')
+      
+      day_orders_count = day_orders.count
+      day_items_count = day_orders.joins(:order_items).sum('order_items.quantity')
+      
+      {
+        data: date.strftime("%d/%m/%Y"),
+        data_iso: date.iso8601,
+        dia_semana: I18n.l(date, format: "%A"),
+        vendas: day_sales.round(2),
+        pedidos: day_orders_count,
+        itens: day_items_count,
+        ticket_medio: day_orders_count > 0 ? (day_sales / day_orders_count).round(2) : 0
+      }
+    end
+    
+    sales_days
+  end
+
+  def calculate_store_last_sales_days(store, limit = 7)
+    # Buscar os últimos dias únicos com vendas da loja
+    sales_dates = Order.joins(:seller)
+                      .joins(:order_items)
+                      .where(sellers: { store_id: store.id })
+                      .where('order_items.quantity > 0 AND order_items.unit_price > 0')
+                      .where('orders.sold_at IS NOT NULL')
+                      .group('DATE(orders.sold_at)')
+                      .order('DATE(orders.sold_at) DESC')
+                      .limit(limit)
+                      .pluck('DATE(orders.sold_at)')
+    
+    # Calcular vendas para cada dia
+    sales_days = sales_dates.map do |date|
+      day_orders = Order.joins(:seller)
+                       .includes(:order_items)
+                       .where(sellers: { store_id: store.id })
+                       .where('DATE(orders.sold_at) = ?', date)
       
       day_sales = day_orders.joins(:order_items)
                            .sum('order_items.quantity * order_items.unit_price')
