@@ -435,41 +435,9 @@ class SellersController < ApplicationController
       }
     end
     
-    # Se não há metas, criar fallback
+    # Se não há metas, retornar array vazio
     if goals_data.empty?
-      fallback_start = current_date.beginning_of_month
-      fallback_end = current_date.end_of_month
-      fallback_target = 15000.0
-      fallback_sales = 8750.0
-      fallback_days_total = fallback_end.day
-      fallback_days_elapsed = current_date.day
-      fallback_days_remaining = fallback_end.day - current_date.day
-      
-      goals_data << {
-        id: nil,
-        tipo: 'mensal',
-        nome_periodo: "Mensal (#{fallback_days_total} dias)",
-        inicio: fallback_start.strftime("%d/%m/%Y"),
-        fim: fallback_end.strftime("%d/%m/%Y"),
-        meta_valor: fallback_target,
-        vendas_realizadas: fallback_sales,
-        percentual_atingido: (fallback_sales / fallback_target * 100).round(2),
-        dias_total: fallback_days_total,
-        dias_decorridos: fallback_days_elapsed,
-        dias_restantes: fallback_days_remaining,
-        meta_recalculada_dia: fallback_days_remaining > 0 ? ((fallback_target - fallback_sales) / fallback_days_remaining).round(2) : 0,
-        ticket_medio: 0,
-        pa_produtos_atendimento: 0,
-        pedidos_count: 0,
-        produtos_vendidos: 0,
-        quanto_falta_super_meta: [(fallback_target * 1.2) - fallback_sales, 0].max.round(2),
-        meta_data: {
-          inicio_iso: fallback_start.iso8601,
-          fim_iso: fallback_end.iso8601,
-          goal_type: 'sales',
-          goal_scope: 'individual'
-        }
-      }
+      # Não criar dados mockados - retornar array vazio
     end
     
     # Usar a meta principal (primeira ou maior) para cálculos gerais
@@ -489,7 +457,9 @@ class SellersController < ApplicationController
     store_sales = store_orders.joins(:order_items).sum('order_items.quantity * order_items.unit_price')
     store_orders_count = store_orders.count
     store_total_items = store_orders.joins(:order_items).sum('order_items.quantity')
-    store_target = monthly_target * 8 # assumindo 8 vendedores
+    # Calcular meta da loja baseada no número real de vendedores ativos
+    active_sellers_count = store.sellers.where(active_until: nil).or(store.sellers.where('active_until > ?', current_date)).count
+    store_target = monthly_target * [active_sellers_count, 1].max # Mínimo de 1 vendedor
     
     # Calcular KPIs conforme planilha (baseado na meta principal)
     seller_ticket = primary_goal[:ticket_medio]
@@ -521,8 +491,8 @@ class SellersController < ApplicationController
     # Dados conforme planilha
     kpi_data = {
       # Campos básicos da planilha
-      telefone: seller.formatted_whatsapp || "+55 (11) 99999-9999",
-      nome: seller.display_name || "Vendedor Mock",
+      telefone: seller.formatted_whatsapp || seller.phone,
+      nome: seller.display_name,
       
       # === ARRAY DINÂMICO DE METAS ===
       metas: goals_data,

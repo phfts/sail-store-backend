@@ -10,8 +10,8 @@ class BetaController < ApplicationController
     if beta_seller
       # Retornar array com o ID real da beta_seller
       render json: [
-        {id: beta_seller.id, name: beta_seller.name, telefone: '+55 (19) 98873-2450' }, 
-        {id: beta_seller_2.id, name: beta_seller_2.name, telefone: '+55 (19) 98873-2450' }
+        {id: beta_seller.id, name: beta_seller.name, telefone: beta_seller.formatted_whatsapp || '+55 (19) 98873-2450' }, 
+        {id: beta_seller_2.id, name: beta_seller_2.name, telefone: beta_seller_2.formatted_whatsapp || '+55 (19) 98873-2450' }
       ]
     else
       # Fallback caso não encontre - retornar array vazio ou ID mockado
@@ -152,16 +152,42 @@ class BetaController < ApplicationController
       }
     end
     
-    # Se não há metas, criar fallback
+    # Se não há metas, calcular dados reais da loja para o mês atual
     if store_goals_data.empty?
       fallback_start = current_date.beginning_of_month
       fallback_end = current_date.end_of_month
-      fallback_target = 150000.0 # Meta maior para loja
-      fallback_sales = 87500.0
+      
+      # Calcular vendas reais da loja no mês atual
+      store_orders_month = Order.joins(:seller)
+                               .where(sellers: { store_id: store.id })
+                               .includes(:order_items)
+                               .where('orders.sold_at >= ? AND orders.sold_at <= ?', fallback_start, [current_date, fallback_end].min)
+      
+      fallback_sales = store_orders_month.joins(:order_items).sum('order_items.quantity * order_items.unit_price')
+      
+      # Calcular meta baseada na média histórica da loja (últimos 3 meses)
+      historical_orders = Order.joins(:seller)
+                              .where(sellers: { store_id: store.id })
+                              .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                    3.months.ago.beginning_of_month, 1.month.ago.end_of_month)
+      
+      historical_sales = historical_orders.joins(:order_items).sum('order_items.quantity * order_items.unit_price')
+      historical_months = 3
+      average_monthly_sales = historical_months > 0 ? historical_sales / historical_months : fallback_sales
+      
+      # Meta baseada na média histórica + 10% de crescimento
+      fallback_target = (average_monthly_sales * 1.1).round(2)
+      
       fallback_days_total = fallback_end.day
       fallback_days_elapsed = current_date.day
       fallback_days_remaining = fallback_end.day - current_date.day
       fallback_daily_target = fallback_days_remaining > 0 ? ((fallback_target - fallback_sales) / fallback_days_remaining).round(2) : 0
+      
+      # Calcular métricas reais
+      store_orders_count = store_orders_month.count
+      store_total_items = store_orders_month.joins(:order_items).sum('order_items.quantity')
+      store_ticket_medio = store_orders_count > 0 ? fallback_sales / store_orders_count : 0
+      store_pa = store_orders_count > 0 ? store_total_items.to_f / store_orders_count : 0
       
       store_goals_data << {
         id: nil,
@@ -173,16 +199,16 @@ class BetaController < ApplicationController
         fim: fallback_end.strftime("%d/%m/%Y"),
         meta_valor: fallback_target,
         vendas_realizadas: fallback_sales,
-        percentual_atingido: (fallback_sales / fallback_target * 100).round(2),
+        percentual_atingido: fallback_target > 0 ? (fallback_sales / fallback_target * 100).round(2) : 0,
         dias_total: fallback_days_total,
         dias_decorridos: fallback_days_elapsed,
         dias_restantes: fallback_days_remaining,
         meta_por_dia_restante: fallback_daily_target,
         quanto_falta_super_meta: [(fallback_target * 1.2) - fallback_sales, 0].max.round(2),
-        ticket_medio: 0,
-        pa_produtos_atendimento: 0,
-        pedidos_count: 0,
-        produtos_vendidos: 0,
+        ticket_medio: store_ticket_medio.round(2),
+        pa_produtos_atendimento: store_pa.round(2),
+        pedidos_count: store_orders_count,
+        produtos_vendidos: store_total_items,
         meta_data: {
           inicio_iso: fallback_start.iso8601,
           fim_iso: fallback_end.iso8601,
@@ -353,15 +379,38 @@ class BetaController < ApplicationController
       }
     end
     
-    # Se não há metas, criar fallback
+    # Se não há metas, calcular dados reais do vendedor para o mês atual
     if goals_data.empty?
       fallback_start = current_date.beginning_of_month
       fallback_end = current_date.end_of_month
-      fallback_target = 15000.0
-      fallback_sales = 8750.0
+      
+      # Calcular vendas reais do vendedor no mês atual
+      seller_orders_month = seller.orders.includes(:order_items)
+                                 .where('sold_at >= ? AND sold_at <= ?', fallback_start, [current_date, fallback_end].min)
+      
+      fallback_sales = seller_orders_month.joins(:order_items).sum('order_items.quantity * order_items.unit_price')
+      
+      # Calcular meta baseada na média histórica do vendedor (últimos 3 meses)
+      historical_orders = seller.orders.includes(:order_items)
+                               .where('sold_at >= ? AND sold_at <= ?', 
+                                     3.months.ago.beginning_of_month, 1.month.ago.end_of_month)
+      
+      historical_sales = historical_orders.joins(:order_items).sum('order_items.quantity * order_items.unit_price')
+      historical_months = 3
+      average_monthly_sales = historical_months > 0 ? historical_sales / historical_months : fallback_sales
+      
+      # Meta baseada na média histórica + 10% de crescimento
+      fallback_target = (average_monthly_sales * 1.1).round(2)
+      
       fallback_days_total = fallback_end.day
       fallback_days_elapsed = current_date.day
       fallback_days_remaining = fallback_end.day - current_date.day
+      
+      # Calcular métricas reais
+      seller_orders_count = seller_orders_month.count
+      seller_total_items = seller_orders_month.joins(:order_items).sum('order_items.quantity')
+      seller_ticket_medio = seller_orders_count > 0 ? fallback_sales / seller_orders_count : 0
+      seller_pa = seller_orders_count > 0 ? seller_total_items.to_f / seller_orders_count : 0
       
       goals_data << {
         id: nil,
@@ -371,15 +420,15 @@ class BetaController < ApplicationController
         fim: fallback_end.strftime("%d/%m/%Y"),
         meta_valor: fallback_target,
         vendas_realizadas: fallback_sales,
-        percentual_atingido: (fallback_sales / fallback_target * 100).round(2),
+        percentual_atingido: fallback_target > 0 ? (fallback_sales / fallback_target * 100).round(2) : 0,
         dias_total: fallback_days_total,
         dias_decorridos: fallback_days_elapsed,
         dias_restantes: fallback_days_remaining,
         meta_recalculada_dia: fallback_days_remaining > 0 ? ((fallback_target - fallback_sales) / fallback_days_remaining).round(2) : 0,
-        ticket_medio: 0,
-        pa_produtos_atendimento: 0,
-        pedidos_count: 0,
-        produtos_vendidos: 0,
+        ticket_medio: seller_ticket_medio.round(2),
+        pa_produtos_atendimento: seller_pa.round(2),
+        pedidos_count: seller_orders_count,
+        produtos_vendidos: seller_total_items,
         quanto_falta_super_meta: [(fallback_target * 1.2) - fallback_sales, 0].max.round(2),
         meta_data: {
           inicio_iso: fallback_start.iso8601,
@@ -407,7 +456,9 @@ class BetaController < ApplicationController
     store_sales = store_orders.joins(:order_items).sum('order_items.quantity * order_items.unit_price')
     store_orders_count = store_orders.count
     store_total_items = store_orders.joins(:order_items).sum('order_items.quantity')
-    store_target = monthly_target * 8 # assumindo 8 vendedores
+    # Calcular meta da loja baseada no número real de vendedores ativos
+    active_sellers_count = store.sellers.where(active_until: nil).or(store.sellers.where('active_until > ?', current_date)).count
+    store_target = monthly_target * [active_sellers_count, 1].max # Mínimo de 1 vendedor
     
     # Calcular KPIs conforme planilha (baseado na meta principal)
     seller_ticket = primary_goal[:ticket_medio]
@@ -442,8 +493,8 @@ class BetaController < ApplicationController
     # Dados conforme planilha
     kpi_data = {
       # Campos básicos da planilha
-      telefone: seller.formatted_whatsapp || "+55 (11) 99999-9999",
-      nome: seller.display_name || "Vendedor Mock",
+      telefone: seller.formatted_whatsapp || seller.phone,
+      nome: seller.display_name,
       id: seller.id, # ID real do vendedor
       primeiro_nome: format_name(seller.first_name),
       
