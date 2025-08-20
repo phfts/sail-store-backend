@@ -31,7 +31,7 @@ class BetaController < ApplicationController
         id: manager.id,
         name: manager.display_name,
         email: manager.email,
-        telefone: manager.formatted_whatsapp,
+        telefone: '5511999992450',
         store: {
           id: manager.store.id,
           name: manager.store.name,
