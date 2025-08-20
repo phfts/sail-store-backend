@@ -1,5 +1,5 @@
 class BetaController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:sellers, :kpis]
+  skip_before_action :authenticate_user!, only: [:sellers, :kpis, :managers]
 
   # GET /beta/sellers
   def sellers
@@ -17,6 +17,38 @@ class BetaController < ApplicationController
       # Fallback caso não encontre - retornar array vazio ou ID mockado
       render json: []
     end
+  end
+
+  # GET /beta/managers
+  def managers
+    # Buscar todos os sellers que são admins das lojas
+    store_managers = Seller.includes(:store, :company, :user)
+                          .where(store_admin: true)
+                          .order(:name)
+
+    managers_data = store_managers.map do |manager|
+      {
+        id: manager.id,
+        name: manager.display_name,
+        email: manager.email,
+        telefone: manager.formatted_whatsapp,
+        store: {
+          id: manager.store.id,
+          name: manager.store.name,
+          slug: manager.store.slug
+        },
+        company: {
+          id: manager.company.id,
+          name: manager.company.name
+        },
+        user_id: manager.user_id,
+        external_id: manager.external_id,
+        active: manager.active?,
+        store_admin: manager.store_admin?
+      }
+    end
+
+    render json: managers_data
   end
 
   # GET /beta/kpis/:id - KPIs baseados nos campos da planilha

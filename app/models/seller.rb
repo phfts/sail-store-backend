@@ -148,6 +148,11 @@ class Seller < ApplicationRecord
   def toggle_busy_status!
     update!(is_busy: !is_busy)
   end
+
+  # Método para verificar se é admin da loja
+  def store_admin?
+    store_admin == true
+  end
   
   private
   
