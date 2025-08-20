@@ -4,14 +4,44 @@ class BetaController < ApplicationController
   # GET /beta/sellers
   def sellers
     # Buscar beta_seller pelo nome (vendedora em beta)
-    beta_seller =  Seller.find_by_name('ELAINE DIOGO PAULO')
-    beta_seller_2 =  Seller.find_by_name('BARBARA DA SILVA GUIMARAES')
+    beta_seller =  Seller.includes(:store, :company).find_by_name('ELAINE DIOGO PAULO')
+    beta_seller_2 =  Seller.includes(:store, :company).find_by_name('BARBARA DA SILVA GUIMARAES')
 
     if beta_seller
-      # Retornar array com o ID real da beta_seller
+      # Retornar array com o ID real da beta_seller incluindo dados da loja
       render json: [
-        {id: beta_seller.id, name: beta_seller.name, telefone: beta_seller.formatted_whatsapp || '+55 (19) 98873-2450' }, 
-        {id: beta_seller_2.id, name: beta_seller_2.name, telefone: beta_seller_2.formatted_whatsapp || '+55 (19) 98873-2450' }
+        {
+          id: beta_seller.id, 
+          name: beta_seller.name, 
+          telefone: beta_seller.formatted_whatsapp || '+55 (19) 98873-2450',
+          store: {
+            id: beta_seller.store.id,
+            name: beta_seller.store.name,
+            slug: beta_seller.store.slug,
+            cnpj: beta_seller.store.cnpj,
+            address: beta_seller.store.address
+          },
+          company: {
+            id: beta_seller.company.id,
+            name: beta_seller.company.name
+          }
+        }, 
+        {
+          id: beta_seller_2.id, 
+          name: beta_seller_2.name, 
+          telefone: beta_seller_2.formatted_whatsapp || '+55 (19) 98873-2450',
+          store: {
+            id: beta_seller_2.store.id,
+            name: beta_seller_2.store.name,
+            slug: beta_seller_2.store.slug,
+            cnpj: beta_seller_2.store.cnpj,
+            address: beta_seller_2.store.address
+          },
+          company: {
+            id: beta_seller_2.company.id,
+            name: beta_seller_2.company.name
+          }
+        }
       ]
     else
       # Fallback caso não encontre - retornar array vazio ou ID mockado
