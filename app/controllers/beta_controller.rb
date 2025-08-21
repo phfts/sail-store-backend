@@ -63,7 +63,7 @@ class BetaController < ApplicationController
         id: manager.id,
         name: manager.display_name,
         email: manager.email,
-        telefone: '5519988732450',
+        telefone: manager.formatted_whatsapp || '+55 (19) 98873-2450',
         store: {
           id: manager.store.id,
           name: manager.store.name,
