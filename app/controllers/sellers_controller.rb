@@ -147,7 +147,7 @@ class SellersController < ApplicationController
       # Filtrar por status de ativação se especificado
       # Incluir absences para evitar N+1
       # Ordenar por queue_order primeiro, depois por nome
-      sellers = store.company.sellers.includes(:user, :store, :absences)
+      sellers = store.sellers.includes(:user, :store, :absences)
                      .order(:queue_order, :name)
       
       if params[:include_inactive] == 'true'
