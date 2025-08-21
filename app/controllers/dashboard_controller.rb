@@ -140,11 +140,33 @@ class DashboardController < ApplicationController
     potencial_vendas = calculate_sales_potential(store, orders, active_sellers, date_range)
     best_average_per_day = potencial_vendas[:best_seller_average]
 
+    # Otimização: buscar todos os dados de uma vez para evitar N+1 queries
+    seller_ids = active_sellers.map(&:id)
+    
+    # Buscar todas as vendas dos vendedores no período de uma vez
+    all_seller_orders = orders.where(seller_id: seller_ids)
+                             .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                    date_range[:start_date], date_range[:end_date])
+                             .includes(:order_items)
+    
+    # Buscar todas as devoluções dos vendedores no período de uma vez
+    all_seller_returns = Return.joins(original_order: :seller)
+                              .where(sellers: { id: seller_ids })
+                              .where('returns.processed_at >= ? AND returns.processed_at <= ?', 
+                                     date_range[:start_date], date_range[:end_date])
+    
+    # Buscar todas as trocas dos vendedores no período de uma vez
+    all_seller_exchanges = Exchange.joins(:seller)
+                                  .where(sellers: { id: seller_ids })
+                                  .where('exchanges.processed_at >= ? AND exchanges.processed_at <= ?', 
+                                         date_range[:start_date], date_range[:end_date])
+    
     # Dados de vendedores baseados no período selecionado
     sellers_annual_data = active_sellers.map do |seller|
-      seller_orders = orders.where(seller: seller)
-        .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
-          date_range[:start_date], date_range[:end_date])
+      # Filtrar dados deste vendedor
+      seller_orders = all_seller_orders.select { |order| order.seller_id == seller.id }
+      seller_returns = all_seller_returns.select { |ret| ret.original_order.seller_id == seller.id }
+      seller_exchanges = all_seller_exchanges.select { |exc| exc.seller_id == seller.id }
       
       seller_sales = calculate_sales_from_orders(seller_orders)
       seller_metrics = calculate_metrics(seller_orders)
@@ -153,21 +175,12 @@ class DashboardController < ApplicationController
       seller_sales = seller_orders.sum(&:total)
       
       # Calcular trocas e devoluções reais do vendedor
-      # Devoluções reais do vendedor
-      seller_returns = Return.joins(original_order: :seller)
-                            .where(sellers: { id: seller.id })
-                            .where('returns.processed_at >= ? AND returns.processed_at <= ?', 
-                                   date_range[:start_date], date_range[:end_date])
       total_returns_value = seller_returns.sum(&:return_value)
       total_returns_count = seller_returns.count
       
       # Trocas reais do vendedor (separar crédito e débito)
-      seller_exchanges = Exchange.joins(:seller)
-                                .where(sellers: { id: seller.id })
-                                .where('exchanges.processed_at >= ? AND exchanges.processed_at <= ?', 
-                                       date_range[:start_date], date_range[:end_date])
-      credit_exchanges = seller_exchanges.where(is_credit: true).sum(:voucher_value)
-      debit_exchanges = seller_exchanges.where(is_credit: false).sum(:voucher_value)
+      credit_exchanges = seller_exchanges.select { |exc| exc.is_credit }.sum(&:voucher_value)
+      debit_exchanges = seller_exchanges.select { |exc| !exc.is_credit }.sum(&:voucher_value)
       total_exchanges_count = seller_exchanges.count
       
       # Total de devoluções e trocas (que reduzem vendas)
@@ -303,13 +316,22 @@ class DashboardController < ApplicationController
   private
 
   def calculate_sales_from_orders(orders)
-    total = 0
-    orders.each do |order|
-      order.order_items.each do |item|
-        total += item.quantity * item.unit_price
+    # Otimização: usar SQL para calcular o total em vez de loops
+    return 0 if orders.empty?
+    
+    # Se orders já tem order_items carregados, usar os dados em memória
+    if orders.first.association(:order_items).loaded?
+      total = 0
+      orders.each do |order|
+        order.order_items.each do |item|
+          total += item.quantity * item.unit_price
+        end
       end
+      total
+    else
+      # Usar SQL para calcular o total
+      orders.joins(:order_items).sum('order_items.quantity * order_items.unit_price')
     end
-    total
   end
 
   def calculate_metrics(orders)
@@ -325,12 +347,19 @@ class DashboardController < ApplicationController
     # Calcular valor total vendido
     total_sales = calculate_sales_from_orders(orders)
     
-    # Calcular quantidade total de itens
-    total_items = 0
-    orders.each do |order|
-      order.order_items.each do |item|
-        total_items += item.quantity
+    # Calcular quantidade total de itens - otimização
+    total_items = if orders.first.association(:order_items).loaded?
+      # Se order_items já está carregado, usar dados em memória
+      total = 0
+      orders.each do |order|
+        order.order_items.each do |item|
+          total += item.quantity
+        end
       end
+      total
+    else
+      # Usar SQL para calcular o total
+      orders.joins(:order_items).sum('order_items.quantity')
     end
     
     # Ticket Médio = Valor total vendido / Número de pedidos
@@ -357,20 +386,27 @@ class DashboardController < ApplicationController
     analysis_start_date = 6.months.ago.beginning_of_month
     analysis_end_date = Date.current.end_of_day
 
-    # Calcular média de vendas por dia para cada vendedor ativo (usando período de 6 meses)
-    seller_averages = active_sellers.map do |seller|
-      # Buscar todas as vendas do vendedor nos últimos 6 meses
-      seller_orders = seller.orders
-                            .joins(:order_items)
+    # Otimização: buscar todos os dados de uma vez para evitar N+1 queries
+    seller_ids = active_sellers.map(&:id)
+    
+    # Buscar todas as vendas dos vendedores ativos nos últimos 6 meses de uma vez
+    all_seller_orders = Order.joins(:order_items, :seller)
+                            .where(seller_id: seller_ids)
                             .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
                                    analysis_start_date, analysis_end_date)
+                            .select('orders.seller_id, orders.sold_at, order_items.quantity, order_items.unit_price')
+    
+    # Agrupar por vendedor e calcular médias
+    seller_averages = active_sellers.map do |seller|
+      # Filtrar pedidos deste vendedor
+      seller_orders_data = all_seller_orders.select { |order| order.seller_id == seller.id }
       
       # Calcular vendas por dia para este vendedor
       daily_sales = {}
-      seller_orders.each do |order|
-        date_key = order.sold_at.to_date.to_s
+      seller_orders_data.each do |order_data|
+        date_key = order_data.sold_at.to_date.to_s
         daily_sales[date_key] ||= 0
-        daily_sales[date_key] += order.order_items.sum { |item| item.quantity * item.unit_price }
+        daily_sales[date_key] += order_data.quantity * order_data.unit_price
       end
       
       # Calcular média de vendas por dia

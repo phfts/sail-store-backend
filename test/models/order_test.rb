@@ -24,19 +24,19 @@ class OrderTest < ActiveSupport::TestCase
     Order.where('external_id LIKE ?', 'TEST_%').destroy_all
   end
 
-  test "should allow creating multiple orders with nil external_id" do
-    # Criar 3 ordens com external_id em branco
+  test "should not allow creating orders with nil external_id" do
+    # Tentar criar ordens com external_id em branco (agora não é permitido)
     order1 = Order.new(@order_attributes.merge(seller: @seller1, external_id: nil))
-    order2 = Order.new(@order_attributes.merge(seller: @seller1, external_id: nil))
-    order3 = Order.new(@order_attributes.merge(seller: @seller1, external_id: nil))
+    order2 = Order.new(@order_attributes.merge(seller: @seller1, external_id: ""))
+    order3 = Order.new(@order_attributes.merge(seller: @seller1, external_id: ""))
     
-    assert order1.save, "Order1 deveria ser salva com external_id nil"
-    assert order2.save, "Order2 deveria ser salva com external_id nil"
-    assert order3.save, "Order3 deveria ser salva com external_id nil"
+    assert_not order1.save, "Order1 não deveria ser salva com external_id nil"
+    assert_not order2.save, "Order2 não deveria ser salva com external_id vazio"
+    assert_not order3.save, "Order3 não deveria ser salva com external_id vazio"
     
-    assert_nil order1.external_id
-    assert_nil order2.external_id
-    assert_nil order3.external_id
+    assert_includes order1.errors[:external_id], "can't be blank"
+    assert_includes order2.errors[:external_id], "can't be blank"
+    assert_includes order3.errors[:external_id], "can't be blank"
   end
 
   test "should allow creating order with new external_id" do
@@ -78,13 +78,14 @@ class OrderTest < ActiveSupport::TestCase
     assert_not_equal order1.seller_id, order2.seller_id
   end
 
-  test "should validate external_id uniqueness only when present" do
+  test "should validate external_id uniqueness when present" do
     # Criar ordem com external_id
     order1 = Order.create!(@order_attributes.merge(seller: @seller1, external_id: "TEST_ID_999"))
     
-    # Criar ordem com external_id nil (deveria ser permitido)
+    # Tentar criar ordem com external_id nil (agora não é permitido)
     order2 = Order.new(@order_attributes.merge(seller: @seller1, external_id: nil))
     
-    assert order2.save, "Order com external_id nil deveria ser salva mesmo com outra ordem tendo external_id"
+    assert_not order2.save, "Order com external_id nil não deveria ser salva"
+    assert_includes order2.errors[:external_id], "can't be blank"
   end
 end
