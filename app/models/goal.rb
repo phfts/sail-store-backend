@@ -1,5 +1,6 @@
 class Goal < ApplicationRecord
   belongs_to :seller, optional: true
+  belongs_to :store, optional: true
 
   enum :goal_type, {
     sales: 0        # Volume de vendas (padrão)
@@ -20,7 +21,7 @@ class Goal < ApplicationRecord
   validates :description, length: { maximum: 500 }, allow_blank: true
   
   validate :end_date_after_start_date
-
+  validate :store_or_seller_present
 
   scope :active, -> { where('end_date >= ?', Date.current) }
   scope :completed, -> { where('current_value >= target_value') }
@@ -58,5 +59,9 @@ class Goal < ApplicationRecord
     end
   end
 
-
+  def store_or_seller_present
+    if store_id.blank? && seller_id.blank?
+      errors.add(:base, "Meta deve estar associada a uma loja ou vendedor")
+    end
+  end
 end

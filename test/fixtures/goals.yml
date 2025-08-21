@@ -2,6 +2,7 @@
 
 one:
   seller: one
+  store: one
   goal_type: 1
   start_date: 2025-08-03
   end_date: 2025-08-03
@@ -11,9 +12,32 @@ one:
 
 two:
   seller: two
+  store: two
   goal_type: 1
   start_date: 2025-08-03
   end_date: 2025-08-03
   target_value: 9.99
   current_value: 9.99
   description: MyText
+
+individual_goal:
+  seller: one
+  store: one
+  goal_type: sales
+  goal_scope: individual
+  start_date: 2025-08-01
+  end_date: 2025-08-31
+  target_value: 100000
+  current_value: 0
+  description: Meta individual de vendas
+
+store_wide_goal:
+  seller: one
+  store: one
+  goal_type: sales
+  goal_scope: store_wide
+  start_date: 2025-08-01
+  end_date: 2025-08-31
+  target_value: 200000
+  current_value: 0
+  description: Meta da loja de vendas

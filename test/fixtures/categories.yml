@@ -3,7 +3,9 @@
 one:
   external_id: MyString
   name: MyString
+  company_id: 980190962
 
 two:
   external_id: MyString
   name: MyString
+  company_id: 298486374

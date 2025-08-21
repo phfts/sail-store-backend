@@ -353,22 +353,24 @@ class DashboardController < ApplicationController
       best_seller: nil
     } if active_sellers.empty?
 
-    # Calcular média de vendas por dia para cada vendedor ativo
+    # Usar período de 6 meses para encontrar a melhor média diária baseada nos dias trabalhados
+    analysis_start_date = 6.months.ago.beginning_of_month
+    analysis_end_date = Date.current.end_of_day
+
+    # Calcular média de vendas por dia para cada vendedor ativo (usando período de 6 meses)
     seller_averages = active_sellers.map do |seller|
-      seller_orders = orders.where(seller: seller)
-      
-      # Se um período específico foi fornecido, filtrar por ele
-      if date_range
-        seller_orders = seller_orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
-          date_range[:start_date], date_range[:end_date])
-      end
+      # Buscar todas as vendas do vendedor nos últimos 6 meses
+      seller_orders = seller.orders
+                            .joins(:order_items)
+                            .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                   analysis_start_date, analysis_end_date)
       
       # Calcular vendas por dia para este vendedor
       daily_sales = {}
       seller_orders.each do |order|
         date_key = order.sold_at.to_date.to_s
         daily_sales[date_key] ||= 0
-        daily_sales[date_key] += calculate_sales_from_orders([order])
+        daily_sales[date_key] += order.order_items.sum { |item| item.quantity * item.unit_price }
       end
       
       # Calcular média de vendas por dia
@@ -385,8 +387,8 @@ class DashboardController < ApplicationController
       }
     end
 
-    # Filtrar apenas vendedores com mais de 5 dias de vendas para calcular a melhor média
-    qualified_sellers = seller_averages.select { |data| data[:days_worked] > 5 }
+    # Filtrar apenas vendedores com mais de 10 dias de vendas para calcular a melhor média
+    qualified_sellers = seller_averages.select { |data| data[:days_worked] > 10 }
     
     # Se não há vendedores qualificados, usar todos os vendedores
     sellers_for_best_average = qualified_sellers.empty? ? seller_averages : qualified_sellers
@@ -405,18 +407,39 @@ class DashboardController < ApplicationController
     best_average_per_day = best_seller_data[:average_per_day]
     
     # Calcular potencial: melhor média de vendas por dia × dias que cada vendedor vai trabalhar no mês atual
+    # Considerar apenas vendedores com vendas significativas (> R$ 500) no mês atual
     total_potential = 0
+    active_sellers_with_sales = 0
+    
     seller_averages.each do |data|
-      # Calcular dias que o vendedor vai trabalhar no mês atual
-      current_month_work_days = calculate_seller_work_days_in_month(data[:seller], Date.current)
+      # Verificar se o vendedor teve vendas significativas no mês atual
+      current_month_sales = data[:seller].orders
+                                        .joins(:order_items)
+                                        .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                               Date.current.beginning_of_month, Date.current.end_of_day)
+                                        .sum('order_items.quantity * order_items.unit_price')
       
-      # Potencial deste vendedor = melhor média de vendas por dia × dias que vai trabalhar no mês
-      seller_potential = best_average_per_day * current_month_work_days
-      total_potential += seller_potential
+      # Só incluir no potencial se teve vendas > R$ 100 no mês atual
+      if current_month_sales > 10000 # R$ 100 em centavos
+        current_month_work_days = calculate_seller_work_days_in_month(data[:seller], Date.current)
+        seller_potential = best_average_per_day * current_month_work_days
+        total_potential += seller_potential
+        active_sellers_with_sales += 1
+      end
     end
     
+    # Garantir que o potencial nunca seja menor que as vendas atuais
+    current_month_sales = store.orders
+                               .joins(:order_items)
+                               .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                      Date.current.beginning_of_month, Date.current.end_of_day)
+                               .sum('order_items.quantity * order_items.unit_price')
+    
+    # Se o potencial calculado for menor que as vendas atuais, usar as vendas atuais como base
+    final_potential = [total_potential, current_month_sales].max
+    
     {
-      potential: total_potential.round(2),
+      potential: final_potential.round(2),
       best_seller_average: best_seller_data[:average_per_day].round(2),
       total_work_days: seller_averages.sum { |data| calculate_seller_work_days_in_month(data[:seller], Date.current) },
       best_seller: {

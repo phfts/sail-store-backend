@@ -27,8 +27,14 @@ class StoresControllerTest < ActionDispatch::IntegrationTest
     token = login_and_get_token(@admin, 'admin123')
     
     assert_difference("Store.count") do
-      post stores_url, params: { store: { address: @store.address, cnpj: @store.cnpj, name: @store.name } }, 
-           headers: { 'Authorization': "Bearer #{token}" }, as: :json
+      post stores_url, params: { 
+        store: { 
+          address: @store.address, 
+          cnpj: @store.cnpj, 
+          name: @store.name,
+          company_id: companies(:one).id
+        } 
+      }, headers: { 'Authorization': "Bearer #{token}" }, as: :json
     end
 
     assert_response :created
@@ -39,8 +45,14 @@ class StoresControllerTest < ActionDispatch::IntegrationTest
     token = login_and_get_token(@regular_user, 'password123')
     
     assert_no_difference("Store.count") do
-      post stores_url, params: { store: { address: @store.address, cnpj: @store.cnpj, name: @store.name } }, 
-           headers: { 'Authorization': "Bearer #{token}" }, as: :json
+      post stores_url, params: { 
+        store: { 
+          address: @store.address, 
+          cnpj: @store.cnpj, 
+          name: @store.name,
+          company_id: companies(:one).id
+        } 
+      }, headers: { 'Authorization': "Bearer #{token}" }, as: :json
     end
 
     assert_response :forbidden

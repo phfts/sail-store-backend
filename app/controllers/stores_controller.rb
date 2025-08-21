@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
   before_action :set_store, only: %i[ show update destroy ]
-  # before_action :require_admin!, only: %i[ create update destroy ]
+  before_action :require_admin!, only: %i[ create update destroy ]
 
   # GET /stores
   def index
@@ -64,5 +64,11 @@ class StoresController < ApplicationController
     # Only allow a list of trusted parameters through.
     def store_params
       params.require(:store).permit(:name, :cnpj, :address, :slug, :external_id, :company_id, :hide_ranking)
+    end
+
+    def require_admin!
+      unless current_user&.admin?
+        render json: { error: 'Acesso negado. Apenas administradores podem realizar esta ação.' }, status: :forbidden
+      end
     end
 end

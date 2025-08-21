@@ -122,10 +122,12 @@ class BetaControllerTest < ActionDispatch::IntegrationTest
     # Criar um seller sem nome para testar edge case
     company = companies(:souq)
     store = stores(:souq_iguatemi)
+    user = users(:one)
     
     seller = Seller.create!(
       store: store,
       company: company,
+      user: user,
       name: nil,
       whatsapp: "+5511999999999"
     )
@@ -141,10 +143,12 @@ class BetaControllerTest < ActionDispatch::IntegrationTest
     # Criar um seller com nome apenas com espaços
     company = companies(:souq)
     store = stores(:souq_iguatemi)
+    user = users(:two)
     
     seller = Seller.create!(
       store: store,
       company: company,
+      user: user,
       name: "   ",
       whatsapp: "+5511999999999"
     )

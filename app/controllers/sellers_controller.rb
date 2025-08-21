@@ -107,15 +107,14 @@ class SellersController < ApplicationController
           },
           goal: {
             target: current_seller[:goal_target],
-            current: current_seller[:sales],
             percentage: current_seller[:goal_percentage]
           },
           commission: {
             percentage: commission_data[:percentage],
             amount: commission_data[:amount]
           },
-          evolution: {
-            position: previous_position ? previous_position + 1 : nil,
+          position_evolution: {
+            previous_position: previous_position ? previous_position + 1 : nil,
             change: position_change
           }
         }
@@ -422,7 +421,7 @@ class SellersController < ApplicationController
         dias_restantes: goal_days_remaining,
         meta_recalculada_dia: goal_days_remaining > 0 ? ((goal_target - goal_sales) / goal_days_remaining).round(2) : 0,
         ticket_medio: goal_ticket.round(2),
-        pa_produtos_atendimento: goal_pa.round(2),
+        pa_produtos_atendimento: goal_pa.round(1),
         pedidos_count: goal_orders_count,
         produtos_vendidos: goal_total_items,
         quanto_falta_super_meta: [(goal_target * 1.2) - goal_sales, 0].max.round(2),
@@ -451,6 +450,9 @@ class SellersController < ApplicationController
       # Calcular métricas do mês atual
       current_ticket = current_orders_count > 0 ? current_sales_data[:net_sales] / current_orders_count : 0
       current_pa = current_orders_count > 0 ? current_total_items.to_f / current_orders_count : 0
+      
+      # Calcular dias com vendas para o mês atual
+      days_with_sales = calculate_days_with_sales(seller, current_month_start, current_month_end)
       
       # Criar meta fictícia para o mês atual
       current_goal_data = {
@@ -488,7 +490,10 @@ class SellersController < ApplicationController
           pa_produtos_atendimento: current_pa,
           comissao_calculada: 0,
           percentual_comissao: 0,
-          total_metas_ativas: 0
+          total_metas_ativas: 0,
+          dias_com_vendas: days_with_sales,
+          vendas_por_dia: days_with_sales > 0 ? (current_sales_data[:net_sales] / days_with_sales).round(2) : 0,
+          pedidos_por_dia: days_with_sales > 0 ? (current_orders_count.to_f / days_with_sales).round(2) : 0
         },
         commission_levels: [],
         metadados: {
@@ -554,6 +559,9 @@ class SellersController < ApplicationController
     
     commission_amount = monthly_sales * (commission_rate / 100)
     
+    # Calcular dias com vendas para o período da meta principal
+    days_with_sales = calculate_days_with_sales(seller, primary_start, [current_date, primary_end].min)
+    
     # Dados conforme planilha
     kpi_data = {
       # Campos básicos da planilha
@@ -582,7 +590,7 @@ class SellersController < ApplicationController
         ticket_medio: store_ticket.round(2),
         meta_periodo: store_target,
         percentual_atingido: store_percentage,
-        pa_produtos_atendimento: store_pa.round(2),
+        pa_produtos_atendimento: store_pa.round(1),
         pedidos_count: store_orders_count,
         produtos_vendidos: store_total_items
       },
@@ -593,7 +601,10 @@ class SellersController < ApplicationController
         pa_produtos_atendimento: seller_pa,
         comissao_calculada: commission_amount.round(2),
         percentual_comissao: commission_rate,
-        total_metas_ativas: goals_data.length
+        total_metas_ativas: goals_data.length,
+        dias_com_vendas: days_with_sales,
+        vendas_por_dia: days_with_sales > 0 ? (monthly_sales / days_with_sales).round(2) : 0,
+        pedidos_por_dia: days_with_sales > 0 ? (primary_goal[:pedidos_count] / days_with_sales).round(2) : 0
       },
       
       # === NÍVEIS DE COMISSÃO ===
@@ -801,6 +812,18 @@ class SellersController < ApplicationController
       created_at: seller.created_at,
       updated_at: seller.updated_at
     }
+  end
+
+  # Calcula dias únicos com vendas do vendedor
+  def calculate_days_with_sales(seller, start_date, end_date)
+    seller.orders
+          .joins(:order_items)
+          .where('order_items.quantity > 0 AND order_items.unit_price > 0')
+          .where('orders.sold_at >= ? AND orders.sold_at <= ?', start_date, end_date)
+          .group('DATE(orders.sold_at)')
+          .count
+          .keys
+          .count
   end
 
   # Calcula vendas líquidas considerando devoluções e trocas

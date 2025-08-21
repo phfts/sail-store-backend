@@ -19,3 +19,8 @@ regular:
   email: regular_user@example.com
   password_digest: <%= BCrypt::Password.create('password123') %>
   admin: false
+
+store_admin:
+  email: store_admin@example.com
+  password_digest: <%= BCrypt::Password.create('password123') %>
+  admin: false

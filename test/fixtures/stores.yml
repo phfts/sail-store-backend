@@ -5,9 +5,18 @@ one:
   cnpj: 12.345.678/0001-90
   address: Rua Teste, 123
   slug: loja-teste-1
+  company_id: 980190962
 
 two:
   name: Loja Teste 2
   cnpj: 98.765.432/0001-10
   address: Av. Teste, 456
   slug: loja-teste-2
+  company_id: 298486374
+
+souq_iguatemi:
+  name: Souq Iguatemi
+  cnpj: 11.111.111/0001-11
+  address: Shopping Iguatemi, São Paulo
+  slug: souq-iguatemi
+  company_id: 980190962

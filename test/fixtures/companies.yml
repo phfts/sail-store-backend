@@ -1,0 +1,22 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Test Company 1
+  active: true
+  slug: test-company-1
+  description: Test company for testing purposes
+  simplified_frontend: false
+
+two:
+  name: Test Company 2
+  active: true
+  slug: test-company-2
+  description: Another test company for testing purposes
+  simplified_frontend: false
+
+souq:
+  name: Souq Company
+  active: true
+  slug: souq
+  description: Souq company for testing purposes
+  simplified_frontend: false

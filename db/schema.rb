@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_21_163230) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_21_173529) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -110,7 +110,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_21_163230) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "goal_scope"
+    t.bigint "store_id"
     t.index ["seller_id"], name: "index_goals_on_seller_id"
+    t.index ["store_id", "goal_scope"], name: "index_goals_on_store_id_and_goal_scope"
+    t.index ["store_id"], name: "index_goals_on_store_id"
   end
 
   create_table "login_logs", force: :cascade do |t|
@@ -271,6 +274,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_21_163230) do
   add_foreign_key "exchanges", "orders", column: "original_order_id"
   add_foreign_key "exchanges", "sellers"
   add_foreign_key "goals", "sellers", on_delete: :cascade
+  add_foreign_key "goals", "stores"
   add_foreign_key "login_logs", "users", on_delete: :cascade
   add_foreign_key "order_items", "orders", on_delete: :cascade
   add_foreign_key "order_items", "products", on_delete: :cascade

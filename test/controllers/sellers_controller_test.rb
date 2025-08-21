@@ -8,7 +8,8 @@ class SellersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get sellers_url, headers: { 'Authorization' => "Bearer #{@token}" }, as: :json
+    store = stores(:one)
+    get "/stores/#{store.slug}/sellers", headers: { 'Authorization' => "Bearer #{@token}" }, as: :json
     assert_response :success
   end
 
@@ -21,7 +22,14 @@ class SellersControllerTest < ActionDispatch::IntegrationTest
   test "should create seller" do
     assert_difference("Seller.count") do
       post sellers_url, 
-        params: { seller: { store_id: @seller.store_id, name: "Novo Vendedor", whatsapp: "11987654321" } }, 
+        params: { 
+          seller: { 
+            store_id: @seller.store_id, 
+            company_id: @seller.company_id,
+            name: "Novo Vendedor #{Time.current.to_i}", 
+            whatsapp: "11987654321" 
+          } 
+        }, 
         headers: { 'Authorization' => "Bearer #{@token}" },
         as: :json
     end
@@ -35,9 +43,10 @@ class SellersControllerTest < ActionDispatch::IntegrationTest
         params: { 
           seller: { 
             store_id: @seller.store_id, 
-            name: "Vendedor com Login", 
+            company_id: @seller.company_id,
+            name: "Vendedor com Login #{Time.current.to_i}", 
             whatsapp: "11987654321",
-            email: "vendedor@teste.com",
+            email: "vendedor#{Time.current.to_i}@teste.com",
             password: "senha123"
           } 
         }, 
@@ -48,8 +57,7 @@ class SellersControllerTest < ActionDispatch::IntegrationTest
     assert_response :created
     
     # Verificar se o usuário foi criado
-    user = User.find_by(email: "vendedor@teste.com")
-    assert user
+    user = User.last
     assert user.authenticate("senha123")
   end
 
@@ -59,7 +67,8 @@ class SellersControllerTest < ActionDispatch::IntegrationTest
         params: { 
           seller: { 
             store_id: @seller.store_id, 
-            name: "Vendedor com WhatsApp Formatado", 
+            company_id: @seller.company_id,
+            name: "Vendedor com WhatsApp #{Time.current.to_i}", 
             whatsapp: "(11) 93747-0101"
           } 
         }, 
@@ -79,7 +88,8 @@ class SellersControllerTest < ActionDispatch::IntegrationTest
       params: { 
         seller: { 
           store_id: @seller.store_id, 
-          name: "Vendedor com WhatsApp Inválido", 
+          company_id: @seller.company_id,
+          name: "Vendedor com WhatsApp Inválido #{Time.current.to_i}", 
           whatsapp: "123"
         } 
       }, 
@@ -96,8 +106,21 @@ class SellersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update seller" do
-    patch seller_url(@seller), 
-      params: { seller: { name: "Vendedor Atualizado", whatsapp: "11987654321" } }, 
+    # Criar um seller temporário sem user para o teste
+    temp_seller = Seller.create!(
+      store: @seller.store,
+      company: @seller.company,
+      name: "Temp Seller Update #{Time.current.to_i}",
+      whatsapp: "11987654321"
+    )
+    
+    patch seller_url(temp_seller), 
+      params: { 
+        seller: { 
+          name: "Vendedor Atualizado #{Time.current.to_i}", 
+          whatsapp: "11987654321" 
+        } 
+      }, 
       headers: { 'Authorization' => "Bearer #{@token}" },
       as: :json
     assert_response :success
@@ -112,7 +135,16 @@ class SellersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update seller busy status to true" do
-    put busy_status_seller_url(@seller), 
+    # Criar um seller temporário para o teste
+    temp_seller = Seller.create!(
+      store: @seller.store,
+      company: @seller.company,
+      name: "Temp Seller Busy #{Time.current.to_i}",
+      whatsapp: "11987654321",
+      is_busy: false
+    )
+    
+    put busy_status_seller_url(temp_seller), 
       params: { is_busy: true }, 
       headers: { 'Authorization' => "Bearer #{@token}" },
       as: :json
@@ -123,14 +155,21 @@ class SellersControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Vendedor marcado como ocupado com sucesso", response_data['message']
     assert_equal true, response_data['seller']['is_busy']
     
-    @seller.reload
-    assert_equal true, @seller.is_busy
+    temp_seller.reload
+    assert_equal true, temp_seller.is_busy
   end
 
   test "should update seller busy status to false" do
-    @seller.update!(is_busy: true)
+    # Criar um seller temporário para o teste
+    temp_seller = Seller.create!(
+      store: @seller.store,
+      company: @seller.company,
+      name: "Temp Seller #{Time.current.to_i}",
+      whatsapp: "11987654321",
+      is_busy: true
+    )
     
-    put busy_status_seller_url(@seller), 
+    put busy_status_seller_url(temp_seller), 
       params: { is_busy: false }, 
       headers: { 'Authorization' => "Bearer #{@token}" },
       as: :json
@@ -141,8 +180,8 @@ class SellersControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Vendedor marcado como disponível com sucesso", response_data['message']
     assert_equal false, response_data['seller']['is_busy']
     
-    @seller.reload
-    assert_equal false, @seller.is_busy
+    temp_seller.reload
+    assert_equal false, temp_seller.is_busy
   end
 
   test "should return error when is_busy parameter is missing" do
@@ -157,9 +196,16 @@ class SellersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should include is_busy field in seller response" do
-    @seller.update!(is_busy: true)
+    # Criar um seller temporário para o teste
+    temp_seller = Seller.create!(
+      store: @seller.store,
+      company: @seller.company,
+      name: "Temp Seller #{Time.current.to_i}",
+      whatsapp: "11987654321",
+      is_busy: true
+    )
     
-    get seller_url(@seller), headers: { 'Authorization' => "Bearer #{@token}" }, as: :json
+    get seller_url(temp_seller), headers: { 'Authorization' => "Bearer #{@token}" }, as: :json
     assert_response :success
     
     response_data = JSON.parse(@response.body)

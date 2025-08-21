@@ -172,7 +172,7 @@ class BetaController < ApplicationController
         meta_por_dia_restante: daily_target,
         quanto_falta_super_meta: [(goal_target * 1.2) - store_sales, 0].max.round(2),
         ticket_medio: goal_ticket.round(2),
-        pa_produtos_atendimento: goal_pa.round(2),
+        pa_produtos_atendimento: goal_pa.round(1),
         pedidos_count: store_orders_count,
         produtos_vendidos: store_total_items,
         meta_data: {
@@ -231,6 +231,7 @@ class BetaController < ApplicationController
         fim: fallback_end.strftime("%d/%m/%Y"),
         meta_valor: fallback_target,
         vendas_realizadas: fallback_sales,
+        
         percentual_atingido: fallback_target > 0 ? (fallback_sales / fallback_target * 100).round(2) : 0,
         dias_total: fallback_days_total,
         dias_decorridos: fallback_days_elapsed,
@@ -238,7 +239,7 @@ class BetaController < ApplicationController
         meta_por_dia_restante: fallback_daily_target,
         quanto_falta_super_meta: [(fallback_target * 1.2) - fallback_sales, 0].max.round(2),
         ticket_medio: store_ticket_medio.round(2),
-        pa_produtos_atendimento: store_pa.round(2),
+        pa_produtos_atendimento: store_pa.round(1),
         pedidos_count: store_orders_count,
         produtos_vendidos: store_total_items,
         meta_data: {
@@ -400,7 +401,7 @@ class BetaController < ApplicationController
         dias_restantes: goal_days_remaining,
         meta_recalculada_dia: goal_days_remaining > 0 ? ((goal_target - goal_sales) / goal_days_remaining).round(2) : 0,
         ticket_medio: goal_ticket.round(2),
-        pa_produtos_atendimento: goal_pa.round(2),
+        pa_produtos_atendimento: goal_pa.round(1),
         pedidos_count: goal_orders_count,
         produtos_vendidos: goal_total_items,
         quanto_falta_super_meta: [(goal_target * 1.2) - goal_sales, 0].max.round(2),
@@ -461,7 +462,7 @@ class BetaController < ApplicationController
         dias_restantes: fallback_days_remaining,
         meta_recalculada_dia: fallback_days_remaining > 0 ? ((fallback_target - fallback_sales) / fallback_days_remaining).round(2) : 0,
         ticket_medio: seller_ticket_medio.round(2),
-        pa_produtos_atendimento: seller_pa.round(2),
+        pa_produtos_atendimento: seller_pa.round(1),
         pedidos_count: seller_orders_count,
         produtos_vendidos: seller_total_items,
         quanto_falta_super_meta: [(fallback_target * 1.2) - fallback_sales, 0].max.round(2),
@@ -565,7 +566,7 @@ class BetaController < ApplicationController
         ticket_medio: store_ticket.round(2),
         meta_periodo: store_target,
         percentual_atingido: store_percentage,
-        pa_produtos_atendimento: store_pa.round(2),
+        pa_produtos_atendimento: store_pa.round(1),
         pedidos_count: store_orders_count,
         produtos_vendidos: store_total_items
       },

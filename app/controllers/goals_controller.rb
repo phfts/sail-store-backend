@@ -5,15 +5,16 @@ class GoalsController < ApplicationController
   def index
     if current_user.admin?
       # Admins podem ver todas as metas
-      @goals = Goal.includes(:seller)
+      @goals = Goal.includes(:seller, :store)
                    .order(created_at: :desc)
     else
       # Usuários regulares veem apenas as metas da sua loja
       # Buscar metas individuais dos vendedores da loja + metas por loja (store_wide)
       seller_ids = current_user.store.sellers.pluck(:id)
-      @goals = Goal.includes(:seller)
-                   .where('seller_id IN (?) OR (seller_id IS NULL AND goal_scope = ?)', 
-                          seller_ids, Goal.goal_scopes[:store_wide])
+      @goals = Goal.includes(:seller, :store)
+                   .where('(seller_id IN (?) AND goal_scope = ?) OR (store_id = ? AND goal_scope = ?)', 
+                          seller_ids, Goal.goal_scopes[:individual], 
+                          current_user.store.id, Goal.goal_scopes[:store_wide])
                    .order(created_at: :desc)
     end
     
@@ -51,7 +52,10 @@ class GoalsController < ApplicationController
         seller: { 
           only: [:id, :name, :code],
           methods: [:display_name]
-        } 
+        },
+        store: {
+          only: [:id, :name, :slug]
+        }
       },
       methods: [:progress_percentage, :is_completed?, :is_overdue?, :days_remaining]
     )
@@ -72,8 +76,11 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
     
-    # Verificar se o seller pertence à loja do usuário (se não for admin e se for meta individual)
+    # Associar a meta à loja do usuário (se não for admin)
     unless current_user.admin?
+      @goal.store_id = current_user.store.id
+      
+      # Verificar se o seller pertence à loja do usuário (se for meta individual)
       if @goal.goal_scope == 'individual' && @goal.seller_id.present?
         seller = current_user.store.sellers.find_by(id: @goal.seller_id)
         unless seller
@@ -92,7 +99,10 @@ class GoalsController < ApplicationController
           seller: { 
             only: [:id, :name, :code],
             methods: [:display_name]
-          } 
+          },
+          store: {
+            only: [:id, :name, :slug]
+          }
         },
         methods: [:progress_percentage, :is_completed?, :is_overdue?, :days_remaining]
       ), status: :created
@@ -107,7 +117,7 @@ class GoalsController < ApplicationController
       # Verificar se é meta individual da loja ou meta por loja (store_wide)
       seller_ids = current_user.store.sellers.pluck(:id)
       goal_belongs_to_store = (@goal.seller_id.present? && seller_ids.include?(@goal.seller_id)) ||
-                              (@goal.seller_id.nil? && @goal.goal_scope == 'store_wide')
+                              (@goal.store_id == current_user.store.id && @goal.goal_scope == 'store_wide')
       
       unless goal_belongs_to_store
         render json: { error: 'Meta não encontrada ou não pertence à sua loja' }, status: :not_found
@@ -121,7 +131,10 @@ class GoalsController < ApplicationController
           seller: { 
             only: [:id, :name, :code],
             methods: [:display_name]
-          } 
+          },
+          store: {
+            only: [:id, :name, :slug]
+          }
         },
         methods: [:progress_percentage, :is_completed?, :is_overdue?, :days_remaining]
       )
@@ -136,7 +149,7 @@ class GoalsController < ApplicationController
       # Verificar se é meta individual da loja ou meta por loja (store_wide)
       seller_ids = current_user.store.sellers.pluck(:id)
       goal_belongs_to_store = (@goal.seller_id.present? && seller_ids.include?(@goal.seller_id)) ||
-                              (@goal.seller_id.nil? && @goal.goal_scope == 'store_wide')
+                              (@goal.store_id == current_user.store.id && @goal.goal_scope == 'store_wide')
       
       unless goal_belongs_to_store
         render json: { error: 'Meta não encontrada ou não pertence à sua loja' }, status: :not_found
@@ -157,7 +170,7 @@ class GoalsController < ApplicationController
       # Verificar se é meta individual da loja ou meta por loja (store_wide)
       seller_ids = current_user.store.sellers.pluck(:id)
       goal_belongs_to_store = (@goal.seller_id.present? && seller_ids.include?(@goal.seller_id)) ||
-                              (@goal.seller_id.nil? && @goal.goal_scope == 'store_wide')
+                              (@goal.store_id == current_user.store.id && @goal.goal_scope == 'store_wide')
       
       unless goal_belongs_to_store
         render json: { error: 'Meta não encontrada ou não pertence à sua loja' }, status: :not_found

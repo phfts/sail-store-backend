@@ -6,6 +6,7 @@ one:
   name: Vendedor Teste 1
   whatsapp: 11987654321
   email: vendedor1@teste.com
+  company_id: 980190962
 
 two:
   user: two
@@ -13,3 +14,20 @@ two:
   name: Vendedor Teste 2
   whatsapp: 11987654322
   email: vendedor2@teste.com
+  company_id: 298486374
+
+elaine:
+  user: one
+  store: one
+  name: Elaine
+  whatsapp: 11987654323
+  email: elaine@teste.com
+  company_id: 980190962
+
+store_admin_seller:
+  user: store_admin
+  store: souq_iguatemi
+  name: Store Admin
+  whatsapp: 11987654324
+  email: store_admin@teste.com
+  company_id: 980190962
