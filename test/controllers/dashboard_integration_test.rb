@@ -173,4 +173,106 @@ class DashboardIntegrationTest < ActionDispatch::IntegrationTest
     assert_equal active_seller.name, response_data["sellersAnnualData"].first["name"],
                  "Dados anuais devem incluir apenas o vendedor ativo"
   end
+
+  test "dashboard shows correct monthly sales when adding orders" do
+    # Criar categoria para os produtos
+    category = Category.create!(
+      name: "Categoria Teste",
+      company: @company,
+      external_id: "cat_test"
+    )
+    
+    # Criar produtos para as vendas
+    product1 = Product.create!(
+      name: "Produto Teste 1",
+      category: category,
+      external_id: "prod_1",
+      sku: "SKU001"
+    )
+    
+    product2 = Product.create!(
+      name: "Produto Teste 2", 
+      category: category,
+      external_id: "prod_2",
+      sku: "SKU002"
+    )
+    
+    # Criar vendedores
+    seller1 = Seller.create!(
+      name: "Vendedor Loja 1",
+      store: @store1,
+      company: @company,
+      external_id: "seller_loja1"
+    )
+    
+    seller2 = Seller.create!(
+      name: "Vendedor Loja 2",
+      store: @store2,
+      company: @company,
+      external_id: "seller_loja2"
+    )
+    
+    # Criar vendas no primeiro instante do mês atual
+    current_month_start = Date.current.beginning_of_month.beginning_of_day
+    
+    # Venda de R$ 500,30 na primeira loja
+    order1 = Order.create!(
+      seller: seller1,
+      sold_at: current_month_start,
+      external_id: "order_1"
+    )
+    
+    OrderItem.create!(
+      order: order1,
+      product: product1,
+      store: @store1,
+      quantity: 1,
+      unit_price: 50030 # R$ 500,30 em centavos
+    )
+    
+    # Venda de R$ 333,55 na segunda loja
+    order2 = Order.create!(
+      seller: seller2,
+      sold_at: current_month_start,
+      external_id: "order_2"
+    )
+    
+    OrderItem.create!(
+      order: order2,
+      product: product2,
+      store: @store2,
+      quantity: 1,
+      unit_price: 33355 # R$ 333,55 em centavos
+    )
+    
+    # Verificar vendas da primeira loja
+    get "/stores/#{@store1.slug}/dashboard", 
+        headers: { "Authorization" => "Bearer #{@token}" }
+    
+    assert_response :success
+    response_data = JSON.parse(response.body)
+    
+    assert_equal 50030.0, response_data["sales"]["currentMonth"].to_f,
+                 "Primeira loja deve ter vendas de R$ 500,30 no mês atual"
+    
+    # Verificar vendas da segunda loja
+    get "/stores/#{@store2.slug}/dashboard", 
+        headers: { "Authorization" => "Bearer #{@token}" }
+    
+    assert_response :success
+    response_data = JSON.parse(response.body)
+    
+    assert_equal 33355.0, response_data["sales"]["currentMonth"].to_f,
+                 "Segunda loja deve ter vendas de R$ 333,55 no mês atual"
+    
+    # Verificar que as vendas não se misturam entre as lojas
+    get "/stores/#{@store1.slug}/dashboard", 
+        headers: { "Authorization" => "Bearer #{@token}" }
+    
+    assert_response :success
+    response_data = JSON.parse(response.body)
+    
+    assert_equal 50030.0, response_data["sales"]["currentMonth"].to_f,
+                 "Primeira loja deve continuar com R$ 500,30 mesmo após verificar a segunda loja"
+  end
 end
