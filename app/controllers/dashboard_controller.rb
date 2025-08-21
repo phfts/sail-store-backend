@@ -127,30 +127,18 @@ class DashboardController < ApplicationController
     current_goals = store.goals.where('end_date >= ?', Date.current)
     current_target = current_goals.sum(:target_value)
     
+    # Buscar todas as metas (ativas e inativas) para incluir no retorno
+    all_goals = Goal.joins(:seller)
+                    .where(sellers: { store_id: store.id })
+                    .includes(:seller)
+                    .order(:end_date)
+    
     # Calcular progresso baseado nas vendas reais
     progress = current_target > 0 ? ((current_month_sales.to_f / current_target) * 100).round(2) : 0
 
-    # Calcular a melhor média de vendas por dia da loja para usar no potencial individual
-    best_average_per_day = 0
-    active_sellers.each do |seller|
-      seller_orders = orders.where(seller: seller)
-        .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
-          1.year.ago.beginning_of_day, Date.current.end_of_day)
-      
-      daily_sales = {}
-      seller_orders.each do |order|
-        date_key = order.sold_at.to_date.to_s
-        daily_sales[date_key] ||= 0
-        daily_sales[date_key] += calculate_sales_from_orders([order])
-      end
-      
-      days_worked = daily_sales.keys.count
-      average_per_day = days_worked > 0 ? (calculate_sales_from_orders(seller_orders).to_f / days_worked) : 0
-      
-      if average_per_day > best_average_per_day
-        best_average_per_day = average_per_day
-      end
-    end
+    # Calcular Potencial de Vendas (isso também calcula a melhor média)
+    potencial_vendas = calculate_sales_potential(store, orders, active_sellers, date_range)
+    best_average_per_day = potencial_vendas[:best_seller_average]
 
     # Dados de vendedores baseados no período selecionado
     sellers_annual_data = active_sellers.map do |seller|
@@ -161,35 +149,38 @@ class DashboardController < ApplicationController
       seller_sales = calculate_sales_from_orders(seller_orders)
       seller_metrics = calculate_metrics(seller_orders)
       
-      # Calcular devoluções do vendedor no último ano
-      # Como as devoluções não estão linkadas às vendas por external_id,
-      # vamos calcular uma distribuição proporcional baseada nas vendas do vendedor
-      seller_sales_percentage = seller_orders.count > 0 ? (seller_orders.count.to_f / orders.count) : 0
+      # Calcular vendas brutas
+      seller_sales = seller_orders.sum(&:total)
       
-      # Total de devoluções da loja
-      total_store_returns = Return.joins(original_order: :seller).where(sellers: { store_id: store.id }).distinct
+      # Calcular trocas e devoluções reais do vendedor
+      # Devoluções reais do vendedor
+      seller_returns = Return.joins(original_order: :seller)
+                            .where(sellers: { id: seller.id })
+                            .where('returns.processed_at >= ? AND returns.processed_at <= ?', 
+                                   date_range[:start_date], date_range[:end_date])
+      total_returns_value = seller_returns.sum(&:return_value)
+      total_returns_count = seller_returns.count
       
-      # Distribuir proporcionalmente as devoluções baseado na participação do vendedor nas vendas
-      # Como o return_value não funciona sem vendas associadas, vamos usar uma estimativa
-      # baseada na quantidade devolvida e um preço médio dos produtos
-      average_product_price = seller_orders.joins(:order_items).average('order_items.unit_price') || 0
-      estimated_return_value = total_store_returns.sum(:quantity_returned) * average_product_price
+      # Trocas reais do vendedor (separar crédito e débito)
+      seller_exchanges = Exchange.joins(:seller)
+                                .where(sellers: { id: seller.id })
+                                .where('exchanges.processed_at >= ? AND exchanges.processed_at <= ?', 
+                                       date_range[:start_date], date_range[:end_date])
+      credit_exchanges = seller_exchanges.where(is_credit: true).sum(:voucher_value)
+      debit_exchanges = seller_exchanges.where(is_credit: false).sum(:voucher_value)
+      total_exchanges_count = seller_exchanges.count
       
-      total_returns_value = (estimated_return_value * seller_sales_percentage).round(2)
-      total_returns_count = (total_store_returns.count * seller_sales_percentage).round(0)
+      # Total de devoluções e trocas (que reduzem vendas)
+      total_returns_exchanges_value = total_returns_value + debit_exchanges + credit_exchanges
+      total_returns_exchanges_count = total_returns_count + total_exchanges_count
       
-      # Calcular trocas do vendedor (distribuição proporcional)
-      total_store_exchanges = Exchange.joins(:seller).where(sellers: { store_id: store.id })
-      estimated_exchange_value = total_store_exchanges.sum(:voucher_value) * seller_sales_percentage
+      # Vendas líquidas = Vendas brutas - Devoluções - Trocas a débito - Trocas a crédito
+      net_sales = seller_sales - total_returns_value - debit_exchanges - credit_exchanges
       
-      # Total de trocas/devoluções = valor perdido pela loja
-      total_returns_exchanges_value = total_returns_value + estimated_exchange_value.round(2)
-      total_returns_exchanges_count = total_returns_count + (total_store_exchanges.count * seller_sales_percentage).round(0)
+      # Calcular dias que o vendedor vai trabalhar no mês atual baseado na escala
+      current_month_work_days = calculate_seller_work_days_in_month(seller, Date.current)
       
-      # Vendas líquidas = Vendas brutas - Trocas/Devoluções
-      net_sales = seller_sales - total_returns_exchanges_value
-      
-      # Calcular potencial individual (melhor média de vendas por dia × dias trabalhados)
+      # Calcular potencial individual (melhor média de vendas por dia × dias que vai trabalhar no mês)
       daily_sales = {}
       seller_orders.each do |order|
         date_key = order.sold_at.to_date.to_s
@@ -198,8 +189,8 @@ class DashboardController < ApplicationController
       end
       
       days_worked = daily_sales.keys.count
-      average_per_day = days_worked > 0 ? (seller_sales.to_f / days_worked) : 0
-      individual_potential = best_average_per_day * days_worked
+      average_per_day = days_worked > 0 ? (net_sales.to_f / days_worked) : 0
+      individual_potential = best_average_per_day * current_month_work_days
       
       # Calcular comissão do vendedor baseada nos níveis configurados
       commission = calculate_seller_commission(seller, net_sales, store)
@@ -210,7 +201,7 @@ class DashboardController < ApplicationController
         sales: seller_sales,
         net_sales: net_sales.round(2),
         potential: individual_potential.round(2),
-        ticket_medio: seller_metrics[:ticket_medio],
+        ticket_medio: seller_orders.count > 0 ? (net_sales / seller_orders.count).round(2) : 0,
         produtos_por_atendimento: seller_metrics[:produtos_por_atendimento],
         days_worked: days_worked,
         average_per_day: average_per_day.round(2),
@@ -224,9 +215,6 @@ class DashboardController < ApplicationController
 
     # Top vendedores (primeiros 3)
     top_sellers = sellers_annual_data.first(3)
-
-    # Calcular Potencial de Vendas
-    potencial_vendas = calculate_sales_potential(store, orders, active_sellers)
 
     render json: {
       store: {
@@ -293,7 +281,22 @@ class DashboardController < ApplicationController
         bestSeller: potencial_vendas[:best_seller]
       },
       topSellers: top_sellers,
-      sellersAnnualData: sellers_annual_data
+      sellersAnnualData: sellers_annual_data,
+      goals: all_goals.map do |goal|
+        {
+          id: goal.id,
+          seller_id: goal.seller_id,
+          target_value: goal.target_value,
+          current_value: goal.current_value || 0,
+          start_date: goal.start_date.strftime("%Y-%m-%d"),
+          end_date: goal.end_date.strftime("%Y-%m-%d"),
+          goal_scope: goal.goal_scope,
+          seller: goal.seller ? {
+            id: goal.seller.id,
+            name: goal.seller.name
+          } : nil
+        }
+      end
     }
   end
 
@@ -342,7 +345,7 @@ class DashboardController < ApplicationController
     }
   end
 
-  def calculate_sales_potential(store, orders, active_sellers)
+  def calculate_sales_potential(store, orders, active_sellers, date_range = nil)
     return {
       potential: 0.0,
       best_seller_average: 0.0,
@@ -353,6 +356,12 @@ class DashboardController < ApplicationController
     # Calcular média de vendas por dia para cada vendedor ativo
     seller_averages = active_sellers.map do |seller|
       seller_orders = orders.where(seller: seller)
+      
+      # Se um período específico foi fornecido, filtrar por ele
+      if date_range
+        seller_orders = seller_orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+          date_range[:start_date], date_range[:end_date])
+      end
       
       # Calcular vendas por dia para este vendedor
       daily_sales = {}
@@ -376,8 +385,14 @@ class DashboardController < ApplicationController
       }
     end
 
-    # Encontrar o vendedor com melhor média de vendas por dia
-    best_seller_data = seller_averages.max_by { |data| data[:average_per_day] }
+    # Filtrar apenas vendedores com mais de 5 dias de vendas para calcular a melhor média
+    qualified_sellers = seller_averages.select { |data| data[:days_worked] > 5 }
+    
+    # Se não há vendedores qualificados, usar todos os vendedores
+    sellers_for_best_average = qualified_sellers.empty? ? seller_averages : qualified_sellers
+    
+    # Encontrar o vendedor com melhor média de vendas por dia (apenas entre os qualificados)
+    best_seller_data = sellers_for_best_average.max_by { |data| data[:average_per_day] }
     
     return {
       potential: 0.0,
@@ -389,18 +404,21 @@ class DashboardController < ApplicationController
     # A melhor média de vendas por dia da loja é a do melhor vendedor
     best_average_per_day = best_seller_data[:average_per_day]
     
-    # Calcular potencial: melhor média de vendas por dia × dias trabalhados de cada vendedor
+    # Calcular potencial: melhor média de vendas por dia × dias que cada vendedor vai trabalhar no mês atual
     total_potential = 0
     seller_averages.each do |data|
-      # Potencial deste vendedor = melhor média de vendas por dia × dias trabalhados do vendedor
-      seller_potential = best_average_per_day * data[:days_worked]
+      # Calcular dias que o vendedor vai trabalhar no mês atual
+      current_month_work_days = calculate_seller_work_days_in_month(data[:seller], Date.current)
+      
+      # Potencial deste vendedor = melhor média de vendas por dia × dias que vai trabalhar no mês
+      seller_potential = best_average_per_day * current_month_work_days
       total_potential += seller_potential
     end
     
     {
       potential: total_potential.round(2),
       best_seller_average: best_seller_data[:average_per_day].round(2),
-      total_work_days: seller_averages.sum { |data| data[:days_worked] },
+      total_work_days: seller_averages.sum { |data| calculate_seller_work_days_in_month(data[:seller], Date.current) },
       best_seller: {
         id: best_seller_data[:seller].id,
         name: best_seller_data[:seller].name,
@@ -519,6 +537,26 @@ class DashboardController < ApplicationController
     unless current_user.store
       render json: { error: "Acesso negado" }, status: :forbidden
     end
+  end
+
+  def calculate_seller_work_days_in_month(seller, date)
+    # Buscar escalas do vendedor para o mês especificado
+    month_start = date.beginning_of_month
+    month_end = date.end_of_month
+    
+    # Buscar dias em que o vendedor está escalado no mês
+    scheduled_days = seller.schedules
+                           .where(date: month_start..month_end)
+                           .count
+    
+    # Se o vendedor tem escalas definidas, usar o número de dias escalados
+    if scheduled_days > 0
+      return scheduled_days
+    end
+    
+    # Se não tem escalas definidas, considerar 24 dias como padrão
+    # (excluindo domingos e alguns sábados)
+    return 24
   end
 
   def calculate_date_range(period)

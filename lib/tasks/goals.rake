@@ -11,36 +11,34 @@ namespace :goals do
     active_goals.each do |goal|
       puts "Processando meta ID #{goal.id} - #{goal.description || 'Sem descrição'}"
       
-      # Calcular o valor atual das vendas para esta meta
+      # Calcular o valor atual das vendas líquidas para esta meta
       if goal.goal_scope == 'individual' && goal.seller_id.present?
-        # Meta individual: somar vendas do vendedor no período da meta
-        current_sales = Order.joins(:order_items)
-                            .where(seller_id: goal.seller_id)
-                            .where('orders.created_at >= ? AND orders.created_at <= ?', 
-                                   goal.start_date.beginning_of_day, goal.end_date.end_of_day)
-                            .sum('order_items.quantity * order_items.unit_price')
+        # Meta individual: somar vendas líquidas do vendedor no período da meta
+        orders_in_period = Order.where(seller_id: goal.seller_id)
+                               .where('orders.created_at >= ? AND orders.created_at <= ?', 
+                                      goal.start_date.beginning_of_day, goal.end_date.end_of_day)
+        current_sales = orders_in_period.sum(&:net_total)
         
         seller_name = goal.seller&.name || "Vendedor ID #{goal.seller_id}"
         puts "  Meta individual para #{seller_name}: R$ #{current_sales}"
       else
-        # Meta da loja ou meta global: somar todas as vendas no período da meta
+        # Meta da loja ou meta global: somar todas as vendas líquidas no período da meta
         if goal.seller_id.present?
           # Meta de uma loja específica
           store_id = goal.seller.store_id
-          current_sales = Order.joins(:order_items, :seller)
-                              .where(sellers: { store_id: store_id })
-                              .where('orders.created_at >= ? AND orders.created_at <= ?', 
-                                     goal.start_date.beginning_of_day, goal.end_date.end_of_day)
-                              .sum('order_items.quantity * order_items.unit_price')
+          orders_in_period = Order.joins(:seller)
+                                 .where(sellers: { store_id: store_id })
+                                 .where('orders.created_at >= ? AND orders.created_at <= ?', 
+                                        goal.start_date.beginning_of_day, goal.end_date.end_of_day)
+          current_sales = orders_in_period.sum(&:net_total)
           
           store_name = goal.seller.store.name
           puts "  Meta da loja #{store_name}: R$ #{current_sales}"
         else
-          # Meta global: somar todas as vendas
-          current_sales = Order.joins(:order_items)
-                              .where('orders.created_at >= ? AND orders.created_at <= ?', 
-                                     goal.start_date.beginning_of_day, goal.end_date.end_of_day)
-                              .sum('order_items.quantity * order_items.unit_price')
+          # Meta global: somar todas as vendas líquidas
+          orders_in_period = Order.where('orders.created_at >= ? AND orders.created_at <= ?', 
+                                        goal.start_date.beginning_of_day, goal.end_date.end_of_day)
+          current_sales = orders_in_period.sum(&:net_total)
           
           puts "  Meta global: R$ #{current_sales}"
         end

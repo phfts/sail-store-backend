@@ -30,7 +30,7 @@ class BetaController < ApplicationController
         {
           id: beta_seller_2.id, 
           name: beta_seller_2.name, 
-          telefone: beta_seller_2.formatted_whatsapp || '+55 (19) 98873-2450',
+          telefone: beta_seller_2.formatted_whatsapp || '+55 (11) 93757-5392',
           participante_piloto: true,
           store: {
             id: beta_seller_2.store.id,
@@ -355,11 +355,13 @@ class BetaController < ApplicationController
       goal_target = goal.target_value
       goal_current_value = goal.current_value || 0
       
-      # Calcular vendas no período da meta
+      # Calcular vendas líquidas no período da meta
+      sales_data = calculate_net_sales(seller, goal_start, goal_end)
+      goal_sales = sales_data[:net_sales]
+      
+      # Buscar pedidos do período da meta
       goal_orders = seller.orders.includes(:order_items)
                          .where('sold_at >= ? AND sold_at <= ?', goal_start, goal_end)
-      goal_sales = goal_orders.joins(:order_items)
-                             .sum('order_items.quantity * order_items.unit_price')
       
       # Calcular métricas do período
       goal_orders_count = goal_orders.count
@@ -416,18 +418,15 @@ class BetaController < ApplicationController
       fallback_start = current_date.beginning_of_month
       fallback_end = current_date.end_of_month
       
-      # Calcular vendas reais do vendedor no mês atual
-      seller_orders_month = seller.orders.includes(:order_items)
-                                 .where('sold_at >= ? AND sold_at <= ?', fallback_start, [current_date, fallback_end].min)
+      # Calcular vendas líquidas reais do vendedor no mês atual
+      fallback_sales_data = calculate_net_sales(seller, fallback_start, [current_date, fallback_end].min)
+      fallback_sales = fallback_sales_data[:net_sales]
       
-      fallback_sales = seller_orders_month.joins(:order_items).sum('order_items.quantity * order_items.unit_price')
-      
-      # Calcular meta baseada na média histórica do vendedor (últimos 3 meses)
-      historical_orders = seller.orders.includes(:order_items)
-                               .where('sold_at >= ? AND sold_at <= ?', 
-                                     3.months.ago.beginning_of_month, 1.month.ago.end_of_month)
-      
-      historical_sales = historical_orders.joins(:order_items).sum('order_items.quantity * order_items.unit_price')
+      # Calcular meta baseada na média histórica líquida do vendedor (últimos 3 meses)
+      historical_sales_data = calculate_net_sales(seller, 
+                                                3.months.ago.beginning_of_month, 
+                                                1.month.ago.end_of_month)
+      historical_sales = historical_sales_data[:net_sales]
       historical_months = 3
       average_monthly_sales = historical_months > 0 ? historical_sales / historical_months : fallback_sales
       
@@ -437,6 +436,10 @@ class BetaController < ApplicationController
       fallback_days_total = fallback_end.day
       fallback_days_elapsed = current_date.day
       fallback_days_remaining = fallback_end.day - current_date.day
+      
+      # Buscar pedidos do vendedor no mês atual
+      seller_orders_month = seller.orders.includes(:order_items)
+                                 .where('sold_at >= ? AND sold_at <= ?', fallback_start, [current_date, fallback_end].min)
       
       # Calcular métricas reais
       seller_orders_count = seller_orders_month.count
@@ -481,13 +484,17 @@ class BetaController < ApplicationController
     primary_start = Date.parse(primary_goal[:meta_data][:inicio_iso])
     primary_end = Date.parse(primary_goal[:meta_data][:fim_iso])
     
-    store_orders = Order.joins(:seller)
-                        .where(sellers: { store_id: store.id })
-                        .includes(:order_items)
-                        .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
-    store_sales = store_orders.joins(:order_items).sum('order_items.quantity * order_items.unit_price')
-    store_orders_count = store_orders.count
-    store_total_items = store_orders.joins(:order_items).sum('order_items.quantity')
+    # Calcular vendas líquidas da loja no período da meta principal
+    store_sales_data = calculate_store_net_sales(store, primary_start, [current_date, primary_end].min)
+    store_sales = store_sales_data[:net_sales]
+    store_orders_count = store_sales_data[:gross_sales] > 0 ? Order.joins(:seller)
+                                                                  .where(sellers: { store_id: store.id })
+                                                                  .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
+                                                                  .count : 0
+    store_total_items = store_orders_count > 0 ? Order.joins(:seller, :order_items)
+                                                    .where(sellers: { store_id: store.id })
+                                                    .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
+                                                    .sum('order_items.quantity') : 0
     # Calcular meta da loja baseada no número real de vendedores ativos
     active_sellers_count = store.sellers.where(active_until: nil).or(store.sellers.where('active_until > ?', current_date)).count
     store_target = monthly_target * [active_sellers_count, 1].max # Mínimo de 1 vendedor
@@ -601,6 +608,73 @@ class BetaController < ApplicationController
 
   private
 
+  # Calcula vendas líquidas considerando devoluções e trocas
+  def calculate_net_sales(seller, start_date, end_date)
+    # Vendas brutas
+    gross_orders = seller.orders.includes(:order_items)
+                        .where('sold_at >= ? AND sold_at <= ?', start_date, end_date)
+    gross_sales = gross_orders.joins(:order_items)
+                             .sum('order_items.quantity * order_items.unit_price')
+    
+    # Devoluções
+    returns = Return.joins(:original_order)
+                   .where(orders: { seller_id: seller.id })
+                   .where('returns.processed_at >= ? AND returns.processed_at <= ?', start_date, end_date)
+    total_returned = returns.sum(&:return_value)
+    
+    # Trocas
+    exchanges = Exchange.where(seller_id: seller.id)
+                       .where('processed_at >= ? AND processed_at <= ?', start_date, end_date)
+    credit_exchanges = exchanges.where(is_credit: true).sum(:voucher_value)
+    debit_exchanges = exchanges.where(is_credit: false).sum(:voucher_value)
+    
+    # Valor líquido = Vendas brutas - Devoluções + Trocas a crédito - Trocas a débito
+    net_sales = gross_sales - total_returned + credit_exchanges - debit_exchanges
+    
+    {
+      gross_sales: gross_sales,
+      total_returned: total_returned,
+      credit_exchanges: credit_exchanges,
+      debit_exchanges: debit_exchanges,
+      net_sales: net_sales
+    }
+  end
+
+  # Calcula vendas líquidas da loja considerando devoluções e trocas
+  def calculate_store_net_sales(store, start_date, end_date)
+    # Vendas brutas da loja
+    gross_orders = Order.joins(:seller)
+                       .where(sellers: { store_id: store.id })
+                       .includes(:order_items)
+                       .where('orders.sold_at >= ? AND orders.sold_at <= ?', start_date, end_date)
+    gross_sales = gross_orders.joins(:order_items)
+                             .sum('order_items.quantity * order_items.unit_price')
+    
+    # Devoluções da loja
+    returns = Return.joins(:original_order => :seller)
+                   .where(sellers: { store_id: store.id })
+                   .where('returns.processed_at >= ? AND returns.processed_at <= ?', start_date, end_date)
+    total_returned = returns.sum(&:return_value)
+    
+    # Trocas da loja
+    exchanges = Exchange.joins(:seller)
+                       .where(sellers: { store_id: store.id })
+                       .where('processed_at >= ? AND processed_at <= ?', start_date, end_date)
+    credit_exchanges = exchanges.where(is_credit: true).sum(:voucher_value)
+    debit_exchanges = exchanges.where(is_credit: false).sum(:voucher_value)
+    
+    # Valor líquido = Vendas brutas - Devoluções + Trocas a crédito - Trocas a débito
+    net_sales = gross_sales - total_returned + credit_exchanges - debit_exchanges
+    
+    {
+      gross_sales: gross_sales,
+      total_returned: total_returned,
+      credit_exchanges: credit_exchanges,
+      debit_exchanges: debit_exchanges,
+      net_sales: net_sales
+    }
+  end
+
   def seller_working_today?(seller, date)
     # Verificar se o vendedor tem um agendamento de turno para hoje
     today_schedules = seller.schedules.joins(:shift)
@@ -635,11 +709,12 @@ class BetaController < ApplicationController
     
     # Calcular vendas para cada dia
     sales_days = sales_dates.map do |date|
+      # Calcular vendas líquidas para o dia específico
+      day_sales_data = calculate_net_sales(seller, date, date)
+      day_sales = day_sales_data[:net_sales]
+      
       day_orders = seller.orders.includes(:order_items)
                         .where('DATE(orders.sold_at) = ?', date)
-      
-      day_sales = day_orders.joins(:order_items)
-                           .sum('order_items.quantity * order_items.unit_price')
       
       day_orders_count = day_orders.count
       day_items_count = day_orders.joins(:order_items).sum('order_items.quantity')
@@ -672,13 +747,14 @@ class BetaController < ApplicationController
     
     # Calcular vendas para cada dia
     sales_days = sales_dates.map do |date|
+      # Calcular vendas líquidas da loja para o dia específico
+      day_sales_data = calculate_store_net_sales(store, date, date)
+      day_sales = day_sales_data[:net_sales]
+      
       day_orders = Order.joins(:seller)
                        .includes(:order_items)
                        .where(sellers: { store_id: store.id })
                        .where('DATE(orders.sold_at) = ?', date)
-      
-      day_sales = day_orders.joins(:order_items)
-                           .sum('order_items.quantity * order_items.unit_price')
       
       day_orders_count = day_orders.count
       day_items_count = day_orders.joins(:order_items).sum('order_items.quantity')

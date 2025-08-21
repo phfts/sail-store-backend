@@ -356,8 +356,8 @@ class SellersController < ApplicationController
   def kpis
     seller_id = params[:id]
     
-    # Buscar vendedor real ou usar o primeiro disponível
-    seller = Seller.includes(:store, :company, :goals, :orders => :order_items).first
+    # Buscar vendedor específico pelo ID
+    seller = Seller.includes(:store, :company, :goals, :orders => :order_items).find(seller_id)
     
     if seller.nil?
       render json: { error: "Nenhum vendedor encontrado" }, status: :not_found
@@ -379,11 +379,11 @@ class SellersController < ApplicationController
       goal_target = goal.target_value
       goal_current_value = goal.current_value || 0
       
-      # Calcular vendas no período da meta
+      # Calcular vendas líquidas no período da meta
       goal_orders = seller.orders.includes(:order_items)
                          .where('sold_at >= ? AND sold_at <= ?', goal_start, goal_end)
-      goal_sales = goal_orders.joins(:order_items)
-                             .sum('order_items.quantity * order_items.unit_price')
+      sales_data = calculate_net_sales(seller, goal_start, goal_end)
+      goal_sales = sales_data[:net_sales]
       
       # Calcular métricas do período
       goal_orders_count = goal_orders.count
@@ -435,9 +435,75 @@ class SellersController < ApplicationController
       }
     end
     
-    # Se não há metas, retornar array vazio
+    # Se não há metas, calcular dados do mês atual
     if goals_data.empty?
-      # Não criar dados mockados - retornar array vazio
+      # Calcular vendas líquidas do mês atual
+      current_month_start = current_date.beginning_of_month
+      current_month_end = current_date.end_of_month
+      current_sales_data = calculate_net_sales(seller, current_month_start, current_month_end)
+      
+      # Buscar pedidos do mês atual
+      current_orders = seller.orders.includes(:order_items)
+                           .where('sold_at >= ? AND sold_at <= ?', current_month_start, current_month_end)
+      current_orders_count = current_orders.count
+      current_total_items = current_orders.joins(:order_items).sum('order_items.quantity')
+      
+      # Calcular métricas do mês atual
+      current_ticket = current_orders_count > 0 ? current_sales_data[:net_sales] / current_orders_count : 0
+      current_pa = current_orders_count > 0 ? current_total_items.to_f / current_orders_count : 0
+      
+      # Criar meta fictícia para o mês atual
+      current_goal_data = {
+        meta_valor: 0,
+        vendas_realizadas: current_sales_data[:net_sales],
+        percentual_atingido: 0,
+        tipo: 'mensal',
+        inicio: current_month_start.strftime("%d/%m/%Y"),
+        fim: current_month_end.strftime("%d/%m/%Y"),
+        dias_restantes: current_month_end.day - current_date.day,
+        meta_recalculada_dia: 0,
+        ticket_medio: current_ticket,
+        pa_produtos_atendimento: current_pa,
+        pedidos_count: current_orders_count,
+        produtos_vendidos: current_total_items,
+        quanto_falta_super_meta: 0
+      }
+      
+      kpi_data = {
+        telefone: seller.formatted_whatsapp,
+        nome: seller.display_name,
+        metas: [],
+        meta_principal: current_goal_data,
+        loja: {
+          total_vendas: 0,
+          ticket_medio: 0,
+          meta_periodo: 0,
+          percentual_atingido: 0,
+          pa_produtos_atendimento: 0,
+          pedidos_count: 0,
+          produtos_vendidos: 0
+        },
+        vendedor: {
+          ticket_medio: current_ticket,
+          pa_produtos_atendimento: current_pa,
+          comissao_calculada: 0,
+          percentual_comissao: 0,
+          total_metas_ativas: 0
+        },
+        commission_levels: [],
+        metadados: {
+          data_atual: current_date.iso8601,
+          total_metas_ativas: 0,
+          tipos_metas: [],
+          periodo_analise: {
+            inicio: current_month_start.iso8601,
+            fim: current_month_end.iso8601
+          }
+        }
+      }
+      
+      render json: kpi_data
+      return
     end
     
     # Usar a meta principal (primeira ou maior) para cálculos gerais
@@ -734,6 +800,38 @@ class SellersController < ApplicationController
       display_name: seller.display_name,
       created_at: seller.created_at,
       updated_at: seller.updated_at
+    }
+  end
+
+  # Calcula vendas líquidas considerando devoluções e trocas
+  def calculate_net_sales(seller, start_date, end_date)
+    # Vendas brutas
+    gross_orders = seller.orders.includes(:order_items)
+                        .where('sold_at >= ? AND sold_at <= ?', start_date, end_date)
+    gross_sales = gross_orders.joins(:order_items)
+                             .sum('order_items.quantity * order_items.unit_price')
+    
+    # Devoluções
+    returns = Return.joins(:original_order)
+                   .where(orders: { seller_id: seller.id })
+                   .where('returns.processed_at >= ? AND returns.processed_at <= ?', start_date, end_date)
+    total_returned = returns.sum(&:return_value)
+    
+    # Trocas
+    exchanges = Exchange.where(seller_id: seller.id)
+                       .where('processed_at >= ? AND processed_at <= ?', start_date, end_date)
+    credit_exchanges = exchanges.where(is_credit: true).sum(:voucher_value)
+    debit_exchanges = exchanges.where(is_credit: false).sum(:voucher_value)
+    
+    # Valor líquido = Vendas brutas - Devoluções - Trocas a crédito - Trocas a débito
+    net_sales = gross_sales - total_returned - credit_exchanges - debit_exchanges
+    
+    {
+      gross_sales: gross_sales,
+      total_returned: total_returned,
+      credit_exchanges: credit_exchanges,
+      debit_exchanges: debit_exchanges,
+      net_sales: net_sales
     }
   end
 end

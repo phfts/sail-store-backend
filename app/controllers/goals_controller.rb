@@ -186,24 +186,23 @@ class GoalsController < ApplicationController
   end
 
   def update_goal_progress(goal)
-    # Calcular o valor atual das vendas para esta meta
+    # Calcular o valor atual das vendas líquidas para esta meta
     if goal.goal_scope == 'individual' && goal.seller_id.present?
-      # Meta individual: somar vendas do vendedor no período da meta usando sold_at
-      current_sales = Order.joins(:order_items)
-                          .where(seller_id: goal.seller_id)
-                          .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
-                                 goal.start_date.beginning_of_day, goal.end_date.end_of_day)
-                          .sum('order_items.quantity * order_items.unit_price')
+      # Meta individual: somar vendas líquidas do vendedor no período da meta
+      orders_in_period = Order.where(seller_id: goal.seller_id)
+                             .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                    goal.start_date.beginning_of_day, goal.end_date.end_of_day)
+      current_sales = orders_in_period.sum(&:net_total)
     else
-      # Meta da loja: somar vendas da loja no período da meta usando sold_at
+      # Meta da loja: somar vendas líquidas da loja no período da meta
       # Para meta por loja, sempre usar a loja do usuário atual
       store_id = current_user.store&.id
       if store_id.present?
-        current_sales = Order.joins(:order_items, :seller)
-                            .where(sellers: { store_id: store_id })
-                            .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
-                                   goal.start_date.beginning_of_day, goal.end_date.end_of_day)
-                            .sum('order_items.quantity * order_items.unit_price')
+        orders_in_period = Order.joins(:seller)
+                               .where(sellers: { store_id: store_id })
+                               .where('orders.sold_at >= ? AND orders.sold_at <= ?', 
+                                      goal.start_date.beginning_of_day, goal.end_date.end_of_day)
+        current_sales = orders_in_period.sum(&:net_total)
       else
         current_sales = 0
       end
