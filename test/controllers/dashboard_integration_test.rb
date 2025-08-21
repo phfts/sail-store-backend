@@ -275,4 +275,309 @@ class DashboardIntegrationTest < ActionDispatch::IntegrationTest
     assert_equal 50030.0, response_data["sales"]["currentMonth"].to_f,
                  "Primeira loja deve continuar com R$ 500,30 mesmo após verificar a segunda loja"
   end
+
+  test "dashboard shows correct monthly sales isolation between months" do
+    # Criar categoria para os produtos
+    category = Category.create!(
+      name: "Categoria Teste Meses",
+      company: @company,
+      external_id: "cat_test_meses"
+    )
+    
+    # Criar produtos para as vendas
+    product1 = Product.create!(
+      name: "Produto Loja 1",
+      category: category,
+      external_id: "prod_loja1",
+      sku: "SKU101"
+    )
+    
+    product2 = Product.create!(
+      name: "Produto Loja 2", 
+      category: category,
+      external_id: "prod_loja2",
+      sku: "SKU102"
+    )
+    
+    # Criar vendedores
+    seller1 = Seller.create!(
+      name: "Vendedor Loja 1",
+      store: @store1,
+      company: @company,
+      external_id: "seller_loja1_meses"
+    )
+    
+    seller2 = Seller.create!(
+      name: "Vendedor Loja 2",
+      store: @store2,
+      company: @company,
+      external_id: "seller_loja2_meses"
+    )
+    
+    # Criar vendas no mês atual (primeiro instante)
+    current_month_start = Date.current.beginning_of_month.beginning_of_day
+    
+    # Venda de R$ 100,00 na primeira loja (mês atual)
+    order1_current = Order.create!(
+      seller: seller1,
+      sold_at: current_month_start,
+      external_id: "order_1_current"
+    )
+    
+    OrderItem.create!(
+      order: order1_current,
+      product: product1,
+      store: @store1,
+      quantity: 1,
+      unit_price: 10000 # R$ 100,00 em centavos
+    )
+    
+    # Venda de R$ 150,00 na segunda loja (mês atual)
+    order2_current = Order.create!(
+      seller: seller2,
+      sold_at: current_month_start,
+      external_id: "order_2_current"
+    )
+    
+    OrderItem.create!(
+      order: order2_current,
+      product: product2,
+      store: @store2,
+      quantity: 1,
+      unit_price: 15000 # R$ 150,00 em centavos
+    )
+    
+    # Verificar vendas do mês atual antes de adicionar vendas do mês passado
+    get "/stores/#{@store1.slug}/dashboard", 
+        headers: { "Authorization" => "Bearer #{@token}" }
+    
+    assert_response :success
+    response_data = JSON.parse(response.body)
+    current_month_sales_store1_before = response_data["sales"]["currentMonth"].to_f
+    
+    get "/stores/#{@store2.slug}/dashboard", 
+        headers: { "Authorization" => "Bearer #{@token}" }
+    
+    assert_response :success
+    response_data = JSON.parse(response.body)
+    current_month_sales_store2_before = response_data["sales"]["currentMonth"].to_f
+    
+    # Criar vendas no mês passado (primeiro instante)
+    last_month_start = 1.month.ago.beginning_of_month.beginning_of_day
+    
+    # Venda de R$ 30,00 na primeira loja (mês passado)
+    order1_last_month = Order.create!(
+      seller: seller1,
+      sold_at: last_month_start,
+      external_id: "order_1_last_month"
+    )
+    
+    OrderItem.create!(
+      order: order1_last_month,
+      product: product1,
+      store: @store1,
+      quantity: 1,
+      unit_price: 3000 # R$ 30,00 em centavos
+    )
+    
+    # Venda de R$ 30,00 na segunda loja (mês passado)
+    order2_last_month = Order.create!(
+      seller: seller2,
+      sold_at: last_month_start,
+      external_id: "order_2_last_month"
+    )
+    
+    OrderItem.create!(
+      order: order2_last_month,
+      product: product2,
+      store: @store2,
+      quantity: 1,
+      unit_price: 3000 # R$ 30,00 em centavos
+    )
+    
+    # Verificar que as vendas do mês atual continuam iguais
+    get "/stores/#{@store1.slug}/dashboard", 
+        headers: { "Authorization" => "Bearer #{@token}" }
+    
+    assert_response :success
+    response_data = JSON.parse(response.body)
+    
+    assert_equal current_month_sales_store1_before, response_data["sales"]["currentMonth"].to_f,
+                 "Vendas do mês atual da primeira loja devem continuar iguais após adicionar vendas do mês passado"
+    
+    get "/stores/#{@store2.slug}/dashboard", 
+        headers: { "Authorization" => "Bearer #{@token}" }
+    
+    assert_response :success
+    response_data = JSON.parse(response.body)
+    
+    assert_equal current_month_sales_store2_before, response_data["sales"]["currentMonth"].to_f,
+                 "Vendas do mês atual da segunda loja devem continuar iguais após adicionar vendas do mês passado"
+    
+    # Verificar que as vendas totais incluem ambos os meses
+    get "/stores/#{@store1.slug}/dashboard", 
+        headers: { "Authorization" => "Bearer #{@token}" }
+    
+    assert_response :success
+    response_data = JSON.parse(response.body)
+    
+    # Total deve ser vendas do mês atual + vendas do mês passado
+    expected_total_store1 = current_month_sales_store1_before + 3000.0 # R$ 100,00 + R$ 30,00
+    assert_equal expected_total_store1, response_data["sales"]["total"].to_f,
+                 "Total de vendas da primeira loja deve incluir vendas de ambos os meses"
+    
+    get "/stores/#{@store2.slug}/dashboard", 
+        headers: { "Authorization" => "Bearer #{@token}" }
+    
+    assert_response :success
+    response_data = JSON.parse(response.body)
+    
+    # Total deve ser vendas do mês atual + vendas do mês passado
+    expected_total_store2 = current_month_sales_store2_before + 3000.0 # R$ 150,00 + R$ 30,00
+    assert_equal expected_total_store2, response_data["sales"]["total"].to_f,
+                 "Total de vendas da segunda loja deve incluir vendas de ambos os meses"
+  end
+
+  test "dashboard shows correct average ticket for current month only" do
+    # Criar categoria para os produtos
+    category = Category.create!(
+      name: "Categoria Teste Ticket Médio",
+      company: @company,
+      external_id: "cat_test_ticket"
+    )
+    
+    # Criar produtos para as vendas
+    product1 = Product.create!(
+      name: "Produto Ticket 1",
+      category: category,
+      external_id: "prod_ticket1",
+      sku: "SKU201"
+    )
+    
+    product2 = Product.create!(
+      name: "Produto Ticket 2", 
+      category: category,
+      external_id: "prod_ticket2",
+      sku: "SKU202"
+    )
+    
+    product3 = Product.create!(
+      name: "Produto Ticket 3", 
+      category: category,
+      external_id: "prod_ticket3",
+      sku: "SKU203"
+    )
+    
+    product4 = Product.create!(
+      name: "Produto Ticket 4", 
+      category: category,
+      external_id: "prod_ticket4",
+      sku: "SKU204"
+    )
+    
+    # Criar vendedores
+    seller1 = Seller.create!(
+      name: "Vendedor Ticket 1",
+      store: @store1,
+      company: @company,
+      external_id: "seller_ticket1"
+    )
+    
+    seller2 = Seller.create!(
+      name: "Vendedor Ticket 2",
+      store: @store2,
+      company: @company,
+      external_id: "seller_ticket2"
+    )
+    
+    # Criar vendas no mês passado (primeiro instante)
+    last_month_start = 1.month.ago.beginning_of_month.beginning_of_day
+    
+    # Venda de R$ 100,00 na primeira loja (mês passado)
+    order1_last_month = Order.create!(
+      seller: seller1,
+      sold_at: last_month_start,
+      external_id: "order_1_last_month_ticket"
+    )
+    
+    OrderItem.create!(
+      order: order1_last_month,
+      product: product1,
+      store: @store1,
+      quantity: 1,
+      unit_price: 10000 # R$ 100,00 em centavos
+    )
+    
+    # Venda de R$ 200,00 na segunda loja (mês passado)
+    order2_last_month = Order.create!(
+      seller: seller2,
+      sold_at: last_month_start,
+      external_id: "order_2_last_month_ticket"
+    )
+    
+    OrderItem.create!(
+      order: order2_last_month,
+      product: product2,
+      store: @store2,
+      quantity: 1,
+      unit_price: 20000 # R$ 200,00 em centavos
+    )
+    
+    # Criar vendas no mês atual (primeiro instante)
+    current_month_start = Date.current.beginning_of_month.beginning_of_day
+    
+    # Venda de R$ 300,00 na primeira loja (mês atual)
+    order1_current = Order.create!(
+      seller: seller1,
+      sold_at: current_month_start,
+      external_id: "order_1_current_ticket"
+    )
+    
+    OrderItem.create!(
+      order: order1_current,
+      product: product3,
+      store: @store1,
+      quantity: 1,
+      unit_price: 30000 # R$ 300,00 em centavos
+    )
+    
+    # Venda de R$ 500,00 também na primeira loja (mês atual)
+    order2_current = Order.create!(
+      seller: seller1,
+      sold_at: current_month_start,
+      external_id: "order_2_current_ticket"
+    )
+    
+    OrderItem.create!(
+      order: order2_current,
+      product: product4,
+      store: @store1,
+      quantity: 1,
+      unit_price: 50000 # R$ 500,00 em centavos
+    )
+    
+    # Verificar ticket médio do mês atual
+    # Deve ser (R$ 300,00 + R$ 500,00) / 2 = R$ 400,00
+    get "/stores/#{@store1.slug}/dashboard", 
+        headers: { "Authorization" => "Bearer #{@token}" }
+    
+    assert_response :success
+    response_data = JSON.parse(response.body)
+    
+    # Ticket médio deve ser apenas das vendas do mês atual
+    average_ticket = response_data["metrics"]["ticketMedio"]["currentMonth"]
+    expected_average_ticket = 40000.0 # R$ 400,00 em centavos
+    assert_equal expected_average_ticket, average_ticket.to_f,
+                 "Ticket médio deve ser R$ 400,00 (média de R$ 300,00 e R$ 500,00 do mês atual)"
+    
+    # Verificar que as vendas do mês atual são corretas
+    expected_current_month_sales = 80000.0 # R$ 300,00 + R$ 500,00 = R$ 800,00
+    assert_equal expected_current_month_sales, response_data["sales"]["currentMonth"].to_f,
+                 "Vendas do mês atual devem ser R$ 800,00 (R$ 300,00 + R$ 500,00)"
+    
+    # Verificar que o total inclui ambos os meses
+    expected_total_sales = 90000.0 # R$ 100,00 + R$ 300,00 + R$ 500,00 = R$ 900,00
+    assert_equal expected_total_sales, response_data["sales"]["total"].to_f,
+                 "Total de vendas deve ser R$ 900,00 (todos os meses)"
+  end
 end
