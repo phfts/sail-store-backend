@@ -8,7 +8,7 @@ class Order < ApplicationRecord
   
   accepts_nested_attributes_for :order_items, allow_destroy: true
   
-  validates :external_id, presence: true, uniqueness: true
+  validates :external_id, uniqueness: { scope: :seller_id, message: "já existe um pedido com este external_id nesta loja" }, if: :external_id?
   
   # Callback para atualizar o progresso das metas quando uma venda é criada
   after_create :update_goals_progress
