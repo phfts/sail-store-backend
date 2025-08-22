@@ -154,6 +154,14 @@ class Seller < ApplicationRecord
     store_admin == true
   end
   
+  # Método para retornar vendas agrupadas por dia
+  def sales_by_day
+    orders.joins(:order_items)
+          .group('DATE(orders.sold_at)')
+          .sum('order_items.quantity * order_items.unit_price')
+          .transform_keys { |date| date.is_a?(String) ? Date.parse(date) : date.to_date }
+  end
+  
   private
   
   def whatsapp_length_validation
