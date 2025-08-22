@@ -11,3 +11,16 @@ two:
   product: two
   quantity: 1
   unit_price: 9.99
+
+# Itens de pedido para teste de vendas das vendedoras beta
+# elaine_order_item:
+#   order: elaine_order
+#   product: one
+#   quantity: 1
+#   unit_price: 1000.00
+
+# barbara_order_item:
+#   order: barbara_order
+#   product: two
+#   quantity: 1
+#   unit_price: 2000.00

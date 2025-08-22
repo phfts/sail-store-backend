@@ -31,3 +31,37 @@ store_admin_seller:
   whatsapp: 11987654324
   email: store_admin@teste.com
   company_id: 980190962
+
+# Vendedoras para teste de KPIs com vendas
+# elaine_diogo_paulo:
+#   user: one
+#   store: souq_iguatemi
+#   name: ELAINE DIOGO PAULO
+#   whatsapp: 11987654325
+#   email: elaine.diogo@teste.com
+#   company_id: 980190962
+
+# barbara_silva_guimaraes:
+#   user: two
+#   store: souq_iguatemi
+#   name: BARBARA DA SILVA GUIMARAES
+#   whatsapp: 11987654326
+#   email: barbara.silva@teste.com
+#   company_id: 980190962
+
+# Vendedoras para teste de KPIs com zero vendas
+# elaine_zero_vendas:
+#   user: one
+#   store: souq_iguatemi
+#   name: ELAINE DIOGO PAULO ZERO
+#   whatsapp: 11987654327
+#   email: elaine.zero@teste.com
+#   company_id: 980190962
+
+# barbara_zero_vendas:
+#   user: two
+#   store: souq_iguatemi
+#   name: BARBARA DA SILVA GUIMARAES ZERO
+#   whatsapp: 11987654328
+#   email: barbara.zero@teste.com
+#   company_id: 980190962

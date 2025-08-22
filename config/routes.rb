@@ -80,6 +80,21 @@ Rails.application.routes.draw do
     end
   end
   
+  # Rotas de devoluções (returns)
+  resources :returns, except: [:new, :edit] do
+    collection do
+      get :stats
+    end
+  end
+  
+  # Rotas de trocas (exchanges)
+  resources :exchanges, except: [:new, :edit] do
+    collection do
+      get :stats
+      get :types
+    end
+  end
+  
   # Rotas de comissionamento por loja
   get '/stores/:store_slug/commission_levels', to: 'commission_levels#index'
   post '/stores/:store_slug/commission_levels', to: 'commission_levels#create'

@@ -41,3 +41,49 @@ store_wide_goal:
   target_value: 200000
   current_value: 0
   description: Meta da loja de vendas
+
+# Metas de 50 mil reais para o mês atual das vendedoras com vendas
+# elaine_meta_atual:
+#   seller: elaine_diogo_paulo
+#   store: souq_iguatemi
+#   goal_type: sales
+#   goal_scope: individual
+#   start_date: <%= Date.current.beginning_of_month %>
+#   end_date: <%= Date.current.end_of_month %>
+#   target_value: 50000
+#   current_value: 0
+#   description: Meta mensal de Elaine - 50 mil reais
+
+# barbara_meta_atual:
+#   seller: barbara_silva_guimaraes
+#   store: souq_iguatemi
+#   goal_type: sales
+#   goal_scope: individual
+#   start_date: <%= Date.current.beginning_of_month %>
+#   end_date: <%= Date.current.end_of_month %>
+#   target_value: 50000
+#   current_value: 0
+#   description: Meta mensal de Barbara - 50 mil reais
+
+# Metas de 50 mil reais para o mês atual das vendedoras com zero vendas
+# elaine_meta_zero_vendas:
+#   seller: elaine_zero_vendas
+#   store: souq_iguatemi
+#   goal_type: sales
+#   goal_scope: individual
+#   start_date: <%= Date.current.beginning_of_month %>
+#   end_date: <%= Date.current.end_of_month %>
+#   target_value: 50000
+#   current_value: 0
+#   description: Meta mensal de Elaine Zero - 50 mil reais
+
+# barbara_meta_zero_vendas:
+#   seller: barbara_zero_vendas
+#   store: souq_iguatemi
+#   goal_type: sales
+#   goal_scope: individual
+#   start_date: <%= Date.current.beginning_of_month %>
+#   end_date: <%= Date.current.end_of_month %>
+#   target_value: 50000
+#   current_value: 0
+#   description: Meta mensal de Barbara Zero - 50 mil reais

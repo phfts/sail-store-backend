@@ -7,3 +7,14 @@ one:
 two:
   external_id: MyString
   seller: two
+
+# Pedidos para teste de vendas das vendedoras beta
+# elaine_order:
+#   external_id: ELAINE_001
+#   seller: elaine_diogo_paulo
+#   sold_at: <%= Date.current - 5.days %>
+
+# barbara_order:
+#   external_id: BARBARA_001
+#   seller: barbara_silva_guimaraes
+#   sold_at: <%= Date.current - 3.days %>
