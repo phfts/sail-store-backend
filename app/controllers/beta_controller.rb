@@ -135,7 +135,7 @@ class BetaController < ApplicationController
       # Dias da meta
       goal_total_days = (goal_end - goal_start).to_i + 1
       goal_days_elapsed = [current_date - goal_start + 1, 0].max.to_i
-      goal_days_remaining = [goal_end - current_date, 0].max.to_i
+      goal_days_remaining = calculate_goal_days_remaining(goal.seller, current_date, goal_end)
       
       # Calcular percentual e métricas
       goal_percentage = goal_target > 0 ? (store_sales / goal_target * 100).round(2) : 0
@@ -371,7 +371,7 @@ class BetaController < ApplicationController
       # Dias da meta
       goal_total_days = (goal_end - goal_start).to_i + 1
       goal_days_elapsed = [current_date - goal_start + 1, 0].max.to_i
-      goal_days_remaining = [goal_end - current_date, 0].max.to_i
+      goal_days_remaining = calculate_goal_days_remaining(goal.seller, current_date, goal_end)
       
       # Calcular percentual e métricas
       goal_percentage = goal_target > 0 ? (goal_sales / goal_target * 100).round(2) : 0
@@ -608,6 +608,24 @@ class BetaController < ApplicationController
   end
 
   private
+
+  # Calcula dias restantes considerando escalas quando existem
+  def calculate_goal_days_remaining(seller, current_date, goal_end)
+    # Primeiro, calcular dias restantes baseado na data da meta
+    calendar_days_remaining = [goal_end - current_date, 0].max.to_i
+    
+    # Se não há dias restantes na meta, retornar 0
+    return 0 if calendar_days_remaining == 0
+    
+    # Verificar se há escalas definidas para o período restante
+    scheduled_days = seller.schedules
+                           .where(date: current_date..goal_end)
+                           .count
+    
+    # Se há escalas definidas, usar o número de dias escalados
+    # Caso contrário, usar os dias restantes da meta
+    scheduled_days > 0 ? scheduled_days : calendar_days_remaining
+  end
 
   # Calcula vendas líquidas considerando devoluções e trocas
   def calculate_net_sales(seller, start_date, end_date)
