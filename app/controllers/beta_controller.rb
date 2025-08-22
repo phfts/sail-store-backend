@@ -1,5 +1,5 @@
 class BetaController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:sellers, :kpis, :managers, :manager_kpis, :debug_days]
+  skip_before_action :authenticate_user!, only: [:sellers, :kpis, :managers, :manager_kpis]
 
   # GET /beta/sellers
   def sellers
