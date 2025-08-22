@@ -623,8 +623,12 @@ class BetaController < ApplicationController
                            .count
     
     # Se há escalas definidas, usar o número de dias escalados
-    # Caso contrário, usar os dias restantes da meta
-    scheduled_days > 0 ? scheduled_days : calendar_days_remaining
+    # Caso contrário, usar dias úteis (excluindo apenas domingos)
+    if scheduled_days > 0
+      scheduled_days
+    else
+      (current_date..goal_end).count { |date| !date.sunday? }
+    end
   end
 
   # Calcula vendas líquidas considerando devoluções e trocas
