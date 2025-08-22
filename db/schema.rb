@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_21_191537) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_22_181036) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -146,8 +146,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_21_191537) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "sold_at"
-    t.index ["seller_id", "external_id"], name: "index_orders_on_seller_id_and_external_id_unique", unique: true, where: "(external_id IS NOT NULL)"
+    t.bigint "store_id", null: false
+    t.index ["seller_id", "external_id"], name: "index_orders_on_seller_id_and_external_id", where: "(external_id IS NOT NULL)"
     t.index ["seller_id"], name: "index_orders_on_seller_id"
+    t.index ["store_id", "external_id"], name: "index_orders_on_store_id_and_external_id", unique: true, where: "(external_id IS NOT NULL)"
+    t.index ["store_id"], name: "index_orders_on_store_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -280,6 +283,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_21_191537) do
   add_foreign_key "order_items", "products", on_delete: :cascade
   add_foreign_key "order_items", "stores"
   add_foreign_key "orders", "sellers", on_delete: :cascade
+  add_foreign_key "orders", "stores"
   add_foreign_key "products", "categories", on_delete: :cascade
   add_foreign_key "queue_items", "companies", on_delete: :cascade
   add_foreign_key "queue_items", "sellers"

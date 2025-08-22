@@ -265,12 +265,12 @@ class BetaControllerTest < ActionDispatch::IntegrationTest
       # Testar o método calculate_goal_days_remaining
       actual_calculation = controller.send(:calculate_goal_days_remaining, @seller, current_date, goal_end)
       
-      # O que o controller DEVERIA calcular (15 dias baseado na data da meta):
-      expected_days_based_on_date = 15
+      # O que o controller DEVERIA calcular (dias úteis excluindo domingos):
+      expected_days_based_on_date = (current_date..goal_end).count { |date| !date.sunday? }
       
-      # Deve usar a data da meta quando não há escalas
+      # Deve usar dias úteis quando não há escalas
       assert_equal expected_days_based_on_date, actual_calculation, 
-                   "Controller deveria retornar 15 dias (baseado na data da meta) quando não há escalas"
+                   "Controller deveria retornar #{expected_days_based_on_date} dias (dias úteis) quando não há escalas"
     end
   end
 

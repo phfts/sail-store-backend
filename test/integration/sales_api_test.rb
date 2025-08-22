@@ -185,6 +185,7 @@ class SalesApiTest < ActionDispatch::IntegrationTest
     # Vendedor A: R$ 5.000 
     order_a = Order.create!(
       seller: @seller_a,
+      store: @store,
       external_id: 'ORDER_A_API',
       sold_at: Date.current.beginning_of_week + 1.day
     )
@@ -201,6 +202,7 @@ class SalesApiTest < ActionDispatch::IntegrationTest
     # Vendedor B: R$ 7.000
     order_b = Order.create!(
       seller: @seller_b,
+      store: @store,
       external_id: 'ORDER_B_API',
       sold_at: Date.current.beginning_of_week + 2.days
     )

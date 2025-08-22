@@ -3,10 +3,12 @@
 one:
   external_id: MyString
   seller: one
+  store: one
 
 two:
   external_id: MyString
   seller: two
+  store: two
 
 # Pedidos para teste de vendas das vendedoras beta
 # elaine_order:

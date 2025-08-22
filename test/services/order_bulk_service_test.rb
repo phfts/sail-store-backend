@@ -13,6 +13,7 @@ class OrderBulkServiceTest < ActiveSupport::TestCase
     existing_order = Order.create!(
       external_id: "existing_order",
       seller: @seller,
+      store: @store,
       sold_at: Time.current
     )
 
@@ -20,11 +21,13 @@ class OrderBulkServiceTest < ActiveSupport::TestCase
       {
         external_id: "existing_order",
         seller_id: @seller.id,
+        store_id: @store.id,
         sold_at: Time.current
       },
       {
         external_id: "new_order",
         seller_id: @seller.id,
+        store_id: @store.id,
         sold_at: Time.current
       }
     ]
@@ -46,6 +49,7 @@ class OrderBulkServiceTest < ActiveSupport::TestCase
     order = Order.create!(
       external_id: "test_order",
       seller: @seller,
+      store: @store,
       sold_at: Time.current
     )
 
@@ -87,6 +91,7 @@ class OrderBulkServiceTest < ActiveSupport::TestCase
       {
         external_id: "order_with_items",
         seller_id: @seller.id,
+        store_id: @store.id,
         sold_at: Time.current,
         order_items: [
           {
@@ -123,6 +128,7 @@ class OrderBulkServiceTest < ActiveSupport::TestCase
       {
         external_id: "", # Invalid - empty external_id
         seller_id: @seller.id,
+        store_id: @store.id,
         sold_at: Time.current
       }
     ]

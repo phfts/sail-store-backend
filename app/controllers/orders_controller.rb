@@ -78,7 +78,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:external_id, :seller_id, :sold_at, 
+    params.require(:order).permit(:external_id, :seller_id, :store_id, :sold_at, 
       order_items_attributes: [:product_id, :store_id, :quantity, :unit_price])
   end
 end

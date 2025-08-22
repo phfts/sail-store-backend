@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :seller
+  belongs_to :store
   has_many :order_items, dependent: :destroy
   has_many :products, through: :order_items
   has_many :returns, class_name: 'Return', foreign_key: 'original_order_id', dependent: :destroy
@@ -9,7 +10,7 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_items, allow_destroy: true
   
   validates :external_id, presence: { message: "can't be blank" }
-  validates :external_id, uniqueness: { scope: :seller_id, message: "já existe um pedido com este external_id nesta loja" }, if: :external_id?
+  validates :external_id, uniqueness: { scope: :store_id, message: "já existe um pedido com este external_id nesta loja" }, if: :external_id?
   
   # Callback para atualizar o progresso das metas quando uma venda é criada
   after_create :update_goals_progress

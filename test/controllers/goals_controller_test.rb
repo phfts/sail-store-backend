@@ -206,6 +206,7 @@ class GoalsControllerTest < ActionDispatch::IntegrationTest
     # Ordem 1 - Agosto 2025
     order1 = Order.create!(
       seller: @seller,
+      store: @store,
       external_id: 'TEST001',
       sold_at: '2025-08-10'
     )
@@ -222,6 +223,7 @@ class GoalsControllerTest < ActionDispatch::IntegrationTest
     # Ordem 2 - Agosto 2025  
     order2 = Order.create!(
       seller: @seller,
+      store: @store,
       external_id: 'TEST002',
       sold_at: '2025-08-15'
     )

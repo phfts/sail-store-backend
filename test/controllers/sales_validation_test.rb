@@ -231,6 +231,7 @@ class SalesValidationTest < ActionDispatch::IntegrationTest
     # Vendedor A: R$ 5.000 na semana atual
     order_a = Order.create!(
       seller: @seller_a,
+      store: @store,
       external_id: 'ORDER_A_SALES_TEST',
       sold_at: Date.current.beginning_of_week + 1.day
     )
@@ -247,6 +248,7 @@ class SalesValidationTest < ActionDispatch::IntegrationTest
     # Vendedor B: R$ 7.000 na semana atual
     order_b = Order.create!(
       seller: @seller_b,
+      store: @store,
       external_id: 'ORDER_B_SALES_TEST',
       sold_at: Date.current.beginning_of_week + 2.days
     )

@@ -183,6 +183,7 @@ class SalesEndpointsTest < ActionDispatch::IntegrationTest
     # Vendas do Vendedor A: R$ 5.000 (50.000 centavos)
     order_a = Order.create!(
       seller: @seller1,
+      store: @store,
       external_id: 'ORDER_A_5K',
       sold_at: Date.current.beginning_of_week + 1.day
     )
@@ -199,6 +200,7 @@ class SalesEndpointsTest < ActionDispatch::IntegrationTest
     # Vendas do Vendedor B: R$ 7.000 (70.000 centavos)
     order_b = Order.create!(
       seller: @seller2,
+      store: @store,
       external_id: 'ORDER_B_7K',
       sold_at: Date.current.beginning_of_week + 2.days
     )

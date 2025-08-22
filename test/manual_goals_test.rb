@@ -76,6 +76,7 @@ class ManualGoalsTest
     # Ordem 1 - R$ 30.000  
     order1 = Order.create!(
       seller: seller,
+      store: store,
       external_id: 'TEST001',
       sold_at: '2025-08-10 10:00:00'
     )
@@ -92,6 +93,7 @@ class ManualGoalsTest
     # Ordem 2 - R$ 25.000
     order2 = Order.create!(
       seller: seller,
+      store: store,
       external_id: 'TEST002',
       sold_at: '2025-08-15 14:30:00'
     )

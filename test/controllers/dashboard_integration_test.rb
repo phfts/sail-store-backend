@@ -218,6 +218,7 @@ class DashboardIntegrationTest < ActionDispatch::IntegrationTest
     # Venda de R$ 500,30 na primeira loja
     order1 = Order.create!(
       seller: seller1,
+      store: @store1,
       sold_at: current_month_start,
       external_id: "order_1"
     )
@@ -233,6 +234,7 @@ class DashboardIntegrationTest < ActionDispatch::IntegrationTest
     # Venda de R$ 333,55 na segunda loja
     order2 = Order.create!(
       seller: seller2,
+      store: @store2,
       sold_at: current_month_start,
       external_id: "order_2"
     )
@@ -320,6 +322,7 @@ class DashboardIntegrationTest < ActionDispatch::IntegrationTest
     # Venda de R$ 100,00 na primeira loja (mês atual)
     order1_current = Order.create!(
       seller: seller1,
+      store: @store1,
       sold_at: current_month_start,
       external_id: "order_1_current"
     )
@@ -335,6 +338,7 @@ class DashboardIntegrationTest < ActionDispatch::IntegrationTest
     # Venda de R$ 150,00 na segunda loja (mês atual)
     order2_current = Order.create!(
       seller: seller2,
+      store: @store2,
       sold_at: current_month_start,
       external_id: "order_2_current"
     )
@@ -368,6 +372,7 @@ class DashboardIntegrationTest < ActionDispatch::IntegrationTest
     # Venda de R$ 30,00 na primeira loja (mês passado)
     order1_last_month = Order.create!(
       seller: seller1,
+      store: @store1,
       sold_at: last_month_start,
       external_id: "order_1_last_month"
     )
@@ -383,6 +388,7 @@ class DashboardIntegrationTest < ActionDispatch::IntegrationTest
     # Venda de R$ 30,00 na segunda loja (mês passado)
     order2_last_month = Order.create!(
       seller: seller2,
+      store: @store2,
       sold_at: last_month_start,
       external_id: "order_2_last_month"
     )
@@ -496,6 +502,7 @@ class DashboardIntegrationTest < ActionDispatch::IntegrationTest
     # Venda de R$ 100,00 na primeira loja (mês passado)
     order1_last_month = Order.create!(
       seller: seller1,
+      store: @store1,
       sold_at: last_month_start,
       external_id: "order_1_last_month_ticket"
     )
@@ -511,6 +518,7 @@ class DashboardIntegrationTest < ActionDispatch::IntegrationTest
     # Venda de R$ 200,00 na segunda loja (mês passado)
     order2_last_month = Order.create!(
       seller: seller2,
+      store: @store2,
       sold_at: last_month_start,
       external_id: "order_2_last_month_ticket"
     )
@@ -529,6 +537,7 @@ class DashboardIntegrationTest < ActionDispatch::IntegrationTest
     # Venda de R$ 300,00 na primeira loja (mês atual)
     order1_current = Order.create!(
       seller: seller1,
+      store: @store1,
       sold_at: current_month_start,
       external_id: "order_1_current_ticket"
     )
@@ -544,6 +553,7 @@ class DashboardIntegrationTest < ActionDispatch::IntegrationTest
     # Venda de R$ 500,00 também na primeira loja (mês atual)
     order2_current = Order.create!(
       seller: seller1,
+      store: @store1,
       sold_at: current_month_start,
       external_id: "order_2_current_ticket"
     )

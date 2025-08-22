@@ -29,7 +29,18 @@ class OrderBulkService
       end
 
       begin
-        order = Order.new(order_data)
+        # Cria o order usando apenas os atributos permitidos
+        permitted_attributes = {
+          external_id: order_data[:external_id],
+          seller_id: order_data[:seller_id],
+          store_id: order_data[:store_id],
+          sold_at: order_data[:sold_at]
+        }
+        
+        # Remove valores nil
+        permitted_attributes = permitted_attributes.compact
+        
+        order = Order.new(permitted_attributes)
         if order.save
           @created_orders << order
         else
@@ -139,6 +150,7 @@ class OrderBulkService
           permitted_attributes = {
             external_id: order_data[:external_id],
             seller_id: order_data[:seller_id],
+            store_id: order_data[:store_id],
             sold_at: order_data[:sold_at]
           }
           

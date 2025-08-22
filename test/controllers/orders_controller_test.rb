@@ -19,10 +19,12 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
 
   test "should get create" do
     seller = sellers(:one)
+    store = stores(:one)
     
     post orders_url, params: { 
       order: { 
         seller_id: seller.id,
+        store_id: store.id,
         external_id: "TEST123",
         sold_at: Date.current
       } 
