@@ -326,6 +326,37 @@ class BetaController < ApplicationController
     render json: kpi_data
   end
 
+  # GET /beta/debug/:id - Debug do cálculo de dias restantes
+  def debug_days
+    seller_id = params[:id]
+    seller = Seller.find(seller_id)
+    current_date = Date.current
+    active_goal = seller.goals.where('start_date <= ? AND end_date >= ?', current_date, current_date).first
+    
+    if active_goal
+      calendar_days = [active_goal.end_date - current_date, 0].max.to_i
+      scheduled_days = seller.schedules.where(date: current_date..active_goal.end_date).count
+      
+      result = if scheduled_days > 0
+        scheduled_days
+      else
+        (current_date..active_goal.end_date).count { |date| !date.sunday? }
+      end
+      
+      render json: {
+        seller_name: seller.name,
+        current_date: current_date,
+        goal_end: active_goal.end_date,
+        calendar_days: calendar_days,
+        scheduled_days: scheduled_days,
+        result: result,
+        method_called: "calculate_goal_days_remaining"
+      }
+    else
+      render json: { error: "No active goal" }
+    end
+  end
+
   # GET /beta/kpis/:id - KPIs baseados nos campos da planilha
   def kpis
     seller_id = params[:id]

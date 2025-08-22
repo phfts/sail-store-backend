@@ -147,6 +147,7 @@ Rails.application.routes.draw do
   get '/beta/managers', to: 'beta#managers'
   get '/beta/managers/:id/kpis', to: 'beta#manager_kpis'
   get '/beta/sellers/:id/kpis', to: 'beta#kpis'
+  get '/beta/sellers/:id/debug', to: 'beta#debug_days'
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
