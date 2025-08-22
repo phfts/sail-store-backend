@@ -214,6 +214,7 @@ class BetaController < ApplicationController
       fallback_days_elapsed = current_date.day
       # Usar o método correto para calcular dias restantes considerando escalas
       fallback_days_remaining = calculate_goal_days_remaining(seller, current_date, fallback_end)
+      
       fallback_daily_target = fallback_days_remaining > 0 ? ((fallback_target - fallback_sales) / fallback_days_remaining).round(2) : 0
       
       # Calcular métricas reais
@@ -325,52 +326,6 @@ class BetaController < ApplicationController
     }
 
     render json: kpi_data
-  end
-
-    # GET /beta/debug/:id - Debug do cálculo de dias restantes
-  def debug_days
-    seller_id = params[:id]
-    seller = Seller.find(seller_id)
-    current_date = Date.current
-    active_goal = seller.goals.where('start_date <= ? AND end_date >= ?', current_date, current_date).first
-
-    if active_goal
-      calendar_days = [active_goal.end_date - current_date, 0].max.to_i
-      scheduled_days = seller.schedules.where(date: current_date..active_goal.end_date).count
-
-      result = if scheduled_days > 0
-        scheduled_days
-      else
-        (current_date..active_goal.end_date).count { |date| !date.sunday? }
-      end
-
-      render json: {
-        seller_name: seller.name,
-        current_date: current_date,
-        goal_end: active_goal.end_date,
-        calendar_days: calendar_days,
-        scheduled_days: scheduled_days,
-        result: result,
-        method_called: "calculate_goal_days_remaining"
-      }
-    else
-      # Testar fallback mensal
-      fallback_end = current_date.end_of_month
-      fallback_days_remaining = calculate_goal_days_remaining(seller, current_date, fallback_end)
-      scheduled_days = seller.schedules.where(date: current_date..fallback_end).count
-      working_days = (current_date..fallback_end).count { |date| !date.sunday? }
-      
-      render json: {
-        seller_name: seller.name,
-        current_date: current_date,
-        fallback_end: fallback_end,
-        scheduled_days: scheduled_days,
-        working_days: working_days,
-        result: fallback_days_remaining,
-        method_called: "calculate_goal_days_remaining (fallback)",
-        has_active_goal: false
-      }
-    end
   end
 
   # GET /beta/kpis/:id - KPIs baseados nos campos da planilha
