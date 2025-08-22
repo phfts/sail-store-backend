@@ -327,23 +327,23 @@ class BetaController < ApplicationController
     render json: kpi_data
   end
 
-  # GET /beta/debug/:id - Debug do cálculo de dias restantes
+    # GET /beta/debug/:id - Debug do cálculo de dias restantes
   def debug_days
     seller_id = params[:id]
     seller = Seller.find(seller_id)
     current_date = Date.current
     active_goal = seller.goals.where('start_date <= ? AND end_date >= ?', current_date, current_date).first
-    
+
     if active_goal
       calendar_days = [active_goal.end_date - current_date, 0].max.to_i
       scheduled_days = seller.schedules.where(date: current_date..active_goal.end_date).count
-      
+
       result = if scheduled_days > 0
         scheduled_days
       else
         (current_date..active_goal.end_date).count { |date| !date.sunday? }
       end
-      
+
       render json: {
         seller_name: seller.name,
         current_date: current_date,
@@ -354,7 +354,22 @@ class BetaController < ApplicationController
         method_called: "calculate_goal_days_remaining"
       }
     else
-      render json: { error: "No active goal" }
+      # Testar fallback mensal
+      fallback_end = current_date.end_of_month
+      fallback_days_remaining = calculate_goal_days_remaining(seller, current_date, fallback_end)
+      scheduled_days = seller.schedules.where(date: current_date..fallback_end).count
+      working_days = (current_date..fallback_end).count { |date| !date.sunday? }
+      
+      render json: {
+        seller_name: seller.name,
+        current_date: current_date,
+        fallback_end: fallback_end,
+        scheduled_days: scheduled_days,
+        working_days: working_days,
+        result: fallback_days_remaining,
+        method_called: "calculate_goal_days_remaining (fallback)",
+        has_active_goal: false
+      }
     end
   end
 
