@@ -153,6 +153,7 @@ class Seller < ApplicationRecord
   def store_admin?
     store_admin == true
   end
+
   
   # Método para retornar vendas agrupadas por dia
   def sales_by_day
