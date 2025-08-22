@@ -492,7 +492,7 @@ class SellersController < ApplicationController
           percentual_comissao: 0,
           total_metas_ativas: 0,
           dias_com_vendas: days_with_sales,
-          vendas_por_dia: days_with_sales > 0 ? (current_sales_data[:net_sales] / days_with_sales).round(2) : 0,
+          vendas_por_dia: days_with_sales > 0 ? ((current_sales_data[:net_sales] / days_with_sales) / 100.0).round(2) : 0,
           pedidos_por_dia: days_with_sales > 0 ? (current_orders_count.to_f / days_with_sales).round(2) : 0
         },
         commission_levels: [],
