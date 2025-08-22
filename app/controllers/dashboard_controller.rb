@@ -668,7 +668,9 @@ class DashboardController < ApplicationController
       weekly_orders.each do |order|
         date_key = order.sold_at.to_date.to_s
         daily_sales[date_key] ||= 0
-        daily_sales[date_key] += calculate_sales_from_orders([order])
+        # Calcular vendas do pedido individual
+        order_sales = order.order_items.sum('quantity * unit_price')
+        daily_sales[date_key] += order_sales
       end
       
       days_worked = daily_sales.keys.count
