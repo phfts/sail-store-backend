@@ -1,5 +1,5 @@
 class BetaController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:sellers, :kpis, :managers, :manager_kpis]
+  skip_before_action :authenticate_user!, only: [:sellers, :kpis, :managers, :manager_kpis, :debug_days]
 
   # GET /beta/sellers
   def sellers
@@ -212,7 +212,8 @@ class BetaController < ApplicationController
       
       fallback_days_total = fallback_end.day
       fallback_days_elapsed = current_date.day
-      fallback_days_remaining = fallback_end.day - current_date.day
+      # Usar o método correto para calcular dias restantes considerando escalas
+      fallback_days_remaining = calculate_goal_days_remaining(seller, current_date, fallback_end)
       fallback_daily_target = fallback_days_remaining > 0 ? ((fallback_target - fallback_sales) / fallback_days_remaining).round(2) : 0
       
       # Calcular métricas reais
