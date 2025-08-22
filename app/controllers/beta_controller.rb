@@ -512,22 +512,8 @@ class BetaController < ApplicationController
     seller_percentage = primary_goal[:percentual_atingido]
     store_percentage = store_target > 0 ? (store_sales / store_target * 100).round(2) : 0
     
-    # Comissão - usar commission_levels ou fallback simples
-    commission_levels = store.commission_levels.order(:achievement_percentage)
-    if commission_levels.any?
-      current_level = commission_levels.where('achievement_percentage <= ?', seller_percentage).last
-      commission_rate = current_level&.commission_percentage || 3.5
-    else
-      # Níveis simples baseados em performance
-      commission_rate = case seller_percentage
-                       when 0..69.99 then 3.5
-                       when 70..89.99 then 4.0
-                       when 90..109.99 then 4.5
-                       else 5.0
-                       end
-    end
-    
-    commission_amount = monthly_sales * (commission_rate / 100)
+
+ 
     
     # Calcular últimos 7 dias com vendas
     last_sales_days = calculate_last_sales_days(seller, 7)
@@ -577,20 +563,10 @@ class BetaController < ApplicationController
       vendedor: {
         ticket_medio: seller_ticket,
         pa_produtos_atendimento: seller_pa,
-        comissao_calculada: commission_amount.round(2),
-        percentual_comissao: commission_rate,
+        comissao_calculada: 0,
+        percentual_comissao: 0,
         total_metas_ativas: goals_data.length
       },
-      
-      # === NÍVEIS DE COMISSÃO ===
-      commission_levels: commission_levels.any? ? 
-        commission_levels.map { |cl| { level: cl.achievement_percentage, commission: cl.commission_percentage } } :
-        [
-          { level: 70.0, commission: 3.5 },
-          { level: 80.0, commission: 4.0 },
-          { level: 90.0, commission: 4.5 },
-          { level: 100.0, commission: 5.0 }
-        ],
       
       # === METADADOS ===
       metadados: {
