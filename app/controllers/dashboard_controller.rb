@@ -266,18 +266,34 @@ class DashboardController < ApplicationController
         averagePerDay: current_month_orders.count > 0 ? (current_month_sales / Date.current.day).round(2) : 0,
         monthlyBreakdown: calculate_monthly_net_sales(store, orders)
       },
+      orderCount: {
+        total: orders.count,
+        currentMonth: current_month_orders.count,
+        currentWeek: current_week_orders.count,
+        today: today_orders.count,
+        month: current_month_orders.count
+      },
       metrics: {
         ticketMedio: {
           total: total_metrics[:ticket_medio],
           currentMonth: current_month_metrics[:ticket_medio],
           currentWeek: current_week_metrics[:ticket_medio],
-          today: today_metrics[:ticket_medio]
+          today: today_metrics[:ticket_medio],
+          month: current_month_metrics[:ticket_medio]
         },
         produtosPorAtendimento: {
           total: total_metrics[:produtos_por_atendimento],
           currentMonth: current_month_metrics[:produtos_por_atendimento],
           currentWeek: current_week_metrics[:produtos_por_atendimento],
-          today: today_metrics[:produtos_por_atendimento]
+          today: today_metrics[:produtos_por_atendimento],
+          month: current_month_metrics[:produtos_por_atendimento]
+        },
+        precoMedio: {
+          total: store.orders.joins(:order_items).average('order_items.unit_price') || 0,
+          currentMonth: current_month_orders.joins(:order_items).average('order_items.unit_price') || 0,
+          currentWeek: current_week_orders.joins(:order_items).average('order_items.unit_price') || 0,
+          today: today_orders.joins(:order_items).average('order_items.unit_price') || 0,
+          month: current_month_orders.joins(:order_items).average('order_items.unit_price') || 0
         }
       },
       targets: {
@@ -291,7 +307,8 @@ class DashboardController < ApplicationController
         potential: potencial_vendas[:potential],
         bestSellerAverage: potencial_vendas[:best_seller_average],
         totalWorkDays: potencial_vendas[:total_work_days],
-        bestSeller: potencial_vendas[:best_seller]
+        bestSeller: potencial_vendas[:best_seller],
+        bestSellerWeek: calculate_best_seller_week(store, active_sellers)
       },
       topSellers: top_sellers,
       sellersAnnualData: sellers_annual_data,
@@ -483,7 +500,8 @@ class DashboardController < ApplicationController
         name: best_seller_data[:seller].name,
         average_per_day: best_seller_data[:average_per_day].round(2),
         total_sales: best_seller_data[:total_sales].round(2),
-        days_worked: best_seller_data[:days_worked]
+        days_worked: best_seller_data[:days_worked],
+        monthly_sales: calculate_seller_monthly_sales(best_seller_data[:seller], Date.current)
       }
     }
   end
@@ -616,6 +634,66 @@ class DashboardController < ApplicationController
     # Se não tem escalas definidas, considerar 24 dias como padrão
     # (excluindo domingos e alguns sábados)
     return 24
+  end
+
+  def calculate_seller_monthly_sales(seller, date)
+    # Calcular vendas do vendedor no mês especificado
+    month_start = date.beginning_of_month
+    month_end = date.end_of_month
+    
+    monthly_orders = seller.orders
+                          .joins(:order_items)
+                          .where('orders.sold_at >= ? AND orders.sold_at <= ?', month_start, month_end)
+    
+    calculate_sales_from_orders(monthly_orders)
+  end
+
+  def calculate_best_seller_week(store, active_sellers)
+    # Calcular melhor vendedor da semana atual
+    week_start = Date.current.beginning_of_week
+    week_end = Date.current.end_of_week
+    
+    return nil if active_sellers.empty?
+    
+    # Calcular vendas de cada vendedor na semana atual
+    weekly_performance = active_sellers.map do |seller|
+      weekly_orders = seller.orders
+                           .joins(:order_items)
+                           .where('orders.sold_at >= ? AND orders.sold_at <= ?', week_start, week_end)
+      
+      weekly_sales = calculate_sales_from_orders(weekly_orders)
+      
+      # Calcular dias trabalhados na semana
+      daily_sales = {}
+      weekly_orders.each do |order|
+        date_key = order.sold_at.to_date.to_s
+        daily_sales[date_key] ||= 0
+        daily_sales[date_key] += calculate_sales_from_orders([order])
+      end
+      
+      days_worked = daily_sales.keys.count
+      daily_average = days_worked > 0 ? (weekly_sales.to_f / days_worked) : 0
+      
+      {
+        seller: seller,
+        weekly_sales: weekly_sales,
+        daily_average: daily_average,
+        days_worked: days_worked
+      }
+    end
+    
+    # Encontrar o vendedor com melhor performance na semana
+    best_performer = weekly_performance.max_by { |data| data[:weekly_sales] }
+    
+    return nil if best_performer.nil? || best_performer[:weekly_sales] == 0
+    
+    {
+      id: best_performer[:seller].id,
+      name: best_performer[:seller].name,
+      weekly_sales: best_performer[:weekly_sales].round(2),
+      daily_average: best_performer[:daily_average].round(2),
+      days_worked: best_performer[:days_worked]
+    }
   end
 
   def calculate_date_range(period)
