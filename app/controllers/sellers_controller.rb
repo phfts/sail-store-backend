@@ -513,8 +513,8 @@ class SellersController < ApplicationController
     
     # Usar a meta principal (primeira ou maior) para cálculos gerais
     primary_goal = goals_data.first
-    monthly_target = primary_goal[:meta_valor]
-    monthly_sales = primary_goal[:vendas_realizadas]
+    monthly_target = primary_goal[:meta_valor].to_f
+    monthly_sales = primary_goal[:vendas_realizadas].to_f
     monthly_days_remaining = primary_goal[:dias_restantes]
     
     # Calcular métricas da loja baseado na meta principal
@@ -606,7 +606,7 @@ class SellersController < ApplicationController
         percentual_comissao: commission_rate,
         total_metas_ativas: goals_data.length,
         dias_com_vendas: days_with_sales,
-        vendas_por_dia: days_with_sales > 0 ? (monthly_sales / days_with_sales).round(2) : 0,
+        vendas_por_dia: days_with_sales > 0 ? ((monthly_sales / days_with_sales) / 100.0).round(2) : 0,
         pedidos_por_dia: days_with_sales > 0 ? (primary_goal[:pedidos_count] / days_with_sales).round(2) : 0
       },
       
