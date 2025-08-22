@@ -581,7 +581,9 @@ class SellersController < ApplicationController
         fim: primary_goal[:fim],
         dias_restantes: primary_goal[:dias_restantes],
         meta_recalculada_dia: primary_goal[:meta_recalculada_dia],
-        quanto_falta_super_meta: primary_goal[:quanto_falta_super_meta]
+        quanto_falta_super_meta: primary_goal[:quanto_falta_super_meta],
+        ticket_medio: primary_goal[:ticket_medio],
+        pedidos_count: primary_goal[:pedidos_count]
       },
       
       # === DADOS DA LOJA ===
