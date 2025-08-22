@@ -568,6 +568,9 @@ class BetaController < ApplicationController
         total_metas_ativas: goals_data.length
       },
       
+      # === NÍVEIS DE COMISSÃO ===
+      commission_levels: [],
+      
       # === METADADOS ===
       metadados: {
         data_atual: current_date.iso8601,
