@@ -4,8 +4,8 @@ class BetaController < ApplicationController
   # GET /beta/sellers
   def sellers
     # Buscar beta_seller pelo nome (vendedora em beta)
-    beta_seller =  Seller.includes(:store, :company).find_by_name('ELAINE DIOGO PAULO')
-    beta_seller_2 =  Seller.includes(:store, :company).find_by_name('GRASIELE SAMPAIO DA SILVA')
+    beta_seller =  Seller.includes(:store, :company).find_by_name('PALOMA COSTA MAIA')
+    beta_seller_2 =  Seller.includes(:store, :company).find_by_name('LAIS FARIAS DOS SANTOS')
 
     if beta_seller
       # Retornar array com o ID real da beta_seller incluindo dados da loja
