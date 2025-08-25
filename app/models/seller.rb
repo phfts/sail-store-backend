@@ -45,6 +45,9 @@ class Seller < ApplicationRecord
   # Validação de comprimento mínimo do WhatsApp (apenas números)
   validate :whatsapp_length_validation
   
+  # Callback para definir company_id automaticamente baseado na store
+  before_validation :set_company_id_from_store
+  
   # Callback para normalizar WhatsApp antes de salvar
   before_save :normalize_whatsapp
   
@@ -220,5 +223,10 @@ class Seller < ApplicationRecord
       # Número muito curto ou muito longo, mantém como está
       self.whatsapp = numbers_only
     end
+  end
+
+  def set_company_id_from_store
+    return unless store_id.present?
+    self.company_id = store.company_id
   end
 end
