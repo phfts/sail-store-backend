@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_22_181036) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_25_194138) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -137,6 +137,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_22_181036) do
     t.string "external_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
+    t.index ["store_id", "external_id"], name: "index_order_items_on_store_id_and_external_id_unique", unique: true, where: "(external_id IS NOT NULL)"
     t.index ["store_id"], name: "index_order_items_on_store_id"
   end
 
