@@ -226,7 +226,8 @@ class Seller < ApplicationRecord
   end
 
   def set_company_id_from_store
-    return unless store_id.present?
+    return unless store_id.present? && store_id > 0
+    return unless store.present?
     self.company_id = store.company_id
   end
 end
