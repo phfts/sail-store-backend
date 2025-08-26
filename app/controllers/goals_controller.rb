@@ -78,6 +78,12 @@ class GoalsController < ApplicationController
     
     # Associar a meta à loja do usuário (se não for admin)
     unless current_user.admin?
+      # Verificar se o usuário tem uma loja associada
+      unless current_user.store
+        render json: { error: 'Usuário não tem uma loja associada' }, status: :unprocessable_entity
+        return
+      end
+      
       @goal.store_id = current_user.store.id
       
       # Verificar se o seller pertence à loja do usuário (se for meta individual)
