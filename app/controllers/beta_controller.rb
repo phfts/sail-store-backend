@@ -300,6 +300,7 @@ class BetaController < ApplicationController
       manager: {
         id: manager.id,
         name: manager.display_name,
+        primeiro_nome: format_name(manager.first_name),
         email: manager.email,
         telefone: manager.formatted_whatsapp
       },
