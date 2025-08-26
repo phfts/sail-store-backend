@@ -275,6 +275,10 @@ class BetaController < ApplicationController
     store_sales_data = calculate_store_net_sales(store, periodo_inicio, [current_date, periodo_fim].min)
     total_sales = store_sales_data[:net_sales]
     
+    # Usar a meta principal (primeira) para outros cálculos
+    primary_goal = store_goals_data.first
+    total_days_remaining = primary_goal[:dias_restantes]
+    
     # Calcular soma total das metas
     total_target = store_goals_data.sum { |g| g[:meta_valor] }
     total_percentage = total_target > 0 ? (total_sales / total_target * 100).round(2) : 0
@@ -282,10 +286,6 @@ class BetaController < ApplicationController
     # Calcular meta por dia restante do consolidado
     remaining_target = [total_target - total_sales, 0].max
     total_daily_target = total_days_remaining > 0 ? (remaining_target / total_days_remaining).round(2) : 0
-    
-    # Usar a meta principal (primeira) para outros cálculos
-    primary_goal = store_goals_data.first
-    total_days_remaining = primary_goal[:dias_restantes]
     
     # Calcular métricas dos últimos 7 dias
     last_7_days_sales = calculate_store_last_sales_days(store, 7)
@@ -519,6 +519,11 @@ class BetaController < ApplicationController
       periodo_fim = current_date.end_of_month
     end
     
+    # Usar a meta principal (primeira) para outros cálculos
+    primary_goal = goals_data.first
+    monthly_target = primary_goal[:meta_valor]
+    monthly_days_remaining = primary_goal[:dias_restantes]
+    
     # Calcular vendas líquidas do vendedor no período total das metas
     seller_sales_data = calculate_net_sales(seller, periodo_inicio, [current_date, periodo_fim].min)
     monthly_sales = seller_sales_data[:net_sales]
@@ -526,11 +531,6 @@ class BetaController < ApplicationController
     # Calcular meta por dia restante do consolidado
     remaining_target = [monthly_target - monthly_sales, 0].max
     monthly_daily_target = monthly_days_remaining > 0 ? (remaining_target / monthly_days_remaining).round(2) : 0
-    
-    # Usar a meta principal (primeira) para outros cálculos
-    primary_goal = goals_data.first
-    monthly_target = primary_goal[:meta_valor]
-    monthly_days_remaining = primary_goal[:dias_restantes]
     
     # Calcular métricas da loja baseado na meta principal
     primary_start = Date.parse(primary_goal[:meta_data][:inicio_iso])
