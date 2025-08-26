@@ -30,6 +30,23 @@ class StoresController < ApplicationController
     render json: @store
   end
 
+  # GET /stores/:slug/manager
+  def manager
+    @store = Store.find_by!(slug: params[:slug])
+    manager = @store.sellers.find_by(store_admin: true)
+    
+    if manager
+      render json: {
+        id: manager.id,
+        name: manager.display_name,
+        email: manager.email,
+        telefone: manager.formatted_whatsapp
+      }
+    else
+      render json: { error: "Manager não encontrado para esta loja" }, status: :not_found
+    end
+  end
+
   # POST /stores
   def create
     @store = Store.new(store_params)

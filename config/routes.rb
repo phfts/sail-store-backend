@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   resources :stores
   get '/stores/by-slug/:slug', to: 'stores#show_by_slug'
   get '/stores/by-external-id/:external_id', to: 'stores#show_by_external_id'
+  get '/stores/:slug/manager', to: 'stores#manager'
   
   # Rotas de turnos, escalas, ausências, metas e comissionamento (protegidas por autenticação)
   resources :shifts, except: [:new, :edit]
