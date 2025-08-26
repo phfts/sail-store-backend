@@ -105,10 +105,10 @@ class BetaController < ApplicationController
                         .where(active_until: nil)
                         .or(store.sellers.where('active_until > ?', current_date))
     
-    # Buscar todas as metas ativas dos sellers da loja
+    # Buscar todas as metas ativas hoje dos sellers da loja
     store_goals = Goal.joins(:seller)
                      .where(sellers: { store_id: store.id })
-                     .active
+                     .where('start_date <= ? AND end_date >= ?', current_date, current_date)
                      .order(:start_date)
     
     # Processar cada meta da loja
@@ -259,9 +259,24 @@ class BetaController < ApplicationController
     total_sellers = store_sellers.count
     active_goals_count = store_goals_data.length
     
-    # Calcular soma total das metas e vendas realizadas
+    # Calcular período total das metas ativas
+    if store_goals_data.any?
+      earliest_start = store_goals_data.map { |g| Date.parse(g[:meta_data][:inicio_iso]) }.min
+      latest_end = store_goals_data.map { |g| Date.parse(g[:meta_data][:fim_iso]) }.max
+      periodo_inicio = earliest_start
+      periodo_fim = latest_end
+    else
+      # Fallback para mês atual se não há metas
+      periodo_inicio = current_date.beginning_of_month
+      periodo_fim = current_date.end_of_month
+    end
+    
+    # Calcular vendas da loja no período total das metas
+    store_sales_data = calculate_store_net_sales(store, periodo_inicio, [current_date, periodo_fim].min)
+    total_sales = store_sales_data[:net_sales]
+    
+    # Calcular soma total das metas
     total_target = store_goals_data.sum { |g| g[:meta_valor] }
-    total_sales = store_goals_data.sum { |g| g[:vendas_realizadas] }
     total_percentage = total_target > 0 ? (total_sales / total_target * 100).round(2) : 0
     
     # Usar a meta principal (primeira) para outros cálculos
@@ -305,6 +320,12 @@ class BetaController < ApplicationController
         meta_total: total_target,
         vendas_realizadas: total_sales,
         percentual_atingido: total_percentage,
+        periodo_considerado: {
+          inicio: periodo_inicio.strftime("%d/%m/%Y"),
+          fim: periodo_fim.strftime("%d/%m/%Y"),
+          inicio_iso: periodo_inicio.iso8601,
+          fim_iso: periodo_fim.iso8601
+        },
         dias_restantes: total_days_remaining,
         meta_por_dia_restante: total_daily_target,
         quanto_falta_super_meta: primary_goal[:quanto_falta_super_meta],
@@ -350,8 +371,8 @@ class BetaController < ApplicationController
     # Verificar se o vendedor está trabalhando hoje
     working_today = seller_working_today?(seller, current_date)
     
-    # Buscar todas as metas ativas do vendedor
-    active_goals = seller.goals.active.order(:start_date)
+    # Buscar todas as metas ativas hoje do vendedor
+    active_goals = seller.goals.where('start_date <= ? AND end_date >= ?', current_date, current_date).order(:start_date)
     
     # Processar cada meta dinamicamente
     goals_data = []
@@ -483,10 +504,25 @@ class BetaController < ApplicationController
       }
     end
     
-    # Usar a meta principal (primeira ou maior) para cálculos gerais
+    # Calcular período total das metas ativas do vendedor
+    if goals_data.any?
+      earliest_start = goals_data.map { |g| Date.parse(g[:meta_data][:inicio_iso]) }.min
+      latest_end = goals_data.map { |g| Date.parse(g[:meta_data][:fim_iso]) }.max
+      periodo_inicio = earliest_start
+      periodo_fim = latest_end
+    else
+      # Fallback para mês atual se não há metas
+      periodo_inicio = current_date.beginning_of_month
+      periodo_fim = current_date.end_of_month
+    end
+    
+    # Calcular vendas líquidas do vendedor no período total das metas
+    seller_sales_data = calculate_net_sales(seller, periodo_inicio, [current_date, periodo_fim].min)
+    monthly_sales = seller_sales_data[:net_sales]
+    
+    # Usar a meta principal (primeira) para outros cálculos
     primary_goal = goals_data.first
     monthly_target = primary_goal[:meta_valor]
-    monthly_sales = primary_goal[:vendas_realizadas]
     monthly_days_remaining = primary_goal[:dias_restantes]
     
     # Calcular métricas da loja baseado na meta principal
@@ -544,8 +580,14 @@ class BetaController < ApplicationController
       # === DADOS CONSOLIDADOS (baseados na meta principal) ===
       meta_principal: {
         meta_valor: primary_goal[:meta_valor],
-        vendas_realizadas: primary_goal[:vendas_realizadas],
-        percentual_atingido: primary_goal[:percentual_atingido],
+        vendas_realizadas: monthly_sales,
+        percentual_atingido: monthly_target > 0 ? (monthly_sales / monthly_target * 100).round(2) : 0,
+        periodo_considerado: {
+          inicio: periodo_inicio.strftime("%d/%m/%Y"),
+          fim: periodo_fim.strftime("%d/%m/%Y"),
+          inicio_iso: periodo_inicio.iso8601,
+          fim_iso: periodo_fim.iso8601
+        },
         tipo_periodo: primary_goal[:tipo],
         inicio: primary_goal[:inicio],
         fim: primary_goal[:fim],
