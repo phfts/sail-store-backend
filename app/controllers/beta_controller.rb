@@ -160,6 +160,7 @@ class BetaController < ApplicationController
         seller_id: goal.seller_id,
         seller_name: goal.seller.display_name,
         tipo: goal_type,
+        escopo: goal.goal_scope,
         nome_periodo: "#{goal_type.capitalize} (#{goal_total_days} dias)",
         inicio: goal_start.strftime("%d/%m/%Y"),
         fim: goal_end.strftime("%d/%m/%Y"),
@@ -228,6 +229,7 @@ class BetaController < ApplicationController
         seller_id: nil,
         seller_name: "Loja #{store.name}",
         tipo: 'mensal',
+        escopo: 'store_wide',
         nome_periodo: "Mensal (#{fallback_days_total} dias)",
         inicio: fallback_start.strftime("%d/%m/%Y"),
         fim: fallback_end.strftime("%d/%m/%Y"),
@@ -257,11 +259,13 @@ class BetaController < ApplicationController
     total_sellers = store_sellers.count
     active_goals_count = store_goals_data.length
     
-    # Usar a meta principal (primeira ou maior) para cálculos gerais
+    # Calcular soma total das metas e vendas realizadas
+    total_target = store_goals_data.sum { |g| g[:meta_valor] }
+    total_sales = store_goals_data.sum { |g| g[:vendas_realizadas] }
+    total_percentage = total_target > 0 ? (total_sales / total_target * 100).round(2) : 0
+    
+    # Usar a meta principal (primeira) para outros cálculos
     primary_goal = store_goals_data.first
-    total_target = primary_goal[:meta_valor]
-    total_sales = primary_goal[:vendas_realizadas]
-    total_percentage = primary_goal[:percentual_atingido]
     total_days_remaining = primary_goal[:dias_restantes]
     total_daily_target = primary_goal[:meta_por_dia_restante]
     
@@ -392,6 +396,7 @@ class BetaController < ApplicationController
       goals_data << {
         id: goal.id,
         tipo: goal_type,
+        escopo: goal.goal_scope,
         nome_periodo: "#{goal_type.capitalize} (#{goal_total_days} dias)",
         inicio: goal_start.strftime("%d/%m/%Y"),
         fim: goal_end.strftime("%d/%m/%Y"),
@@ -453,6 +458,7 @@ class BetaController < ApplicationController
       goals_data << {
         id: nil,
         tipo: 'mensal',
+        escopo: 'individual',
         nome_periodo: "Mensal (#{fallback_days_total} dias)",
         inicio: fallback_start.strftime("%d/%m/%Y"),
         fim: fallback_end.strftime("%d/%m/%Y"),
