@@ -119,18 +119,17 @@ class BetaController < ApplicationController
       goal_end = goal.end_date
       goal_target = goal.target_value
       
-      # Calcular vendas da loja no período da meta
-      store_orders = Order.joins(:seller)
-                         .where(sellers: { store_id: store.id })
-                         .includes(:order_items)
-                         .where('orders.sold_at >= ? AND orders.sold_at <= ?', goal_start, goal_end)
+      # Calcular vendas do vendedor no período da meta
+      seller_sales_data = calculate_net_sales(goal.seller, goal_start, goal_end)
+      seller_sales = seller_sales_data[:net_sales]
       
-      store_sales = store_orders.joins(:order_items)
-                               .sum('order_items.quantity * order_items.unit_price')
+      # Buscar pedidos do vendedor no período da meta
+      seller_orders = goal.seller.orders.includes(:order_items)
+                         .where('sold_at >= ? AND sold_at <= ?', goal_start, goal_end)
       
       # Calcular métricas do período
-      store_orders_count = store_orders.count
-      store_total_items = store_orders.joins(:order_items).sum('order_items.quantity')
+      seller_orders_count = seller_orders.count
+      seller_total_items = seller_orders.joins(:order_items).sum('order_items.quantity')
       
       # Dias da meta
       goal_total_days = (goal_end - goal_start).to_i + 1
@@ -141,16 +140,15 @@ class BetaController < ApplicationController
       Rails.logger.debug "Meta #{goal.id}: start=#{goal_start}, end=#{goal_end}, current=#{current_date}, total_days=#{goal_total_days}, elapsed=#{goal_days_elapsed}, remaining=#{goal_days_remaining}"
       
       # Calcular percentual e métricas
-      goal_percentage = goal_target > 0 ? (store_sales / goal_target * 100).round(2) : 0
-      goal_ticket = store_orders_count > 0 ? store_sales / store_orders_count : 0
-      goal_pa = store_orders_count > 0 ? store_total_items.to_f / store_orders_count : 0
+      goal_percentage = goal_target > 0 ? (seller_sales / goal_target * 100).round(2) : 0
+      goal_ticket = seller_orders_count > 0 ? seller_sales / seller_orders_count : 0
+      goal_pa = seller_orders_count > 0 ? seller_total_items.to_f / seller_orders_count : 0
       
       # Calcular meta por dia restante
-      remaining_target = [goal_target - store_sales, 0].max
+      remaining_target = [goal_target - seller_sales, 0].max
       daily_target = goal_days_remaining > 0 ? (remaining_target / goal_days_remaining).round(2) : 0
       
-      # Debug: Log dos valores para verificar se estão corretos
-      Rails.logger.debug "Meta #{goal.id}: target=#{goal_target}, sales=#{store_sales}, remaining=#{remaining_target}, days_remaining=#{goal_days_remaining}, daily_target=#{daily_target}"
+
       
       # Classificar tipo de período
       goal_type = case goal_total_days
@@ -171,17 +169,17 @@ class BetaController < ApplicationController
         inicio: goal_start.strftime("%d/%m/%Y"),
         fim: goal_end.strftime("%d/%m/%Y"),
         meta_valor: goal_target,
-        vendas_realizadas: store_sales,
+        vendas_realizadas: seller_sales,
         percentual_atingido: goal_percentage,
         dias_total: goal_total_days,
         dias_decorridos: goal_days_elapsed,
         dias_restantes: goal_days_remaining,
         meta_por_dia_restante: daily_target,
-        quanto_falta_super_meta: [(goal_target * 1.2) - store_sales, 0].max.round(2),
+        quanto_falta_super_meta: [(goal_target * 1.2) - seller_sales, 0].max.round(2),
         ticket_medio: goal_ticket.round(2),
         pa_produtos_atendimento: goal_pa.round(1),
-        pedidos_count: store_orders_count,
-        produtos_vendidos: store_total_items,
+        pedidos_count: seller_orders_count,
+        produtos_vendidos: seller_total_items,
         meta_data: {
           inicio_iso: goal_start.iso8601,
           fim_iso: goal_end.iso8601,
@@ -426,8 +424,7 @@ class BetaController < ApplicationController
                   else 'personalizado'
                   end
       
-      # Debug: Log dos valores para verificar se estão corretos
-      Rails.logger.debug "Meta #{goal.id}: target=#{goal_target}, sales=#{goal_sales}, remaining=#{goal_target - goal_sales}, days_remaining=#{goal_days_remaining}, daily_target=#{goal_days_remaining > 0 ? ((goal_target - goal_sales) / goal_days_remaining).round(2) : 0}"
+
       
       goals_data << {
         id: goal.id,
