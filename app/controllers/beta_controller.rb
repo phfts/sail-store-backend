@@ -279,10 +279,13 @@ class BetaController < ApplicationController
     total_target = store_goals_data.sum { |g| g[:meta_valor] }
     total_percentage = total_target > 0 ? (total_sales / total_target * 100).round(2) : 0
     
+    # Calcular meta por dia restante do consolidado
+    remaining_target = [total_target - total_sales, 0].max
+    total_daily_target = total_days_remaining > 0 ? (remaining_target / total_days_remaining).round(2) : 0
+    
     # Usar a meta principal (primeira) para outros cálculos
     primary_goal = store_goals_data.first
     total_days_remaining = primary_goal[:dias_restantes]
-    total_daily_target = primary_goal[:meta_por_dia_restante]
     
     # Calcular métricas dos últimos 7 dias
     last_7_days_sales = calculate_store_last_sales_days(store, 7)
@@ -520,6 +523,10 @@ class BetaController < ApplicationController
     seller_sales_data = calculate_net_sales(seller, periodo_inicio, [current_date, periodo_fim].min)
     monthly_sales = seller_sales_data[:net_sales]
     
+    # Calcular meta por dia restante do consolidado
+    remaining_target = [monthly_target - monthly_sales, 0].max
+    monthly_daily_target = monthly_days_remaining > 0 ? (remaining_target / monthly_days_remaining).round(2) : 0
+    
     # Usar a meta principal (primeira) para outros cálculos
     primary_goal = goals_data.first
     monthly_target = primary_goal[:meta_valor]
@@ -592,7 +599,7 @@ class BetaController < ApplicationController
         inicio: primary_goal[:inicio],
         fim: primary_goal[:fim],
         dias_restantes: primary_goal[:dias_restantes],
-        meta_recalculada_dia: primary_goal[:meta_recalculada_dia],
+        meta_recalculada_dia: monthly_daily_target,
         quanto_falta_super_meta: primary_goal[:quanto_falta_super_meta]
       },
       
