@@ -296,8 +296,7 @@ class GoalsController < ApplicationController
       :target_value, 
       :current_value, 
       :description,
-      :store_id,
-      :company_id
+      :store_id
     ).tap do |permitted_params|
       # Se for meta por loja, remover seller_id
       if permitted_params[:goal_scope] == 'store_wide'
