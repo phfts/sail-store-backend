@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_26_161716) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_26_203955) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -197,6 +197,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_26_161716) do
     t.datetime "updated_at", null: false
     t.bigint "seller_id"
     t.bigint "store_id"
+    t.decimal "return_value", precision: 10, scale: 2, default: "0.0"
     t.index ["external_id"], name: "index_returns_on_external_id", unique: true
     t.index ["original_order_id"], name: "index_returns_on_original_order_id"
     t.index ["product_id"], name: "index_returns_on_product_id"
