@@ -137,6 +137,9 @@ class BetaController < ApplicationController
       goal_days_elapsed = [current_date - goal_start + 1, 0].max.to_i
       goal_days_remaining = calculate_goal_days_remaining(goal.seller, current_date, goal_end)
       
+      # Debug: Log das datas para verificar se estão corretas
+      Rails.logger.debug "Meta #{goal.id}: start=#{goal_start}, end=#{goal_end}, current=#{current_date}, total_days=#{goal_total_days}, elapsed=#{goal_days_elapsed}, remaining=#{goal_days_remaining}"
+      
       # Calcular percentual e métricas
       goal_percentage = goal_target > 0 ? (store_sales / goal_target * 100).round(2) : 0
       goal_ticket = store_orders_count > 0 ? store_sales / store_orders_count : 0
@@ -145,6 +148,9 @@ class BetaController < ApplicationController
       # Calcular meta por dia restante
       remaining_target = [goal_target - store_sales, 0].max
       daily_target = goal_days_remaining > 0 ? (remaining_target / goal_days_remaining).round(2) : 0
+      
+      # Debug: Log dos valores para verificar se estão corretos
+      Rails.logger.debug "Meta #{goal.id}: target=#{goal_target}, sales=#{store_sales}, remaining=#{remaining_target}, days_remaining=#{goal_days_remaining}, daily_target=#{daily_target}"
       
       # Classificar tipo de período
       goal_type = case goal_total_days
@@ -403,6 +409,9 @@ class BetaController < ApplicationController
       goal_days_elapsed = [current_date - goal_start + 1, 0].max.to_i
       goal_days_remaining = calculate_goal_days_remaining(goal.seller, current_date, goal_end)
       
+      # Debug: Log das datas para verificar se estão corretas
+      Rails.logger.debug "Meta #{goal.id}: start=#{goal_start}, end=#{goal_end}, current=#{current_date}, total_days=#{goal_total_days}, elapsed=#{goal_days_elapsed}, remaining=#{goal_days_remaining}"
+      
       # Calcular percentual e métricas
       goal_percentage = goal_target > 0 ? (goal_sales / goal_target * 100).round(2) : 0
       goal_ticket = goal_orders_count > 0 ? goal_sales / goal_orders_count : 0
@@ -416,6 +425,9 @@ class BetaController < ApplicationController
                   when 36..100 then 'trimestral'
                   else 'personalizado'
                   end
+      
+      # Debug: Log dos valores para verificar se estão corretos
+      Rails.logger.debug "Meta #{goal.id}: target=#{goal_target}, sales=#{goal_sales}, remaining=#{goal_target - goal_sales}, days_remaining=#{goal_days_remaining}, daily_target=#{goal_days_remaining > 0 ? ((goal_target - goal_sales) / goal_days_remaining).round(2) : 0}"
       
       goals_data << {
         id: goal.id,
