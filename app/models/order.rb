@@ -23,14 +23,15 @@ class Order < ApplicationRecord
   # Calcula o total líquido (descontando devoluções e trocas)
   def net_total
     gross_total = total
-    returned_value = returns.sum(&:return_value)
+    # Buscar devoluções diretamente pelo seller_id e store_id
+    returned_value = Return.where(seller_id: seller_id, store_id: store_id).sum(&:return_value)
     exchanged_value = original_exchanges.sum(:voucher_value)
     gross_total - returned_value - exchanged_value
   end
   
   # Valor total das devoluções
   def total_returned
-    returns.sum(&:return_value)
+    Return.where(seller_id: seller_id, store_id: store_id).sum(&:return_value)
   end
   
   private
