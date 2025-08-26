@@ -42,10 +42,8 @@ class GoalsController < ApplicationController
       end
     end
 
-    # Calcular progresso automaticamente para todas as metas
-    @goals.each do |goal|
-      update_goal_progress(goal)
-    end
+    # Calcular progresso automaticamente para todas as metas (otimizado para evitar N+1)
+    update_all_goals_progress(@goals)
 
     render json: @goals.as_json(
       include: { 
@@ -229,6 +227,63 @@ class GoalsController < ApplicationController
     
     # Atualizar o current_value da meta
     goal.update_column(:current_value, current_sales || 0)
+  end
+
+  def update_all_goals_progress(goals)
+    return if goals.empty?
+    
+    # Separar metas individuais e por loja
+    individual_goals = goals.select { |g| g.goal_scope == 'individual' && g.seller_id.present? }
+    store_goals = goals.select { |g| g.goal_scope == 'store_wide' }
+    
+    # Atualizar metas individuais em lote
+    if individual_goals.any?
+      seller_ids = individual_goals.map(&:seller_id).uniq
+      date_ranges = individual_goals.map { |g| [g.start_date.beginning_of_day, g.end_date.end_of_day] }.uniq
+      
+      # Buscar todas as vendas dos vendedores nos períodos das metas de uma vez
+      seller_sales = {}
+      seller_ids.each do |seller_id|
+        date_ranges.each do |start_date, end_date|
+          orders_in_period = Order.where(seller_id: seller_id)
+                                 .where('orders.sold_at >= ? AND orders.sold_at <= ?', start_date, end_date)
+          total_sales = orders_in_period.sum(&:net_total)
+          seller_sales["#{seller_id}_#{start_date.to_date}_#{end_date.to_date}"] = total_sales
+        end
+      end
+      
+      # Atualizar metas individuais
+      individual_goals.each do |goal|
+        key = "#{goal.seller_id}_#{goal.start_date.to_date}_#{goal.end_date.to_date}"
+        current_sales = seller_sales[key] || 0
+        goal.update_column(:current_value, current_sales)
+      end
+    end
+    
+    # Atualizar metas por loja em lote
+    if store_goals.any?
+      store_id = current_user.store&.id
+      if store_id.present?
+        date_ranges = store_goals.map { |g| [g.start_date.beginning_of_day, g.end_date.end_of_day] }.uniq
+        
+        # Buscar todas as vendas da loja nos períodos das metas de uma vez
+        store_sales = {}
+        date_ranges.each do |start_date, end_date|
+          orders_in_period = Order.joins(:seller)
+                                 .where(sellers: { store_id: store_id })
+                                 .where('orders.sold_at >= ? AND orders.sold_at <= ?', start_date, end_date)
+          total_sales = orders_in_period.sum(&:net_total)
+          store_sales["#{start_date.to_date}_#{end_date.to_date}"] = total_sales
+        end
+        
+        # Atualizar metas por loja
+        store_goals.each do |goal|
+          key = "#{goal.start_date.to_date}_#{goal.end_date.to_date}"
+          current_sales = store_sales[key] || 0
+          goal.update_column(:current_value, current_sales)
+        end
+      end
+    end
   end
 
   def goal_params
