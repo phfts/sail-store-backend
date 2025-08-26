@@ -1,10 +1,8 @@
 class Return < ApplicationRecord
   # Relacionamentos
-  belongs_to :original_order, class_name: 'Order', optional: true
+  belongs_to :seller
+  belongs_to :store
   belongs_to :product, optional: true
-  
-  # Delegações para acessar seller através da order
-  delegate :seller, to: :original_order, allow_nil: true
   
   # Validações
   validates :external_id, presence: true, uniqueness: true
@@ -13,18 +11,21 @@ class Return < ApplicationRecord
   
   # Scopes
   scope :by_date_range, ->(start_date, end_date) { where(processed_at: start_date..end_date) }
-  scope :by_seller, ->(seller_id) { joins(:original_order).where(orders: { seller_id: seller_id }) }
+  scope :by_seller, ->(seller_id) { where(seller_id: seller_id) }
+  scope :by_store, ->(store_id) { where(store_id: store_id) }
   scope :by_product, ->(product_id) { where(product_id: product_id) }
   
   # Métodos
   def return_value
-    return 0 unless original_order && product
+    return 0 unless product
     
-    # Busca o item original da venda para pegar o preço unitário
-    original_item = original_order.order_items.find_by(product: product)
-    return 0 unless original_item
+    # Buscar o preço médio do produto na loja para calcular o valor da devolução
+    # Como não temos mais acesso ao pedido original, usamos o preço médio
+    average_price = product.order_items.joins(:order)
+                           .where(orders: { seller_id: seller_id })
+                           .average(:unit_price) || 0
     
-    quantity_returned * original_item.unit_price
+    quantity_returned * average_price
   end
   
   def formatted_quantity

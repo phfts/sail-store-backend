@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   belongs_to :store
   has_many :order_items, dependent: :destroy
   has_many :products, through: :order_items
-  has_many :returns, class_name: 'Return', foreign_key: 'original_order_id', dependent: :destroy
+  # Removido relacionamento com returns - agora returns tem relacionamento direto com seller e store
   has_many :original_exchanges, class_name: 'Exchange', foreign_key: 'original_order_id', dependent: :destroy
   has_many :new_exchanges, class_name: 'Exchange', foreign_key: 'new_order_id', dependent: :destroy
   

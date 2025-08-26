@@ -838,8 +838,7 @@ class SellersController < ApplicationController
                              .sum('order_items.quantity * order_items.unit_price')
     
     # Devoluções
-    returns = Return.joins(:original_order)
-                   .where(orders: { seller_id: seller.id })
+    returns = Return.where(seller_id: seller.id)
                    .where('returns.processed_at >= ? AND returns.processed_at <= ?', start_date, end_date)
     total_returned = returns.sum(&:return_value)
     

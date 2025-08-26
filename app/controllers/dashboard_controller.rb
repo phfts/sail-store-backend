@@ -150,8 +150,7 @@ class DashboardController < ApplicationController
                              .includes(:order_items)
     
     # Buscar todas as devoluções dos vendedores no período de uma vez
-    all_seller_returns = Return.joins(original_order: :seller)
-                              .where(sellers: { id: seller_ids })
+    all_seller_returns = Return.where(seller_id: seller_ids)
                               .where('returns.processed_at >= ? AND returns.processed_at <= ?', 
                                      date_range[:start_date], date_range[:end_date])
     
@@ -165,7 +164,7 @@ class DashboardController < ApplicationController
     sellers_annual_data = active_sellers.map do |seller|
       # Filtrar dados deste vendedor
       seller_orders = all_seller_orders.select { |order| order.seller_id == seller.id }
-      seller_returns = all_seller_returns.select { |ret| ret.original_order.seller_id == seller.id }
+      seller_returns = all_seller_returns.select { |ret| ret.seller_id == seller.id }
       seller_exchanges = all_seller_exchanges.select { |exc| exc.seller_id == seller.id }
       
       seller_sales = calculate_sales_from_orders(seller_orders)
@@ -509,7 +508,7 @@ class DashboardController < ApplicationController
   def calculate_total_returns_value(store)
     # Calcular valor total das devoluções da loja
     # Como as devoluções não têm ligação direta com vendas, vamos estimar com base no preço médio
-    returns = Return.joins(original_order: :seller).where(sellers: { store_id: store.id })
+    returns = Return.where(store_id: store.id)
     
     # Se não há devoluções, retornar 0
     return 0 if returns.empty?
@@ -525,8 +524,7 @@ class DashboardController < ApplicationController
     # Calcular valor das devoluções em um período específico
     # Primeiro tentar o join, se falhar, retornar 0
     begin
-      returns = Return.joins(original_order: :seller)
-                      .where(sellers: { store_id: store.id })
+      returns = Return.where(store_id: store.id)
                       .where('returns.processed_at >= ? AND returns.processed_at <= ?', start_date, end_date)
       
       return 0 if returns.empty?

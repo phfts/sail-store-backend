@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_25_194138) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_26_161716) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -195,9 +195,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_25_194138) do
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "seller_id"
+    t.bigint "store_id"
     t.index ["external_id"], name: "index_returns_on_external_id", unique: true
     t.index ["original_order_id"], name: "index_returns_on_original_order_id"
     t.index ["product_id"], name: "index_returns_on_product_id"
+    t.index ["seller_id"], name: "index_returns_on_seller_id"
+    t.index ["store_id"], name: "index_returns_on_store_id"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -291,6 +295,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_25_194138) do
   add_foreign_key "queue_items", "stores"
   add_foreign_key "returns", "orders", column: "original_order_id"
   add_foreign_key "returns", "products"
+  add_foreign_key "returns", "sellers"
+  add_foreign_key "returns", "stores"
   add_foreign_key "schedules", "sellers", on_delete: :cascade
   add_foreign_key "schedules", "shifts", on_delete: :cascade
   add_foreign_key "schedules", "stores", on_delete: :cascade

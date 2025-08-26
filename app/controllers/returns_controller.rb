@@ -2,15 +2,15 @@ class ReturnsController < ApplicationController
   before_action :set_return, only: [:show, :update, :destroy]
 
   def index
-    @returns = Return.includes(:original_order, :product)
+    @returns = Return.includes(:seller, :store, :product)
     
     # Filtros
     if params[:seller_id]
-      @returns = @returns.joins(:original_order).where(orders: { seller_id: params[:seller_id] })
+      @returns = @returns.where(seller_id: params[:seller_id])
     end
     
     if params[:store_id]
-      @returns = @returns.joins(original_order: :seller).where(sellers: { store_id: params[:store_id] })
+      @returns = @returns.where(store_id: params[:store_id])
     end
     
     if params[:product_id]
@@ -27,10 +27,8 @@ class ReturnsController < ApplicationController
     render json: {
       returns: @returns.as_json(
         include: { 
-          original_order: { 
-            only: [:id, :external_id, :sold_at],
-            include: { seller: { only: [:id, :name, :external_id] } }
-          },
+          seller: { only: [:id, :name, :external_id] },
+          store: { only: [:id, :name, :slug] },
           product: { only: [:id, :name, :external_id, :sku] }
         },
         methods: [:return_value, :formatted_quantity],
@@ -48,10 +46,8 @@ class ReturnsController < ApplicationController
   def show
     render json: @return.as_json(
       include: { 
-        original_order: { 
-          only: [:id, :external_id, :sold_at],
-          include: { seller: { only: [:id, :name, :external_id] } }
-        },
+        seller: { only: [:id, :name, :external_id] },
+        store: { only: [:id, :name, :slug] },
         product: { only: [:id, :name, :external_id, :sku] }
       },
       methods: [:return_value, :formatted_quantity],
@@ -65,10 +61,8 @@ class ReturnsController < ApplicationController
     if @return.save
       render json: @return.as_json(
         include: { 
-          original_order: { 
-            only: [:id, :external_id, :sold_at],
-            include: { seller: { only: [:id, :name, :external_id] } }
-          },
+          seller: { only: [:id, :name, :external_id] },
+          store: { only: [:id, :name, :slug] },
           product: { only: [:id, :name, :external_id, :sku] }
         },
         methods: [:return_value, :formatted_quantity],
@@ -83,10 +77,8 @@ class ReturnsController < ApplicationController
     if @return.update(return_params)
       render json: @return.as_json(
         include: { 
-          original_order: { 
-            only: [:id, :external_id, :sold_at],
-            include: { seller: { only: [:id, :name, :external_id] } }
-          },
+          seller: { only: [:id, :name, :external_id] },
+          store: { only: [:id, :name, :slug] },
           product: { only: [:id, :name, :external_id, :sku] }
         },
         methods: [:return_value, :formatted_quantity],
@@ -103,15 +95,15 @@ class ReturnsController < ApplicationController
   end
 
   def stats
-    returns = Return.includes(:original_order, :product)
+    returns = Return.includes(:seller, :store, :product)
     
     # Filtros
     if params[:seller_id]
-      returns = returns.joins(:original_order).where(orders: { seller_id: params[:seller_id] })
+      returns = returns.where(seller_id: params[:seller_id])
     end
     
     if params[:store_id]
-      returns = returns.joins(original_order: :seller).where(sellers: { store_id: params[:store_id] })
+      returns = returns.where(store_id: params[:store_id])
     end
     
     if params[:start_date] && params[:end_date]
@@ -150,7 +142,8 @@ class ReturnsController < ApplicationController
       :return_transaction,
       :quantity_returned,
       :processed_at,
-      :original_order_id,
+      :seller_id,
+      :store_id,
       :product_id
     )
   end
