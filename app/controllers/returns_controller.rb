@@ -140,6 +140,7 @@ class ReturnsController < ApplicationController
       :product_external_id,
       :original_transaction,
       :return_transaction,
+      :return_value,
       :quantity_returned,
       :processed_at,
       :seller_id,
