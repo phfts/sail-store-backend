@@ -617,7 +617,6 @@ class BetaController < ApplicationController
       loja: {
         total_vendas: store_sales,
         ticket_medio: store_ticket.round(2),
-        meta_periodo: store_target,
         percentual_atingido: store_percentage,
         pa_produtos_atendimento: store_pa.round(1),
         pedidos_count: store_orders_count,
