@@ -30,3 +30,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore Google Drive configuration with sensitive credentials
+/config/google_drive_config.json
