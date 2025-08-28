@@ -57,7 +57,11 @@ Rails.application.routes.draw do
   put '/stores/:store_slug/shifts/:id', to: 'shifts#update'
   delete '/stores/:store_slug/shifts/:id', to: 'shifts#destroy'
   resources :schedules, except: [:new, :edit]
-  resources :absences, except: [:new, :edit]
+  resources :absences, except: [:new, :edit] do
+    collection do
+      post :bulk_create
+    end
+  end
   get 'absences/current', to: 'absences#current'
   resources :vacations, except: [:new, :edit] # Manter por compatibilidade
   resources :goals, except: [:new, :edit] do
