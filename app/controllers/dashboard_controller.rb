@@ -123,6 +123,8 @@ class DashboardController < ApplicationController
     today_metrics = calculate_metrics(today_orders)
     total_metrics = calculate_metrics(orders)
     
+
+    
     # Buscar metas ativas
     current_goals = store.goals.where('end_date >= ?', Date.current)
     current_target = current_goals.sum(:target_value)
@@ -350,6 +352,38 @@ class DashboardController < ApplicationController
     end
   end
 
+  # Calcula vendas líquidas considerando devoluções e trocas para um conjunto de pedidos
+  def calculate_net_sales_for_orders(orders, store)
+    return 0 if orders.empty?
+    
+    # Vendas brutas
+    gross_sales = calculate_sales_from_orders(orders)
+    
+    # Buscar seller_ids dos pedidos
+    seller_ids = orders.pluck(:seller_id).uniq
+    
+    # Buscar devoluções dos vendedores no período dos pedidos
+    start_date = orders.minimum(:sold_at)
+    end_date = orders.maximum(:sold_at)
+    
+    returns = Return.where(seller_id: seller_ids)
+                   .where('returns.processed_at >= ? AND returns.processed_at <= ?', start_date, end_date)
+    total_returned = returns.sum(&:return_value)
+    
+    # Buscar trocas dos vendedores no período dos pedidos
+    exchanges = Exchange.where(seller_id: seller_ids)
+                       .where('processed_at >= ? AND processed_at <= ?', start_date, end_date)
+    credit_exchanges = exchanges.where(is_credit: true).sum(:voucher_value)
+    debit_exchanges = exchanges.where(is_credit: false).sum(:voucher_value)
+    
+    # Valor líquido = Vendas brutas - Devoluções + Trocas a crédito - Trocas a débito
+    net_sales = gross_sales - total_returned + credit_exchanges - debit_exchanges
+    
+    net_sales
+  end
+
+
+
   def calculate_metrics(orders)
     order_count = orders.count
     
@@ -360,8 +394,10 @@ class DashboardController < ApplicationController
       }
     end
     
-    # Calcular valor total vendido
-    total_sales = calculate_sales_from_orders(orders)
+    # Calcular valor total vendido (vendas líquidas)
+    # Buscar a loja do primeiro pedido para passar como parâmetro
+    store = orders.first.store
+    total_sales = calculate_net_sales_for_orders(orders, store)
     
     # Calcular quantidade total de itens - otimização
     total_items = if orders.first.association(:order_items).loaded?
@@ -378,7 +414,7 @@ class DashboardController < ApplicationController
       orders.joins(:order_items).sum('order_items.quantity')
     end
     
-    # Ticket Médio = Valor total vendido / Número de pedidos
+    # Ticket Médio = Valor total vendido (líquido) / Número de pedidos
     ticket_medio = (total_sales.to_f / order_count).round(2)
     
     # PA (Produto por Atendimento) = Quantidade total de itens / Número de pedidos

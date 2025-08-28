@@ -16,10 +16,10 @@ class OrderItemsController < ApplicationController
     render json: @order_items.as_json(
       include: { 
         order: { 
-          only: [:id, :external_id],
+          only: [:id, :external_id, :sold_at],
           include: { seller: { only: [:id, :name, :display_name] } }
         },
-        product: { only: [:id, :name, :external_id] }
+        product: { only: [:id, :name, :external_id, :sku] }
       },
       methods: [:subtotal]
     )
