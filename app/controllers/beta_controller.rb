@@ -549,10 +549,10 @@ class BetaController < ApplicationController
     # Calcular vendas líquidas da loja no período da meta principal
     store_sales_data = calculate_store_net_sales(store, primary_start, [current_date, primary_end].min)
     store_sales = store_sales_data[:net_sales]
-    store_orders_count = store_sales_data[:gross_sales] > 0 ? Order.joins(:seller)
-                                                                  .where(sellers: { store_id: store.id })
-                                                                  .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
-                                                                  .count : 0
+    store_orders_count = Order.joins(:seller)
+                             .where(sellers: { store_id: store.id })
+                             .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
+                             .count
     store_total_items = store_orders_count > 0 ? Order.joins(:seller, :order_items)
                                                     .where(sellers: { store_id: store.id })
                                                     .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
