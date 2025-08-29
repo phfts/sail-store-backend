@@ -763,17 +763,14 @@ class DashboardController < ApplicationController
     return 0 if days_remaining_in_month <= 0
     
     # Calcular quantos dias a semana atual tem no mês atual
-    # A semana deve estar completamente dentro do mês atual
-    week_start = current_date.beginning_of_week
+    # Usar o dia atual como ponto de partida, não o início da semana
+    week_start = current_date
     week_end = current_date.end_of_week
-    
-    # Ajustar o início da semana para não ser antes do início do mês
-    week_start = month_start if week_start < month_start
     
     # Ajustar o fim da semana para não ser depois do fim do mês
     week_end = month_end if week_end > month_end
     
-    # Calcular dias da semana que estão no mês atual
+    # Calcular dias da semana que estão no mês atual (a partir do dia atual)
     week_days_in_month = 0
     (week_start..week_end).each do |date|
       week_days_in_month += 1 if date.month == current_date.month

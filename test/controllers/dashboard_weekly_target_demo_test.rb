@@ -82,7 +82,7 @@ class DashboardWeeklyTargetDemoTest < ActionDispatch::IntegrationTest
         
         # Verificações
         assert weekly_target > 0, "Meta semanal deve ser maior que 0 quando há valor restante"
-        assert_in_delta weekly_target_without_limit, weekly_target, 0.01, "Meta semanal calculada deve ser igual à meta sem limite"
+        assert_in_delta weekly_target_with_limit, weekly_target, 0.01, "Meta semanal calculada deve ser igual à meta com limite"
       end
       
       puts "✅ Meta semanal calculada corretamente"
