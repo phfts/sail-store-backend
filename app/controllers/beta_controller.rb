@@ -337,7 +337,7 @@ class BetaController < ApplicationController
         dias_restantes: total_days_remaining,
         meta_por_dia_restante: total_daily_target,
         quanto_falta_super_meta: primary_goal[:quanto_falta_super_meta],
-        ticket_medio: store_ticket.round(2),
+        ticket_medio: store_ticket_medio.round(2),
         pa_produtos_atendimento: store_pa.round(1),
         pedidos_count: store_orders_count,
         produtos_vendidos: store_total_items
@@ -554,8 +554,7 @@ class BetaController < ApplicationController
                              .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
                              .count
     
-    # Debug log
-    Rails.logger.debug "Beta Controller Debug: store_sales=#{store_sales}, store_orders_count=#{store_orders_count}"
+
     store_total_items = store_orders_count > 0 ? Order.joins(:seller, :order_items)
                                                     .where(sellers: { store_id: store.id })
                                                     .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
