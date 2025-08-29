@@ -279,6 +279,18 @@ class BetaController < ApplicationController
     store_sales_data = calculate_store_net_sales(store, periodo_inicio, [current_date, periodo_fim].min)
     total_sales = store_sales_data[:net_sales]
     
+    # Calcular métricas da loja para o consolidado
+    store_orders_count = Order.joins(:seller)
+                             .where(sellers: { store_id: store.id })
+                             .where('orders.sold_at >= ? AND orders.sold_at <= ?', periodo_inicio, [current_date, periodo_fim].min)
+                             .count
+    store_total_items = store_orders_count > 0 ? Order.joins(:seller, :order_items)
+                                                    .where(sellers: { store_id: store.id })
+                                                    .where('orders.sold_at >= ? AND orders.sold_at <= ?', periodo_inicio, [current_date, periodo_fim].min)
+                                                    .sum('order_items.quantity') : 0
+    store_ticket_medio = store_orders_count > 0 ? total_sales / store_orders_count : 0
+    store_pa = store_orders_count > 0 ? store_total_items.to_f / store_orders_count : 0
+    
     # Usar a meta principal (primeira) para outros cálculos
     primary_goal = store_goals_data.first
     total_days_remaining = primary_goal[:dias_restantes]
@@ -337,10 +349,10 @@ class BetaController < ApplicationController
         dias_restantes: total_days_remaining,
         meta_por_dia_restante: total_daily_target,
         quanto_falta_super_meta: primary_goal[:quanto_falta_super_meta],
-        ticket_medio: primary_goal[:ticket_medio],
-        pa_produtos_atendimento: primary_goal[:pa_produtos_atendimento],
-        pedidos_count: primary_goal[:pedidos_count],
-        produtos_vendidos: primary_goal[:produtos_vendidos]
+        ticket_medio: store_ticket_medio.round(2),
+        pa_produtos_atendimento: store_pa.round(1),
+        pedidos_count: store_orders_count,
+        produtos_vendidos: store_total_items
       },
       
       # === ÚLTIMOS 7 DIAS ===
@@ -549,10 +561,11 @@ class BetaController < ApplicationController
     # Calcular vendas líquidas da loja no período da meta principal
     store_sales_data = calculate_store_net_sales(store, primary_start, [current_date, primary_end].min)
     store_sales = store_sales_data[:net_sales]
-    store_orders_count = store_sales_data[:gross_sales] > 0 ? Order.joins(:seller)
-                                                                  .where(sellers: { store_id: store.id })
-                                                                  .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
-                                                                  .count : 0
+    store_orders_count = Order.joins(:seller)
+                             .where(sellers: { store_id: store.id })
+                             .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
+                             .count
+    
     store_total_items = store_orders_count > 0 ? Order.joins(:seller, :order_items)
                                                     .where(sellers: { store_id: store.id })
                                                     .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
@@ -678,6 +691,18 @@ class BetaController < ApplicationController
 
   # Calcula vendas líquidas considerando devoluções e trocas
   def calculate_net_sales(seller, start_date, end_date)
+    # Verificar se o vendedor está ativo no período
+    # Se o vendedor está inativo, não contabilizar vendas
+    unless seller.active?
+      return {
+        gross_sales: 0,
+        total_returned: 0,
+        credit_exchanges: 0,
+        debit_exchanges: 0,
+        net_sales: 0
+      }
+    end
+    
     # Vendas brutas
     gross_orders = seller.orders.includes(:order_items)
                         .where('sold_at >= ? AND sold_at <= ?', start_date, end_date)
@@ -709,22 +734,26 @@ class BetaController < ApplicationController
 
   # Calcula vendas líquidas da loja considerando devoluções e trocas
   def calculate_store_net_sales(store, start_date, end_date)
-    # Vendas brutas da loja
+    # Vendas brutas da loja (apenas vendedores ativos)
     gross_orders = Order.joins(:seller)
                        .where(sellers: { store_id: store.id })
+                       .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
                        .includes(:order_items)
                        .where('orders.sold_at >= ? AND orders.sold_at <= ?', start_date, end_date)
     gross_sales = gross_orders.joins(:order_items)
                              .sum('order_items.quantity * order_items.unit_price')
     
-    # Devoluções da loja
-    returns = Return.where(store_id: store.id)
+    # Devoluções da loja (apenas vendedores ativos)
+    returns = Return.joins(:seller)
+                   .where(sellers: { store_id: store.id })
+                   .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
                    .where('returns.processed_at >= ? AND returns.processed_at <= ?', start_date, end_date)
     total_returned = returns.sum(&:return_value)
     
-    # Trocas da loja
+    # Trocas da loja (apenas vendedores ativos)
     exchanges = Exchange.joins(:seller)
                        .where(sellers: { store_id: store.id })
+                       .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
                        .where('processed_at >= ? AND processed_at <= ?', start_date, end_date)
     credit_exchanges = exchanges.where(is_credit: true).sum(:voucher_value)
     debit_exchanges = exchanges.where(is_credit: false).sum(:voucher_value)

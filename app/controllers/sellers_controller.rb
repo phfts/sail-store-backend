@@ -700,25 +700,36 @@ class SellersController < ApplicationController
 
   def calculate_seller_ranking(sellers, start_date, end_date)
     sellers.map do |seller|
-      # Calcular vendas do vendedor no período
-      seller_orders = seller.orders.includes(:order_items)
-                           .where('orders.sold_at >= ? AND orders.sold_at <= ?', start_date.to_date, end_date.to_date)
-      
-      sales = seller_orders.sum do |order|
-        order.order_items.sum { |item| item.quantity * item.unit_price }
+      # Verificar se o vendedor está ativo
+      unless seller.active?
+        # Se inativo, retornar vendas como 0
+        {
+          seller_id: seller.id,
+          sales: 0,
+          goal_target: 0,
+          goal_percentage: 0
+        }
+      else
+        # Calcular vendas do vendedor no período
+        seller_orders = seller.orders.includes(:order_items)
+                             .where('orders.sold_at >= ? AND orders.sold_at <= ?', start_date.to_date, end_date.to_date)
+        
+        sales = seller_orders.sum do |order|
+          order.order_items.sum { |item| item.quantity * item.unit_price }
+        end
+        
+        # Buscar meta do vendedor para o período
+        goal = seller.goals.where('start_date <= ? AND end_date >= ?', end_date, start_date).first
+        goal_target = goal&.target_value || 0
+        goal_percentage = goal_target > 0 ? ((sales.to_f / goal_target) * 100).round(2) : 0
+        
+        {
+          seller_id: seller.id,
+          sales: sales,
+          goal_target: goal_target,
+          goal_percentage: goal_percentage
+        }
       end
-      
-      # Buscar meta do vendedor para o período
-      goal = seller.goals.where('start_date <= ? AND end_date >= ?', end_date, start_date).first
-      goal_target = goal&.target_value || 0
-      goal_percentage = goal_target > 0 ? ((sales.to_f / goal_target) * 100).round(2) : 0
-      
-      {
-        seller_id: seller.id,
-        sales: sales,
-        goal_target: goal_target,
-        goal_percentage: goal_percentage
-      }
     end.sort_by { |seller_data| -seller_data[:sales] }
   end
 
@@ -831,6 +842,18 @@ class SellersController < ApplicationController
 
   # Calcula vendas líquidas considerando devoluções e trocas
   def calculate_net_sales(seller, start_date, end_date)
+    # Verificar se o vendedor está ativo no período
+    # Se o vendedor está inativo, não contabilizar vendas
+    unless seller.active?
+      return {
+        gross_sales: 0,
+        total_returned: 0,
+        credit_exchanges: 0,
+        debit_exchanges: 0,
+        net_sales: 0
+      }
+    end
+    
     # Vendas brutas
     gross_orders = seller.orders.includes(:order_items)
                         .where('sold_at >= ? AND sold_at <= ?', start_date, end_date)

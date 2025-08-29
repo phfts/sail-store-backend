@@ -274,6 +274,99 @@ class BetaControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "manager_kpis endpoint não deve dar erro de store_ticket" do
+    # Criar um manager para testar (Seller com store_admin: true)
+    manager_user = User.create!(
+      email: "manager@test.com",
+      password: "password123"
+    )
+    
+    manager = Seller.create!(
+      name: "Manager Test",
+      store: @store,
+      company: @company,
+      user: manager_user,
+      store_admin: true,
+      whatsapp: "11987654321",
+      email: "manager@test.com"
+    )
+    
+    # Criar algumas vendas para a loja
+    seller1 = Seller.create!(
+      name: "Seller1 Test",
+      store: @store,
+      company: @company,
+      whatsapp: "11987654322",
+      email: "seller1@test.com"
+    )
+    
+    seller2 = Seller.create!(
+      name: "Seller2 Test",
+      store: @store,
+      company: @company,
+      whatsapp: "11987654323",
+      email: "seller2@test.com"
+    )
+    
+    # Criar alguns pedidos
+    order1 = Order.create!(
+      seller: seller1,
+      store: @store,
+      sold_at: Date.current - 5.days,
+      external_id: "TEST_ORDER_001"
+    )
+    
+    order2 = Order.create!(
+      seller: seller2,
+      store: @store,
+      sold_at: Date.current - 3.days,
+      external_id: "TEST_ORDER_002"
+    )
+    
+    # Criar order items
+    OrderItem.create!(
+      order: order1,
+      product: products(:one),
+      store: @store,
+      quantity: 2,
+      unit_price: 500.0,
+      external_id: "TEST_ITEM_001"
+    )
+    
+    OrderItem.create!(
+      order: order2,
+      product: products(:one),
+      store: @store,
+      quantity: 3,
+      unit_price: 500.0,
+      external_id: "TEST_ITEM_002"
+    )
+    
+    # Testar o endpoint manager_kpis
+    get "/beta/managers/#{manager.id}/kpis"
+    
+    # Verificar que não há erro 500
+    assert_response :success, "Endpoint manager_kpis deve retornar 200, não 500"
+    
+    # Verificar que a resposta contém os dados esperados
+    response_data = JSON.parse(response.body)
+    
+    assert_includes response_data, "consolidado", "Resposta deve conter seção consolidado"
+    assert_includes response_data["consolidado"], "ticket_medio", "Consolidado deve conter ticket_medio"
+    assert_includes response_data["consolidado"], "pedidos_count", "Consolidado deve conter pedidos_count"
+    
+    # Verificar que os valores são números válidos (podem ser string ou numeric)
+    ticket_medio = response_data["consolidado"]["ticket_medio"]
+    pedidos_count = response_data["consolidado"]["pedidos_count"]
+    
+    assert (ticket_medio.is_a?(Numeric) || ticket_medio.is_a?(String)), "ticket_medio deve ser um número ou string"
+    assert (pedidos_count.is_a?(Numeric) || pedidos_count.is_a?(String)), "pedidos_count deve ser um número ou string"
+    
+    # Verificar que os valores são válidos
+    assert ticket_medio.to_f > 0, "ticket_medio deve ser maior que 0"
+    assert pedidos_count.to_i >= 0, "pedidos_count deve ser maior ou igual a 0"
+  end
+
   private
 
   def shifts(one)

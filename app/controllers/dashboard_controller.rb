@@ -66,11 +66,16 @@ class DashboardController < ApplicationController
     absences = store.absences
     active_absences = absences.where('start_date <= ? AND end_date >= ?', Date.current, Date.current)
 
-    # Calcular vendas a partir dos order items
-    orders = store.orders.includes(:seller, :order_items)
+    # Calcular vendas a partir dos order items (apenas vendedores ativos)
+    orders = store.orders.joins(:seller)
+                        .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
+                        .includes(:seller, :order_items)
     
-    # Calcular trocas e devoluções totais da loja para descontar do total
-    total_exchanges_value = Exchange.joins(:seller).where(sellers: { store_id: store.id }).sum(:voucher_value)
+    # Calcular trocas e devoluções totais da loja para descontar do total (apenas vendedores ativos)
+    total_exchanges_value = Exchange.joins(:seller)
+                                   .where(sellers: { store_id: store.id })
+                                   .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
+                                   .sum(:voucher_value)
     total_returns_value = calculate_total_returns_value(store)
     total_adjustments = total_exchanges_value + total_returns_value
     
@@ -78,9 +83,10 @@ class DashboardController < ApplicationController
     current_month_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
       Date.current.beginning_of_month, Date.current.end_of_month)
     current_month_sales_gross = calculate_sales_from_orders(current_month_orders)
-    # Trocas/devoluções do mês atual
+    # Trocas/devoluções do mês atual (apenas vendedores ativos)
     current_month_exchanges = Exchange.joins(:seller)
       .where(sellers: { store_id: store.id })
+      .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
       .where('processed_at >= ? AND processed_at <= ?', 
         Date.current.beginning_of_month, Date.current.end_of_month)
       .sum(:voucher_value)
@@ -91,9 +97,10 @@ class DashboardController < ApplicationController
     current_week_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
       Date.current.beginning_of_week, Date.current.end_of_week)
     current_week_sales_gross = calculate_sales_from_orders(current_week_orders)
-    # Trocas/devoluções da semana atual
+    # Trocas/devoluções da semana atual (apenas vendedores ativos)
     current_week_exchanges = Exchange.joins(:seller)
       .where(sellers: { store_id: store.id })
+      .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
       .where('processed_at >= ? AND processed_at <= ?', 
         Date.current.beginning_of_week, Date.current.end_of_week)
       .sum(:voucher_value)
@@ -104,9 +111,10 @@ class DashboardController < ApplicationController
     today_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
       Date.current.beginning_of_day, Date.current.end_of_day)
     today_sales_gross = calculate_sales_from_orders(today_orders)
-    # Trocas/devoluções de hoje
+    # Trocas/devoluções de hoje (apenas vendedores ativos)
     today_exchanges = Exchange.joins(:seller)
       .where(sellers: { store_id: store.id })
+      .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
       .where('processed_at >= ? AND processed_at <= ?', 
         Date.current.beginning_of_day, Date.current.end_of_day)
       .sum(:voucher_value)
@@ -122,6 +130,8 @@ class DashboardController < ApplicationController
     current_week_metrics = calculate_metrics(current_week_orders)
     today_metrics = calculate_metrics(today_orders)
     total_metrics = calculate_metrics(orders)
+    
+
     
     # Buscar metas ativas
     current_goals = store.goals.where('end_date >= ?', Date.current)
@@ -300,7 +310,8 @@ class DashboardController < ApplicationController
         target: current_target,
         progress: progress,
         period: "mensal",
-        endDate: Date.current.end_of_month.strftime("%d/%m/%Y")
+        endDate: Date.current.end_of_month.strftime("%d/%m/%Y"),
+        weeklyTarget: calculate_weekly_target(current_month_sales, current_target)
       },
       salesPotential: {
         potential: potencial_vendas[:potential],
@@ -350,6 +361,38 @@ class DashboardController < ApplicationController
     end
   end
 
+  # Calcula vendas líquidas considerando devoluções e trocas para um conjunto de pedidos
+  def calculate_net_sales_for_orders(orders, store)
+    return 0 if orders.empty?
+    
+    # Vendas brutas
+    gross_sales = calculate_sales_from_orders(orders)
+    
+    # Buscar seller_ids dos pedidos
+    seller_ids = orders.pluck(:seller_id).uniq
+    
+    # Buscar devoluções dos vendedores no período dos pedidos
+    start_date = orders.minimum(:sold_at)
+    end_date = orders.maximum(:sold_at)
+    
+    returns = Return.where(seller_id: seller_ids)
+                   .where('returns.processed_at >= ? AND returns.processed_at <= ?', start_date, end_date)
+    total_returned = returns.sum(&:return_value)
+    
+    # Buscar trocas dos vendedores no período dos pedidos
+    exchanges = Exchange.where(seller_id: seller_ids)
+                       .where('processed_at >= ? AND processed_at <= ?', start_date, end_date)
+    credit_exchanges = exchanges.where(is_credit: true).sum(:voucher_value)
+    debit_exchanges = exchanges.where(is_credit: false).sum(:voucher_value)
+    
+    # Valor líquido = Vendas brutas - Devoluções + Trocas a crédito - Trocas a débito
+    net_sales = gross_sales - total_returned + credit_exchanges - debit_exchanges
+    
+    net_sales
+  end
+
+
+
   def calculate_metrics(orders)
     order_count = orders.count
     
@@ -360,8 +403,10 @@ class DashboardController < ApplicationController
       }
     end
     
-    # Calcular valor total vendido
-    total_sales = calculate_sales_from_orders(orders)
+    # Calcular valor total vendido (vendas líquidas)
+    # Buscar a loja do primeiro pedido para passar como parâmetro
+    store = orders.first.store
+    total_sales = calculate_net_sales_for_orders(orders, store)
     
     # Calcular quantidade total de itens - otimização
     total_items = if orders.first.association(:order_items).loaded?
@@ -378,7 +423,7 @@ class DashboardController < ApplicationController
       orders.joins(:order_items).sum('order_items.quantity')
     end
     
-    # Ticket Médio = Valor total vendido / Número de pedidos
+    # Ticket Médio = Valor total vendido (líquido) / Número de pedidos
     ticket_medio = (total_sales.to_f / order_count).round(2)
     
     # PA (Produto por Atendimento) = Quantidade total de itens / Número de pedidos
@@ -506,9 +551,11 @@ class DashboardController < ApplicationController
   end
 
   def calculate_total_returns_value(store)
-    # Calcular valor total das devoluções da loja
+    # Calcular valor total das devoluções da loja (apenas vendedores ativos)
     # Como as devoluções não têm ligação direta com vendas, vamos estimar com base no preço médio
-    returns = Return.where(store_id: store.id)
+    returns = Return.joins(:seller)
+                   .where(sellers: { store_id: store.id })
+                   .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
     
     # Se não há devoluções, retornar 0
     return 0 if returns.empty?
@@ -521,10 +568,12 @@ class DashboardController < ApplicationController
   end
   
   def calculate_period_returns_value(store, start_date, end_date)
-    # Calcular valor das devoluções em um período específico
+    # Calcular valor das devoluções em um período específico (apenas vendedores ativos)
     # Primeiro tentar o join, se falhar, retornar 0
     begin
-      returns = Return.where(store_id: store.id)
+      returns = Return.joins(:seller)
+                      .where(sellers: { store_id: store.id })
+                      .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
                       .where('returns.processed_at >= ? AND returns.processed_at <= ?', start_date, end_date)
       
       return 0 if returns.empty?
@@ -555,9 +604,10 @@ class DashboardController < ApplicationController
       month_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', start_date, end_date)
       gross_sales = calculate_sales_from_orders(month_orders)
       
-      # Trocas do mês
+      # Trocas do mês (apenas vendedores ativos)
       month_exchanges = Exchange.joins(:seller)
         .where(sellers: { store_id: store.id })
+        .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
         .where('processed_at >= ? AND processed_at <= ?', start_date, end_date)
         .sum(:voucher_value)
       
@@ -694,6 +744,46 @@ class DashboardController < ApplicationController
       daily_average: best_performer[:daily_average].round(2),
       days_worked: best_performer[:days_worked]
     }
+  end
+
+  def calculate_weekly_target(current_month_sales, current_target)
+    # Calcular quanto falta para bater a meta mensal
+    remaining_target = [current_target - current_month_sales, 0].max
+    
+    # Se não há meta ou já bateu a meta, retornar 0
+    return 0 if current_target <= 0 || remaining_target <= 0
+    
+    # Calcular dias restantes no mês
+    current_date = Date.current
+    month_end = current_date.end_of_month
+    days_remaining_in_month = (month_end - current_date).to_i + 1
+    
+    # Se não há dias restantes, retornar 0
+    return 0 if days_remaining_in_month <= 0
+    
+    # Calcular quantos dias a semana atual tem no mês
+    week_start = current_date.beginning_of_week
+    week_end = current_date.end_of_week
+    
+    # Ajustar para não ultrapassar o fim do mês
+    week_end = month_end if week_end > month_end
+    
+    # Calcular dias da semana que estão no mês
+    week_days_in_month = 0
+    (week_start..week_end).each do |date|
+      week_days_in_month += 1 if date.month == current_date.month
+    end
+    
+    # Se não há dias da semana no mês, retornar 0
+    return 0 if week_days_in_month <= 0
+    
+    # Calcular meta diária restante
+    daily_target = remaining_target.to_f / days_remaining_in_month
+    
+    # Calcular meta da semana: meta diária × dias da semana no mês
+    weekly_target = daily_target * week_days_in_month
+    
+    weekly_target.round(2)
   end
 
   def calculate_date_range(period)

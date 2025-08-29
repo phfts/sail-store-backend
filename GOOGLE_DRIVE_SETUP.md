@@ -125,4 +125,3 @@ Os arquivos CSV devem estar na pasta compartilhada com os seguintes nomes:
 - Use variáveis de ambiente para as credenciais
 - Revogue o acesso do service account quando não precisar mais
 - Monitore os logs de acesso no Google Cloud Console
-
