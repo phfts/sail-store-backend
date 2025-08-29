@@ -337,10 +337,10 @@ class BetaController < ApplicationController
         dias_restantes: total_days_remaining,
         meta_por_dia_restante: total_daily_target,
         quanto_falta_super_meta: primary_goal[:quanto_falta_super_meta],
-        ticket_medio: primary_goal[:ticket_medio],
-        pa_produtos_atendimento: primary_goal[:pa_produtos_atendimento],
-        pedidos_count: primary_goal[:pedidos_count],
-        produtos_vendidos: primary_goal[:produtos_vendidos]
+        ticket_medio: store_ticket.round(2),
+        pa_produtos_atendimento: store_pa.round(1),
+        pedidos_count: store_orders_count,
+        produtos_vendidos: store_total_items
       },
       
       # === ÚLTIMOS 7 DIAS ===
