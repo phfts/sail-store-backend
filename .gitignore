@@ -33,6 +33,3 @@
 
 # Ignore Google Drive configuration with sensitive credentials
 /config/google_drive_config.json
-
-# Google Drive Configuration
-config/google_drive_config.json
