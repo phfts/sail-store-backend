@@ -755,20 +755,25 @@ class DashboardController < ApplicationController
     
     # Calcular dias restantes no mês
     current_date = Date.current
+    month_start = current_date.beginning_of_month
     month_end = current_date.end_of_month
     days_remaining_in_month = (month_end - current_date).to_i + 1
     
     # Se não há dias restantes, retornar 0
     return 0 if days_remaining_in_month <= 0
     
-    # Calcular quantos dias a semana atual tem no mês
+    # Calcular quantos dias a semana atual tem no mês atual
+    # A semana deve estar completamente dentro do mês atual
     week_start = current_date.beginning_of_week
     week_end = current_date.end_of_week
     
-    # Ajustar para não ultrapassar o fim do mês
+    # Ajustar o início da semana para não ser antes do início do mês
+    week_start = month_start if week_start < month_start
+    
+    # Ajustar o fim da semana para não ser depois do fim do mês
     week_end = month_end if week_end > month_end
     
-    # Calcular dias da semana que estão no mês
+    # Calcular dias da semana que estão no mês atual
     week_days_in_month = 0
     (week_start..week_end).each do |date|
       week_days_in_month += 1 if date.month == current_date.month
