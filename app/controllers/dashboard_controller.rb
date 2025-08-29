@@ -310,7 +310,8 @@ class DashboardController < ApplicationController
         target: current_target,
         progress: progress,
         period: "mensal",
-        endDate: Date.current.end_of_month.strftime("%d/%m/%Y")
+        endDate: Date.current.end_of_month.strftime("%d/%m/%Y"),
+        weeklyTarget: calculate_weekly_target(current_month_sales, current_target)
       },
       salesPotential: {
         potential: potencial_vendas[:potential],
@@ -743,6 +744,46 @@ class DashboardController < ApplicationController
       daily_average: best_performer[:daily_average].round(2),
       days_worked: best_performer[:days_worked]
     }
+  end
+
+  def calculate_weekly_target(current_month_sales, current_target)
+    # Calcular quanto falta para bater a meta mensal
+    remaining_target = [current_target - current_month_sales, 0].max
+    
+    # Se não há meta ou já bateu a meta, retornar 0
+    return 0 if current_target <= 0 || remaining_target <= 0
+    
+    # Calcular dias restantes no mês
+    current_date = Date.current
+    month_end = current_date.end_of_month
+    days_remaining_in_month = (month_end - current_date).to_i + 1
+    
+    # Se não há dias restantes, retornar 0
+    return 0 if days_remaining_in_month <= 0
+    
+    # Calcular quantos dias a semana atual tem no mês
+    week_start = current_date.beginning_of_week
+    week_end = current_date.end_of_week
+    
+    # Ajustar para não ultrapassar o fim do mês
+    week_end = month_end if week_end > month_end
+    
+    # Calcular dias da semana que estão no mês
+    week_days_in_month = 0
+    (week_start..week_end).each do |date|
+      week_days_in_month += 1 if date.month == current_date.month
+    end
+    
+    # Se não há dias da semana no mês, retornar 0
+    return 0 if week_days_in_month <= 0
+    
+    # Calcular meta diária restante
+    daily_target = remaining_target.to_f / days_remaining_in_month
+    
+    # Calcular meta da semana: meta diária × dias da semana no mês
+    weekly_target = daily_target * week_days_in_month
+    
+    weekly_target.round(2)
   end
 
   def calculate_date_range(period)
