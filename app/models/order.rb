@@ -31,7 +31,11 @@ class Order < ApplicationRecord
   
   # Valor total das devoluções
   def total_returned
+<<<<<<< HEAD
     Return.where(seller_id: seller_id, store_id: store_id).sum(&:return_value)
+=======
+    returns.sum(&:return_value)
+>>>>>>> 99116b6 (Add Google Drive integration for SOUQ data import)
   end
   
   private
