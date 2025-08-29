@@ -66,11 +66,16 @@ class DashboardController < ApplicationController
     absences = store.absences
     active_absences = absences.where('start_date <= ? AND end_date >= ?', Date.current, Date.current)
 
-    # Calcular vendas a partir dos order items
-    orders = store.orders.includes(:seller, :order_items)
+    # Calcular vendas a partir dos order items (apenas vendedores ativos)
+    orders = store.orders.joins(:seller)
+                        .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
+                        .includes(:seller, :order_items)
     
-    # Calcular trocas e devoluções totais da loja para descontar do total
-    total_exchanges_value = Exchange.joins(:seller).where(sellers: { store_id: store.id }).sum(:voucher_value)
+    # Calcular trocas e devoluções totais da loja para descontar do total (apenas vendedores ativos)
+    total_exchanges_value = Exchange.joins(:seller)
+                                   .where(sellers: { store_id: store.id })
+                                   .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
+                                   .sum(:voucher_value)
     total_returns_value = calculate_total_returns_value(store)
     total_adjustments = total_exchanges_value + total_returns_value
     
@@ -78,9 +83,10 @@ class DashboardController < ApplicationController
     current_month_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
       Date.current.beginning_of_month, Date.current.end_of_month)
     current_month_sales_gross = calculate_sales_from_orders(current_month_orders)
-    # Trocas/devoluções do mês atual
+    # Trocas/devoluções do mês atual (apenas vendedores ativos)
     current_month_exchanges = Exchange.joins(:seller)
       .where(sellers: { store_id: store.id })
+      .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
       .where('processed_at >= ? AND processed_at <= ?', 
         Date.current.beginning_of_month, Date.current.end_of_month)
       .sum(:voucher_value)
@@ -91,9 +97,10 @@ class DashboardController < ApplicationController
     current_week_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
       Date.current.beginning_of_week, Date.current.end_of_week)
     current_week_sales_gross = calculate_sales_from_orders(current_week_orders)
-    # Trocas/devoluções da semana atual
+    # Trocas/devoluções da semana atual (apenas vendedores ativos)
     current_week_exchanges = Exchange.joins(:seller)
       .where(sellers: { store_id: store.id })
+      .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
       .where('processed_at >= ? AND processed_at <= ?', 
         Date.current.beginning_of_week, Date.current.end_of_week)
       .sum(:voucher_value)
@@ -104,9 +111,10 @@ class DashboardController < ApplicationController
     today_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
       Date.current.beginning_of_day, Date.current.end_of_day)
     today_sales_gross = calculate_sales_from_orders(today_orders)
-    # Trocas/devoluções de hoje
+    # Trocas/devoluções de hoje (apenas vendedores ativos)
     today_exchanges = Exchange.joins(:seller)
       .where(sellers: { store_id: store.id })
+      .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
       .where('processed_at >= ? AND processed_at <= ?', 
         Date.current.beginning_of_day, Date.current.end_of_day)
       .sum(:voucher_value)
@@ -542,9 +550,11 @@ class DashboardController < ApplicationController
   end
 
   def calculate_total_returns_value(store)
-    # Calcular valor total das devoluções da loja
+    # Calcular valor total das devoluções da loja (apenas vendedores ativos)
     # Como as devoluções não têm ligação direta com vendas, vamos estimar com base no preço médio
-    returns = Return.where(store_id: store.id)
+    returns = Return.joins(:seller)
+                   .where(sellers: { store_id: store.id })
+                   .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
     
     # Se não há devoluções, retornar 0
     return 0 if returns.empty?
@@ -557,10 +567,12 @@ class DashboardController < ApplicationController
   end
   
   def calculate_period_returns_value(store, start_date, end_date)
-    # Calcular valor das devoluções em um período específico
+    # Calcular valor das devoluções em um período específico (apenas vendedores ativos)
     # Primeiro tentar o join, se falhar, retornar 0
     begin
-      returns = Return.where(store_id: store.id)
+      returns = Return.joins(:seller)
+                      .where(sellers: { store_id: store.id })
+                      .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
                       .where('returns.processed_at >= ? AND returns.processed_at <= ?', start_date, end_date)
       
       return 0 if returns.empty?
@@ -591,9 +603,10 @@ class DashboardController < ApplicationController
       month_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', start_date, end_date)
       gross_sales = calculate_sales_from_orders(month_orders)
       
-      # Trocas do mês
+      # Trocas do mês (apenas vendedores ativos)
       month_exchanges = Exchange.joins(:seller)
         .where(sellers: { store_id: store.id })
+        .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
         .where('processed_at >= ? AND processed_at <= ?', start_date, end_date)
         .sum(:voucher_value)
       

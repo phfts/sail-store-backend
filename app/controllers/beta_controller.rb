@@ -691,6 +691,18 @@ class BetaController < ApplicationController
 
   # Calcula vendas líquidas considerando devoluções e trocas
   def calculate_net_sales(seller, start_date, end_date)
+    # Verificar se o vendedor está ativo no período
+    # Se o vendedor está inativo, não contabilizar vendas
+    unless seller.active?
+      return {
+        gross_sales: 0,
+        total_returned: 0,
+        credit_exchanges: 0,
+        debit_exchanges: 0,
+        net_sales: 0
+      }
+    end
+    
     # Vendas brutas
     gross_orders = seller.orders.includes(:order_items)
                         .where('sold_at >= ? AND sold_at <= ?', start_date, end_date)
@@ -722,22 +734,26 @@ class BetaController < ApplicationController
 
   # Calcula vendas líquidas da loja considerando devoluções e trocas
   def calculate_store_net_sales(store, start_date, end_date)
-    # Vendas brutas da loja
+    # Vendas brutas da loja (apenas vendedores ativos)
     gross_orders = Order.joins(:seller)
                        .where(sellers: { store_id: store.id })
+                       .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
                        .includes(:order_items)
                        .where('orders.sold_at >= ? AND orders.sold_at <= ?', start_date, end_date)
     gross_sales = gross_orders.joins(:order_items)
                              .sum('order_items.quantity * order_items.unit_price')
     
-    # Devoluções da loja
-    returns = Return.where(store_id: store.id)
+    # Devoluções da loja (apenas vendedores ativos)
+    returns = Return.joins(:seller)
+                   .where(sellers: { store_id: store.id })
+                   .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
                    .where('returns.processed_at >= ? AND returns.processed_at <= ?', start_date, end_date)
     total_returned = returns.sum(&:return_value)
     
-    # Trocas da loja
+    # Trocas da loja (apenas vendedores ativos)
     exchanges = Exchange.joins(:seller)
                        .where(sellers: { store_id: store.id })
+                       .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
                        .where('processed_at >= ? AND processed_at <= ?', start_date, end_date)
     credit_exchanges = exchanges.where(is_credit: true).sum(:voucher_value)
     debit_exchanges = exchanges.where(is_credit: false).sum(:voucher_value)
