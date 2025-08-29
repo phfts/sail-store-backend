@@ -566,7 +566,6 @@ class BetaController < ApplicationController
                              .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
                              .count
     
-
     store_total_items = store_orders_count > 0 ? Order.joins(:seller, :order_items)
                                                     .where(sellers: { store_id: store.id })
                                                     .where('orders.sold_at >= ? AND orders.sold_at <= ?', primary_start, [current_date, primary_end].min)
