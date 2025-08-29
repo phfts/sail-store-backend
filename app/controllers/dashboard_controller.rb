@@ -93,18 +93,18 @@ class DashboardController < ApplicationController
     current_month_returns = calculate_period_returns_value(store, Date.current.beginning_of_month, Date.current.end_of_month)
     current_month_sales = current_month_sales_gross - current_month_exchanges - current_month_returns
     
-    # Vendas da semana atual
+    # Vendas da semana atual (desde o início da semana até hoje)
     current_week_orders = orders.where('orders.sold_at >= ? AND orders.sold_at <= ?', 
-      Date.current.beginning_of_week, Date.current.end_of_week)
+      Date.current.beginning_of_week, Date.current.end_of_day)
     current_week_sales_gross = calculate_sales_from_orders(current_week_orders)
     # Trocas/devoluções da semana atual (apenas vendedores ativos)
     current_week_exchanges = Exchange.joins(:seller)
       .where(sellers: { store_id: store.id })
       .where('sellers.active_until IS NULL OR sellers.active_until > ?', Time.current)
       .where('processed_at >= ? AND processed_at <= ?', 
-        Date.current.beginning_of_week, Date.current.end_of_week)
+        Date.current.beginning_of_week, Date.current.end_of_day)
       .sum(:voucher_value)
-    current_week_returns = calculate_period_returns_value(store, Date.current.beginning_of_week, Date.current.end_of_week)
+    current_week_returns = calculate_period_returns_value(store, Date.current.beginning_of_week, Date.current.end_of_day)
     current_week_sales = current_week_sales_gross - current_week_exchanges - current_week_returns
     
     # Vendas de hoje
