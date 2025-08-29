@@ -753,24 +753,26 @@ class DashboardController < ApplicationController
     # Se não há meta ou já bateu a meta, retornar 0
     return 0 if current_target <= 0 || remaining_target <= 0
     
-    # Calcular dias restantes no mês
+    # Obter data atual e limites do mês
     current_date = Date.current
     month_start = current_date.beginning_of_month
     month_end = current_date.end_of_month
-    days_remaining_in_month = (month_end - current_date).to_i + 1
-    
-    # Se não há dias restantes, retornar 0
-    return 0 if days_remaining_in_month <= 0
     
     # Calcular quantos dias a semana atual tem no mês atual
-    # Usar o dia atual como ponto de partida, não o início da semana
-    week_start = current_date
+    # Considerar sempre o início da semana (segunda-feira) ou dia 01 do mês se a segunda-feira for no mês anterior
+    week_start = current_date.beginning_of_week
+    
+    # Se o início da semana é no mês anterior, usar o dia 01 do mês atual
+    if week_start.month != current_date.month
+      week_start = month_start
+    end
+    
     week_end = current_date.end_of_week
     
     # Ajustar o fim da semana para não ser depois do fim do mês
     week_end = month_end if week_end > month_end
     
-    # Calcular dias da semana que estão no mês atual (a partir do dia atual)
+    # Calcular dias da semana que estão no mês atual
     week_days_in_month = 0
     (week_start..week_end).each do |date|
       week_days_in_month += 1 if date.month == current_date.month
@@ -779,11 +781,15 @@ class DashboardController < ApplicationController
     # Se não há dias da semana no mês, retornar 0
     return 0 if week_days_in_month <= 0
     
-    # Calcular meta diária restante
-    daily_target = remaining_target.to_f / days_remaining_in_month
+    # Calcular dias restantes no mês a partir do ponto de partida (segunda ou dia 01)
+    days_remaining_in_month = (month_end - week_start).to_i + 1
     
-    # Calcular meta da semana: meta diária × dias da semana no mês
-    weekly_target = daily_target * week_days_in_month
+    # Se não há dias restantes, retornar 0
+    return 0 if days_remaining_in_month <= 0
+    
+    # Calcular meta da semana: valor restante × proporção dos dias da semana
+    # A proporção é: dias da semana no mês / dias restantes no mês
+    weekly_target = remaining_target * (week_days_in_month.to_f / days_remaining_in_month)
     
     weekly_target.round(2)
   end
