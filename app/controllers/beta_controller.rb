@@ -279,6 +279,18 @@ class BetaController < ApplicationController
     store_sales_data = calculate_store_net_sales(store, periodo_inicio, [current_date, periodo_fim].min)
     total_sales = store_sales_data[:net_sales]
     
+    # Calcular métricas da loja para o consolidado
+    store_orders_count = Order.joins(:seller)
+                             .where(sellers: { store_id: store.id })
+                             .where('orders.sold_at >= ? AND orders.sold_at <= ?', periodo_inicio, [current_date, periodo_fim].min)
+                             .count
+    store_total_items = store_orders_count > 0 ? Order.joins(:seller, :order_items)
+                                                    .where(sellers: { store_id: store.id })
+                                                    .where('orders.sold_at >= ? AND orders.sold_at <= ?', periodo_inicio, [current_date, periodo_fim].min)
+                                                    .sum('order_items.quantity') : 0
+    store_ticket_medio = store_orders_count > 0 ? total_sales / store_orders_count : 0
+    store_pa = store_orders_count > 0 ? store_total_items.to_f / store_orders_count : 0
+    
     # Usar a meta principal (primeira) para outros cálculos
     primary_goal = store_goals_data.first
     total_days_remaining = primary_goal[:dias_restantes]
